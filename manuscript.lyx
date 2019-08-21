@@ -122,10 +122,10 @@ key "WM19"
  equations:
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\sigma_{j}S_{ji}-\sigma_{i}S_{ij}\\
-\frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i} & = & b_{i}\mathbf{k}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(\mathbf{u}_{ji}^{T}-\mathbf{u}_{i}\right)-S_{ij}(\mathbf{u}_{ij}^{T}-\mathbf{u}_{i})-\mathbf{D}_{ij}\\
-\frac{D_{i}b_{i}}{Dt}+N^{2}w_{i} & = & \sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\\
-\sum_{i}\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0
+\frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\sigma_{j}S_{ji}-\sigma_{i}S_{ij}\label{eq:sigma}\\
+\frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i} & = & b_{i}\mathbf{k}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(\mathbf{u}_{ji}^{T}-\mathbf{u}_{i}\right)-S_{ij}(\mathbf{u}_{ij}^{T}-\mathbf{u}_{i})-\mathbf{D}_{ij}\label{eq:mom}\\
+\frac{D_{i}b_{i}}{Dt}+N^{2}w_{i} & = & \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\label{eq:b}\\
+\sum_{i}\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0\label{eq:divFree}
 \end{eqnarray}
 
 \end_inset
@@ -150,7 +150,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
+<lyxtabular version="3" rows="15" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="85text%">
@@ -204,6 +204,33 @@ Volume fraction of fluid
 \begin_layout Plain Layout
 Velocity of fluid 
 \begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vertical component of 
+\begin_inset Formula $\mathbf{u}_{i}$
 \end_inset
 
 
@@ -532,7 +559,7 @@ Drag coefficient
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $r$
+\begin_inset Formula $r_{c}$
 \end_inset
 
 
@@ -545,6 +572,29 @@ Drag coefficient
 
 \begin_layout Plain Layout
 Plume radius used for defining the drag between fluids
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Diffusivity of buoyancy
 \end_layout
 
 \end_inset
@@ -653,6 +703,23 @@ key "WM19"
 \end_layout
 
 \begin_layout Standard
+We will assume that pressure in each fluid is given by a parameterised perturbat
+ion from the total pressure, 
+\begin_inset Formula $P$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+P_{i}=P+P_{i}^{\prime}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset citation
 LatexCommand citet
 key "BN86"
@@ -727,7 +794,7 @@ where
 \end_inset
 
  is constant then we get 
-\begin_inset Formula $\mu P_{i}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $\mu P_{i}^{\prime}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 .
@@ -736,7 +803,7 @@ where
 \end_inset
 
  for each fluid then we get 
-\begin_inset Formula $\mu P_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $\mu P_{i}^{\prime}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 .
@@ -783,21 +850,21 @@ key "TEB19"
  we assume that the pressure in each fluid is given by:
 \begin_inset Formula 
 \begin{equation}
-P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}
+P_{i}^{\prime}=-\gamma\nabla\cdot\mathbf{u}_{i}
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $P$
-\end_inset
-
- is the total pressure and 
 \begin_inset Formula $\gamma$
 \end_inset
 
  is a free coefficient.
- This parameterisation will be evaluated in section 
+ This parameterisation and sensitivity to 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ will be evaluated in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:results"
@@ -812,21 +879,29 @@ Entrainment and Detrainment
 \end_layout
 
 \begin_layout Standard
-When divergence and convergence occur, they can lead to changes in vertical
- velocity as well as acceleration due to pressure spikes.
- We therefore need to calculate entrainment based on divergence to prevent
- one fluid from accumulating and to ensure transfers are always positive:
+We consider dry air without turbulence so use the dynamic entrainment described
+ by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "HC51,AK67,DBF+13"
+
+\end_inset
+
+:
 \begin_inset Formula 
 \[
 S_{ij}=\begin{cases}
 -\nabla\cdot\mathbf{u}_{i} & \text{if }\nabla\cdot\mathbf{u}_{i}<0\\
-0 & \text{otherwise}.
+0 & \text{otherwise}
 \end{cases}
 \]
 
 \end_inset
 
-
+which is necessary to stop air in one fluid from accumulating when vertical
+ motion ceases (at the top of a rising plume or at the bottom of descending
+ air).
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -840,8 +915,454 @@ name "subsec:drag"
 
 \end_layout
 
+\begin_layout Standard
+Pressure differences between the fluids can lead to form drag which is parameter
+ised following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SW69,RC15,WM19"
+
+\end_inset
+
+ as: 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{D}_{ij}=\frac{\sigma_{j}C_{D}}{r_{c}}|\mathbf{u}_{i}-\mathbf{u}_{j}|\left(\mathbf{u}_{i}-\mathbf{u}_{j}\right)\label{eq:dragBubble}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $C_{D}$
+\end_inset
+
+ is a drag coefficient, 
+\begin_inset Formula $r_{c}$
+\end_inset
+
+ is a cloud radius.
+ 
+\begin_inset Formula $C_{D}$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{c}$
+\end_inset
+
+ are defined based on the test cases.
+ 
+\end_layout
+
+\begin_layout Subsection
+The Buoyancy and the Momentum of the Mass that is Transferred
+\end_layout
+
+\begin_layout Standard
+The different fluids are not likely to be well mixed and it is assumed that
+ the most buoyant air is transferred from fluid 0 to fluid 1 and vice versa
+ and that the air with least downward momentum is transferred from 0 to
+ 1 and vice versa.
+ The properties of the fluids transferred should depend on modelling of
+ sub-grid-scale variability which is beyond the scope of this paper.
+ Conditional averaging of high resolution single fluid solutions depends
+ on the sign of 
+\begin_inset Formula $w$
+\end_inset
+
+ and so it is sensible to assume that the vertical velocity of the fluid
+ transferred is zero.
+ For two dimensional multi-fluid simulations we assume that the horizontal
+ velocity transferred is equal to the mean horizontal velocity of the fluid
+ transferred from.
+ Therefore
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}_{ij}^{T}=\begin{pmatrix}u_{i}\\
+v_{i}\\
+0
+\end{pmatrix}.
+\end{equation}
+
+\end_inset
+
+For buoyancy, following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19"
+
+\end_inset
+
+, we use:
+\begin_inset Formula 
+\begin{equation}
+b_{ij}^{T}=\theta_{b}b_{i}+(1-\theta_{b})b_{j}
+\end{equation}
+
+\end_inset
+
+and present results using 
+\begin_inset Formula $\theta_{b}=\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{b}=1$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $\theta_{b}\ne1$
+\end_inset
+
+ implies that the buoyancy of the fluid transferred depends on the properties
+ of the receiving fluid which is not logical and can lead to unbounded values
+ of 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ in the fluid that is loosing mass.
+\end_layout
+
 \begin_layout Section
 Numerical Solution
+\end_layout
+
+\begin_layout Standard
+The spatial discretisation follows exactly 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+, solving advective form equations using monotonic, finite volume advection
+ and C-grid, Lorenz staggering.
+ The time-stepping is Crank-Nicolson without off-centering and with deferred
+ correction of explicitly solved variables but is different from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+ because here we solve the Boussinesq equations and we need stable solutions
+ for equations with a separate pressure in each fluid.
+ We use two outer iterations per time step to update explicitly solved variables.
+ For the first outer iteration, values at time level 
+\begin_inset Formula $\ell$
+\end_inset
+
+ are set to those from time level 
+\begin_inset Formula $n$
+\end_inset
+
+ and for the second iteration, values at 
+\begin_inset Formula $\ell$
+\end_inset
+
+ are set to those from the end of the first iteration.
+ The implicit numerical method for applying the transfers between fluids
+ is specific for two fluids because it involves the inversion of 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrices.
+ 
+\end_layout
+
+\begin_layout Standard
+The prognostic variables are the 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ in cell centres, the 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ is cell centres and the velocity flux: the velocity at cell faces dotted
+ with the area vector for each face (normal to the face), 
+\begin_inset Formula $u_{i}=\mathbf{u}_{i}\cdot\mathbf{S}$
+\end_inset
+
+.
+ The pressures, 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ are diagnostic.
+\end_layout
+
+\begin_layout Standard
+The first equation to be solved each outer iteration is eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sigma"
+
+\end_inset
+
+) for each 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+, operator split; first applying advection, then correcting 
+\begin_inset Formula $\sum_{i}\sigma_{i}=1$
+\end_inset
+
+ and then applying mass transfers:
+\begin_inset Formula 
+\begin{eqnarray}
+\sigma_{i}^{\prime} & = & \sigma_{i}^{n}-\frac{\Delta t}{2}\nabla\cdot\left\{ \left(\mathbf{u}_{i}^{n}+\mathbf{u}_{i}^{\ell}\right)\left(\sigma_{i}^{n}\right)_{vL}\right\} \\
+\sigma_{i}^{\prime\prime} & = & \sigma_{i}^{\prime}\bigg/\sum_{i}\sigma_{i}^{\prime}\\
+S_{ij} & = & \begin{cases}
+-\nabla\cdot\mathbf{u}_{i}^{\ell} & \text{if }\nabla\cdot\mathbf{u}_{i}^{\ell}<0\\
+0 & \text{otherwise}
+\end{cases}\\
+\sigma_{i}^{n+1} & = & \sigma_{i}^{\prime\prime}+\Delta t\sum_{j\ne i}\sigma_{j}^{\prime\prime}S_{ji}-\sigma_{i}^{\prime\prime}S_{ij}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ is the time step and the superscripts 
+\begin_inset Formula $\prime$
+\end_inset
+
+ and 
+\begin_inset Formula $\prime\prime$
+\end_inset
+
+ denote intermediate values.
+ 
+\begin_inset Formula $\sigma_{i}^{n}$
+\end_inset
+
+ is interpolated from cell centres onto cell faces using monotonic van-Leer
+ advection (operator 
+\begin_inset Formula $(\sigma_{i}^{n})_{vL}$
+\end_inset
+
+) as in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+ using exclusively values at time level 
+\begin_inset Formula $n$
+\end_inset
+
+ for best accuracy and guaranteed monotonicity.
+ For calculating the divergence, the normal component of 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ is needed at cell faces which are prognostic variables of the C-grid.
+ The 
+\begin_inset Formula $S_{ij}$
+\end_inset
+
+ are limited to ensure 
+\begin_inset Formula $0<\sigma_{i}<1\ \forall i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Next eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b"
+
+\end_inset
+
+) is solved for the buoyancy in each fluid.
+ The transfer terms can be very large so they are treated operator split
+ and implicitly, with 
+\begin_inset Formula $b_{0}^{n+1}$
+\end_inset
+
+ coming from the solution of a 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix and 
+\begin_inset Formula $b_{1}^{n+1}$
+\end_inset
+
+ being the back-substitution:
+\begin_inset Formula 
+\begin{eqnarray}
+b_{i}^{\prime} & = & b_{i}^{n}+\frac{\Delta t}{2}\left(b_{it}^{n}+b_{it}^{\ell}\right)\\
+\text{where }b_{it} & = & -\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}-N^{2}w_{i}+\alpha\nabla^{2}b_{i}\\
+b_{0}^{n+1} & = & \frac{\left(1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}\right)b_{0}^{\prime}+\Delta t\left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}b_{1}^{\prime}}{1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}+\Delta t\left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}}\\
+b_{1}^{n+1} & = & \frac{\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}b_{0}^{n+1}+b_{1}^{\prime}}{1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}}.
+\end{eqnarray}
+
+\end_inset
+
+The use of 
+\begin_inset Formula $(\sigma_{0}/\sigma_{1})^{\prime\prime}$
+\end_inset
+
+ before the mass transfers is necessary to ensure bounded and conservative
+ transfers, as described by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{MWH1x}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Next a Poisson equation is solved to calculate the total pressure to ensure
+ that the total velocity is divergence free.
+ The pressure equation also provides updates for the velocity flux, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+.
+ First an intermediate velocity flux is calculated with updates just from
+ advection and buoyancy and from the rate of change from the previous time
+ step:
+\begin_inset Formula 
+\begin{eqnarray}
+u_{i}^{\prime}= & u_{i}^{n}+\frac{\Delta t}{2} & \biggl(\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{\ell}\cdot\mathbf{S}\\
+ &  & +\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{n}\cdot\mathbf{S}-\nabla_{f}(P+P_{i}^{\prime})^{n}\biggr)
+\end{eqnarray}
+
+\end_inset
+
+where operator 
+\begin_inset Formula $()_{f}$
+\end_inset
+
+ means linear interpolation from cell centres onto cell faces and 
+\begin_inset Formula $\nabla_{f}P$
+\end_inset
+
+ is a compact discretisation of 
+\begin_inset Formula $(\nabla P)_{f}\cdot\mathbf{S}$
+\end_inset
+
+: ie the normal component of the pressure gradient calculated from just
+ the values of pressure either side of the face.
+ Thus, once we have calculated 
+\begin_inset Formula $P$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{i}^{\prime}$
+\end_inset
+
+ then the velocity flux is updated from the back-substitution:
+\begin_inset Formula 
+\begin{equation}
+u_{i}^{n+1}=u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}\left(P+P_{i}^{\prime}\right).\label{eq:backSub}
+\end{equation}
+
+\end_inset
+
+The Poisson equation for 
+\begin_inset Formula $P$
+\end_inset
+
+ is found by multiplying each eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:backSub"
+
+\end_inset
+
+) by 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+, summing over all fluids and taking the divergence.
+ Knowing that 
+\begin_inset Formula $\nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\sum_{i}\sigma_{i}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{i}\sigma_{i}P_{i}^{\prime}=0$
+\end_inset
+
+ gives:
+\begin_inset Formula 
+\begin{equation}
+\nabla\cdot\sum_{i}\sigma_{i}u_{i}^{\prime}-\frac{\Delta t}{2}\nabla^{2}P=0
+\end{equation}
+
+\end_inset
+
+which is solved to find 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ Next a Poisson equation is solved to find each 
+\begin_inset Formula $P_{i}^{\prime}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+P_{i}^{\prime}=-\gamma\nabla\cdot\left(u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}\left(P+P_{i}^{\prime}\right)\right)
+\end{equation}
+
+\end_inset
+
+and the velocity flux is updated from the back substitution (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:backSub"
+
+\end_inset
+
+).
+ The total velocity on faces, 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ is reconstructed from 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally the momentum transfers due to mass transfer and due to drag are
+ calculated implicitly, similar to the implicit transfers of buoyancy.
+ 
 \end_layout
 
 \begin_layout Section
@@ -874,6 +1395,10 @@ key "BF02"
  the two-dimensional Boussinesq equations at high horizontal and vertical
  resolution.
  
+\end_layout
+
+\begin_layout Subsection
+Radiative-Convective Equilibrium
 \end_layout
 
 \begin_layout Subsection
@@ -1979,10 +2504,6 @@ name "fig:multiFluidSingleColumn"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Radiative-Convective Equilibrium
 \end_layout
 
 \begin_layout Section
