@@ -124,7 +124,7 @@ key "WM19"
 \begin{eqnarray}
 \frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\sigma_{j}S_{ji}-\sigma_{i}S_{ij}\label{eq:sigma}\\
 \frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i} & = & b_{i}\mathbf{k}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(\mathbf{u}_{ji}^{T}-\mathbf{u}_{i}\right)-S_{ij}(\mathbf{u}_{ij}^{T}-\mathbf{u}_{i})-\mathbf{D}_{ij}\label{eq:mom}\\
-\frac{D_{i}b_{i}}{Dt}+N^{2}w_{i} & = & \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\label{eq:b}\\
+\frac{D_{i}b_{i}}{Dt} & = & \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\label{eq:b}\\
 \sum_{i}\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0\label{eq:divFree}
 \end{eqnarray}
 
@@ -150,7 +150,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="15" columns="2">
+<lyxtabular version="3" rows="14" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="left" valignment="top" width="85text%">
@@ -393,50 +393,6 @@ Buoyancy of fluid
 \end_inset
 
  
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $N^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Brunt–
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-V
-\backslash
-"ais
-\backslash
-"al
-\backslash
-"a
-\end_layout
-
-\end_inset
-
- frequency 
-\begin_inset Formula $=-g/\rho_{rr}\partial\rho_{r}/\partial z$
-\end_inset
-
-
 \end_layout
 
 \end_inset
@@ -711,7 +667,7 @@ ion from the total pressure,
 :
 \begin_inset Formula 
 \begin{equation}
-P_{i}=P+P_{i}^{\prime}.
+P_{i}=P+p_{i}.
 \end{equation}
 
 \end_inset
@@ -794,7 +750,7 @@ where
 \end_inset
 
  is constant then we get 
-\begin_inset Formula $\mu P_{i}^{\prime}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $\mu p_{i}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 .
@@ -803,7 +759,7 @@ where
 \end_inset
 
  for each fluid then we get 
-\begin_inset Formula $\mu P_{i}^{\prime}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 .
@@ -833,6 +789,19 @@ key "TEB19"
  However addition a diffusion term will harm three dimensional simulations
  are resolved convection in the free troposphere whereas adding a fluid
  perturbation pressure will not.
+ We have additional constraints that we want 
+\begin_inset Formula $\sum_{i}\sigma_{i}p_{i}=0$
+\end_inset
+
+ and we do not want the action of 
+\begin_inset Formula $\nabla p_{i}$
+\end_inset
+
+ to destroy 
+\begin_inset Formula $\sum_{i}\nabla\cdot\sigma_{i}\mathbf{u}_{i}=0$
+\end_inset
+
+.
  Therefore, inspired by both 
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -850,7 +819,7 @@ key "TEB19"
  we assume that the pressure in each fluid is given by:
 \begin_inset Formula 
 \begin{equation}
-P_{i}^{\prime}=-\gamma\nabla\cdot\mathbf{u}_{i}
+\sigma_{i}p_{i}=-\gamma\nabla\cdot\sigma_{i}\mathbf{u}_{i}\label{eq:Pi_div}
 \end{equation}
 
 \end_inset
@@ -1036,8 +1005,9 @@ key "WM19"
 
 , solving advective form equations using monotonic, finite volume advection
  and C-grid, Lorenz staggering.
- The time-stepping is Crank-Nicolson without off-centering and with deferred
- correction of explicitly solved variables but is different from 
+ The time-stepping is Crank-Nicolson with no off-centering and with deferred
+ correction of explicitly solved variables.
+ It is different from 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "WM19"
@@ -1047,15 +1017,20 @@ key "WM19"
  because here we solve the Boussinesq equations and we need stable solutions
  for equations with a separate pressure in each fluid.
  We use two outer iterations per time step to update explicitly solved variables.
- For the first outer iteration, values at time level 
-\begin_inset Formula $\ell$
+ For the first outer iteration, predicted values for time 
+\begin_inset Formula $n+1$
 \end_inset
 
  are set to those from time level 
 \begin_inset Formula $n$
 \end_inset
 
- and for the second iteration, values at 
+ and are given the superscript 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+ For the second iteration, values at 
 \begin_inset Formula $\ell$
 \end_inset
 
@@ -1089,7 +1064,7 @@ The prognostic variables are the
 \end_inset
 
  and 
-\begin_inset Formula $P_{i}$
+\begin_inset Formula $p_{i}$
 \end_inset
 
  are diagnostic.
@@ -1238,13 +1213,11 @@ Next a Poisson equation is solved to calculate the total pressure to ensure
 \end_inset
 
 .
- First an intermediate velocity flux is calculated with updates just from
- advection and buoyancy and from the rate of change from the previous time
- step:
+ First an intermediate velocity flux is calculated with partial updates:
 \begin_inset Formula 
 \begin{eqnarray}
-u_{i}^{\prime}= & u_{i}^{n}+\frac{\Delta t}{2} & \biggl(\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{\ell}\cdot\mathbf{S}\\
- &  & +\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{n}\cdot\mathbf{S}-\nabla_{f}(P+P_{i}^{\prime})^{n}\biggr)
+u_{i}^{\prime}= & u_{i}^{n}+\frac{\Delta t}{2} & \biggl(\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{\ell}\cdot\mathbf{S}-\nabla_{f}p_{i}^{\ell}\\
+ &  & +\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{n}\cdot\mathbf{S}-\nabla_{f}(P+p_{i})^{n}\biggr)
 \end{eqnarray}
 
 \end_inset
@@ -1263,18 +1236,15 @@ where operator
 
 : ie the normal component of the pressure gradient calculated from just
  the values of pressure either side of the face.
- Thus, once we have calculated 
-\begin_inset Formula $P$
+ Once we have calculated 
+\begin_inset Formula $P^{n+1}$
 \end_inset
 
- and 
-\begin_inset Formula $P_{i}^{\prime}$
-\end_inset
-
- then the velocity flux is updated from the back-substitution:
+, the velocity flux (without momentum transfers) is updated from the back-substi
+tution:
 \begin_inset Formula 
 \begin{equation}
-u_{i}^{n+1}=u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}\left(P+P_{i}^{\prime}\right).\label{eq:backSub}
+u_{i}^{\prime\prime}=u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}P^{n+1}.\label{eq:backSub}
 \end{equation}
 
 \end_inset
@@ -1304,47 +1274,126 @@ reference "eq:backSub"
 \end_inset
 
  and 
-\begin_inset Formula $\sum_{i}\sigma_{i}P_{i}^{\prime}=0$
+\begin_inset Formula $\sum_{i}\sigma_{i}p_{i}=0$
 \end_inset
 
  gives:
 \begin_inset Formula 
 \begin{equation}
-\nabla\cdot\sum_{i}\sigma_{i}u_{i}^{\prime}-\frac{\Delta t}{2}\nabla^{2}P=0
+\nabla\cdot\sum_{i}\sigma_{i}u_{i}^{\prime}-\frac{\Delta t}{2}\nabla^{2}P^{n+1}=0
 \end{equation}
 
 \end_inset
 
 which is solved to find 
-\begin_inset Formula $P$
+\begin_inset Formula $P^{n+1}$
 \end_inset
 
 .
- Next a Poisson equation is solved to find each 
-\begin_inset Formula $P_{i}^{\prime}$
+ 
+\end_layout
+
+\begin_layout Standard
+Next, the momentum transfers due to mass transfer and due to drag are calculated
+ implicitly, similar to the implicit transfers of buoyancy, calculating
+ 
+\begin_inset Formula $u_{i}^{n+1}$
+\end_inset
+
+ from 
+\begin_inset Formula $u_{i}^{\prime\prime}$
+\end_inset
+
+.
+ These do not influence the total 
+\begin_inset Formula $P$
+\end_inset
+
+ or total divergence because momentum is transferred conservatively.
+ However they do influence 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ which is why they are calculated before 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+.
+ The final stage of the time step iteration is to solve Helmholtz equations
+ for each 
+\begin_inset Formula $p_{i}$
 \end_inset
 
 :
 \begin_inset Formula 
 \begin{equation}
-P_{i}^{\prime}=-\gamma\nabla\cdot\left(u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}\left(P+P_{i}^{\prime}\right)\right)
+\sigma_{i}^{n+1}p_{i}^{n+1}=-\gamma\nabla\cdot\left(\sigma_{if}^{n+1}u_{i}^{n+1}-\frac{\Delta t}{2}\sigma_{if}^{n+1}\nabla_{f}\left(p_{i}^{n+1}-p_{i}^{\ell}\right)\right).\label{eq:pi_Helm}
 \end{equation}
 
 \end_inset
 
-and the velocity flux is updated from the back substitution (
+Both 
+\begin_inset Formula $p_{i}^{n+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{i}^{\ell}$
+\end_inset
+
+ appear in eqn (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:backSub"
+reference "eq:pi_Helm"
 
 \end_inset
 
-).
- The total velocity on faces, 
+) because 
+\begin_inset Formula $u_{i}^{n+1}$
+\end_inset
+
+ already contains contributions from 
+\begin_inset Formula $p_{i}^{\ell}$
+\end_inset
+
+ so these are removed before updating 
+\begin_inset Formula $p_{i}^{n+1}$
+\end_inset
+
+.
+ No back substitution for 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is done after calculating 
+\begin_inset Formula $p_{i}^{n+1}$
+\end_inset
+
+ because this would destroy the divergence free constraint.
+ Therefore 
+\begin_inset Formula $p_{i}^{n+1}$
+\end_inset
+
+ only satisfies eqn (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Pi_div"
+
+\end_inset
+
+) exactly if the outer iterations converge and 
+\begin_inset Formula $p_{i}^{\ell}=p_{i}^{n+1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The final stage of the time step iteration is to reconstruct 
 \begin_inset Formula $\mathbf{u}_{i}$
 \end_inset
 
- is reconstructed from 
+ is from 
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -1356,13 +1405,24 @@ key "WM19"
 \end_inset
 
 .
- 
-\end_layout
+ The stages calculating 
+\begin_inset Formula $P$
+\end_inset
 
-\begin_layout Standard
-Finally the momentum transfers due to mass transfer and due to drag are
- calculated implicitly, similar to the implicit transfers of buoyancy.
- 
+, 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ are repeated twice per time step iteration.
+ The Poisson and Helmholtz equations are solved to a tolerance of 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -1380,25 +1440,22 @@ name "sec:results"
 Two test cases are developed to tune parameters and to validate the use
  of multi-fluid equations to represent dry, two-dimensional sub-grid-scale
  convection.
- The first is transient; the standard rising bubble of 
+ The first is steady state with heat transfer at ground and radiative cooling.
+ The second is transient; the standard rising bubble of 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "BF02"
 
 \end_inset
 
- and the second is steady state with heat transfer at boundaries.
- For each we aim to reproduce the vertical heat transport, mean velocity
- of the rising air, bouyancy of the rising air and pressure differences
- between two fluids in a single column two fluid model.
+.
+ We aim to reproduce the vertical heat transport, mean velocity of the rising
+ air, bouyancy of the rising air and pressure differences between two fluids
+ in a single column two fluid model.
  For both test cases the reference solution is a single fluid solution of
  the two-dimensional Boussinesq equations at high horizontal and vertical
  resolution.
  
-\end_layout
-
-\begin_layout Subsection
-Radiative-Convective Equilibrium
 \end_layout
 
 \begin_layout Subsection
@@ -2466,6 +2523,7 @@ status open
 \begin_inset Graphics
 	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/sigmaw.eps
 	lyxscale 50
+	display false
 	width 20text%
 
 \end_inset
@@ -2490,6 +2548,836 @@ Multi-fluid, single column solutions of the rising bubble.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:multiFluidSingleColumn"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Radiative-Convective Equilibrium (RCE)
+\end_layout
+
+\begin_layout Standard
+A two-dimensional, dry radiative convective equilibrium test case is devised
+ to mimic some properties of atmospheric convection, in particular the difficult
+y resolving the flow at coarse resolution.
+ The domain is 160km wide, 10km tall and is resolved by 640 cells in the
+ horizontal and 40 in the vertical (
+\begin_inset Formula $\Delta x=\Delta z=250$
+\end_inset
+
+m).
+ The top and bottom boundaries are zero mass flux and the lateral boundaries
+ are periodic.
+ A heat flux of 
+\begin_inset Formula $h=10^{-3}\text{m}^{2}\text{s}^{-3}$
+\end_inset
+
+ is imposed at the bottom boundary leading to a boundary condition of 
+\begin_inset Formula $\partial b/\partial z=-h/\alpha\text{s}^{-2}$
+\end_inset
+
+ where 
+\begin_inset Formula $\alpha=100\ \text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+ is the buoyancy diffusivity.
+ The top boundary has 
+\begin_inset Formula $\partial b/\partial z=0$
+\end_inset
+
+.
+ Diffusion is applied to the momentum equation with a coefficient 
+\begin_inset Formula $\nu=70.7\ \text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+ so as to give a Plank constant of 
+\begin_inset Formula $0.707$
+\end_inset
+
+.
+ Uniform cooling of 
+\begin_inset Formula $-1\times10^{-7}\text{m}\text{s}^{-3}$
+\end_inset
+
+ is applied to the domain to maintain equilibrium.
+\end_layout
+
+\begin_layout Standard
+The fluid is initially stationary with 
+\begin_inset Formula $b=0$
+\end_inset
+
+.
+ In order to quickly and reproducibly initialise instability, 
+\begin_inset Formula $b=10^{-4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+ is imposed in a square of side length 2000m at the centre in the 
+\begin_inset Formula $x$
+\end_inset
+
+ direction and at the ground.
+ The simulation is run using a time step of 
+\begin_inset Formula $5\ \text{s}$
+\end_inset
+
+.
+ A quasi-steady, choatic state is reached after about 
+\begin_inset Formula $10^{5}\text{s}$
+\end_inset
+
+ and the simulation is run for a further 
+\begin_inset Formula $10^{5}\text{s}$
+\end_inset
+
+ to calculate time averages.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Results of the Resolved Simulation
+\end_layout
+
+\begin_layout Standard
+The buoyancy and pressure of the radiative-convective equilibrium test case
+ after 
+\begin_inset Formula $2\times10^{5}\text{s}$
+\end_inset
+
+ are shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_resolved"
+
+\end_inset
+
+ with vertical velocity contoured.
+ This test case is designed to have strong upward velocity in narrow plumes
+ and weak descent elsewhere to mimic atmospheric convection but without
+ the complication of moisture, phase changes and three spatial dimensions.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/bw.pdf
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Buoyancy 
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/bw_b.eps
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/Pw.pdf
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Pressure 
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/Pw_P.eps
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Buoyancy, vertical velocity and pressure of resolved radiative-convective
+ equilibrium test case.
+ Vertical velocity contours are black every 0.5m/s with negative contours
+ dashed and the zero contour dotted.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RCE_resolved"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Conditional horizontal averages are calculated for rising (
+\begin_inset Formula $i=1$
+\end_inset
+
+) and falling (
+\begin_inset Formula $i=0$
+\end_inset
+
+) air.
+ For each atmospheric layers, 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ is the volume average rising and 
+\begin_inset Formula $\sigma_{0}=1-\sigma_{1}$
+\end_inset
+
+.
+ Time averages of are taken averaging data every 1000s between 
+\begin_inset Formula $10^{5}\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $2\times10^{5}\text{s}$
+\end_inset
+
+.
+ Horizontal average 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ and conditional averages of 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial P_{i}/\partial z$
+\end_inset
+
+ are shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_hMean"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean.eps
+	scale 70
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean.eps
+	scale 70
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean.eps
+	scale 70
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/dPdzMean.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Horizontal averages of the resolved RCE case averaged between 
+\begin_inset Formula $t=10^{5}\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $2\times10^{5}\text{s}$
+\end_inset
+
+.
+  
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RCE_hMean"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results of the Single Column Simulations
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single column with 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+ versus resolved
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma S\ (\text{s}^{-1})$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b\ (\text{m}\ \text{s}^{-2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w\ (\text{m}\ \text{s}^{-1})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\partial P/\partial z\ (\text{m}^{2}\text{s}^{-2}/\text{km})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/sigma.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/massTransfer.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/b.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/u.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/dPdz.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Single column with 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$
+\end_inset
+
+ versus resolved
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/sigma.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/massTransfer.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/b.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/u.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/dPdz.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Single column with 
+\begin_inset Formula $\partial\sigma_{i}/\partial t=0$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$
+\end_inset
+
+ versus resolved
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/sigma.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/massTransfer.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/b.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/u.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/dPdz.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Results of single Column RCE simulations after 
+\begin_inset Formula $10^{4}\ \text{s}$
+\end_inset
+
+.
+ Dashed lines show time averaged, conditionally averaged horizontal means
+ of the resolved simulations.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RCE_singleColumn"
 
 \end_inset
 
