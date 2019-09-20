@@ -2909,6 +2909,10 @@ Single column with
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
 \end_inset
 
+, 
+\begin_inset Formula $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
  versus resolved
 \end_layout
 
@@ -3100,7 +3104,11 @@ Single column with
 \end_inset
 
  and 
-\begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
  versus resolved
@@ -3151,7 +3159,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -3166,7 +3174,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -3181,7 +3189,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/b.eps
 	scale 70
 
 \end_inset
@@ -3196,7 +3204,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/u.eps
 	scale 70
 
 \end_inset
@@ -3211,7 +3219,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_bT05_w/100000/dPdz.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/dPdz.eps
 	scale 70
 
 \end_inset
@@ -3227,14 +3235,16 @@ Single column with
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\size small
 Single column with 
-\begin_inset Formula $\partial\sigma_{i}/\partial t=0$
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
  and 
 \begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
  versus resolved
@@ -3285,7 +3295,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -3300,7 +3310,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -3315,7 +3325,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/b.eps
 	scale 70
 
 \end_inset
@@ -3330,7 +3340,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/u.eps
 	scale 70
 
 \end_inset
@@ -3345,7 +3355,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_bT05_w/100000/dPdz.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/dPdz.eps
 	scale 70
 
 \end_inset
