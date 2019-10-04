@@ -97,6 +97,48 @@ T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \begin_body
 
+\begin_layout Title
+Multi-fluids for Representing Sub-filter-scale Buoyant Convection
+\end_layout
+
+\begin_layout Author
+Hilary Weller, William McIntyre, Daniel Shipley and Peter Clark
+\end_layout
+
+\begin_layout Abstract
+The important bits:
+\end_layout
+
+\begin_layout Abstract
+1.
+ entrainment is equal to 
+\begin_inset Formula $-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+2.
+ the difference in pressure between fluids is 
+\begin_inset Formula $-\gamma\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+3.
+ Two 2D dry test cases, rising buoyant bubble and radiative-convective equilibri
+um.
+\end_layout
+
+\begin_layout Abstract
+4.
+ Multi-fluid model in 1D reproduces conditionally averaged resolved 2D simulatio
+ns
+\end_layout
+
 \begin_layout Section
 Introduction
 \end_layout
@@ -921,18 +963,42 @@ key "HC51,AK67,DBF+13"
 
 :
 \begin_inset Formula 
-\[
+\begin{equation}
 S_{ij}=\begin{cases}
 -\nabla\cdot\mathbf{u}_{i} & \text{if }\nabla\cdot\mathbf{u}_{i}<0\\
 0 & \text{otherwise}
 \end{cases}
-\]
+\end{equation}
 
 \end_inset
 
 which is necessary to stop air in one fluid from accumulating when vertical
  motion ceases (at the top of a rising plume or at the bottom of descending
  air).
+ We will also test a common form of lateral entrainment 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DBF+13"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\varepsilon=\frac{0.2}{r_{c}}\implies S_{01}=w_{1}\frac{0.2}{r_{c}}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is the well know fractional entrainment rate and 
+\begin_inset Formula $r_{c}$
+\end_inset
+
+ is the cloud or plume radius.
  
 \end_layout
 
@@ -973,15 +1039,18 @@ where
 \end_inset
 
  is a cloud radius.
- 
-\begin_inset Formula $C_{D}$
+ Sensitivity to 
+\begin_inset Formula $C_{D}/r_{c}$
 \end_inset
 
- and 
-\begin_inset Formula $r_{c}$
+is explored in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:results"
+
 \end_inset
 
- are defined based on the test cases.
+.
  
 \end_layout
 
@@ -990,10 +1059,11 @@ The Buoyancy and the Momentum of the Mass that is Transferred
 \end_layout
 
 \begin_layout Standard
-The different fluids are not likely to be well mixed and it is assumed that
- the most buoyant air is transferred from fluid 0 to fluid 1 and vice versa
- and that the air with least downward momentum is transferred from 0 to
- 1 and vice versa.
+The different fluids may not be well mixed so the fluid transferred may
+ not have the mean properties of the fluid it is leaving.
+ In fact, the most buoyant air should be transferred from fluid 0 to fluid
+ 1 and vice versa and the air with least downward momentum is transferred
+ from 0 to 1 and vice versa.
  The properties of the fluids transferred should depend on modelling of
  sub-grid-scale variability which is beyond the scope of this paper.
  Conditional averaging of high resolution single fluid solutions depends
@@ -1054,6 +1124,159 @@ and present results using
  in the fluid that is loosing mass.
 \end_layout
 
+\begin_layout Subsection
+Dimensional Analysis
+\end_layout
+
+\begin_layout Standard
+Dimensional analysis can guide us in our choice of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ for the parameterisation of the pressure difference between fluids.
+ We make the following assumptions:
+\end_layout
+
+\begin_layout Enumerate
+The flow is buoyancy dominated.
+\end_layout
+
+\begin_layout Enumerate
+The flow is close to inviscid.
+\end_layout
+
+\begin_layout Enumerate
+The flow is slowly varying.
+\end_layout
+
+\begin_layout Enumerate
+Fluid 
+\begin_inset Formula $i$
+\end_inset
+
+ properties are anomalies from a neutrally stable resting mean state.
+\end_layout
+
+\begin_layout Enumerate
+We consider only the vertical direction where 
+\begin_inset Formula $w_{ij}^{T}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}\approx-\gamma\nabla\cdot\mathbf{u}_{i}=-\gamma\frac{\partial w_{i}}{\partial z}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+There are two fluids, 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Without loss of generality we assume that 
+\begin_inset Formula $S_{ij}=-\frac{\partial w_{i}}{\partial z}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{ji}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This leads to the following balance in the momentum equation:
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w_{i}^{2}}{\partial z}-\gamma\frac{\partial^{2}w_{i}}{\partial z^{2}}=b_{i}\label{eq:wi_balances}
+\end{equation}
+
+\end_inset
+
+If we also assume that fluid 
+\begin_inset Formula $i$
+\end_inset
+
+ properties are anomalies from a resting mean state.
+ We non-dimensionalise using a length scale 
+\begin_inset Formula $L^{*}$
+\end_inset
+
+, a buoyancy scale 
+\begin_inset Formula $B^{*}$
+\end_inset
+
+ and a time scale 
+\begin_inset Formula $T^{*}=(L^{*}/B^{*})^{\frac{1}{2}}$
+\end_inset
+
+ to get the non-dimensional variables:
+\begin_inset Formula 
+\begin{eqnarray*}
+\tilde{w} & = & w_{i}(L^{*}B^{*})^{-\frac{1}{2}}\\
+\tilde{b} & = & b_{i}/B^{*}\\
+\tilde{z} & = & z/L^{*}.
+\end{eqnarray*}
+
+\end_inset
+
+Then the non-dimensional version of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:wi_balances"
+
+\end_inset
+
+) is then:
+\begin_inset Formula 
+\begin{equation}
+\underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{B^{*\frac{1}{2}}L^{*\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom}
+\end{equation}
+
+\end_inset
+
+We have assumed that the flow is buoyancy dominated so 
+\begin_inset Formula $\tilde{b}$
+\end_inset
+
+ is 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+ The stabilisation term must be large enough to smooth out oscillations
+ in 
+\begin_inset Formula $\tilde{w}$
+\end_inset
+
+ due to advection and buoyancy but not too large to remove all variability
+ in 
+\begin_inset Formula $\tilde{w}$
+\end_inset
+
+ so we need:
+\begin_inset Formula 
+\begin{equation}
+\gamma\sim B^{*\frac{1}{2}}L^{*\frac{3}{2}}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Numerical Solution
 \end_layout
@@ -1070,7 +1293,7 @@ key "WM19"
  and C-grid, Lorenz staggering.
  The time-stepping is Crank-Nicolson with no off-centering and with deferred
  correction of explicitly solved variables.
- It is different from 
+ It differs from 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "WM19"
@@ -1223,8 +1446,20 @@ reference "eq:b"
 \end_inset
 
 ) is solved for the buoyancy in each fluid.
- The transfer terms can be very large so they are treated operator split
- and implicitly, with 
+ The transfer terms can be very large due to the presence of 
+\begin_inset Formula $\frac{\sigma_{j}}{\sigma_{i}}S_{ij}$
+\end_inset
+
+ in the transfer term for 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+so they are treated operator split and implicitly, with 
 \begin_inset Formula $b_{0}^{n+1}$
 \end_inset
 
@@ -1456,7 +1691,7 @@ The final stage of the time step iteration is to reconstruct
 \begin_inset Formula $\mathbf{u}_{i}$
 \end_inset
 
- is from 
+ from 
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -1606,7 +1841,7 @@ Single Fluid Solutions
 \end_layout
 
 \begin_layout Standard
-The solution of the rising buoyant bubble in solving the Boussinesq equations
+The solution of the rising buoyant bubble solving the Boussinesq equations
  for 1000s is shown in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1614,7 +1849,7 @@ reference "fig:bubble"
 
 \end_inset
 
-.
+ with buoyancy coloured and pressure contoured.
  The solution is very similar to the fully compressible solution 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1623,13 +1858,13 @@ key "BF02"
 \end_inset
 
 .
- We also calculated horizontally averaged fields and conditionally averaged,
- horizontally averaged fields, conditioned on 
+ The pressure gradients will accelerate the flow beneath the bubble, decelerate
+ the flow above the bubble and pull in air horizontally.
+ Horizontally and conditionally averaged fields, conditioned on 
 \begin_inset Formula $w$
 \end_inset
 
-.
- These are shown in the top row of figure 
+ are shown in the top row of figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:bubble_singleUnderRes"
@@ -1679,32 +1914,13 @@ reference "fig:bubble_singleUnderRes"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
 \align center
-\begin_inset Box Frameless
-position "c"
-hor_pos "c"
-has_inner_box 1
-inner_pos "c"
-use_parbox 0
-use_makebox 0
-width "48col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/b.pdf
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/bP.pdf
 	lyxscale 50
 	width 100text%
 
@@ -1714,15 +1930,12 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/b.pdf
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b.eps
 	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
+	width 75text%
 
 \end_inset
 
@@ -1733,7 +1946,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Buoyancy of the single fluid, resolved rising bubble after 1000s.
+The single fluid, resolved rising bubble after 1000s.
+ Buoyancy is coloured and pressure is contoured, every 
+\begin_inset Formula $10\text{m}^{2}\text{s}^{-2}$
+\end_inset
+
+, negative contours dashed.
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:bubble"
@@ -1772,7 +1991,7 @@ key "WM19"
  The pressure in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:bubble_singleUnderRes"
+reference "fig:bubble"
 
 \end_inset
 
@@ -1812,7 +2031,7 @@ reference "fig:bubble_singleUnderRes"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2210,8 +2429,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Horizontally averaged fields for the rising bubble simulated with a single
- fluid.
+The rising bubble after 1000s simulated with coarse horizontal resolution
+ and a single fluid.
+ Horizontal averages are conditioned based on 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:bubble_singleUnderRes"
@@ -2236,203 +2461,10 @@ Multi-fluid Solutions
 \end_layout
 
 \begin_layout Standard
-Multi-fluid, single column simulations are initialised by horizontally and
- conditionally averaging the full resolution single fluid initial conditions.
- Sinking air is put into fluid zero and rising air into fluid one.
- The velocity field after one time step is used for initialising the partition
- as the air is stationary at 
-\begin_inset Formula $t=0$
-\end_inset
-
-.
- Results are shown in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiFluidSingleColumn"
-
-\end_inset
-
- for various assumptions about transfers between fluids and various pressure
- differences between fluids.
-\end_layout
-
-\begin_layout Standard
-If there is no drag between fluids, no transfers, no diffusion and the pressures
- of both fluids are assumed equal then the multi-fluid equations are unstable
- 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "TEB19"
-
-\end_inset
-
-.
- The simulation with no transfers (
-\begin_inset Formula $S_{ij}=0$
-\end_inset
-
-) in the top row of figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiFluidSingleColumn"
-
-\end_inset
-
- is shown at 
-\begin_inset Formula $t=500\ \text{s}$
-\end_inset
-
- and it run for 700s before crashing.
- At 
-\begin_inset Formula $t=500\ \text{s}$
-\end_inset
-
- the buoyant fluid has risen very little from the initial conditions and
- oscillations have developed in all fields.
- 
-\begin_inset Formula $\sigma$
-\end_inset
-
- oscillates between zero and one meaning that only one fluid is present
- at some locations so there is no possibility for the fluids to move past
- each other.
- 
-\end_layout
-
-\begin_layout Standard
-The pressure difference between fluids is parameterised using the divergence
- local to a fluid.
- Using 
-\begin_inset Formula $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
- with 
-\begin_inset Formula $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
-\end_inset
-
- stabilises the solution and the resulting pressure gradients force the
- two fluids to move past each other.
- Results, shown in the second row of figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiFluidSingleColumn"
-
-\end_inset
-
-, are stable but not realistic, with a discontinuity with no fluid 1 below
- the buoyant fluid and very little falling air at the lowest height of the
- rising fluid.
- With a single column and two fluids, all air must rise in one fluid and
- sink in the other.
- Continuity does not allow for any other solution.
- Pressure gradients can accelerate or decelerate this flow but as the model
- is set up, with no transfers between fluids, no fluid can be change direction.
- It is therefore essential to have transfers between fluids.
-\end_layout
-
-\begin_layout Standard
-Divergence will not only lead to pressure differences between the fluids,
- it will also force changes in vertical direction; if rising air decelerates,
- this is associated with convergence and air will stop rising and some will
- need to sink to obey continuity.
- This can be parameterised by setting an entrainment rate equal to the fluid
- divergence: 
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-.
- Simulating the rising bubble with 
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
- and without pressure differences between the fluids is sufficient to stabilise
- the numerical solution (third row of figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiFluidSingleColumn"
-
-\end_inset
-
-); fluid is detrained behind the bubble, leaving buoyant air in fluid zero
- near the ground and a small fraction continues to rise with a discontinuity
- and possible instability at the bubble front; the buoyancy force is producing
- vertical motion but there is no pressure to make it smooth.
- 
-\end_layout
-
-\begin_layout Standard
-Once we use entrainment and detrainment set by divergence (
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-) and pressure difference between the fluids controlled by divergence (
-\begin_inset Formula $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-) simulations are more realistic (fourth and fifth rows of figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:multiFluidSingleColumn"
-
-\end_inset
-
-).
- The detrainment of buoyant fluid leads to smooth profiles behind the bubble
- although 
-\begin_inset Formula $\sigma_{1}$
-\end_inset
-
- is lower than the resolved simulation in the lower half of the domain and
- the fluid left behind is too warm.
- This is expected since the detrained fluid is assumed to have the mean
- fluid properties of the fluid it is leaving whereas in reality the least
- buoyant fluid will leaving the rising fluid and start to fall.
- Transferring non-mean properties is the subject of future research and
- should depend on models of sub-grid-scale variability within each fluid.
- Using 
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-, the bubble rises to approximately the same height as the resolved single
- fluid simulation, peak vertical velocity is approximately correct although
- it is above rather than below the most buoyant part of the bubble and different
- pressures between the fluids keep profiles smooth although the large negative
- pressure gradient below the bubble in the rising fluid is not simulated.
- Results using two different values of 
-\begin_inset Formula $\gamma$
-\end_inset
-
- are shown which give pressure gradients slightly less than those of the
- resolved simulation.
- Larger values of 
-\begin_inset Formula $\gamma$
-\end_inset
-
- slow down the bubble rise unrealistically.
- There appears to be another process that we are missing than leads to the
- negative pressure gradients behind the bubble that accelerate the rise
- or the detrainment behind the bubble is removing divergence that would
- otherwise lead to the necessary pressure gradients.
- 
-\end_layout
-
-\begin_layout Standard
-There are clearly discrepancies between the single fluid resolved rising
- bubble and the two fluid single column rising bubble but we do wish aim
- to over-fit the multi-fluid model to one, dry, two-dimensional test case.
- Key features of this test case have been reproduced so other test cases
- should be considered.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2518,15 +2550,737 @@ Results at
 \end_inset
 
 s using 
+\begin_inset Formula $S_{ij}=0$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=0$
+\end_inset
+
+, 
+\begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results at 
+\begin_inset Formula $t=1000\ \text{s}$
+\end_inset
+
+ using 
+\begin_inset Formula $S_{ij}=0$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=0$
+\end_inset
+
+, 
+\begin_inset Formula $C_{D}/r_{c}=1/2000\text{m}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer_drag/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer_drag/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer_drag/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer_drag/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results at 
+\begin_inset Formula $t=1000\ \text{s}$
+\end_inset
+
+ using 
+\begin_inset Formula $S_{ij}=0$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results at 
+\begin_inset Formula $t=1000\ \text{s}$
+\end_inset
+
+ using 
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $P_{i}=-4\times10^{3}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $p_{i}=0$
+\end_inset
+
+, 
+\begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+, 
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results at 
+\begin_inset Formula $t=1000\ \text{s}$
+\end_inset
+
+ using 
+\begin_inset Formula $S_{01}=w_{1}0.2/r_{c}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
 \begin_inset Formula $C_{D}=0$
+\end_inset
+
+, 
+\begin_inset Formula $r_{c}=2000\text{m}$
+\end_inset
+
+, 
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Solid lines are the multi-fluid, single column solutions of the rising bubble.
+ Dashed lines are the single fluid, resolved solutions.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results at 
+\begin_inset Formula $t=1000\ $
+\end_inset
+
+s using 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $p_{i}=-4\times10^{3}\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
 , 
@@ -2646,11 +3400,11 @@ Results at
 \end_inset
 
 , 
-\begin_inset Formula $P_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $C_{D}=0$
+\begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
 , 
@@ -2714,7 +3468,6 @@ Results at
 \begin_inset Graphics
 	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/bCompare.eps
 	lyxscale 50
-	display false
 	scale 60
 
 \end_inset
@@ -2771,11 +3524,11 @@ Results at
 \end_inset
 
 , 
-\begin_inset Formula $P_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $C_{D}=1$
+\begin_inset Formula $C_{D}/r_{c}=1/2000\text{m}^{-1}$
 \end_inset
 
 , 
@@ -2895,11 +3648,11 @@ Results at
 \end_inset
 
 , 
-\begin_inset Formula $P_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $C_{D}=0$
+\begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
 , 
@@ -2963,7 +3716,6 @@ Results at
 \begin_inset Graphics
 	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/bCompare.eps
 	lyxscale 50
-	display false
 	scale 60
 
 \end_inset
@@ -3020,11 +3772,11 @@ Results at
 \end_inset
 
 , 
-\begin_inset Formula $P_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
 , 
-\begin_inset Formula $C_{D}=0$
+\begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
 , 
@@ -3163,6 +3915,332 @@ name "fig:multiFluidSingleColumn"
 
 \end_layout
 
+\begin_layout Standard
+Multi-fluid, single column simulations are initialised by horizontally and
+ conditionally averaging the full resolution single fluid initial conditions.
+ Sinking air is put into fluid zero and rising air into fluid one.
+ The velocity field after one time step is used for initialising the partition
+ as the air is stationary at 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+ Results are shown in figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn"
+
+\end_inset
+
+ for various assumptions about transfers between fluids and various parameter
+ values.
+\end_layout
+
+\begin_layout Standard
+If there is no drag between fluids, no transfers, no diffusion and the pressures
+ of both fluids are assumed equal then the multi-fluid equations are unstable
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "TEB19"
+
+\end_inset
+
+.
+ The simulation with no transfers (
+\begin_inset Formula $S_{ij}=0$
+\end_inset
+
+) in the top row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+ The buoyant fluid has risen very little from the initial conditions and
+ oscillations have developed in all fields.
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ oscillates between zero and one meaning that only one fluid is present
+ at some locations so there is no possibility for the fluids to move past
+ each other.
+ Including drag (second row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+) improves stability a little but does not enable the fluids to move past
+ each other.
+ 
+\end_layout
+
+\begin_layout Standard
+Parameterising the pressure difference between fluids as 
+\begin_inset Formula $P_{i}=P+p_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ with 
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+ stabilises the solution and the resulting pressure gradients force the
+ two fluids to move past each other (third row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+).
+ However there is an unrealistic discontinuity with no fluid 1 below the
+ buoyant fluid and very little falling air at the lowest height of the rising
+ fluid.
+ With a single column and two fluids, all air must rise in one fluid and
+ sink in the other.
+ Continuity does not allow for any other solution.
+ Pressure gradients can accelerate or decelerate this flow but as the model
+ is set up, with no transfers between fluids, no fluid can change direction.
+ It is therefore essential to have transfers between fluids.
+\end_layout
+
+\begin_layout Standard
+Including entrainment and detrainment as 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ can stabilise the solution and enable the fluids to move past each other
+ even without pressure differences between the fluids (fourth row of figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+).
+ However too much is detrained from fluid 1, fluid 1 looses too much buoyancy
+ and a discontinuity arises at the bubble front; the buoyancy force is producing
+ vertical motion but there is no pressure to make it smooth.
+ 
+\end_layout
+
+\begin_layout Standard
+The other entrainment option is the commonly used fractional entrainment
+ rate, 
+\begin_inset Formula $\varepsilon=0.2/r_{c}$
+\end_inset
+
+.
+ This is used combined with pressure differences between fluids in the bottom
+ row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn-bad"
+
+\end_inset
+
+.
+ This combination produces smooth solutions but the updraught is too weak
+ and too much is entrained into fluid 1.
+ Using this entrainment, the updraught will entrain more and more air until
+ 
+\begin_inset Formula $\sigma_{1}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Once we use entrainment and detrainment set by divergence (
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+) and pressure difference between the fluids controlled by divergence (
+\begin_inset Formula $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+) simulations are more realistic (first two rows of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn"
+
+\end_inset
+
+).
+ The detrainment of buoyant fluid leads to smooth profiles behind the bubble
+ although 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ is lower than the resolved simulation in the lower half of the domain and
+ the fluid left behind is too warm.
+ This is expected since the detrained fluid is assumed to have the mean
+ fluid properties of the fluid it is leaving (
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+) whereas in reality the least buoyant fluid will leave the rising fluid
+ and start to fall.
+ Smaller values of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ leave a discontinuity in the updraught velocity at the leading edge of
+ the bubble and larger values of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ reduce the velocity further, meaning that the bubble does not rise enough
+ (not shown).
+ None of the simulations reproduce the peak updraught velocities but the
+ simulation with 
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ comes closest, meaning that the bubble rise is approximately correct and
+ 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ is approximately correct where the bubble is although it is less accurate
+ above and below the bubble.
+ Using 
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ produces accurate pressure increases above the centre of the bubble but
+ does not produce the large low pressure at the bottom of the bubble, which
+ is located at the lobes of the highest buoyancy in the resolved simulation
+ (figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bubble"
+
+\end_inset
+
+).
+ It would be tempting to model this by assuming hydrostatic pressure or
+ the Bernouilli equation, but these are both forms of the momentum equation
+ which is used to calculate the velocity and so cannot also be used to model
+ the pressure.
+ 
+\end_layout
+
+\begin_layout Standard
+The results in the third row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn"
+
+\end_inset
+
+ use 
+\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ but this time with drag set by 
+\begin_inset Formula $C_{D}/r_{c}=1/2000\text{m}^{-1}$
+\end_inset
+
+.
+ The drag slows the updraughts without increasing the mixing between the
+ fluids which makes the solutions less like the resolved simulations.
+ Although drag is known to be an important term in the momentum equations
+ for buoyant thermals and plumes 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "eg"
+key "RC15"
+
+\end_inset
+
+, the drag is related to mixing with downdraught air which is accounted
+ for in the entrainment term of the momentum equation.
+ So adding a separate term from drag risks double counting and certainly
+ slows the plume too much.
+ 
+\end_layout
+
+\begin_layout Standard
+Two simple models for estimating the buoyancy of the fluid transferred between
+ updraught and downdraught have been tested.
+ The results in the fourth row if figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn"
+
+\end_inset
+
+ assume that the fluid transferred has zero buoyancy in order to keep the
+ positively buoyant air in fluid one and the negatively buoyant air in fluid
+ 0.
+ Thus when zero buoyancy air leaves fluid one (the updraught), the mean
+ buoyancy of fluid one increases.
+ This leads to very high buoyancy in fluid one which is not present in the
+ resolved simulation.
+ The results in the bottom row of figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:multiFluidSingleColumn"
+
+\end_inset
+
+ use 
+\begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{0}+b_{1}\right)$
+\end_inset
+
+ following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19"
+
+\end_inset
+
+ so that the fluid transferred is influenced by the fluid it is moving towards
+ as well as where it has come from.
+ This again leads to very large buoyancy in fluid one and also negative
+ buoyancy in fluid zero which should not occur for this test case.
+ These simple models reinforce the idea that the buoyancy of the fluid transferr
+ed should depend on knowledge of sub-grid-scale variability of 
+\begin_inset Formula $b$
+\end_inset
+
+ within each fluid – these simple assumptions can lead to unrealistic behaviour.
+ 
+\end_layout
+
+\begin_layout Standard
+This section has demonstrated the value of using a single column, multi-fluid
+ model to simulate a buoyant rising bubble with a single updraght fluid
+ and a single downdraught fluid.
+ Transfers between the fluids have been successfully modelled using entrainment
+ set by divergence and the pressure difference between the fluids has also
+ been represented by divergence.
+ There are clearly discrepancies between the single fluid resolved rising
+ bubble and the two fluid single column rising bubble but we do wish aim
+ to over-fit the multi-fluid model to one, dry, two-dimensional test case.
+\end_layout
+
 \begin_layout Subsection
 Radiative-Convective Equilibrium (RCE)
 \end_layout
@@ -3177,7 +4255,7 @@ y resolving the flow at coarse resolution.
 \end_inset
 
 m).
- The top and bottom boundaries are zero mass flux and the lateral boundaries
+ The top and bottom boundaries are zero velocity and the lateral boundaries
  are periodic.
  A heat flux of 
 \begin_inset Formula $h=10^{-3}\text{m}^{2}\text{s}^{-3}$
@@ -3234,15 +4312,18 @@ The fluid is initially stationary with
 
 .
  A quasi-steady, choatic state is reached after about 
-\begin_inset Formula $10^{5}\text{s}$
+\begin_inset Formula $3\times10^{4}\text{s}$
 \end_inset
 
  and the simulation is run for a further 
-\begin_inset Formula $10^{5}\text{s}$
+\begin_inset Formula $2\times10^{5}\text{s}$
 \end_inset
 
- to calculate time averages.
- 
+ and conditional averages are calculated over the final 
+\begin_inset Formula $10^{5}$
+\end_inset
+
+s.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3250,8 +4331,11 @@ Results of the Resolved Simulation
 \end_layout
 
 \begin_layout Standard
-The buoyancy and pressure of the radiative-convective equilibrium test case
- after 
+This test case is designed to have strong upward velocity in narrow plumes
+ and weak descent elsewhere to mimic atmospheric convection but without
+ the complication of moisture, phase changes and three spatial dimensions.
+ A snapshot of the buoyancy and pressure of the radiative-convective equilibrium
+ test case at 
 \begin_inset Formula $2\times10^{5}\text{s}$
 \end_inset
 
@@ -3262,10 +4346,23 @@ reference "fig:RCE_resolved"
 
 \end_inset
 
- with vertical velocity contoured.
- This test case is designed to have strong upward velocity in narrow plumes
- and weak descent elsewhere to mimic atmospheric convection but without
- the complication of moisture, phase changes and three spatial dimensions.
+ with vertical velocity contoured showing intense, narrow updraughts.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_resolved"
+
+\end_inset
+
+ shows buoyant air at the ground which rises in narrow plumes, accelerating
+ due to buoyancy and pressure gradients then decelerating due to pressure
+ gradients before reaching the top.
+ The plumes spread out and the sinking air is a mixture of warm and cold
+ with similar pressure gradients in the rising and falling air, accelerating
+ then decelerating the flow so as to maintain continuity.
  
 \end_layout
 
@@ -3274,11 +4371,11 @@ reference "fig:RCE_resolved"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/vhiRes_wide/200000/bw.pdf
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/bw.pdf
 	lyxscale 50
 	width 100text%
 
@@ -3288,9 +4385,13 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-Buoyancy 
+Buoyancy (
+\begin_inset Formula $\text{m}\text{s}^{-2}$
+\end_inset
+
+) 
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/vhiRes_wide/legends/bw_b.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/bw_b.eps
 	lyxscale 50
 	width 80text%
 
@@ -3301,7 +4402,7 @@ Buoyancy
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/vhiRes_wide/200000/Pw.pdf
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/Pw.pdf
 	lyxscale 50
 	width 100text%
 
@@ -3311,9 +4412,13 @@ Buoyancy
 \end_layout
 
 \begin_layout Plain Layout
-Pressure 
+Pressure (
+\begin_inset Formula $\text{m}^{2}\text{s}^{-2}$
+\end_inset
+
+) 
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/vhiRes_wide/legends/Pw_P.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/Pw_P.eps
 	lyxscale 50
 	width 80text%
 
@@ -3330,6 +4435,9 @@ Buoyancy, vertical velocity and pressure of resolved radiative-convective
  equilibrium test case.
  Vertical velocity contours are black every 0.5m/s with negative contours
  dashed and the zero contour dotted.
+ Domain is 10km high and 160km wide and the z-direction is stretched a factor
+ of 2 in the plots.
+ 
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:RCE_resolved"
@@ -3350,47 +4458,16 @@ name "fig:RCE_resolved"
 \end_layout
 
 \begin_layout Standard
-Conditional horizontal averages are calculated for rising (
-\begin_inset Formula $i=1$
+Horizontal averages conditioned on 
+\begin_inset Formula $w$
 \end_inset
 
-) and falling (
-\begin_inset Formula $i=0$
-\end_inset
-
-) air.
- For each atmospheric layers, 
-\begin_inset Formula $\sigma_{1}$
-\end_inset
-
- is the volume average rising and 
-\begin_inset Formula $\sigma_{0}=1-\sigma_{1}$
-\end_inset
-
-.
- Time averages of are taken averaging data every 1000s between 
-\begin_inset Formula $10^{5}\text{s}$
+ and time averaged every 1000s between 
+\begin_inset Formula $10^{5}\ \text{s}$
 \end_inset
 
  and 
-\begin_inset Formula $2\times10^{5}\text{s}$
-\end_inset
-
-.
- Horizontal average 
-\begin_inset Formula $\sigma_{1}$
-\end_inset
-
- and conditional averages of 
-\begin_inset Formula $b_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $w_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $\partial P_{i}/\partial z$
+\begin_inset Formula $2\times10^{5}\ \text{s}$
 \end_inset
 
  are shown in figure 
@@ -3401,6 +4478,32 @@ reference "fig:RCE_hMean"
 \end_inset
 
 .
+ The rising and falling volume fractions, 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+, remain close to 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ throughout the depth.
+ The rising plumes look narrow in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_resolved"
+
+\end_inset
+
+ but there are wide regions of slowly rising air around the plume cores.
+ Due to this entrained cool air and warm air sinking after hitting the model
+ top, the buoyancy of the rising and falling fluids are close with the rising
+ plume warmer near the surface.
+ The air cools with height then warms near the model top due to accumulation
+ of warm air.
  
 \end_layout
 
@@ -3409,7 +4512,7 @@ reference "fig:RCE_hMean"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3475,8 +4578,111 @@ name "fig:RCE_hMean"
 
 \end_layout
 
+\begin_layout Standard
+The similarity of the mean values of the rising and falling fluid is striking
+ in the vertical velocity in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_hMean"
+
+\end_inset
+
+ which shows acceleration then deceleration controlled by pressure gradients.
+ The slightly stronger pressure gradients in the rising fluid match the
+ slightly higher speed.
+ 
+\end_layout
+
 \begin_layout Subsubsection
 Results of the Single Column Simulations
+\end_layout
+
+\begin_layout Standard
+The tow fluid model is used to simulate the RCE test case in a single column
+ of 40 cells with zero buoyancy gradient at the top and a buoyancy gradien5t
+ of 
+\begin_inset Formula $10^{-5}\text{s}^{-2}$
+\end_inset
+
+ at the ground for both fluids.
+ The two fluids are initilasied usign the time mean conditional horizontal
+ averages from the single fluid resolved simulation.
+ The entrainment model 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ is used for all simulations to account for transfers throughout the domain
+ to represent cloud base mass flux (at the bottom boundary), cloud top detrainme
+nt and lateral entrainment.
+ 
+\end_layout
+
+\begin_layout Standard
+Results of simulations using two values of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, two models for 
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+ and with and without drag are shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RCE_singleColumn"
+
+\end_inset
+
+.
+ Solid lines show results of the single column, multifluid model at 
+\begin_inset Formula $t=10^{4}\text{s}$
+\end_inset
+
+ and dashed lines show the time averaged, horizontally conditionally averaged
+ resolved single fluid simulation.
+ The entrainment model 
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+ keeps 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ at about 0.5 throughout the depth, as in the resolved simulatin, with entrainemn
+t in the lower half of the domain (
+\begin_inset Formula $S_{01}>0$
+\end_inset
+
+) and detrainment in the upper half, where the air decelerates towards the
+ top (
+\begin_inset Formula $S_{10}>0$
+\end_inset
+
+).
+ All of the two fluid simulations maintain a larger buoyancy difference
+ between the two fluids than the resolved simulation; the single column
+ solution cannot capture the complex distribution of heat in both fluids.
+ The single column solutions accurately capture the large buoyancy gradients
+ near the ground and near uniform profile above this.
+ The model 
+\begin_inset Formula $b_{ij}^{T}=\frac{1}{2}(b_{0}+b_{1})$
+\end_inset
+
+ represents the buoyancy of the transferred fluikd very badly, leading to
+ strong cooling in fluid zero near the ground due to the large transferts.
+ It is clearly more accurate to assume that fluids take their mean propertieds
+ when transferred, 
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+.
+ The vertical velocity is sensitive to the pressure differences between
+ fluids with 
+\begin_inset Formula $\gamma=2000\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+ giving the closest match.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3484,7 +4690,7 @@ Results of the Single Column Simulations
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3607,7 +4813,7 @@ Single column with
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\partial P/\partial z\ (\text{m}^{2}\text{s}^{-2}/\text{km})$
+\begin_inset Formula $P\ (\text{m}^{2}\text{s}^{-2})$
 \end_inset
 
 
@@ -3682,7 +4888,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/dPdz.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_w/100000/P.eps
 	scale 70
 
 \end_inset
@@ -3818,7 +5024,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/dPdz.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/P.eps
 	scale 70
 
 \end_inset
@@ -3954,7 +5160,7 @@ Single column with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/dPdz.eps
+	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/P.eps
 	scale 70
 
 \end_inset
