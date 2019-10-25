@@ -139,8 +139,175 @@ um.
 ns
 \end_layout
 
+\begin_layout Abstract
+The single fluid model is conditionally averaged based on the sign of the
+ vertical velocity which gives a convecting area fraction that is approximately
+ uniform with height.
+ The model for pressure differences between rising and falling fluids is
+ based on divergence reproduces mean pressure differences.
+ The model for entrainment and detrainment is also based on divergence and
+ reproduces the convecting area fraction of the high resolution model assuming
+ that conditional averaging is based on the sign of vertical velocity.
+ 
+\end_layout
+
 \begin_layout Section
 Introduction
+\end_layout
+
+\begin_layout Standard
+Slow progress has been made improving the parameterisation of sub-grid-scale
+ convection since 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "AS74,Tied89,GR90,KF90"
+
+\end_inset
+
+.
+ Convection is still one of the weakest aspects of large scale models of
+ the atmosphere 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "HPB+14,SAB+13,ipcc41"
+
+\end_inset
+
+.
+ Improvements have been make removing the quasi-equilibrium assumption 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "PR98,GG05,Par14"
+
+\end_inset
+
+, including stochasticity 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "PC08"
+
+\end_inset
+
+ and allowing net mass transport by convection 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KB08,MB19"
+
+\end_inset
+
+.
+ These developments have enabled limited simulation in the grey zone, where
+ convection is partially resolved.
+ However there are still systematic biases implying that improvements should
+ still be possible.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TWV+18"
+
+\end_inset
+
+ proposed multi-fluid modelling of convection in order to treat non-equilibrium
+ and net mass transport correctly and consistently with the same numerics
+ and physics controlling thermals, environment and downdraught dynamics.
+ Multi-fluid modelling promises big improvements in the representation of
+ sub-grid-scale convection and unification with the representation of turbulence
+, particularly at the grey zone.
+ However, there is a long way to go, particularly as multi-fluid modelling
+ requires a dedicated model rather than being a stand alone parameterisation
+ for a dynamical core.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19,WM19"
+
+\end_inset
+
+ presented solutions of the multi-fluid equations assuming two fluids that
+ share the same pressure.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19"
+
+\end_inset
+
+ showed that these equatinos are in fact unstable and could be stabilised
+ by diffusion of vertical velocity whereas 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+ stabilised the equations with diffusion and drag between fluids.
+ Neither of these stabilisation techniques are acceptable and in this paper
+ we show that there are significant and sustained pressure differences between
+ the fluids (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:results"
+
+\end_inset
+
+).
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ proposed similar equations for representing convection; the 
+\begin_inset Quotes eld
+\end_inset
+
+extended eddy diffusivity mass flux
+\begin_inset Quotes erd
+\end_inset
+
+ or extended ECMF scheme but they didn't propose a suitable numerical method
+ for solving the equations.
+\end_layout
+
+\begin_layout Standard
+This paper presents the multi-fluid Boussinesq equations for representing
+ sub-grid-scale convection including a parameterisation of the pressure
+ difference between fluids (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:fluidPressure"
+
+\end_inset
+
+) and a new model of entrainment and detrainment (section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Sij"
+
+\end_inset
+
+).
+ The numerical method for solving the equations is described in section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:numerics"
+
+\end_inset
+
+.
+ We compare results of resolved dry convection in a single-fluid two dimensional
+ Boussinesq model with a two-fluid, single column model 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:results"
+
+\end_inset
+
+) using two vertical slice test cases.
 \end_layout
 
 \begin_layout Section
@@ -187,7 +354,7 @@ reference "tab:defns"
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -692,7 +859,14 @@ name "tab:defns"
 \end_layout
 
 \begin_layout Subsection
-Pressure of each fluid
+Pressure of each fluid 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:fluidPressure"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -960,7 +1134,14 @@ reference "sec:results"
 \end_layout
 
 \begin_layout Subsection
-Entrainment and Detrainment
+Entrainment and Detrainment 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Sij"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1066,7 +1247,14 @@ reference "sec:results"
 \end_layout
 
 \begin_layout Subsection
-The Buoyancy and the Momentum of the Mass that is Transferred
+The Buoyancy and the Momentum of the Mass that is Transferred 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:transferProperties"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1298,7 +1486,14 @@ We have assumed that the flow is buoyancy dominated so
 \end_layout
 
 \begin_layout Section
-Numerical Solution
+Numerical Solution 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:numerics"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
