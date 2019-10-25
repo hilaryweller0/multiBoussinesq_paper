@@ -1,0 +1,21 @@
+at the bottom boundary db/dz=1e-5
+L = 1e4
+gamma = 2e3
+
+gamma ~ B^.5 L^1.5
+
+B = db/dz L = 0.1
+
+gamma ~ db/dz ^ 0.5 L^2 = 1e-2.5 1e8 = 1e6.5 ~ 3e5
+
+If B = db/dz L/10 = 0.01
+
+B^.5 L^1.5 = 0.1 1e6 = 1e5
+
+If B = 1/15 and L = 2e3
+B^.5 L^1.5 = 2.3e4
+
+If B = 0.003 and L = 1e4
+B^.5 L^1.5 = 5.4e5
+
+
