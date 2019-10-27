@@ -106,48 +106,35 @@ Hilary Weller, William McIntyre, Daniel Shipley and Peter Clark
 \end_layout
 
 \begin_layout Abstract
-The important bits:
+Multi-fluid modelling is a promising new method of representing sub and
+ near grid-scale convection allowing for consistent and accurate treatment
+ of net mass transport by convection, non-equilibriuam and turbulence.
+ The total fluid is partitioned into convecting and non-convection fluids
+ each with their own velocity, temperature and constituents so that separate
+ equations of motion can be solved for each fluid, thus representing features
+ that cannot be resolved in a single fluid at coarse resolution.
+ 
 \end_layout
 
 \begin_layout Abstract
-1.
- entrainment is equal to 
-\begin_inset Formula $-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-
+This paper presents multi-fluid Boussinesq equations for representing under
+ resolved dry convection.
+ We present a new model for entrainment and detrainment based on divergence
+ which leads to excellent representation of the convective area fraction.
+ Previous multi-fluid modelling of convection has assumed that all fluids
+ share the same pressure.
+ We show that this is a bad assumption and we propose and validate a model
+ for the pressure difference between the fluids based on divergence.
+ 
 \end_layout
 
 \begin_layout Abstract
-2.
- the difference in pressure between fluids is 
-\begin_inset Formula $-\gamma\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Abstract
-3.
- Two 2D dry test cases, rising buoyant bubble and radiative-convective equilibri
-um.
-\end_layout
-
-\begin_layout Abstract
-4.
- Multi-fluid model in 1D reproduces conditionally averaged resolved 2D simulatio
-ns
-\end_layout
-
-\begin_layout Abstract
-The single fluid model is conditionally averaged based on the sign of the
- vertical velocity which gives a convecting area fraction that is approximately
- uniform with height.
- The model for pressure differences between rising and falling fluids is
- based on divergence reproduces mean pressure differences.
- The model for entrainment and detrainment is also based on divergence and
- reproduces the convecting area fraction of the high resolution model assuming
- that conditional averaging is based on the sign of vertical velocity.
+Two vertical slice test cases are used to validate the multi-fluid model;
+ a buoyant rising bubble and radiative convective equilibrium are simulated
+ at high resolution and conditionally averaged based on the sign of the
+ vertical velocity.
+ The multi-fluid model reproduces the mean properties of the rising and
+ falling fluids in a single column.
  
 \end_layout
 
@@ -174,7 +161,7 @@ key "HPB+14,SAB+13,ipcc41"
 \end_inset
 
 .
- Improvements have been make removing the quasi-equilibrium assumption 
+ Improvements have been made relaxing the quasi-equilibrium assumption 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "PR98,GG05,Par14"
@@ -211,7 +198,8 @@ key "TWV+18"
 
  proposed multi-fluid modelling of convection in order to treat non-equilibrium
  and net mass transport correctly and consistently with the same numerics
- and physics controlling thermals, environment and downdraught dynamics.
+ and physics controlling thermals, the stable environment and downdraught
+ dynamics.
  Multi-fluid modelling promises big improvements in the representation of
  sub-grid-scale convection and unification with the representation of turbulence
 , particularly at the grey zone.
@@ -221,12 +209,20 @@ key "TWV+18"
  
 \begin_inset CommandInset citation
 LatexCommand citet
-key "TEB19,WM19"
+key "TEB19"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
 
 \end_inset
 
  presented solutions of the multi-fluid equations assuming two fluids that
- share the same pressure.
+ share the same pressure (or that pressure differences are due predominantly
+ to drag between the fluids).
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -234,8 +230,8 @@ key "TEB19"
 
 \end_inset
 
- showed that these equatinos are in fact unstable and could be stabilised
- by diffusion of vertical velocity whereas 
+ showed that these equations (without drag) are in fact unstable and can
+ be stabilised by diffusion of vertical velocity whereas 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "WM19"
@@ -268,7 +264,7 @@ extended eddy diffusivity mass flux
 \begin_inset Quotes erd
 \end_inset
 
- or extended ECMF scheme but they didn't propose a suitable numerical method
+ or extended EDMF scheme but they didn't propose a suitable numerical method
  for solving the equations.
 \end_layout
 
@@ -300,14 +296,14 @@ reference "sec:numerics"
 
 .
  We compare results of resolved dry convection in a single-fluid two dimensional
- Boussinesq model with a two-fluid, single column model 
+ Boussinesq model with a two-fluid, single column model in section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:results"
 
 \end_inset
 
-) using two vertical slice test cases.
+ using two vertical slice test cases.
 \end_layout
 
 \begin_layout Section
@@ -4450,7 +4446,7 @@ This section has demonstrated the value of using a single column, multi-fluid
  been represented by divergence.
  There are clearly discrepancies between the single fluid resolved rising
  bubble and the two fluid single column rising bubble but we do not want
- to over-fit the multi-fluid model to one, dry, two-dimensional test case.
+ to over fit the multi-fluid model to one, dry, two dimensional test case.
 \end_layout
 
 \begin_layout Subsection
@@ -5377,6 +5373,115 @@ name "fig:RCE_singleColumn"
 
 \begin_layout Section
 Summary, Conclusions and Further Work
+\end_layout
+
+\begin_layout Standard
+This paper presents solutions of the multi-fluid Boussinesq equations for
+ convection, reproducing aspects of highly resolved dry convection at coarse
+ horizontal resolution.
+ Two test cases are used to validate the multi-fluid model.
+ The first is a Boussinesq version of the well known two dimensional dry
+ rising bubble of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "BF02"
+
+\end_inset
+
+ and the second is a dry two dimensional version of radiative-convective
+ equilibrium with heating at the ground and uniform radiative cooling.
+ High resolution single fluid simulations are conditionally averaged based
+ on the sign of vertical velocity (
+\begin_inset Formula $w$
+\end_inset
+
+) in order to create rising and falling fluids which each have their own
+ mean buoyancy, velocity and pressure.
+ The two-fluid, single column Boussinesq model reproduces mean vertical
+ heat and mass transport of these test cases.
+ 
+\end_layout
+
+\begin_layout Standard
+The multi-fluid Boussinesq equations can have divergence in each fluid while
+ the divergence averaged over all fluids is zero.
+ A model is proposed and validated for the pressure different between the
+ rising and falling fluids based on the divergence of each fluid.
+ The use of a different pressure for each fluid is not only realistic but
+ also leads to stable solutions of the multi-fluid equations.
+ 
+\end_layout
+
+\begin_layout Standard
+Conditionally averaging the high resolution solutions based on 
+\begin_inset Formula $w$
+\end_inset
+
+ leads to convecting and non-convecting regions with area fractions, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, which are approximately uniform with height.
+ Models for entrainment and detrainment into and out of convecting regions
+ must clearly be consistent with the definition of the convecting region.
+ We propose a model for entrainment and detrainment based on divergence
+ that leads to excellent agreement with 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ from the high resolution solutions.
+ We also test a more conventional fractional entrainment rate based on the
+ reciprocal of the plume width which leads to unrealistic convecting area
+ fractions.
+ 
+\end_layout
+
+\begin_layout Standard
+A set of unknowns in the multi-fluid equations are the properties of the
+ fluid that is transferred from one fluid to another.
+ An obvious first guess would be that fluid takes its mean buoyancy and
+ velocity with it when it is transferred.
+ However sub-grid-scale variability of each fluid means that we expect that
+ the most buoyant fluid will be transferred to the rising fluid or the fluid
+ with the largest vertical velocity will be transferred to the rising fluid
+ and vice versa.
+ An accurate estimate of these would depend on knowledge of the sub-grid-scale
+ variability of each fluid which we do not have.
+ Instead we assume that the fluid transferred in each direction has zero
+ vertical velocity which is consistent with our conditional averaging.
+ We have tested three models for the buoyancy of the fluid transferred.
+ The most successful is that we assume that the fluid takes its mean buoyancy
+ with it.
+ Assuming that the buoyancy of the transferred fluid is an average of the
+ buoyancy of both fluids can lead to unrealistically large or small, unbounded
+ buoyancies.
+ Similarly, if we assume that one fluid has negative buoyancy and the other
+ positive buoyancy and we transfer fluid of zero buoyancy, then unbounded
+ buoyancy can occur.
+ A better model of the buoyancy of the fluid transferred would rely on more
+ information the sub-grid-scale variability.
+\end_layout
+
+\begin_layout Standard
+Single column multi-fluid modelling with moisture has already been demonstrated
+ by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19"
+
+\end_inset
+
+.
+ Two important next steps are to simulate convection in the grey zone (where
+ it is partially resolved) and to represent sub-grid-scale variability within
+ each fluid by solving multi-fluid prognostic equations for turbulent kinetic
+ energy and other moments of the sub-grid variability.
+ These can be used to inform cloud base mass flux (since only the most buoyant
+ fluid will transfer from the stable environment to the buoyant plume) and
+ inform models of the properties of the fluid that is transferred.
+ This will lead to a unified parameterisation of turbulence and convection
+ and will take multi-fluid modelling of convection beyond existing paradigms.
+ 
 \end_layout
 
 \begin_layout Section*
