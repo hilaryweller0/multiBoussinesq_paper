@@ -108,11 +108,11 @@ Hilary Weller, William McIntyre, Daniel Shipley and Peter Clark
 \begin_layout Abstract
 Multi-fluid modelling is a promising new method of representing sub and
  near grid-scale convection allowing for consistent and accurate treatment
- of net mass transport by convection, non-equilibriuam and turbulence.
- The total fluid is partitioned into convecting and non-convection fluids
- each with their own velocity, temperature and constituents so that separate
- equations of motion can be solved for each fluid, thus representing features
- that cannot be resolved in a single fluid at coarse resolution.
+ of net mass transport by convection, non-equilibrium and turbulence.
+ The air is partitioned into convecting and non-convecting fluids each with
+ their own velocity, temperature and constituents so that separate equations
+ of motion can be solved for each fluid, thus representing features that
+ cannot be resolved in a single fluid at coarse resolution.
  
 \end_layout
 
@@ -200,12 +200,29 @@ key "TWV+18"
  and net mass transport correctly and consistently with the same numerics
  and physics controlling thermals, the stable environment and downdraught
  dynamics.
- Multi-fluid modelling promises big improvements in the representation of
- sub-grid-scale convection and unification with the representation of turbulence
-, particularly at the grey zone.
- However, there is a long way to go, particularly as multi-fluid modelling
- requires a dedicated model rather than being a stand alone parameterisation
- for a dynamical core.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ proposed similar equations for representing convection; the 
+\begin_inset Quotes eld
+\end_inset
+
+extended eddy diffusivity mass flux
+\begin_inset Quotes erd
+\end_inset
+
+ or extended EDMF scheme but they didn't propose a suitable numerical method
+ for solving the equations.
+ Multi-fluids promises big improvements in the representation of sub-grid-scale
+ convection and unification with the representation of turbulence, particularly
+ at the grey zone.
+ However, there is a long way to go, particularly as multi-fluids requires
+ a dedicated model rather than being a stand alone parameterisation for
+ a dynamical core.
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -221,8 +238,8 @@ key "WM19"
 \end_inset
 
  presented solutions of the multi-fluid equations assuming two fluids that
- share the same pressure (or that pressure differences are due predominantly
- to drag between the fluids).
+ share the same pressure (or that pressure differences are predominantly
+ due to drag between the fluids).
  
 \begin_inset CommandInset citation
 LatexCommand citet
@@ -250,22 +267,6 @@ reference "sec:results"
 
 ).
  
-\begin_inset CommandInset citation
-LatexCommand citet
-key "TKP+18"
-
-\end_inset
-
- proposed similar equations for representing convection; the 
-\begin_inset Quotes eld
-\end_inset
-
-extended eddy diffusivity mass flux
-\begin_inset Quotes erd
-\end_inset
-
- or extended EDMF scheme but they didn't propose a suitable numerical method
- for solving the equations.
 \end_layout
 
 \begin_layout Standard
@@ -307,12 +308,12 @@ reference "sec:results"
 \end_layout
 
 \begin_layout Section
-The Conditionally Averaged Boussinesq Equations
+The Multi-fluid Boussinesq Equations
 \end_layout
 
 \begin_layout Standard
-Many of the challenges of representing convection with the conditionally
- averaged Euler equations 
+Many of the challenges of representing convection with the multi-fluid Navier-St
+okes equations 
 \begin_inset CommandInset citation
 LatexCommand citep
 before "eg those described in"
@@ -320,9 +321,17 @@ key "WM19"
 
 \end_inset
 
- carry over to the Boussinesq equations.
- Therefore for simplicity we focus on the conditionally averaged Boussinesq
- equations:
+ carry over to the Boussinesq equations; convection is buoyancy dominated
+ and close to incompressible.
+ The resolved test cases presented in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:results"
+
+\end_inset
+
+ give very similar results for Navier-Stokes and Buossinesq equations.
+ Therefore for simplicity we focus on the multi-fluid Boussinesq equations:
 \begin_inset Formula 
 \begin{eqnarray}
 \frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\sigma_{j}S_{ji}-\sigma_{i}S_{ij}\label{eq:sigma}\\
@@ -834,7 +843,7 @@ Viscosity (
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Definitions of variables for the conditionally average Boussinesq equations.
+Definitions of variables for the multi-fluid Boussinesq equations.
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:defns"
@@ -934,7 +943,11 @@ key "WM19"
 
 \begin_layout Standard
 We will assume that pressure in each fluid is given by a parameterised perturbat
-ion from the total pressure, 
+ion, 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+, from the total pressure, 
 \begin_inset Formula $P$
 \end_inset
 
@@ -1255,19 +1268,46 @@ name "subsec:transferProperties"
 
 \begin_layout Standard
 The different fluids may not be well mixed so the fluid transferred may
- not have the mean properties of the fluid it is leaving.
+ not have the mean properties of the fluid it is leaving 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "as was assumed by"
+key "WM19"
+
+\end_inset
+
+.
  In fact, the most buoyant air should be transferred from fluid 0 to fluid
- 1 and vice versa and the air with least downward momentum is transferred
- from 0 to 1 and vice versa.
- The properties of the fluids transferred should depend on modelling of
- sub-grid-scale variability which is beyond the scope of this paper.
- Conditional averaging of high resolution single fluid solutions depends
- on the sign of 
+ 1 and vice versa, and the air with least downward momentum should be transferre
+d from 0 to 1 and vice versa.
+ The properties of the fluids transferred should depend on the modelling
+ of sub-grid-scale variability which is beyond the scope of this paper.
+ In section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:results"
+
+\end_inset
+
+ we conditionally average high resolution solutions based on the sign of
+ 
 \begin_inset Formula $w$
 \end_inset
 
- and so it is sensible to assume that the vertical velocity of the fluid
- transferred is zero.
+ so that 
+\begin_inset Formula $w<0$
+\end_inset
+
+ air is in fluid 0 and 
+\begin_inset Formula $w>0$
+\end_inset
+
+ air in fluid 1.
+ Therefore the air that is transferred at the interface will have 
+\begin_inset Formula $w=0$
+\end_inset
+
+.
  For two dimensional multi-fluid simulations we assume that the horizontal
  velocity transferred is equal to the mean horizontal velocity of the fluid
  transferred from.
@@ -1423,13 +1463,13 @@ We non-dimensionalise using a length scale
 \end_inset
 
  and a time scale 
-\begin_inset Formula $T=(L/B)^{\frac{1}{2}}$
+\begin_inset Formula $T$
 \end_inset
 
  to get the non-dimensional variables:
 \begin_inset Formula 
 \begin{eqnarray*}
-\tilde{w} & = & w_{i}(LB)^{-\frac{1}{2}}\\
+\tilde{w} & = & w_{i}T/L\\
 \tilde{b} & = & b_{i}/B\\
 \tilde{z} & = & z/L.
 \end{eqnarray*}
@@ -1446,22 +1486,29 @@ reference "eq:wi_balances"
 ) is then:
 \begin_inset Formula 
 \begin{equation}
-\underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{B^{\frac{1}{2}}L^{\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom}
+\underbrace{{\frac{L}{T^{2}}\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{TL}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{B\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDomTmp}
 \end{equation}
 
 \end_inset
 
-We have assumed that the flow is buoyancy dominated so 
-\begin_inset Formula $\tilde{b}$
-\end_inset
-
- is 
+The flow is buoyancy dominated so the buoyancy term should be 
 \begin_inset Formula $O(1)$
 \end_inset
 
-.
- The stabilisation term must be large enough to smooth out oscillations
- in 
+ so we choose the scaling 
+\begin_inset Formula $B=L/T^{2}\implies T=(L/B)^{\frac{1}{2}}$
+\end_inset
+
+ so the non-dimensional momentum equation becomes:
+\begin_inset Formula 
+\begin{equation}
+\underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{B^{\frac{1}{2}}L^{\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom-1}
+\end{equation}
+
+\end_inset
+
+The stabilisation term must be large enough to smooth out oscillations in
+ 
 \begin_inset Formula $\tilde{w}$
 \end_inset
 
@@ -1626,7 +1673,7 @@ key "WM19"
 
 \end_inset
 
- using exclusively values at time level 
+ and values exclusively at time level 
 \begin_inset Formula $n$
 \end_inset
 
@@ -1665,25 +1712,23 @@ reference "eq:b"
 \begin_inset Formula $b_{i}$
 \end_inset
 
- so they are treated operator split and implicitly, with 
+ so they are treated operator split and implicitly.
+ This leads to the following equations for 
 \begin_inset Formula $b_{0}^{n+1}$
 \end_inset
 
- coming from the solution of a 
-\begin_inset Formula $2\times2$
-\end_inset
-
- matrix and 
+ and 
 \begin_inset Formula $b_{1}^{n+1}$
 \end_inset
 
- being the back-substitution:
+:
 \begin_inset Formula 
 \begin{eqnarray}
+b_{0}^{n+1} & = & b_{0}^{\prime}+\Delta t\left\{ \left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}\left(b_{1}^{n+1}+b_{10}^{t}-b_{0}^{n+1}\right)-S_{01}b_{01}^{t}\right\} \label{eq:b0np1}\\
+b_{1}^{n+1} & = & b_{1}^{\prime}+\Delta t\left\{ \left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}\left(b_{0}^{n+1}+b_{01}^{t}-b_{1}^{n+1}\right)-S_{10}b_{10}^{t}\right\} \label{eq:b1np1}\\
+\text{where }b_{ij}^{t} & = & b_{ij}^{T}-b_{i}\\
 b_{i}^{\prime} & = & b_{i}^{n}+\frac{\Delta t}{2}\left(b_{it}^{n}+b_{it}^{\ell}\right)\\
-\text{where }b_{it} & = & -\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}-N^{2}w_{i}+\alpha\nabla^{2}b_{i}\\
-b_{0}^{n+1} & = & \frac{\left(1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}\right)b_{0}^{\prime}+\Delta t\left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}b_{1}^{\prime}}{1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}+\Delta t\left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}}\\
-b_{1}^{n+1} & = & \frac{\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}b_{0}^{n+1}+b_{1}^{\prime}}{1+\Delta t\left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}}.
+b_{it} & = & -\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}-N^{2}w_{i}+\alpha\nabla^{2}b_{i}.
 \end{eqnarray}
 
 \end_inset
@@ -1707,6 +1752,34 @@ cite{MWH1x}
 \end_inset
 
 .
+ Simultaneous solutions of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b0np1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b1np1"
+
+\end_inset
+
+) give:
+\begin_inset Formula 
+\begin{eqnarray}
+b_{0}^{n+1} & = & \frac{\left(1+T_{01}\right)\left(b_{0}^{\prime}-\Delta tS_{01}b_{01}^{t}+T_{10}b_{10}^{t}\right)+T_{10}\left(b_{1}^{\prime}+T_{01}b_{01}^{t}-\Delta tS_{10}b_{10}^{t}\right)}{1+T_{01}+T_{10}}\\
+b_{1}^{n+1} & = & \frac{b_{1}^{\prime}+T_{01}b_{0}^{n+1}+T_{01}b_{01}^{t}-\Delta tS_{10}b_{10}^{t}}{1+T_{01}}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $T_{ij}=\Delta t\left(\frac{\sigma_{i}}{\sigma_{j}}\right)^{\prime\prime}S_{ij}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2056,7 +2129,11 @@ reference "fig:bubble"
 
 \end_inset
 
- with buoyancy coloured and pressure contoured.
+ with buoyancy coloured, pressure contoured and the 
+\begin_inset Formula $w=0$
+\end_inset
+
+ contour dotted.
  The solution is very similar to the fully compressible solution 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -2083,7 +2160,7 @@ reference "fig:bubble_singleUnderRes"
 \begin_inset Formula $\sigma_{1}$
 \end_inset
 
- is the volume fraction at every height that is rising, 
+ is the volume fraction of rising fluid at every height, 
 \begin_inset Formula $b_{0}$
 \end_inset
 
@@ -2092,7 +2169,11 @@ reference "fig:bubble_singleUnderRes"
 \end_inset
 
  are the buoyancy conditioned on 
-\begin_inset Formula $w$
+\begin_inset Formula $w\le0$
+\end_inset
+
+ and 
+\begin_inset Formula $w>0$
 \end_inset
 
 , 
@@ -2159,6 +2240,11 @@ The single fluid, resolved rising bubble after 1000s.
 \end_inset
 
 , negative contours dashed.
+ The 
+\begin_inset Formula $w=0$
+\end_inset
+
+ contour is dotted.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -2202,7 +2288,8 @@ reference "fig:bubble"
 
 \end_inset
 
- shows that this is a bad assumption.
+ shows that this is a bad assumption since the larges pressure anomalies
+ are in the rising fluid.
  Drag would always act to slow down the fluids whereas the negative pressure
  gradients in the rising fluid just below the bubble are acting to accelerate
  the rising motion.
@@ -2210,9 +2297,7 @@ reference "fig:bubble"
 \end_layout
 
 \begin_layout Standard
-When resolution is insufficient to resolve the rising bubble, the vertical
- transports are too weak, motivating the need for convection parameterisation.
- The horizontal averages are shown in figure 
+The horizontal averages are shown in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:bubble_singleUnderRes"
@@ -2231,6 +2316,8 @@ reference "fig:bubble_singleUnderRes"
  until there is no movement at all for a single column: there is no possibility
  of fluid rising because in a single column with a single fluid there can
  be no compensating subsidence.
+ The lack of vertical transport at coarse resolution motivates convection
+ parameterisation.
  
 \end_layout
 
@@ -2699,7 +2786,7 @@ reference "fig:multiFluidSingleColumn"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2710,85 +2797,119 @@ status collapsed
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\sigma_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $b$
-\end_inset
-
-, 
-\begin_inset Formula $b_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $w_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $w_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=0$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=0$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -2891,23 +3012,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=0$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3010,26 +3227,122 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-4\times10^{3}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
 \end_inset
 
- 
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3129,23 +3442,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=4\times10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3248,23 +3657,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-2.3\times10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3366,6 +3871,72 @@ status collapsed
 \end_inset
 </cell>
 </row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -3410,7 +3981,7 @@ name "fig:multiFluidSingleColumn-bad"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -3421,88 +3992,122 @@ status collapsed
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\sigma_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $b$
-\end_inset
-
-, 
-\begin_inset Formula $b_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $w_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $P_{0}$
-\end_inset
-
- and 
-\begin_inset Formula $P_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=1/2000\text{m}^{-1}$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3602,19 +4207,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=0$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3717,27 +4422,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{01}=w_{1}0.2/r_{c}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
-\begin_inset Formula $C_{D}=0$
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
-, 
-\begin_inset Formula $r_{c}=2000\text{m}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{D}/r_{c}=0/2000\text{m}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3840,26 +4637,122 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=0$
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -3959,23 +4852,119 @@ status collapsed
 </cell>
 </row>
 <row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
-, 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+
+\end_layout
+
 \end_inset
 
-, 
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "18col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $C_{D}/r_{c}=0$
 \end_inset
 
-, 
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "25col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{0}+b_{1}\right)$
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -4069,6 +5058,68 @@ status collapsed
 	lyxscale 50
 	scale 60
 
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\begin_inset Formula $b_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{1}$
 \end_inset
 
 

@@ -1,0 +1,53 @@
+I’m not sure what the question is, but I don’t think you need all of Hilary’s assumptions:
+
+We have
+
+Dw/Dt = -dP/dz +b +nu nabla^2 w +exchange terms
+
+If viscosity and exchange terms are ‘small’ (assumption 2), we have A+B+C=0 where A~Dw/Dt, B~dP/dz, C ~-b
+
+We want a scaling such that the largest of these in absolute magnitude is O(1). Then at least one of the other two terms must be O(1) and the remaining one either O(1) or small.
+
+Choose length scale L*, pressure-scale P*, time scale T* and buoyancy scale B*. In practice, we know in advance L* and B* from the problem setup. Using prime for scaled variables:
+
+L*T*^-2 Dw’/Dt’ = -P*L*^-1 dP’/dz’ +B*b’ +nu L*^-1T*^-1 nabla’^2 w’
+
+Note, Hilary complains that D/Dt isn’t just T*^-1 D/Dt’. She’s right but d/dt +u.nabla = T*^-1(d/dt’+u’/nabla’) so the scaling works the same way. We may then wish to argue which term is large.
+
+Multiplying up
+
+Dw’/Dt’ = -P*L*^-2T*^2 dP’/dz’ +B*L*^-1 T*^2 b’ +nu L*^-2T* nabla’^2 w’
+
+The key phrase is then ‘The flow is buoyancy dominated’ (Assumption 1). This means that the buoyancy term must be O(1) – we therefore chose a scaling st the coefficient of b’ is 1 (and also assume b’ is O(1)).
+
+Hence T*^2= L*B*^-1 as stated.
+
+Note that we also now get a ‘free’ velocity scale U*=L*/T*, so the coefficient of the viscosity term is nu/(L*U*)=1/Re, where Re is the Reynolds number so we are talking about high Re flows as expected.
+
+We might as well chose the coefficient of dP’/dz to be one, so
+
+P*=L*^2T*^-2 = L*B*
+
+We now have three buoyancy dominated regimes:
+
+w’ O(1) and P’ small, so w’ ~ integral b’ d t’ i.e. w’ changes one unit every one unit of time.
+
+w’ small so P’ O(1) – (near) hydrostatic balance
+
+w’, P’ both O(1) – non-hydrostatic flow.
+
+One could argue more physically – ignoring viscosity and pressure d/dz (1/2 w^2) = b, so 1/2 w^2 ~bz, hence a velocity scale U*^2=L*B*. But U*=L*/T* so L*^2T*^-2=L*B* etc.
+
+The other assumptions are fine but not necessary for the scaling argument. (One might argue that ‘slowly varying’ means d/dz~d/dx~L*^-1, but that’s more about choice of L*).
+
+Others might have started with U*; I didn’t because 1) velocity is a dependent variable, time isn’t and 2) the alternative ‘viscous’ scaling is based on time because that’s the only scale the Temperature equation tells us about.
+
+I think it’s important to realise that this analysis is not ‘just’ dimensional analysis; we are not just saying that buoyancy is an acceleration (so is the pressure gradient term). We are saying that, if the buoyancy dominates, w changes by 1 unit due to the buoyancy when time changes by 1 unit. The pressure gradient term does not have to be O(1), but if not it can only be less. Since the fluid does not go on accelerating forever, and b is conserved away from the boundaries, we expect regions where dp/dz is also O(1).
+
+We have claimed that the fluid is nearly inviscid; the key point is that we also expect to find regions (e.g. the viscous boundary layer) where viscosity still dominates, but these regions will be on very different space and time scales, such that B/(L/T^2) is no longer O(1).
+
+In the convective atmospheric boundary layer, buoyancy scaling applies throughout most of the layer, but, near the surface, (turbulent) viscosity dominates; the height where one hands over to the other is the well-known ‘Obukhov length’. In Dan’s RB simulations (and Hilary’s ‘RCE’ ones) there is a characteristic boundary-layer scale. There is also a related scale at which viscous dissipation occurs (the Kolmogorov microscale); this will appear in your (single fluid) buoyant bubble simulations as the smallest scales that can occur; if you cannot resolve these in your numerical simulations, you are not solving the problem accurately! Instead, you are letting the numerical scheme provide sufficient dissipation that these smallest scales become resolvable. This is something many NWP and climate modellers consistently fail to understand. If you claim that your equations are inviscid, these smallest scales are zero, so your solution is actually a viscous one with viscosity determined by the numerical scheme (and, of course, resolution). Most ‘Euler equation’ climate models actually have massive, and, of course, totally unphysical, viscosity! (Many, of course, add this explicity to ‘get rid of gridscale noise’, but others do not).
+
+Hilary – could I just cast an eye over your revised version?
+
+ 
