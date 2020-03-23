@@ -1,0 +1,7 @@
+3 main points. 140 characters each
+
+Multi-fluid modelling promises more accurate and consistent convection parameterisation including mass transport and non-equilibrium.
+
+Entrainment and detrainment between fluids are calculated from divergence. This gives accurate parameterisation for 2D dry test cases.
+
+The pressure difference between fluids is estimated based on divergence. This is accurate and renders the multi-fluid equations stable.

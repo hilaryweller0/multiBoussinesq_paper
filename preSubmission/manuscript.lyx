@@ -203,11 +203,20 @@ key "TWV+18"
  
 \begin_inset CommandInset citation
 LatexCommand citet
+key "Yano14"
+
+\end_inset
+
+ derived similar equations for multiple segments and showed how this is
+ a generalisation of the mass-flux formulation.
+ The 
+\begin_inset CommandInset citation
+LatexCommand citet
 key "TKP+18"
 
 \end_inset
 
- proposed similar equations for representing convection; the 
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -215,8 +224,14 @@ extended eddy diffusivity mass flux
 \begin_inset Quotes erd
 \end_inset
 
- or extended EDMF scheme but they didn't propose a suitable numerical method
- for solving the equations.
+ or extended EDMF scheme also uses similar equations but 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ didn't propose a suitable numerical method for solving the equations.
  Multi-fluids promises big improvements in the representation of sub-grid-scale
  convection and unification with the representation of turbulence, particularly
  at the grey zone.
@@ -297,7 +312,7 @@ reference "sec:numerics"
 
 .
  We compare results of resolved dry convection in a single-fluid two dimensional
- Boussinesq model with a two-fluid, single column model in section
+ Boussinesq model with a two-fluid, single column model in section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:results"
@@ -331,12 +346,13 @@ reference "sec:results"
 \end_inset
 
  give very similar results for Navier-Stokes and Buossinesq equations.
- Therefore for simplicity we focus on the multi-fluid Boussinesq equations:
+ Therefore for simplicity we focus on the multi-fluid Boussinesq equations
+ without background stratification:
 \begin_inset Formula 
 \begin{eqnarray}
-\frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\sigma_{j}S_{ji}-\sigma_{i}S_{ij}\label{eq:sigma}\\
-\frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i} & = & b_{i}\mathbf{k}+\nu\nabla^{2}\mathbf{u}_{i}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(\mathbf{u}_{ji}^{T}-\mathbf{u}_{i}\right)-S_{ij}(\mathbf{u}_{ij}^{T}-\mathbf{u}_{i})-\mathbf{D}_{ij}\label{eq:mom}\\
-\frac{D_{i}b_{i}}{Dt} & = & \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\label{eq:b}\\
+\frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \sum_{j\ne i}\left\{ \sigma_{j}S_{ji}-\sigma_{i}S_{ij}\right\} \label{eq:sigma}\\
+\frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i} & = & b_{i}\mathbf{k}+\nu\nabla^{2}\mathbf{u}_{i}+\sum_{j\ne i}\left\{ \frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(\mathbf{u}_{ji}^{T}-\mathbf{u}_{i}\right)-S_{ij}(\mathbf{u}_{ij}^{T}-\mathbf{u}_{i})-\mathbf{D}_{ij}\right\} \label{eq:mom}\\
+\frac{D_{i}b_{i}}{Dt} & = & \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\left\{ \frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\right\} \label{eq:b}\\
 \sum_{i}\nabla\cdot\sigma_{i}\mathbf{u}_{i} & = & \nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0\label{eq:divFree}\\
 \sum_{i}\sigma_{i} & = & 1\label{eq:sumOne}
 \end{eqnarray}
@@ -998,8 +1014,14 @@ key "SA99"
 \end_inset
 
 .
- In our notation, ignoring transfers between fluids, these equations would
- be:
+ In our notation, ignoring transfers between fluids, the 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "BN86"
+
+\end_inset
+
+ equations would be:
 \begin_inset Formula 
 \begin{eqnarray}
 \frac{\partial\sigma_{i}}{\partial t}+\mathbf{V}\cdot\nabla\sigma_{i} & = & \mu\left(P_{i}-P_{j}\right)\label{eq:BNcompaction}\\
@@ -1378,7 +1400,7 @@ name "subsec:dimAnal"
 \end_layout
 
 \begin_layout Standard
-Dimensional analysis can guide us in our choice of 
+Dimensional analysis can guide our choice of 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -1483,7 +1505,7 @@ reference "eq:wi_balances"
 
 \end_inset
 
-) is then:
+) is:
 \begin_inset Formula 
 \begin{equation}
 \underbrace{{\frac{L}{T^{2}}\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{TL}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{B\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDomTmp}
@@ -1597,12 +1619,12 @@ The prognostic variables are the
 \begin_inset Formula $\sigma_{i}$
 \end_inset
 
- in cell centres and the velocity flux, 
+ in cell centres and the velocity flux at cell faces, 
 \begin_inset Formula $u_{i}=\mathbf{u}_{i}\cdot\mathbf{S}$
 \end_inset
 
-: the velocity at cell faces dotted with the area vector for each face (normal
- to the face).
+, which is the velocity at cell faces dotted with the area vector for each
+ face (normal to the face).
  The pressures, 
 \begin_inset Formula $P$
 \end_inset
@@ -1703,7 +1725,8 @@ reference "eq:b"
 
 \end_inset
 
-) is solved for the buoyancy in each fluid.
+) is solved for the buoyancy in each fluid, first transporting buoyancy
+ and then applying the transfer terms.
  The transfer terms can be very large due to the presence of 
 \begin_inset Formula $\frac{\sigma_{j}}{\sigma_{i}}S_{ij}$
 \end_inset
@@ -1712,32 +1735,27 @@ reference "eq:b"
 \begin_inset Formula $b_{i}$
 \end_inset
 
- so they are treated operator split and implicitly.
- This leads to the following equations for 
-\begin_inset Formula $b_{0}^{n+1}$
-\end_inset
-
- and 
-\begin_inset Formula $b_{1}^{n+1}$
-\end_inset
-
-:
+ so they are treated operator split and implicitly:
 \begin_inset Formula 
 \begin{eqnarray}
+b_{i}^{\prime} & = & b_{i}^{n}-\frac{\Delta t}{2}\Biggl(\left(\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}+\alpha\nabla^{2}b_{i}\right)^{n}\label{eq:transportb}\\
+ &  & \hfill+\left(\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}+\alpha\nabla^{2}b_{i}\right)^{\ell}\Biggr)\\
 b_{0}^{n+1} & = & b_{0}^{\prime}+\Delta t\left\{ \left(\frac{\sigma_{1}}{\sigma_{0}}\right)^{\prime\prime}S_{10}\left(b_{1}^{n+1}+b_{10}^{t}-b_{0}^{n+1}\right)-S_{01}b_{01}^{t}\right\} \label{eq:b0np1}\\
-b_{1}^{n+1} & = & b_{1}^{\prime}+\Delta t\left\{ \left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}\left(b_{0}^{n+1}+b_{01}^{t}-b_{1}^{n+1}\right)-S_{10}b_{10}^{t}\right\} \label{eq:b1np1}\\
-\text{where }b_{ij}^{t} & = & b_{ij}^{T}-b_{i}\\
-b_{i}^{\prime} & = & b_{i}^{n}+\frac{\Delta t}{2}\left(b_{it}^{n}+b_{it}^{\ell}\right)\\
-b_{it} & = & -\nabla\cdot\left(\mathbf{u}_{i}(b_{i})_{vL}\right)+b_{i}\nabla\cdot\mathbf{u}_{i}-N^{2}w_{i}+\alpha\nabla^{2}b_{i}.
+b_{1}^{n+1} & = & b_{1}^{\prime}+\Delta t\left\{ \left(\frac{\sigma_{0}}{\sigma_{1}}\right)^{\prime\prime}S_{01}\left(b_{0}^{n+1}+b_{01}^{t}-b_{1}^{n+1}\right)-S_{10}b_{10}^{t}\right\} \label{eq:b1np1}
 \end{eqnarray}
 
 \end_inset
 
-The use of 
+where 
+\begin_inset Formula $b_{ij}^{t}=b_{ij}^{T}-b_{i}$
+\end_inset
+
+.
+ The use of 
 \begin_inset Formula $(\sigma_{0}/\sigma_{1})^{\prime\prime}$
 \end_inset
 
- before the mass transfers is necessary to ensure bounded and conservative
+ from before the mass transfers is necessary to ensure bounded and conservative
  transfers, as described by 
 \begin_inset ERT
 status open
@@ -1783,14 +1801,22 @@ where
 \end_layout
 
 \begin_layout Standard
-Next a Poisson equation is solved to calculate the total pressure to ensure
- that the total velocity is divergence free.
+Next a Poisson equation is solved to calculate the total pressure, 
+\begin_inset Formula $P$
+\end_inset
+
+ to ensure that the total velocity is divergence free.
  The pressure equation also provides updates for the velocity flux, 
 \begin_inset Formula $u_{i}$
 \end_inset
 
 .
- First an intermediate velocity flux is calculated with partial updates:
+ First an intermediate velocity flux is calculated with partial updates
+ and updates from a previous value of 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{eqnarray}
 u_{i}^{\prime}= & u_{i}^{n}+\frac{\Delta t}{2} & \biggl(\left(-\nabla\cdot(\mathbf{u}_{i}\mathbf{u}_{i})+\mathbf{u}_{i}\nabla\cdot\mathbf{u}_{i}+b_{i}\mathbf{k}\right)_{f}^{\ell}\cdot\mathbf{S}-\nabla_{f}p_{i}^{\ell}\\
@@ -2050,11 +2076,8 @@ key "BF02"
 
  was designed for fully compressible models but similar solutions are obtained
  solving Boussinesq equations.
- For the Boussinesq version we set 
-\begin_inset Formula $N^{2}=0$
-\end_inset
-
- in a domain of height 10
+ The Boussinesq version has no background stratification in a domain of
+ height 10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2122,7 +2145,7 @@ Single Fluid Solutions
 
 \begin_layout Standard
 The solution of the rising buoyant bubble solving the Boussinesq equations
- for 1000s is shown in 
+ for 1000s is shown in figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:bubble"
@@ -2142,7 +2165,7 @@ key "BF02"
 \end_inset
 
 .
- The pressure gradients will accelerate the flow beneath the bubble, decelerate
+ The pressure gradients accelerate the flow beneath the bubble, decelerate
  the flow above the bubble and pull in air horizontally.
  Horizontally and conditionally averaged fields, conditioned on 
 \begin_inset Formula $w$
@@ -2208,7 +2231,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/bP.pdf
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/bP.pdf
 	lyxscale 50
 	width 100text%
 
@@ -2221,7 +2244,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b.eps
 	lyxscale 50
 	width 75text%
 
@@ -2235,7 +2258,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The single fluid, resolved rising bubble after 1000s.
- Buoyancy is coloured and pressure is contoured, every 
+ Buoyancy is coloured and pressure is contoured every 
 \begin_inset Formula $10\text{m}^{2}\text{s}^{-2}$
 \end_inset
 
@@ -2288,7 +2311,7 @@ reference "fig:bubble"
 
 \end_inset
 
- shows that this is a bad assumption since the larges pressure anomalies
+ shows that this is a bad assumption since the large pressure anomalies
  are in the rising fluid.
  Drag would always act to slow down the fluids whereas the negative pressure
  gradients in the rising fluid just below the bubble are acting to accelerate
@@ -2352,7 +2375,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/sigma.eps
 	lyxscale 50
 	scale 60
 
@@ -2368,7 +2391,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/b.eps
 	lyxscale 50
 	scale 60
 
@@ -2384,7 +2407,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/w.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/w.eps
 	lyxscale 50
 	scale 60
 
@@ -2400,7 +2423,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/P.eps
 	lyxscale 50
 	scale 60
 
@@ -2427,7 +2450,24 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/sigma.eps
+	lyxscale 50
+	display false
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/b.eps
 	lyxscale 50
 	scale 60
 
@@ -2443,7 +2483,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/w.eps
 	lyxscale 50
 	scale 60
 
@@ -2459,23 +2499,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/w.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/P.eps
 	lyxscale 50
 	scale 60
 
@@ -2502,7 +2526,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/sigma.eps
 	lyxscale 50
 	scale 60
 
@@ -2518,7 +2542,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/b.eps
 	lyxscale 50
 	scale 60
 
@@ -2534,7 +2558,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/w.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/w.eps
 	lyxscale 50
 	scale 60
 
@@ -2550,7 +2574,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/P.eps
 	lyxscale 50
 	scale 60
 
@@ -2577,7 +2601,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/sigma.eps
 	lyxscale 50
 	scale 60
 
@@ -2593,7 +2617,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/b.eps
 	lyxscale 50
 	scale 60
 
@@ -2609,7 +2633,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/w.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/w.eps
 	lyxscale 50
 	scale 60
 
@@ -2625,7 +2649,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/P.eps
 	lyxscale 50
 	scale 60
 
@@ -2652,7 +2676,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/sigma.eps
 	lyxscale 50
 	scale 60
 
@@ -2668,7 +2692,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/b.eps
 	lyxscale 50
 	scale 60
 
@@ -2684,7 +2708,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/w.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/w.eps
 	lyxscale 50
 	scale 60
 
@@ -2700,7 +2724,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/P.eps
 	lyxscale 50
 	scale 60
 
@@ -2751,7 +2775,7 @@ name "fig:bubble_singleUnderRes"
 \end_layout
 
 \begin_layout Subsubsection
-Multi-fluid Solutions
+Results of the Two-fluid, Single Column Simulations
 \end_layout
 
 \begin_layout Standard
@@ -2786,7 +2810,7 @@ reference "fig:multiFluidSingleColumn"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -2856,7 +2880,7 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -2951,7 +2975,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -2967,7 +2991,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -2983,7 +3007,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -2999,7 +3023,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3071,7 +3095,7 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -3166,7 +3190,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3182,7 +3206,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3198,7 +3222,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3214,7 +3238,437 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=2.3\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/Pcompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "17col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{D}/r_{c}=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "15col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/sigmaCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/bCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/wCompare.eps
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3286,7 +3740,7 @@ status open
 
 \end_inset
 
-
+ 
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -3381,7 +3835,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3397,7 +3851,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3413,7 +3867,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3429,437 +3883,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/Pcompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "17col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "20col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\gamma=4\times10^{4}\text{m}^{2}\text{s}^{-1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "15col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $C_{D}/r_{c}=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "15col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $b_{ij}^{T}=b_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/sigmaCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/bCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/wCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/Pcompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "17col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "20col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "15col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $C_{D}/r_{c}=0$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "15col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Formula $b_{ij}^{T}=b_{i}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/sigmaCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/bCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/wCompare.eps
-	lyxscale 50
-	scale 60
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -3981,7 +4005,7 @@ name "fig:multiFluidSingleColumn-bad"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -4146,7 +4170,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4162,7 +4186,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4178,7 +4202,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4194,7 +4218,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4361,7 +4385,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4377,7 +4401,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4393,7 +4417,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4409,7 +4433,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4576,7 +4600,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4592,7 +4616,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4608,7 +4632,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4624,7 +4648,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4791,7 +4815,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4807,7 +4831,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4823,7 +4847,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -4839,7 +4863,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -5006,7 +5030,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -5022,7 +5046,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -5038,7 +5062,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -5054,7 +5078,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -5342,7 +5366,7 @@ reference "fig:multiFluidSingleColumn"
 \end_inset
 
  use 
-\begin_inset Formula $p_{i}=-10^{4}\nabla\cdot\mathbf{u}_{i}$
+\begin_inset Formula $\gamma=-10^{4}$
 \end_inset
 
  and 
@@ -5406,7 +5430,7 @@ The other entrainment option is the commonly used fractional entrainment
 \end_inset
 
 .
- This is used combined with pressure differences between fluids in the bottom
+ This is used combined with pressure differences between fluids in the middle
  row of figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5493,8 +5517,13 @@ This section has demonstrated the value of using a single column, multi-fluid
  model to simulate a buoyant rising bubble with a single updraught fluid
  and a single downdraught fluid.
  Transfers between the fluids have been successfully modelled using entrainment
- set by divergence and the pressure difference between the fluids has also
- been represented by divergence.
+ set by divergence giving realistic updraught fractions.
+ Entrainment calculated as the reciprocal of plume width was not successful.
+ The pressure difference between the fluids has also been represented by
+ divergence with a coefficient close to that expected from dimensional analysis.
+ Including drag between the fluids did not improve simulations.
+ Two models of transferring non-mean properties between fluids were tested
+ but neither was plausible.
  There are clearly discrepancies between the single fluid resolved rising
  bubble and the two fluid single column rising bubble but we do not want
  to over fit the multi-fluid model to one, dry, two dimensional test case.
@@ -5586,7 +5615,7 @@ s.
 \end_layout
 
 \begin_layout Subsubsection
-Results of the Resolved Simulation
+Single Fluid Solutions
 \end_layout
 
 \begin_layout Standard
@@ -5624,7 +5653,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/bw.pdf
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/200000/bw.pdf
 	lyxscale 50
 	width 100text%
 
@@ -5640,7 +5669,7 @@ Buoyancy (
 
 ) 
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/bw_b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/legends/bw_b.eps
 	lyxscale 50
 	width 80text%
 
@@ -5651,7 +5680,7 @@ Buoyancy (
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/200000/Pw.pdf
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/200000/Pw.pdf
 	lyxscale 50
 	width 100text%
 
@@ -5667,7 +5696,7 @@ Pressure (
 
 ) 
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/legends/Pw_P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/legends/Pw_P.eps
 	lyxscale 50
 	width 80text%
 
@@ -5687,8 +5716,8 @@ Buoyancy, vertical velocity and pressure at
  of the resolved radiative-convective equilibrium test case.
  Vertical velocity contours are black every 0.5m/s with negative contours
  dashed and the zero contour dotted.
- Domain is 10km high and 160km wide and the z-direction is stretched a factor
- of 2 in the plots.
+ The domain is 10km high and 160km wide and the z-direction is stretched
+ a factor of 2 in the plots.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -5758,8 +5787,8 @@ reference "fig:RCE_resolved"
  then decelerates towards the model top.
  At the ground the acceleration is forced by buoyancy and away from the
  ground the acceleration is controlled by pressure gradients.
- The descending air velocity is close to equal and opposite, as expected
- since 
+ The descending air mean velocity is close to equal and opposite to the
+ ascending air, as expected since 
 \begin_inset Formula $\sigma_{1}=0.5$
 \end_inset
 
@@ -5767,7 +5796,7 @@ reference "fig:RCE_resolved"
 \end_layout
 
 \begin_layout Subsubsection
-Results of the Single Column Simulations
+Results of the Two-fluid, Single Column Simulations
 \end_layout
 
 \begin_layout Standard
@@ -5826,7 +5855,7 @@ reference "fig:RCE_singleColumn"
 
 \end_inset
 
- (solid lines).
+.
  The entrainment model 
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
@@ -6032,7 +6061,7 @@ Horizontal averages of the resolved RCE test case between
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean.eps
 	scale 70
 
 \end_inset
@@ -6047,7 +6076,7 @@ Horizontal averages of the resolved RCE test case between
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_w/0/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_w/0/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -6062,7 +6091,7 @@ Horizontal averages of the resolved RCE test case between
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean.eps
 	scale 70
 
 \end_inset
@@ -6077,7 +6106,7 @@ Horizontal averages of the resolved RCE test case between
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean.eps
 	scale 70
 
 \end_inset
@@ -6092,7 +6121,7 @@ Horizontal averages of the resolved RCE test case between
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean.eps
 	scale 70
 
 \end_inset
@@ -6168,7 +6197,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/sigma_1.eps
 	scale 70
 
 \end_inset
@@ -6183,7 +6212,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -6198,7 +6227,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/b_1.eps
 	scale 70
 
 \end_inset
@@ -6213,7 +6242,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/u_1.eps
 	scale 70
 
 \end_inset
@@ -6228,7 +6257,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_w/100000/P_1.eps
 	scale 70
 
 \end_inset
@@ -6304,7 +6333,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/sigma_1.eps
 	scale 70
 
 \end_inset
@@ -6319,7 +6348,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -6334,7 +6363,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/b_1.eps
 	scale 70
 
 \end_inset
@@ -6349,7 +6378,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/u_1.eps
 	scale 70
 
 \end_inset
@@ -6364,7 +6393,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-dev/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi2e3_bT05_w/100000/P_1.eps
 	scale 70
 
 \end_inset
@@ -6401,7 +6430,7 @@ s.
 \begin_inset Formula $10^{4}\ \text{s}$
 \end_inset
 
- (solid lines) in comparison to the resolved simulation (dashed lines).
+.
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -6456,7 +6485,7 @@ key "BF02"
 \begin_layout Standard
 The multi-fluid Boussinesq equations can have divergence in each fluid while
  the divergence averaged over all fluids is zero.
- A model is proposed and validated for the pressure different between the
+ A model is proposed and validated for the pressure difference between the
  rising and falling fluids based on the divergence of each fluid.
  The use of a different pressure for each fluid is not only realistic but
  also leads to stable solutions of the multi-fluid equations.
@@ -6469,7 +6498,7 @@ Conditionally averaging the high resolution solutions based on
 \end_inset
 
  leads to convecting and non-convecting regions with area fractions, 
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma_{i}$
 \end_inset
 
 , which are approximately uniform with height.
@@ -6489,7 +6518,7 @@ Conditionally averaging the high resolution solutions based on
 
 \begin_layout Standard
 A set of unknowns in the multi-fluid equations are the properties of the
- fluid that is transferred from one fluid to another.
+ fluid that are transferred from one fluid to another.
  An obvious first guess would be that fluid takes its mean buoyancy and
  velocity with it when it is transferred.
  However sub-grid-scale variability of each fluid means that we expect that
@@ -6501,7 +6530,7 @@ A set of unknowns in the multi-fluid equations are the properties of the
  Instead we assume that the fluid transferred in each direction has zero
  vertical velocity which is consistent with our conditional averaging.
  We have tested three models for the buoyancy of the fluid transferred.
- The most successful is that we assume that the fluid takes its mean buoyancy
+ The most successful is to assume that the fluid takes its mean buoyancy
  with it.
  Assuming that the buoyancy of the transferred fluid is an average of the
  buoyancy of both fluids can lead to unrealistically large or small, unbounded
@@ -6540,11 +6569,10 @@ Acknowledgements
 \end_layout
 
 \begin_layout Standard
-Many thanks to Peter Clark, John Thuburn and Chris Holloway for valuable
- discussions and proof reading.
+Many thanks to John Thuburn and Chris Holloway for valuable discussions.
  Thanks to the NERC/Met Office Paracon project.
  We acknowledge funding from the Circle-A and RevCon Paracon projects NE/N013743
-/1 and NE/xxx.
+/1 and NE/N013735/1.
 \end_layout
 
 \begin_layout Standard

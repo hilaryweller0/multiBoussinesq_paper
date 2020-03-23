@@ -1,0 +1,53 @@
+Line 13 "non-equilibrium"
+is this a noun? sounds jarring. Does the phrase "mass transport by" apply to all 3 things in this list, or just the first? inauspicious for the readability of this paper. 
+
+Line 14    "convecting and non-convecting fluids"
+
+huh? defined how? later it seems to mean ascending and non-ascending. specificity please, this is subtle material and attempting to use the aspirational or even inspiriational language of some hoped-for future generality gets in the way of clearly explaining what this study actually contains.
+
+Line 27 "rising and falling fluids"
+
+is this identical to "convecting and non-convecting" above?
+
+Line 45 "weakest"
+
+most uncertain?
+
+Line 48 "the grey zone"
+
+of grid lengths
+
+Line 54 "segments"
+
+?
+
+Line 54 "this"
+
+this what
+
+Line 57 "Multi-fluids promises"
+
+grammar? number?
+
+Line 59 "at"
+
+in?
+
+Line 59 "multi-fluids requires"
+
+grammar? number?
+
+Line 65 "Neither of these stabilisation techniques are acceptable"
+
+? can more be said?
+
+Line 66 "and"
+
+why is this a sentence with "and" in the middle?
+
+Line 77 "    ; "
+
+because
+
+Line 
+

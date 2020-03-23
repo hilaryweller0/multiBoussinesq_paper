@@ -4,7 +4,7 @@
 @String{cd = {Climate Dyn.}}
 @String{jgr = {J. Geophys. Res.}}
 @String{jgro = {J. Geophys. Res. - Oceans}}
-@String{jgra = {J. Geophys. Res. - Atmospheres}}
+@String{jgra = {J. Geophys. Res. - Atmos.}}
 @String{mwr = {Mon. Wea. Rev.}}
 @String{jas = {J. of Atmos Sci.}}
 @String{jam = {J. Appl. Meteor.}}
@@ -18,7 +18,6 @@
 @String{wf = {Wea. Forecasting}}
 @String{nat = {Nature}}
 @String{jh  = {J. Hydrometeorology}}
-@String{bams = {Bull. Amer. Meteor. Soc.}}
 @String{asl = {Atmos. Sci. Lett.}}
 @String{jmsj = {J. Meteor. Soc, Japan}}
 @String{jcp = {J. Comput. Phys.}}
@@ -40,6 +39,9 @@
 @String{cpc = {Comput. Phys. Commun.}}
 @String{blm = {Bound.-Layer Meteor}}
 @String{ijmpf = {Int. J. Multiphase Flow}}
+@String{jmsj = {J. Meteor.-Soc. Japan}}
+@String{pnas = {Proc. Natl. Acad. Sci. U.S.A.}}
+@String{james = {J. Advances in Modeling Earth Systems (JAMES)}}
 
 @article{shutts2013coarse,
   title={Coarse graining the vorticity equation in the ECMWF integrated forecasting system: the search for kinetic energy backscatter},
@@ -2585,6 +2587,19 @@ Piggott, M. and Roberts, M. and Shaffrey, L. and Stevens, I. and Vidale, P-L and
   OPTannote = 	 {}
 }
 
+@Article{LGWS09,
+    author  = {Lloyd, J. and Guilyardi, E. and Weller, H. and Slingo, J.M.},
+    title   = {The Role of Atmospheric Feedbacks During {ENSO} in the {CMIP3} Models},
+    journal = asl,
+    year    = {2009},
+    OPTkey  = {},
+    volume  = {10},
+    number  = {3},
+    pages   = {170-176},
+    month = {},
+    OPTnote  = {}
+}
+
 @Article{SRJT08,
   author = 		 {Steppeler, J. and R\'ipodas, P. and Jonkheid, B. and Thomas, S.},
   title = 		 {Third-Order Finite-Difference Schemes on Icosahedral-Type Grids on the Sphere},
@@ -3308,7 +3323,7 @@ OPTISSN = {{0045-7825}},
 OPTUnique-ID = {{ISI:000265902900006}},
 }
 
-@Article{Kaa08,
+@Article{Kaas08,
   author = 		 {Kaas, E.},
   title = 		 {A simple and efficient locally mass conserving semi-Lagrangian transport scheme},
   journal = 	 tela,
@@ -3903,7 +3918,7 @@ Climate Models - A Pilot Climate Process Modeling and Science Team},
 @Article{LJTN10,
   author =  {Lauritzen, P. H. and C. Jablonowski and M. A. Taylor and R. D. Nair},
   title  = 	{Rotated versions of the {J}ablonowski steady-state and baroclinic wave test cases: A dynamical core intercomparison},
-  journal = {JAMES},
+  journal = james,
   year =    {2010},
   OPTkey = 	{},
   volume = 	{in press},
@@ -4931,7 +4946,7 @@ high-order finite-volume methods},
   author =  {Kennedy, C.A. and Carpenter, M.H.},
   title  = 	{Additive Runge-Kutta schemes for convection-diffusion-reaction
 equations},
-  journal = {Applied Numerical Mathematics},
+  journal = anm,
   year =    {2003},
   OPTkey = 	{},
   volume = 	{44},
@@ -5224,7 +5239,7 @@ influences of mean state, orography and eddy forcing},
   OPTannote = {}
 }
 
-@Article{SS09,
+@Article{SS09b,
   author =  {Schroeder, G. and Schl\"unzen, K.H.},
   title  = 	{Numerical Dispersion of Gravity Waves},
   journal = mwr,
@@ -5267,8 +5282,9 @@ influences of mean state, orography and eddy forcing},
 }
 
 @inbook {ECMWF_IFS,
-	title = {{Part III} : Dynamics and numerical procedures},
-	booktitle = {{IFS} Documentation {CY45R1}},
+    author = {{ECMWF}},
+	chapter = {{Part III} : Dynamics and numerical procedures},
+	title = {{IFS} Documentation {CY45R1}},
 	series = {{IFS} Documentation},
 	number = {3},
 	year = {2018},
@@ -6559,7 +6575,7 @@ Cyclones},
   OPTannote = {}
 }
 
-@Article{SB14,
+@Article{SB14b,
   author =  {Schreiber, M. and Bungartz, H.J.},
   title  = 	{Cluster-based Communication and Load Balancing for Simulations on Dynamically Adaptive Grids},
   journal = {Procedia Computer Science},
@@ -6604,7 +6620,7 @@ Cyclones},
 @Article{CHR03,
   author =  {Cao, W. and Huang, W. and Russell, R.D.},
   title  = 	{Approaches for generating moving adaptive meshes: location versus velocity},
-  journal = {Applied Numerical Mathematics},
+  journal = anm,
   year =    {2003},
   OPTkey = 	{},
   volume = 	{47},
@@ -7407,7 +7423,7 @@ aerodynamic flows},
   OPTannote = {}
 }
 
-@Article{BS14,
+@Article{SB14,
   author =  {Schneider, W. and Bott, A.},
   title  = 	{On the time-splitting errors of one-dimensional advection schemes in numerical weather prediction models; a comparative study},
   journal = qjrms,
@@ -8359,8 +8375,8 @@ OPTkeywords = {advection, conservation, monotonicity, PPM, remapping},
   OPTmonth = 	 {June},
   OPTnote = 	 {},
   OPTannote = 	 {},
-  doi    =    {10.1175/MWR-D-15-0226.1},
-  url    =    {http://dx.doi.org/10.1175/MWR-D-15-0226.1}
+  OPTdoi    =    {10.1175/MWR-D-15-0226.1},
+  OPTurl    =    {http://dx.doi.org/10.1175/MWR-D-15-0226.1}
 }
 
 @article{CWPS17,
@@ -9603,8 +9619,8 @@ OPTUnique-ID = {{ISI:000314758000001}},
   OPTmonth = 	 {},
   OPTnote = 	 {},
   OPTannote = 	 {},
-  doi    =    {10.1016/j.jcp.2017.04.061},
-  url    =    {https://dx.doi.org/10.1016/j.jcp.2017.04.061}
+  OPTdoi    =    {10.1016/j.jcp.2017.04.061},
+  OPTurl    =    {https://dx.doi.org/10.1016/j.jcp.2017.04.061}
 }
 
 @Article{TN17,
@@ -9748,23 +9764,6 @@ OPTdoi = "http://dx.doi.org/10.1006/jcph.2000.6495",
 OPTurl = "http://www.sciencedirect.com/science/article/pii/S0021999100964957",
 }
 
-@Article{CRL+16,
-  author = 	 {Clark, P. and Roberts, N. and Lean, H. and Ballard, S.P. and Charlton-Perez, C.},
-  title = 	 {Convection-permitting models: a step-change in rainfall forecasting},
-  journal = 	 {Meteorological Applications},
-  year = 	 {2016},
-  OPTkey = 	 {},
-  OPTvolume = 	 {23},
-  OPTnumber = 	 {2},
-  OPTpages = 	 {165-181},
-  OPTmonth = 	 {},
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  OPTissn   =    {1469-8080},
-  OPTdoi    =    {10.1002/met.1538},
-  OPTurl    =    {}
-}
-
 @article{CBB+06,
     author = {Collins, W.D. and Bitz, C.M. and Blackmon, M.L. and Bonan, G.B. and Bretherton, C.S. and Carton, J.A. and Chang, P. and Doney, S.C. and Hack, J.J. and Henderson, T.B. and Kiehl, J.T. and Large, W.G. and McKenna, D.S. and Santer, B.D. and Smith, R.D.},
     title = {The Community Climate System Model Version 3 (CCSM3)},
@@ -9780,7 +9779,8 @@ OPTurl = "http://www.sciencedirect.com/science/article/pii/S0021999100964957",
 
 
 @article{TWV+18,
-author = {John Thuburn and Hilary Weller and Geoffrey K. Vallis and Robert J. Beare and Michael Whitall},
+  author  = {J. Thuburn and H. Weller and G. K. Vallis and R. J. Beare
+             and M. Whitall},
 title = {A Framework for Convection and Boundary Layer Parameterization Derived from Conditional Filtering},
 journal = jas,
 volume = {75},
@@ -10275,7 +10275,10 @@ OPTeprint = {https://doi.org/10.1175/BAMS-D-15-00103.1}
   volume = 	 {128},
   number = 	 {9},
   pages = 	 {3187-3199},
-  OPTmonth = 	 {Sept}
+  OPTmonth = 	 {Sept},
+OPTdoi = {10.1175/1520-0493(2000)128<3187:ANBLMS>2.0.CO;2},
+OPTURL = {https://doi.org/10.1175/1520-0493(2000)128<3187:ANBLMS>2.0.CO;2},
+OPTeprint = {https://doi.org/10.1175/1520-0493(2000)128<3187:ANBLMS>2.0.CO;2}
 }
 
 @Article{SvH06,
@@ -10348,7 +10351,8 @@ OPTnote = {D24211},
 }
 
 @article {HPB+14,
-author = {Holloway, C.E. and Petch, J.C. and Beare, R.J. and Bechtold, P. and Craig, G.C. and Derbyshire, S.H. and Donner, L.J. and Field, P.R. and Gray, S.L. and Marsham, J.H. and Parker, D.J. and Plant, R.S. and Roberts, N.M. and Schultz, D.M. and Stirling, A.J. and Woolnough, S.J.},
+OPTauthor = {Holloway, C.E. and Petch, J.C. and Beare, R.J. and Bechtold, P. and Craig, G.C. and Derbyshire, S.H. and Donner, L.J. and Field, P.R. and Gray, S.L. and Marsham, J.H. and Parker, D.J. and Plant, R.S. and Roberts, N.M. and Schultz, D.M. and Stirling, A.J. and Woolnough, S.J.},
+author = {Holloway, C.E. and Co-authors},
 year = {2014},
 title = {Understanding and representing atmospheric convection across scales: recommendations from the meeting held at {Dartington Hall, Devon, UK, 28-30 January 2013}},
 journal = asl,
@@ -10358,7 +10362,7 @@ OPTpublisher = {John Wiley & Sons, Ltd},
 OPTissn = {1530-261X},
 OPTurl = {http://dx.doi.org/10.1002/asl2.508},
 OPTdoi = {10.1002/asl2.508},
-pages = {348--353},
+pages = {348-353},
 OPTkeywords = {convective parameterization, UK weather and climate modelling, parameterization development, next-generation climate models, next-generation NWP},
 }
 
@@ -10371,22 +10375,6 @@ OPTkeywords = {convective parameterization, UK weather and climate modelling, pa
 	year = {2013},
 	OTPurl = {https://doi.org/10.1007/978-94-007-6692-1_4},
 	chapter = {Climate Processes: Clouds, Aerosols and Dynamics}
-}
-
-@Article{TV1x,
-  author = 	 {Thuburn, J. and Vallis, G.K.},
-  title = 	 {Properties of the Conditionally Filtered Equations: Conservation, Normal Modes, and Variational Formulation},
-  journal = 	 qjrms,
-  year = 	 {submitted},
-  OPTkey = 	 {},
-  OPTvolume = 	 {},
-  OPTnumber = 	 {},
-  OPTpages = 	 {},
-  OPTmonth = 	 {},
-  OPTnote = 	 {},
-  OPTannote = 	 {},
-  OPTdoi    =    {},
-  OPTurl    =    {}
 }
 
 @Article{HK84,
@@ -10483,7 +10471,7 @@ OPTkeywords = {convective parameterization, UK weather and climate modelling, pa
   author = 	 {Tan, Z. and Kaul, C.M. and Pressel, K.G. and Cohen, Y. and  Schneider, T. and Teixeira, J.},
   title = 	 {An Extended Eddy-Diffusivity Mass-Flux Scheme for Unified
 Representation of Subgrid-Scale Turbulence and Convection},
-  journal = 	 {JAMES},
+  journal =  james,
   year = 	 {2018},
   OPTkey = 	 {},
   volume = 	 {10},
@@ -10491,7 +10479,7 @@ Representation of Subgrid-Scale Turbulence and Convection},
   pages = 	 {770-800},
   OPTdoi = {10.1002/2017MS001162},
   OPTurl = {https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1002/2017MS001162},
-  OPTeprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2017MS001162},
+  OPTeprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2017MS001162}
 }
 
 @Book{Emm94,
@@ -10502,7 +10490,7 @@ Representation of Subgrid-Scale Turbulence and Convection},
 }
 
 @Article{WM19,
-  author = 	 {Weller, Hilary and McIntyre, W.},
+  author = 	 {Weller, H. and McIntyre, W.},
   title = 	 {Numerical Solution of the Conditionally Averaged Equations for Representing Net Mass Flux due to Convection},
   journal = 	 qjrms,
   year = 	 {2019},
@@ -10519,7 +10507,7 @@ Representation of Subgrid-Scale Turbulence and Convection},
     author={McIntyre, W.A. and Weller, H. and Holloway, C.E.},
     year={2019},
     journal=qjrms,
-    volume={sumbitted},
+    volume={in press},
     url={https://arxiv.org/abs/1902.04842},
 }
 
@@ -10721,12 +10709,13 @@ OPTeprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2013GL05799
   pages={325-336}
 }
 
+%  author={Cuxart, J. and Holtslag, A.A.M. and Beare, R.J. and Bazile, E.
+%  and Beljaars, A. and Cheng, A. and Conangla, L. and Ek, M. and Freedman, F.
+%  and Hamdi, R. and Kerstein, A. and Kitagawa, H. and Lenderink, G. and Lewellen, D.
+%  and Mailhot, J. and Mauritsen, T. and Perov, V. and Schayes, G. and Steeneveld, G-J.
+%  and Svensson, G. and Taylor, P. and Weng, W. and Wunsch, S. and Xu, K-M.},
 @Article{CHB+06,
-  author={Cuxart, J. and Holtslag, A.A.M. and Beare, R.J. and Bazile, E.
-  and Beljaars, A. and Cheng, A. and Conangla, L. and Ek, M. and Freedman, F.
-  and Hamdi, R. and Kerstein, A. and Kitagawa, H. and Lenderink, G. and Lewellen, D.
-  and Mailhot, J. and Mauritsen, T. and Perov, V. and Schayes, G. and Steeneveld, G-J.
-  and Svensson, G. and Taylor, P. and Weng, W. and Wunsch, S. and Xu, K-M.},
+  author={Cuxart, J. and Co-authors},
   title={Single-Column Model Intercomparison for a Stably Stratified Atmospheric Boundary Layer},
   journal=blm,
   year={2006},
@@ -10901,6 +10890,7 @@ OPTDOI = {10.5194/gmd-11-3409-2018}
 }
 
 @misc{comsol_fem,
+  year = {2017},
   author = {{COMSOL: multiphysics cyclopedia}},
   title = {The Finite Element Method ({FEM})},
   howpublished = {\url{https://uk.comsol.com/multiphysics/finite-element-method}},
@@ -11237,11 +11227,319 @@ OPTeprint = {https://arc.aiaa.org/doi/pdf/10.2514/6.1991-615}
   OPTurl = "http://www.sciencedirect.com/science/article/pii/S1463500302000392",
 }
 
+@article{TV18,
+author = {Thuburn, J. and Vallis, G.K.},
+title = {Properties of conditionally filtered equations: Conservation, normal modes, and variational formulation},
+journal = qjrms,
+year = {2018},
+volume = {144},
+number = {714},
+pages = {1555-1571},
+OPTdoi = {10.1002/qj.3307},
+OPTurl = {https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.3307},
+OPTeprint = {https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1002/qj.3307},
+}
+
+@article{BM01,
+   author = {B\'elair, S. and Mailhot, J.},
+   title = {Impact of Horizontal Resolution on the Numerical Simulation of a Midlatitude Squall Line: Implicit versus Explicit Condensation},
+   year = {2001},
+   journal = mwr,
+   volume = {129},
+   number = {9},
+   pages = {2362-2376},
+   OPTdoi = {10.1175/1520-0493(2001)129<2362:IOHROT>2.0.CO;2},
+   OPTURL = {https://doi.org/10.1175/1520-0493(2001)129<2362:IOHROT>2.0.CO;2},
+   OPTeprint = {https://doi.org/10.1175/1520-0493(2001)129<2362:IOHROT>2.0.CO;2}
+}
+
+@article {MS08,
+	author = {Majda, A.J. and Stechmann, S.N.},
+	title = {Stochastic models for convective momentum transport},
+	year = {2008},
+	journal = pnas,
+	volume = {105},
+	number = {46},
+	pages = {17614-17619},
+	OPTdoi = {10.1073/pnas.0806838105},
+	OPTpublisher = {National Academy of Sciences},
+	OPTissn = {0027-8424},
+	OPTURL = {https://www.pnas.org/content/105/46/17614},
+	OPTeprint = {https://www.pnas.org/content/105/46/17614.full.pdf}
+}
+
+@article{KR06,
+author = {Khairoutdinov, M. and Randall, D.},
+title = {High-Resolution Simulation of Shallow-to-Deep Convection Transition over Land},
+journal = jas,
+volume = {63},
+number = {12},
+pages = {3421-3436},
+year = {2006},
+OPTdoi = {10.1175/JAS3810.1},
+OPTURL = {https://doi.org/10.1175/JAS3810.1},
+OPTeprint = {https://doi.org/10.1175/JAS3810.1}
+}
+
+@Article{Lap06,
+author="Lapworth, A.",
+title="The Morning Transition of the Nocturnal Boundary Layer",
+journal=blm,
+year="2006",
+volume="119",
+number="3",
+pages="501-526",
+OPTissn="1573-1472",
+OPTdoi="10.1007/s10546-005-9046-0",
+OPTurl="https://doi.org/10.1007/s10546-005-9046-0"
+}
+
+@article{CBF+13,
+  author = {Clark, P.A. and Browning, K.A. and Forbes, R.M. and Morcrette, C.J. and Blyth, A.M. and Lean, H.W.},
+  title  = {The evolution of an {MCS over southern England}. Part 2: Model simulations and sensitivity to microphysics},
+  year   = {2013},
+  journal = qjrms,
+  volume = {140},
+  pages = 	 {458-479},
+}
+
+@article{CRL+16,
+  author = {Clark, P.A. and Roberts, N.M. and Lean, H.W. and Ballard, S.P. and Charlton-Perez, C.},
+  title  = {Convection-permitting models: A step-change in rainfall forecasting},
+  year   = {2016},
+  journal = {Meteorol. Apps.},
+  volume = {23},
+  pages = 	 {165-181}
+}
+
+@article{DBB+19,
+  author = {Dance, S.L. and Coauthors},
+  title  = {Improvements in forecasting intense rainfall: results from the {FRANC} (forecasting rainfall exploiting new data assimilation techniques and novel observations of convection) project},
+  year   = {2019},
+  journal = {Atmosphere},
+  volume = {13},
+  number = {3},
+  pages = 	 {125}
+}
+
+@article{FWC+19,
+  author = {Feist, M.M. and Westbrook, C.D. and Clark, P.A. and Stein, T.H.M. and Lean, H.W. and Stirling, A.J.},
+  title  = {Statistics of convective cloud turbulence from a comprehensive turbulence retrieval method for radar observations},
+  year   = {2019},
+  journal = qjrms,
+  volume = {145},
+  number = {719},
+  pages = 	 {727-744}
+}
+
+@article{LPGC13,
+  author = {Leoncini, G. and Plant, R.S. and Gray, S.L. and Clark, P.A.},
+  title  = {Ensemble forecasts of a flood-producing storm: comparison of the influence of model-state perturbations and parameter modifications},
+  year   = {2013},
+  journal = qjrms,
+  volume = {139},
+  number = {670},
+  pages = 	 {198-211},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{HPS+15,
+  author = {Hanley, K.E. and Plant, R.S. and Stein, T.H.M. and Hogan, R.J. and Nicol, J.C. and Lean, H.W. and Halliwell, C. and Clark, P.A.},
+  title  = {Mixing length controls on high resolution simulations of convective storms},
+  year   = {2015},
+  journal = qjrms,
+  volume = {141},
+  number = {686},
+  pages = 	 {272-284},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{HWSC19,
+  author = {Hanley, K. and Whitall, M. and Stirling, A. and Clark, P.},
+  title  = {Modifications to the representation of subgrid mixing in kilometre‐scale versions of the {Unified Model}},
+  year   = {2019},
+  journal = qjrms,
+  volume = {in press},
+  OPTnumber = {},
+  OPTpages = 	 {},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{NHS+15,
+  author = {Nicol, J. and Hogan, R. and Stein, T. and Hanley, K. and Clark, P. and Halliwell, C.E. and Lean, H.W. and Plant, B.},
+  title  = {Convective updraught evaluation in high-resolution {NWP simulations using single-Doppler radar measurements}},
+  year   = {2015},
+  journal = qjrms,
+  volume = {141},
+  number = {693},
+  pages = 	 {3177-3189},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{SHC+14,
+  author = {Stein, T. and Hogan, R.J. and Clark, P.A. and Halliwell C.E. and Hanley K.E. and Lean, H.W. and Nicol, J.C. and Plant, R.S.},
+  title  = {The {DYMECS} project: A statistical approach for the evaluation of convective storms in high-resolution {NWP} models},
+  year   = {2017},
+  journal = bams,
+  volume = {96},
+  number = {6},
+  pages = 	 {939-951},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+
+@article{SHH+14,
+  author = {Stein, T.H.M. and Hogan, R.J. and Hanley, K.E. and Nicol, J.C. and Lean, H.W. and Plant, R.S. and Clark, P.A. and Halliwell, C.E.},
+  title  = {The three-dimensional morphology of simulated and observed convective storms over southern {England}},
+  year   = {2014},
+  journal = mwr,
+  volume = {142},
+  OPTnumber = {},
+  pages = 	 {3264-3283},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+
+@article{LFL+16,
+  author = {Leon, D.C and Coauthors},
+  title  = {{The Convective Precipitation Experiment (COPE): investigating the origins of heavy precipitation in the southwestern UK}},
+  year   = {2016},
+  journal = bams,
+  volume = {97},
+  number = {6},
+  pages = 	 {1003-1020},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{FM06,
+author = {Frame, J. and Markowski, P.},
+title = {The Interaction of Simulated Squall Lines with Idealized Mountain Ridges},
+journal = mwr,
+volume = {134},
+number = {7},
+pages = {1919-1941},
+year = {2006},
+OPTdoi = {10.1175/MWR3157.1},
+OPTURL = {https://doi.org/10.1175/MWR3157.1},
+OPTeprint = {https://doi.org/10.1175/MWR3157.1}
+}
+
+@article{WKR88,
+author = {Weisman, M.L. and Klemp, J.B. and Rotunno, R.},
+title = {Structure and Evolution of Numerically Simulated Squall Lines},
+journal = jas,
+volume = {45},
+number = {14},
+pages = {1990-2013},
+year = {1988},
+OPTdoi = {10.1175/1520-0469(1988)045<1990:SAEONS>2.0.CO;2},
+OPTURL = {https://doi.org/10.1175/1520-0469(1988)045<1990:SAEONS>2.0.CO;2},
+OPTeprint = {https://doi.org/10.1175/1520-0469(1988)045<1990:SAEONS>2.0.CO;2}
+}
+
+@Article{BBE+08,
+author="Brown, A.R.
+and Beare, R.J.
+and Edwards, J.M.
+and Lock, A.P.
+and Keogh, S.J.
+and Milton, S.F.
+and Walters, D.N.",
+title="Upgrades to the Boundary-Layer Scheme in the {Met Office} Numerical Weather Prediction Model",
+journal="blm",
+year="2008",
+volume="128",
+number="1",
+pages="117-132",
+OPTissn="1573-1472",
+OPTdoi="10.1007/s10546-008-9275-0",
+OPTurl="https://doi.org/10.1007/s10546-008-9275-0"
+}
+
+@article{BC19,
+  author = {Beare, R.J. and Cullen, M.J.},
+  title  = {A Simple Model of a Balanced Boundary Layer Coupled to a Large-Scale Convective Circulation},
+  year   = {2019},
+  journal = jas,
+  volume = {76},
+  OPTnumber = {},
+  pages = 	 {837-849},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {https://doi.org/10.1175/JAS-D-18-0189.1},
+}
+
 @article{WMSC1x,
   author = {Weller, H. and McIntyre, W. and Shipley, D. and Clark, P.},
-  title  = {Multi-fluids for Representing Sub-filter-scale Buoyant Convection},
+  title  = {Multi-fluids for Representing Sub-filter-scale Convection},
   year   = {2019},
-  journal = {in prep.},
+  journal = james,
+  volume = {submitted},
+  OPTnumber = {},
+  OPTpages =  {},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {}
+}
+
+@article{FS08,
+  author = {Ferracina, L. and Spijker, M.N.},
+  title  = {Strong stability of singly-diagonally-implicit {Runge-Kutta} methods},
+  year   = {2008},
+  journal = anm,
+  volume = {58},
+  OPTnumber = {},
+  pages = 	 {1675-1686},
+  OPTissn = {},
+  OPTdoi = {},
+  OPTurl = {},
+}
+
+@article{GLC02,
+author = {Golaz, J-C and Larson, V.E. and Cotton, W.R.},
+  title = {A {PDF}-Based Model for Boundary Layer Clouds. Part {I}: Method and Model Description},
+  year = {2002},
+  journal = jas,
+  volume = {59},
+  number = {24},
+  pages = {3540-3551},
+  OPTdoi = {10.1175/1520-0469(2002)059<3540:APBMFB>2.0.CO;2},
+  OPTURL = { https://doi.org/10.1175/1520-0469(2002)059<3540:APBMFB>2.0.CO;2},
+  OPTeprint = {https://doi.org/10.1175/1520-0469(2002)059<3540:APBMFB>2.0.CO;2}
+}
+
+@article{LG05,
+  author = {Larson, V. and Golaz, J-C},
+  title  = {Using Probability Density Functions to Derive Consistent Closure Relationships among Higher-Order Moments},
+  year   = {2005},
+  journal = mwr,
+  volume = {113},
+  OPTnumber = {},
+  pages = 	 {1023-1042},
+  OPTissn = {},
+  OPTdoi = {10.1175/MWR2902.1},
+  OPTurl = {},
+}
+
+@article{IGG18,
+  author = {Isherwood, L. and Grant, Z.J. and Gottlieb, S.},
+  title  = {Strong Stability Preserving Integrating Factor {Runge-Kutta} Methods},
+  year   = {2018},
+  journal = {?},
   OPTvolume = {},
   OPTnumber = {},
   OPTpages = 	 {},
@@ -11250,238 +11548,97 @@ OPTeprint = {https://arc.aiaa.org/doi/pdf/10.2514/6.1991-615}
   OPTurl = {},
 }
 
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
+@article{KMG09,
+author = "Ketcheson, D.I. and Macdonald, C.B. and Gottlieb, S.",
+title = "Optimal implicit strong stability preserving {Runge-Kutta} methods",
+year = "2009",
+journal = anm,
+volume = "59",
+number = "2",
+pages = "373-392",
+OPTissn = "0168-9274",
+OPTdoi = "https://doi.org/10.1016/j.apnum.2008.03.034",
+OPTurl = "http://www.sciencedirect.com/science/article/pii/S0168927408000688",
+}
+
+@article{Min04,
+author = "Minion, M.L.",
+year = "2004",
+title = "Semi-implicit projection methods for incompressible flow based on spectral deferred corrections",
+journal = anm,
+volume = "48",
+number = "3",
+pages = "369-387",
+OPTnote = "Workshop on Innovative Time Integrators for PDEs",
+OPTissn = "0168-9274",
+OPTdoi = "https://doi.org/10.1016/j.apnum.2003.11.005",
+OPTurl = "http://www.sciencedirect.com/science/article/pii/S0168927403001867"
+}
+
+
+@article{VSR+19,
+author = {Vogl, C.J. and Steyer, A. and Reynolds, D.R. and Ullrich, P.A. and Woodward, C.S.},
+title = {Evaluation of Implicit-Explicit Additive {Runge-Kutta} Integrators for the {HOMME-NH} Dynamical Core},
+year = {2019},
+journal = james,
+volume = {11},
+number = {12},
+pages = {4228-4244},
+OPTdoi = {10.1029/2019MS001700},
+OPTurl = {https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2019MS001700},
+OPTeprint = {https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2019MS001700},
+}
+
+@article{SM98,
+  author = {Smolarkiewicz, P.K. and Margolin, L.G.},
+  title  = {{MPDATA}: A Finite-Difference Solver for Geophysical Flows},
+  year   = {1998},
+  journal = jcp,
+  volume = {140},
   OPTnumber = {},
-  OPTpages = 	 {},
+  pages = 	 {459-480},
   OPTissn = {},
   OPTdoi = {},
   OPTurl = {},
 }
 
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
+@article{Smol83,
+  author = {Smolarkiewicz, P.K.},
+  title = {A Simple Positive Definite Advection Scheme with Small Implicit Diffusion},
+  journal = mwr,
+  volume = {111},
+  number = {3},
+  pages = {479-486},
+  year = {1983},
+  OPTdoi = {10.1175/1520-0493(1983)111<0479:ASPDAS>2.0.CO;2},
+  OPTURL = {https://doi.org/10.1175/1520-0493(1983)111<0479:ASPDAS>2.0.CO;2},
+  OPTeprint = {https://doi.org/10.1175/1520-0493(1983)111<0479:ASPDAS>2.0.CO;2}
+}
+
+@article{LS74,
+  author = {Launder, B.E. and Spalding, D.B.},
+  title  = {The numerical computation of turbulent flows},
+  year   = {1974},
+  journal = {Computer Methods in Applied Mechanics and Engineering},
+  volume = {3},
+  number = {2},
+  pages = 	 {269-289},
   OPTissn = {},
-  OPTdoi = {},
+  OPTdoi = {10.1016/0045-7825(74)90029-2},
   OPTurl = {},
 }
 
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
-}
-
-article{,
-  author = {},
-  title  = {},
-  year   = {},
-  journal = ,
-  OPTvolume = {},
-  OPTnumber = {},
-  OPTpages = 	 {},
-  OPTissn = {},
-  OPTdoi = {},
-  OPTurl = {},
+@article{ZWX20,
+author = {Zhang, C. and Wang, Y. and Xue, M.},
+title = {Evaluation of an {$E–\varepsilon$} and Three Other Boundary Layer Parameterization Schemes in the {WRF} Model over the {Southeast Pacific and the Southern Great Plains}},
+  journal = mwr,
+  volume = {148},
+  number = {3},
+  pages = {1121-1145},
+  year = {2020},
+  OPTdoi = {10.1175/MWR-D-19-0084.1},
+  OPTURL = {https://doi.org/10.1175/MWR-D-19-0084.1},
+  OPTeprint = {https://doi.org/10.1175/MWR-D-19-0084.1}
 }
 
 article{,
