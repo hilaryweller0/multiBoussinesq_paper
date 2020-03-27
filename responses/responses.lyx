@@ -291,7 +291,27 @@ i
 \begin_inset space \space{}
 \end_inset
 
- Response
+ The transfers between fluids have properties 
+\begin_inset Formula $\mathbf{u}_{ij}^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+.
+ This is hopefully clearer now as the multi-fluid equations are derived
+ in flux form and all variables are properly introduced.
+ There is lots more work to do in finding parameterisations for 
+\begin_inset Formula $\mathbf{u}_{ij}^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Labeling
@@ -335,7 +355,21 @@ key "TWV+18"
 \begin_inset space \space{}
 \end_inset
 
- Response
+ This was not clearly explained.
+ The assumption is now clearly stated and it is simply that 
+\begin_inset Formula $\overline{I_{i}\nabla P}=\sigma_{i}\nabla P_{i}$
+\end_inset
+
+.
+ This defines 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ (although it is not the parameterisation for 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Labeling
@@ -348,7 +382,7 @@ Eqns
 \begin_inset Formula $P$
 \end_inset
 
- the area averaged non hydrostatic pressure? This pressure should be zero
+ the area averaged non-hydrostatic pressure? This pressure should be zero
  if the area mean buoyancy and velocity are zero? (e.g.
  Eq.
  13, also it was neglected in line 128).
@@ -361,7 +395,18 @@ Eqns
 \begin_inset space \space{}
 \end_inset
 
- Response
+ Agreed, 
+\begin_inset Formula $P$
+\end_inset
+
+ is zero if the area mean and fluid mean buoyancy and velocity are both
+ zero.
+ However they are not both zero.
+ They are zero in the scale analysis that you mention in section 2.5 but
+ otherwise not zero.
+ Hopefully this is now clearer as the variables are defined better in section
+ 2.
+ 
 \end_layout
 
 \begin_layout Labeling
@@ -385,7 +430,21 @@ Before
 \begin_inset space \space{}
 \end_inset
 
- Response
+ The Poisson equation is not an additional equation, it is the combination
+ of the momentum equation and the divergence free constrain.
+ It is only written as a Poisson equation when describing the numerical
+ method.
+ This is the usual approach when using a projection method or when solving
+ a Helmholtz equation for pressure (ie the Poisson or Helmholtz equation
+ are written down in semi-discretised form, not continuous form).
+ A reference to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SKW14"
+
+\end_inset
+
+ is given to justify this.
 \end_layout
 
 \begin_layout Labeling
@@ -409,7 +468,9 @@ Line
 \begin_inset space \space{}
 \end_inset
 
- Response
+ It is more accurate to say that the pressure anomalies provide a negative
+ feedback on divergence.
+ The second paragraph of 2.1 has been re-written to explain this better.
 \end_layout
 
 \begin_layout Labeling
@@ -452,7 +513,7 @@ Table
 \begin_inset space \space{}
 \end_inset
 
- Response
+ This should now be clear in the new section 2.
 \end_layout
 
 \begin_layout Labeling
@@ -473,7 +534,24 @@ Line
 \begin_inset space \space{}
 \end_inset
 
- Response
+ These equations are the 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "BN86"
+
+\end_inset
+
+ model as described by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SA99"
+
+\end_inset
+
+ who did not incorporate transfers.
+ We are not using this model, we are inspired by it and discuss how it relates
+ to our model.
+ This is hopefully now clearer in the new section 2.1.1.
 \end_layout
 
 \begin_layout Labeling
@@ -530,6 +608,24 @@ In line 104 you wrote “In our Boussinesq system
 \end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ This should now be clarified in section 2.1.1.
+ In particular the equations that we quote are actually from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SA99"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Line
 \begin_inset space \space{}
 \end_inset
@@ -539,6 +635,36 @@ Line
 \end_inset
 
 ?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Rather than describing 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ as a 
+\begin_inset Quotes eld
+\end_inset
+
+free coefficient
+\begin_inset Quotes erd
+\end_inset
+
+ it is now described as a 
+\begin_inset Quotes eld
+\end_inset
+
+compressibility
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -553,6 +679,21 @@ ng terms.
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Done.
+ 
+\begin_inset Formula $S_{01}=w_{1}\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Line
 \begin_inset space \space{}
 \end_inset
@@ -561,6 +702,16 @@ Line
  detrainment that are both positive definite and one takes the subdomain
  fluid out while the other brings the neighboring subdomain fluid in, it
  is worth explaining that to give a broader context.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Thanks, yes, done.
 \end_layout
 
 \begin_layout Labeling
@@ -1358,9 +1509,7 @@ co-located fluid
 \noun off
 \color none
 What does co-located mean? Are these viewed as external terminology) on
- small scales,
-which are co-located on a
-larger (
+ small scales,which are co-located on alarger (
 \begin_inset Quotes eld
 \end_inset
 
