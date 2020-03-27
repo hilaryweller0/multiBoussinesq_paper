@@ -117,7 +117,7 @@ Hilary Weller, William McIntyre, Dan Shipley and Peter Clark
 \end_layout
 
 \begin_layout Quote
-Author responses and additional text in the manuscript are in blue.
+Responses are in blue.
 \end_layout
 
 \begin_layout Section*
@@ -161,7 +161,7 @@ Response
 \end_layout
 
 \begin_layout Subsection*
-Specific Comments: 
+Line by line Comments: 
 \end_layout
 
 \begin_layout Labeling
@@ -184,7 +184,8 @@ by
 \begin_inset space \space{}
 \end_inset
 
- Response
+ Thanks.
+ Done
 \end_layout
 
 \begin_layout Labeling
@@ -208,7 +209,2425 @@ Line
 \begin_inset space \space{}
 \end_inset
 
+ Changed to 
+\begin_inset Quotes eld
+\end_inset
+
+only solve the equations in a single column without coupling to the continuity
+ equation of a dynamical core
+\begin_inset Quotes erd
+\end_inset
+
+.
+ As far as I am aware 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqn
+\begin_inset space \space{}
+\end_inset
+
+(1) I believe that the density should be included as the term.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ A derivation of the multi-fluid Boussinesq equations is now included at
+ the beginning of section 2 and density does not appear.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqns
+\begin_inset space \space{}
+\end_inset
+
+(2)-(3) The definition of your material time derivative in table 1 uses
+ the same velocity, 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+, as in your that is used in the relabelling (i.e.
+ entrainment) is used for advection? As you can see in Equations (4.7) and
+ Yano (2014) (and similarly in Appendix A in Tan at el., 2018), the velocity
+ the enters the relabeling terms is the velocity relative to the motion
+ of the subdomain / fluid 
+\begin_inset Quotes eld
+\end_inset
+
+i
+\begin_inset Quotes erd
+\end_inset
+
+ as the flux across the boundary as a direct result of an application of
+ the Reynolds transport theorem.
+ The velocity in the relabeling term should be the velocity of the interface,
+ 
+\begin_inset Formula $\mathbf{V}$
+\end_inset
+
+, which you mention in line 102.
+ Please explain why do you use 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ and did you try to use 
+\begin_inset Formula $\mathbf{V}$
+\end_inset
+
+ instead?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
  Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqns
+\begin_inset space \space{}
+\end_inset
+
+(2) There is an assumption that is hard to pin down and should stated explicitly.
+ This equation is the filtered version of the momentum equation using a
+ filter , 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ , as in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TWV+18"
+
+\end_inset
+
+.
+ This implies that 
+\begin_inset Formula $I_{i}\nabla P=\nabla I_{i}P=\nabla\sigma_{i}P_{i}$
+\end_inset
+
+ with a detailed treatment of this term in Eq.
+ (30) there.
+ How is your formulation refers to Thuburn et al’s Eq.
+ (30)? In your equation (2) you have 
+\begin_inset Formula $\nabla P_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqns
+\begin_inset space \space{}
+\end_inset
+
+(6) isn’t 
+\begin_inset Formula $P$
+\end_inset
+
+ the area averaged non hydrostatic pressure? This pressure should be zero
+ if the area mean buoyancy and velocity are zero? (e.g.
+ Eq.
+ 13, also it was neglected in line 128).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Before
+\begin_inset space \space{}
+\end_inset
+
+2.1 I suggest adding here the continuous form of the Poisson equation that
+ later appears in your equation (32).
+ Thus Eq.
+ (1)-(5) will appear more like a closed system (up to closures) and the
+ reader would have an easier time understanding where eq.
+ (32) came from.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+91 I find this paragraph hard to understand and I expect that so will your
+ readers.
+ Let me ask some questions that might help clarify what you meant: Would
+ it be correct to say that the pressure anomalies counterbalance the convergence
+ (rather than remove it)?; Is it correct to say that pressure anomalies
+ are caused by mass convergence and counterbalance velocity convergence?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Table
+\begin_inset space \space{}
+\end_inset
+
+1 how is 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+ differs from 
+\begin_inset Formula $b$
+\end_inset
+
+? Would it be correct to replace 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $\rho^{\prime}$
+\end_inset
+
+ in your formulation for 
+\begin_inset Formula $b$
+\end_inset
+
+ and get 
+\begin_inset Formula $b_{i}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+101 please DO NOT ignore the transfer terms in equations (7) and (8) as
+ it would make it harder for the readers to relate this important section
+ with the rest of this work.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Response
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqn
+\begin_inset space \space{}
+\end_inset
+
+(7) requires further clarifications:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Please add 
+\begin_inset Formula $\mu$
+\end_inset
+
+ to Table 1 (with units).
+\end_layout
+
+\begin_layout Enumerate
+Is equation (7) a direct adaptation of equation (24) in Baer and Nunziato
+ (1986) or are there further assumptions involved?
+\end_layout
+
+\begin_layout Enumerate
+In Baer and Nunziato’s (24) the RHS terms are general sources of the thermodynam
+ic constituents, how and where are they related to the pressure difference
+ as in your (7)?
+\end_layout
+
+\begin_layout Enumerate
+Shouldn’t the velocity of the interface, 
+\begin_inset Formula $\mathbf{V}$
+\end_inset
+
+, be related to the external sources into this fluid (your relabeling term)
+ with some density ratio (see the equation about 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+above).
+\end_layout
+
+\begin_layout Enumerate
+In line 104 you wrote “In our Boussinesq system 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ does not appear in the continuity equation”.
+ Do you apply this to equation (8)?
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+108 Can you provide a physical interpretation for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+111 please write how the fractional entrainment rate is related to the relabelli
+ng terms.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+116 this is directly related to the typical formulation of entrainment and
+ detrainment that are both positive definite and one takes the subdomain
+ fluid out while the other brings the neighboring subdomain fluid in, it
+ is worth explaining that to give a broader context.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+126 i.e.
+ the area mean buoyancy is zero?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+208 “reduces until there is no movement at all for a single column” this
+ is a rather confusing terminology as a single column typically refers to
+ the type of model rather than the fact that only one fluid is at play,
+ I would recommend rephrasing.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space \space{}
+\end_inset
+
+ Some better terminology will allow tribe readers to distinguish between
+ the resolved (more than 1D) simulations and the 1D multi-fluid simulations:
+ Is it correct that figure 1 and 2 are results (3D) and mean profiles, form
+ a high resolution simulation while figures 3,4 are results from a two fluid
+ model discussed here in a single column setting (single column of the GCM).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Fig
+\begin_inset space \space{}
+\end_inset
+
+2 why is 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ constant for #columns<200? Wouldn’t 2 columns be enough to have a notable
+ variability in the area fraction.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Figs
+\begin_inset space \space{}
+\end_inset
+
+3-6 there is a graphical problem with parameter list between panels covering
+ the axis labels.
+ I suggest using panel numbers and putting the parameter values in the caption,
+ or in text boxes inside the panels
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Fig
+\begin_inset space \space{}
+\end_inset
+
+6 I would ask to consider merging the various raws into a single raw with
+ different line styles/colors? This will allow a clear compassion and also
+ save space.
+ I leave it to the authors to choose whether to take this suggestion.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Fig
+\begin_inset space \space{}
+\end_inset
+
+6 is the horizontal kink in the 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ plots an actual value? What is the reason for this discontinuity and why
+ isn’t it evident in the 
+\begin_inset Formula $σ_{1}S_{10}$
+\end_inset
+
+ curve next to it?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+358 zero grid divergence is an assumption, not a result of the Boussinesq
+ model.
+ And it should be relaxed towards the future steps outlined in L386.
+\end_layout
+
+\begin_layout Section*
+Responses to Reviewer 2
+\end_layout
+
+\begin_layout Standard
+This paper offers a jarringly written, reader-unfriendly tour of what is
+ a potentially very interesting re-conceptualization of (if not transformative
+ breakthrough in) convection.
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+Response
+\end_layout
+
+\begin_layout Standard
+Mainly it just needs a rewrite.
+ Besides the typos and grammatical errors (surprising from UK authors),
+ the flow is poor and cues to the logical thread are scattered.
+ First person plural is used far too much, and varies in meaning from we-the-aut
+hors to we-the -author-and-reader.
+ Far too often it appears to be the former, making this read more like a
+ team reporting on its activities than a paper explaining the scientific
+ results of those activities.
+ I used the hypothesis system to leave lots of detailed examples of my various
+ reader recoils and doubletakes and confusions that in some cases still
+ remain unclear to me.
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+Response
+\end_layout
+
+\begin_layout Standard
+Much sooner the paper needs to state that it defines the "multi-fluid" as
+ two categories of fluid defined by w>0 and w<0.
+ Yes I know the equation set is in principle more general than that, but
+ the juxtaposition of that generality with words like "plume" and "sub-grid-scal
+e" left me lost.
+ Aren't multiple fluids a form of sub-grid-scale variability? And meant
+ to represent that as a parameterization? But then there are also subgrid-variat
+ions not represented? Or implied? In one are all of the multi-fluids?
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+Response
+\end_layout
+
+\begin_layout Standard
+The math seems clear enough (not that I scrutinized every equation).
+ The numerics are reported with taut efficiency.
+ But the results are reported with similarly taut efficiency, i.e.
+ without context and interpretation, making this a hard and unsatisfying
+ read.
+ By the time success is being declared in the conclusions section, I found
+ myself begrudging that, if only out of resentment for the slog.
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+Response
+\end_layout
+
+\begin_layout Standard
+In short, this needs a rewrite by someone who cares about the reader.
+ But the work seems fine and worthy of publication.
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+Response
+\end_layout
+
+\begin_layout Subsection*
+Responses to Annotated pdf
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="57" columns="3">
+<features islongtable="true" longtabularalignment="left">
+<column alignment="left" valignment="top" width="9text%">
+<column alignment="left" valignment="top" width="25text%">
+<column alignment="left" valignment="top" width="65text%">
+<row endhead="true">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Line
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Context
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Comment
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+non-equilibrium
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+is this a noun? sounds jarring.
+ Does the phrase 
+\begin_inset Quotes eld
+\end_inset
+
+mass transport by
+\begin_inset Quotes erd
+\end_inset
+
+ apply to all 3 things in this list, or just the first? inauspicious for
+ the readability of this paper.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Response
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+convecting and non-convecting fluids
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+huh? defined how? later it seems to mean ascending and non-ascending.
+ specificity please, this is subtle material and attempting to use the aspiratio
+nal or even inspiriational language of some hoped-for future generality
+ gets in the way of clearly explaining what *this study* actually contains.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Response
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+under resolved
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hyphenate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Response
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+27
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rising and falling fluids
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+is this identical to 
+\begin_inset Quotes eld
+\end_inset
+
+convecting and non-convecting
+\begin_inset Quotes erd
+\end_inset
+
+ above?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+43
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+weakest
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+most uncertain?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+the grey zone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+of grid lengths
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+segments
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Multi-fluids promises
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+grammar? number?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+at
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multi-fluids requires
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+grammar? number?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+65
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Neither of these stabilisation techniques are acceptable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+? can more be said?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+and
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+why is this a sentence with "and" in the middle?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+77
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+;
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+because
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+co-located fluid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+What does co-located mean? Are these viewed as external terminology) on
+ small scales,
+which are co-located on a
+larger (
+\begin_inset Quotes eld
+\end_inset
+
+grid
+\begin_inset Quotes erd
+\end_inset
+
+) scale?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+87
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+experiments of convective
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+grammar (article or number)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+would spoil
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+spoil
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+91-95
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+divergence in a fluid with vanishing volume fraction.
+ It is mass convergence rather than velocity convergence that leads to pressure
+ anomalies that remove the convergence.
+ Therefore if the volume (or mass) fraction of fluid is vanishingly low
+ then convergence cannot lead to an anomaly in the total pressure
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+too terse for understanding
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+above eqn 6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+parameterised
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+what does parameterised mean? what does that adjective add to the sentence?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+phase
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+is multi-phase the same as multi-fluid?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+110
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+We consider dry air without turbulence so use the dynamic entrainment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Very terse.
+ Does 
+\begin_inset Quotes eld
+\end_inset
+
+so use
+\begin_inset Quotes erd
+\end_inset
+
+ mean 
+\begin_inset Quotes eld
+\end_inset
+
+*and so therefore* we use
+\begin_inset Quotes erd
+\end_inset
+
+? Entrainment and detrainment from what entity? Some plume is envisioned?
+ I cannot guess.
+ This topic clause of a topic sentence of a section lead starts with the
+ royal "We".
+ Must it? Many other sentences and even paragraphs also lead off with persons
+ (a citation) rather than with concepts, ideas, reasonings.
+ Students often write this way.
+ It is not reader friendly.
+ What care I the reader for WHO made or is making such and such an assumption?
+ Explain the logic, not the who, and cite as needed on the trailing edge
+ of the sentence, paragraph, etc.
+ Does this reasoning apply to the whole multi-fluid method, or just this
+ paper's case (ascending vs.
+ descending air), or just this section, or what? The paper is starting to
+ read like an expert deep in the weeds mumbling to self.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+below eqn 10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+air in one fluid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+awkward sounding phrase.
+ Would multi-category be clearer than multi-fluid?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+115
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+In fact, themost buoyant air should be transferred from fluid 0 to fluid
+ 1 and vice versa, and the air withleast downward momentum should be transferred
+ from 0 to 1 and vice versa.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Huh? "In fact"? Is this an intuitive assumption based on a particular definition
+ of 0 and 1 fluids? Most buoyant, or just above-average? Least momentum,
+ or just less than average? Why buoyancy and momentum?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+115
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+should depend on the modelling of sub-grid-scale variability
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+properties of nature **must not** "depend on modelling"!!
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+115
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+based on the sign of 
+\begin_inset Formula $w$
+\end_inset
+
+ so that 
+\begin_inset Formula $w<0$
+\end_inset
+
+ air is in fluid 0 and 
+\begin_inset Formula $w>0$
+\end_inset
+
+ air in fluid 1.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THIS NEEDS TO HAVE BEEN MENTIONED SOONER
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+130
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+This
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+This
+\begin_inset Quotes erd
+\end_inset
+
+ means all 8 assumptions? Is it obvious? Is a singular pronoun appropriate?
+ In number 7, why not call them 0 and 1 as above rather than i and j?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+before eqn 18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+so we need
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+is this meant to be obvious? is it unique? what is the status of this argument
+ and its result?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+175
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Two test cases are developed to tune parameters and to validate the use
+ of multi- fluid equations to represent dry, two-dimensional, sub-grid-
+ scale convection
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+This sentence belongs in the Abstract perhaps, or at least the Introduction
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+226
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+looses
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+loses
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+230
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+, the
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fig 4 caption
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Results of the rising bubble at 
+\begin_inset Formula $t=1000$
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+s.
+ Solid lines are the multi-fluid, single column solutions of the rising
+ bubble.
+ Dashed lines are the single fluid, resolved solutions
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Caption is identical to Fig.
+ 3.
+ Very reader unfriendly! Why not clarify 
+\begin_inset Quotes eld
+\end_inset
+
+As in Fig.
+ 3, but...
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+266
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+using c
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+"using"? You mean "compared to the reference solution of"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+268
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+if
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+275
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+which should not occur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+should
+\begin_inset Quotes erd
+\end_inset
+
+ ? does it mean 
+\begin_inset Quotes eld
+\end_inset
+
+not present in the reference simulation
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+277
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+should depend on knowledge of sub-grid-scale
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seems like a serious shortcoming, needing to know the solution in order
+ to set up the problem...
+ is it a show stopper? Why not?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+280
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+demonstrated the value of using
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Not clear it is the "value of using" -- maybe the "plausible utility of"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+282
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Transfers between the fluids have been successfully modelled
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Can this be expressed as a lesson rather than a declaration of "success"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+283
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Entrainment calculated as the reciprocal of plume width was not successful.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Is that a good thing, since one doesn't know plume widths a priori anyway?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+287
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+here are clearly discrepancies between the single fluid resolved rising
+ bubble and the two fluid single column rising bubble but we do not want
+ to over fit the multi-fluid model to one, dry, two dimensional test case.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apparently this is a segue into the next section, but this paragraph was
+ a rather flat summary that did not exactly point the reader forward.
+ Could it me made more discussion-y rather than merely repeating the reporting
+ of efforts and experiments?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+317
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The rising and falling volume fractions, 
+\begin_inset Formula $\sigma_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+, remain close to 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ throughout the depth.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+But wait, 
+\begin_inset Quotes eld
+\end_inset
+
+this test case is designed to have strong updraughts in narrow plumes and
+ weak descent elsewhere
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Oh the text goes on to explain.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+350
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+at coarse horizontal resolution
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+is this phrase placed correctly within the sentence? I can't parse it.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+351
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+validate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+evaluate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+355
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+to create rising and falling fluids
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+to define
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+365
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+must clearly be
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+must
+\begin_inset Quotes erd
+\end_inset
+
+? You mean it is a goal, a requirement, or an evident result?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+368
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+test
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Is first person and present tense appropriate here?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+370
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+are
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+grammar (number): a set is
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+372
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sub-grid-scale
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+what is this "grid"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+373
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+we expect that the most buoyant fluid will be transferred to the rising
+ fluid or the fluid with the largest vertical velocity will be transferred
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+THE MOST as an extremal principle? Or just above- average? And who is the
+ we that expects?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+378
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+the fluid takes its mean buoyancy with it.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+the fluids take their mean buoyancy with them across the bounding surface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+381
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+if we assume
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+assuming...
+ can lead to unbounded buoyancy (no need for first person here)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+382
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+we transfer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+way too first person
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+383
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+would rely on more information the
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+grammar
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+390
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+stable environment to the buoyant plume
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+are plumes now defined as buoyant rather than as ascending? This seems to
+ be zooming out to vague generalizations rapidly, abruptly even.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

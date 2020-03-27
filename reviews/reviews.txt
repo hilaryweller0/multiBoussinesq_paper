@@ -1,0 +1,34 @@
+Reviewer #1 Evaluations:
+Recommendation: Return to author for minor revisions
+Significant: Yes, the science is at the forefront of the discipline.
+Supported: Yes
+Referencing: Mostly yes, but some additions are necessary.
+Quality: Yes, it is well-written, logically organized, and the figures and tables are appropriate.
+Data: Yes
+Accurate Key Points: Yes
+
+Reviewer #1 (Formal Review for Authors (shown to authors)):
+
+The authors present a the multi-fluid approach for convective parametrization and possibly for next generation of dynamical cores in climate and weather models. This work follows on previous works in the field and add novel closures for entrainment and pressure. I believe that this work should published in JAMES after some revision. My list minor revision, suggestions and requests for clarifications are listed the attached document.
+
+
+Reviewer #2 Evaluations:
+Recommendation: Return to author for major revisions
+Significant: The paper has some unclear or incomplete reasoning but will likely be a significant contribution with revision and clarification.
+Supported: Mostly yes, but some further information and/or data are needed.
+Referencing: Yes
+Quality: The organization of the manuscript and presentation of the data and results need some improvement.
+Data: Please Select
+Accurate Key Points: Please Select
+
+Reviewer #2 (Formal Review for Authors (shown to authors)):
+
+This paper offers a jarringly written, reader-unfriendly tour of what is a potentially very interesting re-conceptualization of (if not transformative breakthrough in) convection.
+
+Mainly it just needs a rewrite. Besides the typos and grammatical errors (surprising from UK authors), the flow is poor and cues to the logical thread are scattered. First person plural is used far too much, and varies in meaning from we-the-authors to we-the -author-and-reader. Far too often it appears to be the former, making this read more like a team reporting on its activities than a paper explaining the scientific results of those activities. I used the hypothesis system to leave lots of detailed examples of my various reader recoils and doubletakes and confusions that in some cases still remain unclear to me.
+
+Much sooner the paper needs to state that it defines the "multi-fluid" as two categories of fluid defined by w>0 and w<0. Yes I know the equation set is in principle more general than that, but the juxtaposition of that generality with words like "plume" and "sub-grid-scale" left me lost. Aren't multiple fluids a form of sub-grid-scale variability? And meant to represent that as a parameterization? But then there are also subgrid-variations not represented? Or implied? In one are all of the multi-fluids?
+
+The math seems clear enough (not that I scrutinized every equation). The numerics are reported with taut efficiency. But the results are reported with similarly taut efficiency, i.e. without context and interpretation, making this a hard and unsatisfying read. By the time success is being declared in the conclusions section, I found myself begrudging that, if only out of resentment for the slog.
+
+In short, this needs a rewrite by someone who cares about the reader. But the work seems fine and worthy of publication.
