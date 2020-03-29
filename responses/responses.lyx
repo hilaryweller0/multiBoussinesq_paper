@@ -726,6 +726,49 @@ Line
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Note that the list of assumptions in section 2.5 are only for the scale
+ analysis, not for the rest of the paper.
+ Not sure what area you are referring to.
+ The average over both fluids is zero for this analysis.
+ This is now clarified by inserting 
+\begin_inset Quotes eld
+\end_inset
+
+in this analysis
+\begin_inset Quotes erd
+\end_inset
+
+ before the list of assumptions and by inserting 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+implying that the average over all fluids of $b_i$, $
+\backslash
+mathbf{u}_i$ and $P_i$ are zero
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ into assumption 4.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Line
 \begin_inset space \space{}
 \end_inset
@@ -734,6 +777,32 @@ Line
  is a rather confusing terminology as a single column typically refers to
  the type of model rather than the fact that only one fluid is at play,
  I would recommend rephrasing.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ We now use 
+\begin_inset Quotes eld
+\end_inset
+
+one column
+\begin_inset Quotes erd
+\end_inset
+
+ rather than 
+\begin_inset Quotes eld
+\end_inset
+
+single column
+\begin_inset Quotes erd
+\end_inset
+
+ to avoid confusion with well know single-column models.
 \end_layout
 
 \begin_layout Labeling
@@ -750,6 +819,92 @@ Line
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Yes, the figures are as you describe.
+ Figure 1 is well resolved and the top row of figure is resolved 2D.
+ Resolution decreases down figure 2 until the bottom row is a single-fluid,
+ one column.
+ This has been clarified as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\color blue
+Edits to the first paragraph of section 4,
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+by adding 
+\begin_inset Quotes eld
+\end_inset
+
+2D
+\begin_inset Quotes erd
+\end_inset
+
+ to the caption of figure 1, 
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+by adding 
+\begin_inset Quotes eld
+\end_inset
+
+resolved 2D
+\begin_inset Quotes erd
+\end_inset
+
+ to the top of section 4.1.1 where figure 1 is first referenced,
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+adding 
+\begin_inset Quotes eld
+\end_inset
+
+two dimensional
+\begin_inset Quotes erd
+\end_inset
+
+ at the top of section 4.1,
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+by referring to 
+\begin_inset Quotes eld
+\end_inset
+
+one column
+\begin_inset Quotes erd
+\end_inset
+
+ rather than 
+\begin_inset Quotes eld
+\end_inset
+
+single column
+\begin_inset Quotes erd
+\end_inset
+
+ throughout,
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Fig
 \begin_inset space \space{}
 \end_inset
@@ -760,6 +915,50 @@ Fig
 
  constant for #columns<200? Wouldn’t 2 columns be enough to have a notable
  variability in the area fraction.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space \space{}
+\end_inset
+
+ 
+\color blue
+This was a consequence of the conditional averaging method.
+ In the previous submission, the entire volume of a cell was assumed to
+ be either rising or falling based on the value of 
+\begin_inset Formula $w$
+\end_inset
+
+ at the cell centre.
+ With only 9 columns 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ could only take the values 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{2}{9}$
+\end_inset
+
+, ...
+ so there was no variation in 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ with depth.
+ We now use a more sophisticated method of conditional averaging which is
+ described in the new section 3.1 
+\begin_inset Quotes eld
+\end_inset
+
+Discrete Conditional Averaging
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -776,6 +975,26 @@ Figs
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ The figures have been improved.
+ Actually there are no axis labels between sub-figures in order to save
+ space.
+ These are common to all rows and columns so are only given once.
+ This is hopefully clearer now.
+ I much prefer to label sub-figures as close as possible to the sub-figure
+ as this makes assimilating the figure easier.
+ I find that if all of the information is given in the caption then I have
+ to print out the figure and write the information in myself to distinguish
+ between sub-figures.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Fig
 \begin_inset space \space{}
 \end_inset
@@ -784,6 +1003,17 @@ Fig
  different line styles/colors? This will allow a clear compassion and also
  save space.
  I leave it to the authors to choose whether to take this suggestion.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ This was tried but it was found that the current display was clearer and
+ the alternative only took up a little less space.
 \end_layout
 
 \begin_layout Labeling
@@ -806,6 +1036,18 @@ Fig
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ This was the legend line.
+ It has now been moved so that it doesn't touch the data line.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 Line
 \begin_inset space \space{}
 \end_inset
@@ -813,6 +1055,22 @@ Line
 358 zero grid divergence is an assumption, not a result of the Boussinesq
  model.
  And it should be relaxed towards the future steps outlined in L386.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space \space{}
+\end_inset
+
+ Zero divergence is a constraint of the Boussinesq model.
+ Our implementation of the Boussinesq equations is correct and so there
+ is no grid divergence to round-off error.
+ We have already carried out simulations of the multi-fluid Euler equations
+ which do not have the divergence free constraint.
+ This is now clarified in the second and final paragraphs of section 5.
+ 
 \end_layout
 
 \begin_layout Section*

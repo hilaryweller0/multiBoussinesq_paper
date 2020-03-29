@@ -77,7 +77,7 @@ treatment of net mass transport by convection, non-equilibrium and
 turbulence. The air is partitioned into convecting and non-convecting
 fluids each with their own velocity, temperature and constituents
 so that separate equations of motion can be solved for each fluid,
-thus representing features that cannot be resolved in a single fluid
+thus representing features that cannot be resolved in a single-fluid
 at coarse resolution. 
 
 This paper presents multi-fluid Boussinesq equations for representing
@@ -92,7 +92,7 @@ Two vertical slice test cases are used to validate the multi-fluid
 model; a buoyant rising bubble and radiative convective equilibrium
 are simulated at high resolution and conditionally averaged based
 on the sign of the vertical velocity. The multi-fluid model reproduces
-the mean properties of the rising and falling fluids in a single column. 
+the mean properties of the rising and falling fluids in a \change[HW]{single}{one} column. 
 \end{abstract}
 
 \section*{Plain Language Summary}
@@ -143,7 +143,7 @@ a new model of entrainment and detrainment (section \ref{subsec:Sij}).
 The numerical method for solving the equations is described in section
 \ref{sec:numerics}. We compare results of resolved dry convection
 in a single-fluid two dimensional Boussinesq model with a two-fluid,
-single column model in section \ref{sec:results} using two vertical
+\change[HW]{single}{one} column model in section \ref{sec:results} using two vertical
 slice test cases.
 
 \section{The Multi-fluid Boussinesq Equations}
@@ -296,7 +296,7 @@ Finally the multi-fluid version incompressibility is
 shared the same pressure, leading to unstable equations that \citeA{TEB19}
 stabilised using diffusion of vertical velocity and \citeA{WM19}
 stabilised using mass exchanges or drag between the fluids. \citeA{TEB19}
-achieved realistic results in single column experiments of convective
+achieved realistic results in \change[HW]{single}{one} column experiments of convective
 boundary layer but the amount of diffusion needed would spoil simulations
 in the free troposphere. The stabilisation used by \citeA{WM19} meant
 that the two fluids tended to move as one which defeats the purpose
@@ -434,14 +434,15 @@ fluid that is loosing mass (as demonstrated in section \ref{sec:results}).
 
 \subsection{\change[HW]{Dimensional}{Scale} Analysis\label{subsec:dimAnal}}
 
-Dimensional analysis can guide our choice of $\gamma$ for the parameterisation
-of the pressure difference between fluids. We make the following assumptions:
+Dimensional analysis can guide our choice of $\gamma$ for the parameterisation of the pressure difference between fluids. We make the following assumptions
+\add[HW]{in this analysis}:
 \begin{enumerate}
 \item The flow is buoyancy dominated.
 \item The flow is close to inviscid.
 \item The flow is slowly varying.
 \item Fluid $i$ properties are anomalies from a neutrally stable resting
-mean state.
+mean state 
+\add[HW]{implying that the average over all fluids of $b_i$, $\mathbf{u}_i$ and $P_i$ are zero}.
 \item We consider only the vertical direction where $w_{ij}^{T}=0$.
 \item $P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}\approx-\gamma\nabla\cdot\mathbf{u}_{i}=-\gamma\frac{\partial w_{i}}{\partial z}$
 \item There are two fluids, $i$ and $j$
@@ -593,22 +594,56 @@ from $u_{i}$ following \citeA{WM19}. The stages calculating $P$,
 $p_{i}$ and $\mathbf{u}_{i}$ are repeated twice per time step iteration.
 The Poisson and Helmholtz equations are solved to a tolerance of $10^{-6}$.
 
+\subsection{\add[HW]{Discrete Conditional Averaging} \label{sec:cAveraging}}
+
+\note[HW]{This whole sub-section is new}
+
+A single-fluid solution is conditionally averaged by:
+\begin{equation}
+i =
+\begin{cases}
+    0 & \text{ if }w\le 0 \\
+    1 & \text{ otherwise.}
+\end{cases}
+\end{equation}
+If an entire grid box is assigned to be either in fluid 0 or fluid 1 based on $w$ at the cell centre then $\sigma$ can only take a small number of discrete values depending on the resolution of the conditional averaging. For example, if conditional averaging goes from $n$ columns to 1 column with vertical resolution staying the same, then $\sigma$ can only take values $\frac{k}{n}$ where $k$ is an integer between zero and $n$. This means that $\sigma$ is either uniform (for small $n$) or has jumps in the vertical (for larger $n$). An alternative is therefore proposed in order to approximate $\sigma$ based on $w$ and $\nabla w$ at cell centres. This is based on the intersection between a grid box and the surface of $w=0$. Given a grid box with centre $\mathbf{x}_c$, the surface of points, $\mathbf{x}_w$ of $w=0$ satisfies:
+\begin{equation}
+\nabla w \cdot \left(\mathbf{x}_c - \mathbf{x}_w\right) = 0
+\end{equation}
+Rather than the expense of calculating exact grid box volume fractions either side of this surface, the signed distance of each grid box vertex, $\mathbf{x}_v$, to the surface is calculated:
+\begin{equation}
+d_v = \left(
+     \mathbf{x}_v - \mathbf{x}_c + \frac{w \nabla w}{|\nabla w|^2} 
+\right) \cdot \frac{\nabla w}{|\nabla w|}.
+\end{equation}
+The volume fraction either side of the $w=0$ surface is approximated by the average distance to vertices in one side of the surface divided by the average distance to vertices on both side:
+\begin{equation}
+\sigma_0 = 
+\frac{-\text{mean}\bigl(\text{all } d_v \text{ with } d_v \le 0\bigr)}
+{\text{mean}\bigl(\text{all } |d_v| \bigl)}
+\;\;\;\;\;\;
+\sigma_1 = 
+\frac{\text{mean}\bigl(\text{all } d_v \text{ with } d_v > 0\bigr)}
+{\text{mean}\bigl(\text{all } |d_v| \bigl)}.
+\end{equation}
+This gives smooth $\sigma$ fields that will be shown in section \ref{sec:results}.
+
 \section{Validation Test Cases\label{sec:results}}
 
 Two test cases are developed to tune parameters and to validate the
 use of multi-fluid equations to represent dry, two-dimensional, sub-grid-scale
 convection. The first is transient; the standard rising bubble of
-\citeA{BF02}. We aim to reproduce the vertical heat transport, the
+\citeA{BF02}. \remove{We aim to reproduce the vertical heat transport, the
 mean velocity of the rising air, the bouyancy of the rising air and
 pressure differences between two fluids in a single column two fluid
-model. The second test case is steady state with heat transfer at
+model.} The second test case is steady state with heat transfer at
 the ground and uniform radiative cooling. For both test cases the
-reference solution is a single fluid solution of the two-dimensional
-Boussinesq equations at high horizontal and vertical resolution. 
+reference solution is a single-fluid solution of the two-dimensional
+Boussinesq equations at high horizontal and vertical resolution. \add[HW]{This will be compared with the two-fluid model run using one column. We aim to reproduce the vertical heat transport, the mean velocity of the rising air, the bouyancy of the rising air and the pressure differences between fluids in one column two-fluid model.}
 
 \subsection{Rising Bubble}
 
-The test case of \citeA{BF02} was designed for fully compressible
+The \add[HW]{two dimensional} test case of \citeA{BF02} was designed for fully compressible
 models but similar solutions are obtained solving Boussinesq equations.
 The Boussinesq version has no background stratification in a domain
 of height 10\,km and width 20\,km initially at rest. The buoyant
@@ -620,12 +655,12 @@ for $L<1$ where $L=\sqrt{\left(\frac{x-x_{c}}{x_{r}}\right)^{2}+\left(\frac{z-z_
 $x_{c}=10\ \text{km}$, $z_{c}=2\ \text{km}$ and $x_{r}=z_{r}=2\ \text{km}$.
 100\,m grid spacing is used in the $x$ and $z$ directions for the
 two dimensional reference simulation and $\Delta z=100\ \text{m}$
-is used in the vertical for the single column simulations. All simulations
+is used in the vertical for the \change[HW]{single}{one} column simulations. All simulations
 use a time-step of 2\,s.
 
-\subsubsection{Single Fluid Solutions}
+\subsubsection{Single-Fluid Solutions}
 
-The solution of the rising buoyant bubble solving the Boussinesq equations
+The solution of the \add[HW]{resolved 2D} rising buoyant bubble solving the Boussinesq equations
 for 1000s is shown in figure \ref{fig:bubble} with buoyancy coloured,
 pressure contoured and the $w=0$ contour dotted. The solution is
 very similar to the fully compressible solution \cite{BF02}. The
@@ -639,7 +674,7 @@ and $w_{1}$ are the horizontal averaging rising and falling vertical
 velocity and $P_{0}$ and $P_{1}$ are the pressure of the rising
 and falling fluid. An accurate multi-fluid model of convection should
 reproduce these fields approximately at coarser horizontal resolution
-or in a single column model. 
+or in a \change[HW]{single}{one} column model. 
 
 \begin{figure}
 \noindent \begin{centering}
@@ -648,9 +683,10 @@ or in a single column model.
 \noindent \begin{centering}
 \includegraphics[width=0.75\textwidth]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b}
 \par\end{centering}
-\caption{The single fluid, resolved rising bubble after 1000s. Buoyancy is
+\caption{The single-fluid, resolved \add[HW]{2D} rising bubble after 1000s. Buoyancy is
 coloured and pressure is contoured every $10\text{m}^{2}\text{s}^{-2}$,
-negative contours dashed. The $w=0$ contour is dotted. \label{fig:bubble}}
+negative contours dashed. The $w=0$ contour is dotted.
+\label{fig:bubble}}
 \end{figure}
 
 \citeA{TEB19} and \citeA{WM19} assumed that both fluids would share
@@ -663,12 +699,12 @@ the rising motion.
 
 The horizontal averages are shown in figure \ref{fig:bubble_singleUnderRes}
 for horizontal resolutions of nine columns, five columns, three columns
-and a single column all for the 20km wide domain and all still using
+and \change[HW]{a single}{one} column \change{HW}{all for}{covering} the 20km wide domain and all \remove[HW]{still} using
 $\Delta z=100\ \text{m}$. These simulations are initialised by conservative
 horizontal averaging from the full resolution solution. As the horizontal
 resolution is reduced, the vertical transport reduces until there
-is no movement at all for a single column: there is no possibility
-of fluid rising because in a single column with a single fluid there
+is no movement at all for \change[HW]{a single column}{the one column simulation}: there is no possibility
+of fluid rising because in \change[HW]{a single}{one} column with a single-fluid there
 can be no compensating subsidence. The lack of vertical transport
 at coarse resolution motivates convection parameterisation. 
 
@@ -693,15 +729,15 @@ at coarse resolution motivates convection parameterisation.
 \end{tabular}
 
 \caption{The rising bubble after 1000s simulated with coarse horizontal resolution
-and a single fluid. Horizontal averages are conditioned based on $w$.
+and a single-fluid. Horizontal averages are conditioned based on $w$.
 \label{fig:bubble_singleUnderRes}}
 \end{figure}
 
 
-\subsubsection{Results of the Two-fluid, Single Column Simulations}
+\subsubsection{Results of the Two-fluid, \change[HW]{Single}{One} Column Simulations}
 
-Multi-fluid, single column simulations are initialised by horizontally
-and conditionally averaging the high resolution single fluid initial
+\change[HW]{Multi-fluid, single}{Two-fluid, one} column simulations are initialised by horizontally
+and conditionally averaging the high resolution single-fluid initial
 conditions. Sinking air is put into fluid zero and rising air into
 fluid one. The velocity field after one time step is used for initialisation
 as the air is stationary at $t=0$. Results are shown in figures \ref{fig:multiFluidSingleColumn-bad}
@@ -750,8 +786,8 @@ $\sigma_{1}$ ($\text{m}^3/\text{m}^3$) & $b$ and $b_{i}$ ($\text{m}\text{s}^{-2}
 \end{tabular}
 
 \caption{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are
-the multi-fluid, single column solutions of the rising bubble. Dashed
-lines are the single fluid, resolved solutions. \label{fig:multiFluidSingleColumn-bad}}
+the multi-fluid, \change[HW]{single}{one} column solutions of the rising bubble. Dashed
+lines are the single-fluid, resolved solutions. \label{fig:multiFluidSingleColumn-bad}}
 \end{figure}
 
 \begin{figure}
@@ -795,9 +831,9 @@ $b_{ij}^{T}=\frac{1}{2}\left(b_{0}+b_{1}\right)$.
 $\sigma_{1}$ & $b$, $b_{0}$ and $b_{1}$ & $w_{1}$ & $P_{0}$ and $P_{1}$\tabularnewline
 \end{tabular}
 
-\caption{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are
-the multi-fluid, single column solutions of the rising bubble. Dashed
-lines are the single fluid, resolved solutions.\label{fig:multiFluidSingleColumn}}
+\caption{\change[HW]{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are the multi-fluid, single column solutions of the rising bubble. Dashed lines are the single-fluid, resolved solutions.}
+{As figure \protect\ref{fig:multiFluidSingleColumn-bad} but different parameterisation options.}
+\label{fig:multiFluidSingleColumn}}
 \end{figure}
 
 If there is no drag between fluids, no transfers, no diffusion and
@@ -864,7 +900,7 @@ If we include pressure difference between fluids with $\gamma=10^{4}\text{m}^{2}
 omit entrainment ($S_{ij}=0$) (second row of figure \ref{fig:multiFluidSingleColumn})
 the fluids move past each other but there is an unrealistic discontinuity
 with no fluid 1 below the buoyant fluid and very little falling air
-at the lowest height of the rising fluid. With a single column and
+at the lowest height of the rising fluid. With \change[HW]{single}{one} column and
 two fluids, all air must rise in one fluid and sink in the other.
 Continuity does not allow for any other solution. Pressure gradients
 can accelerate or decelerate this flow but as the model is set up,
@@ -901,7 +937,7 @@ on knowledge of sub-grid-scale variability of $b$ within each fluid
 The best model tested is $b_{ij}^{T}=b_{i}$ which assumes that the
 fluid transferred takes the mean properties with it.
 
-This section has demonstrated the value of using a single column,
+This section has demonstrated the value of using \change[HW]{single}{one} column,
 multi-fluid model to simulate a buoyant rising bubble with a single
 updraught fluid and a single downdraught fluid. Transfers between
 the fluids have been successfully modelled using entrainment set by
@@ -912,7 +948,7 @@ with a coefficient close to that expected from dimensional analysis.
 Including drag between the fluids did not improve simulations. Two
 models of transferring non-mean properties between fluids were tested
 but neither was plausible. There are clearly discrepancies between
-the single fluid resolved rising bubble and the two fluid single column
+the single-fluid resolved rising bubble and the two fluid \change[HW]{single}{one} column
 rising bubble but we do not want to over fit the multi-fluid model
 to one, dry, two dimensional test case.
 
@@ -940,7 +976,7 @@ of $5\ \text{s}$. A quasi-steady, choatic state is reached after
 about $3\times10^{4}\text{s}$ and the simulation is run for $2\times10^{5}\text{s}$
 and conditional averages are calculated over the final $10^{5}$s.
 
-\subsubsection{Single Fluid Solutions}
+\subsubsection{Single-Fluid Solutions}
 
 This test case is designed to have strong updraughts in narrow plumes
 and weak descent elsewhere to mimic atmospheric convection but without
@@ -988,13 +1024,13 @@ acceleration is controlled by pressure gradients. The descending air
 mean velocity is close to equal and opposite to the ascending air,
 as expected since $\sigma_{1}=0.5$.
 
-\subsubsection{Results of the Two-fluid, Single Column Simulations}
+\subsubsection{Results of the Two-fluid, \change[HW]{Single}{One} Column Simulations}
 
-The two fluid model is used to simulate the RCE test case in a single
+The two fluid model is used to simulate the RCE test case in \change[HW]{single}{one}
 column of 40 cells with zero buoyancy gradient at the top and a buoyancy
 gradient of $10^{-5}\text{s}^{-2}$ at the ground for both fluids
 and uniform radiative cooling. The two fluids are initialised using
-the time mean conditional horizontal averages from the single fluid
+the time mean conditional horizontal averages from the single-fluid
 resolved simulation. The entrainment model $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 is used for all simulations to account for transfers throughout the
 domain to represent cloud base mass flux (at the bottom boundary),
@@ -1009,7 +1045,7 @@ The entrainment model $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ keeps $\sigma_{i}$
 at about 0.5 throughout the depth, as in the resolved simulation,
 with entrainment in the lower half of the domain ($S_{01}>0$) and
 detrainment in the upper half ($S_{10}>0$), where the air decelerates
-towards the top. The single column model reproduces the super-adiabatic
+towards the top. The \change[HW]{single}{one} column model reproduces the super-adiabatic
 layer near the ground and the near uniform buoyancy away from the
 ground but the buoyancy difference between the fluids is too large.
 The updraught and downdraught velocities are captured well. The pressure
@@ -1039,7 +1075,7 @@ $\sigma$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (
 &
 \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean}
 \tabularnewline
-\multicolumn{5}{c}{Single column with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
+\multicolumn{5}{c}{\change[HW]{Single}{One} column with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
 $b_{ij}^{T}=b_{i}$, $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
 }\tabularnewline
 \includegraphics[scale=0.7]
@@ -1053,7 +1089,7 @@ $b_{ij}^{T}=b_{i}$, $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
 &
 \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P_1}
 \tabularnewline
-\multicolumn{5}{c}{Single column  with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
+\multicolumn{5}{c}{\change[HW]{Single}{One} column  with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
 $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$, $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
 }\tabularnewline
 \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma_1}
@@ -1069,7 +1105,7 @@ $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$, $\gamma=2\times10^{3}\text{m}^
 
 \caption{Results of the RCE simulations. The top row shows horizontal averages
 of the resolved case between $t=10^{5}\text{s}$ and $2\times10^{5}\text{s}$. The
-bottom two rows show results of the single column multi-fluid model
+bottom two rows show results of the \change[HW]{single}{one} column multi-fluid model
 after $10^{4}\ \text{s}$. \label{fig:RCE_singleColumn}}
 \end{figure}
 
@@ -1083,10 +1119,10 @@ the multi-fluid model. The first is a Boussinesq version of the well
 known two dimensional dry rising bubble of \citeA{BF02} and the second
 is a dry two dimensional version of radiative-convective equilibrium
 with heating at the ground and uniform radiative cooling. High resolution
-single fluid simulations are conditionally averaged based on the sign
+single-fluid simulations are conditionally averaged based on the sign
 of vertical velocity ($w$) in order to create rising and falling
 fluids which each have their own mean buoyancy, velocity and pressure.
-The two-fluid, single column Boussinesq model reproduces mean vertical
+The two-fluid, \change[HW]{single}{one} column Boussinesq model reproduces mean vertical
 heat and mass transport of these test cases. 
 
 The multi-fluid Boussinesq equations can have divergence in each fluid
@@ -1130,7 +1166,7 @@ then unbounded buoyancy can occur. A better model of the buoyancy
 of the fluid transferred would rely on more information the sub-grid-scale
 variability.
 
-Single column multi-fluid modelling with moisture has already been
+\change[HW]{Single}{One} column multi-fluid modelling with moisture has already been
 demonstrated by \citeA{TEB19} 
 \add[HW]{and two dimensional simulations of the multi-fluid Euler equations by \protect\citeA{WM19} }.
 Two important next steps are to simulate
