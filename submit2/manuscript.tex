@@ -73,30 +73,28 @@
 \begin{abstract}
 Multi-fluid modelling is a promising new method of representing sub
 and near grid-scale convection allowing for consistent and accurate
-treatment of net mass transport by convection, non-equilibrium and
-turbulence. The air is partitioned into convecting and non-convecting
-fluids each with their own velocity, temperature and constituents
-so that separate equations of motion can be solved for each fluid,
+treatment of net mass transport by convection \add[HW]{and of} non-equilibrium \add[HW]{dynamics} \remove[HW]{and turbulence}. The air is partitioned into \change[HW]{convecting and non-convecting}{two or more}
+fluids \add[HW]{which may represent, for example, updrafts and the stable environment.} \change[HW]{each with their}{Each fluid has its} own velocity, temperature and constituents
+with separate equations of motion. \remove[HW]{can be solved for each fluid,
 thus representing features that cannot be resolved in a single-fluid
-at coarse resolution. 
+at coarse resolution.} 
 
-This paper presents multi-fluid Boussinesq equations for representing
-under resolved dry convection. We present a new model for entrainment
+This paper presents \change[HW]{multi}{two}-fluid Boussinesq equations for representing
+under-resolved dry convection \add[HW]{with sinking and $w=0$ air in fluid 0 and rising air in fluid 1}. We present a \remove[HW]{new} model for entrainment
 and detrainment based on divergence which leads to excellent representation
 of the convective area fraction. Previous multi-fluid modelling of
-convection has assumed that all fluids share the same pressure. We
-show that this is a bad assumption and we propose and validate a model
-for the pressure difference between the fluids based on divergence. 
+convection has assumed that \change[HW]{all}{both} fluids share the same pressure. \change[HW]{We show that this is}{This is shown to be} a bad assumption and \remove[HW]{we propose and validate} a model
+for the pressure difference between the fluids based on divergence \add[HW]{is presented}. 
 
-Two vertical slice test cases are used to validate the multi-fluid
-model; a buoyant rising bubble and radiative convective equilibrium
+Two vertical slice test cases are used to \change[HW]{validate}{evaluate} the \change[HW]{multi}{two}-fluid
+model; a buoyant rising bubble and radiative convective equilibrium. \add[HW]{These}
 are simulated at high resolution and conditionally averaged based
-on the sign of the vertical velocity. The multi-fluid model reproduces
-the mean properties of the rising and falling fluids in a \change[HW]{single}{one} column. 
+on the sign of the vertical velocity. The \change[HW]{multi}{two}-fluid model reproduces
+the mean properties of the rising and falling fluids in \change[HW]{a single}{one} column. 
 \end{abstract}
 
 \section*{Plain Language Summary}
-Clouds and buoyant convection are often smaller than the grid size in weather and climate prediction models but they are of central importance. Therefore their effects are parameterised -- their interactions with the larger scales are estimated based on properties of the larger scales. Convection parameterisations are a large source of error in models of the atmosphere despite decades of effort to improve them. An important assumption in most convection parameterisations is that convection moves heat and moisture upwards but not mass. This makes it much simpler to incorporate convection parameterisations into existing models. Multi-fluid modelling will enable mass transport by convection but the approach means a whole new atmospheric model rather than a stand alone routine that can be incorporated into an existing model. This paper provides some closures necessary for multi-fluid modelling and validation of the technique for two dimensional dry convection.
+Clouds and buoyant convection are often smaller than the grid size in weather and climate prediction models but they are of central importance. Therefore their effects are parameterised -- their interactions with the larger scales are estimated based on properties of the larger scales. Convection parameterisations are a large source of error in models of the atmosphere despite decades of effort to improve them. An important assumption in most convection parameterisations is that convection moves heat and moisture upwards but not mass. This makes it much simpler to incorporate convection parameterisations into existing models. Multi-fluid modelling will enable mass transport by convection but the approach means a whole new atmospheric model rather than a stand alone routine that can be incorporated into an existing model. This paper provides some closures necessary for multi-fluid modelling and \change[HW]{validation}{evaluation} of the technique for two dimensional dry convection.
 
 \section{Introduction}
 
@@ -111,30 +109,35 @@ in the grey zone, where convection is partially resolved. However
 there are still systematic biases implying that improvements should
 still be possible.
 
+\add[HW]{
+\protect\citeA{LR01} introduced the ``assumed-distribution higher-order closure'' (ADHOC) parameterisation of the boundary layer and convection which solves prognostic equations for higher-order moments of the sub-grid-scale flow, such as the triple correlation of the vertical velocity anomalies, and diagnoses updraft and downdraft means from the higher-order moments. Thus all necessary statistics can be calculated from the grid-box-mean values that are predicted by the dynamical core. Net mass transport by convection is included because it is part of the grid-box-mean. ADHOC was extended by \protect\citeA{GLC02} to use bi-Gaussian probability distribution functions (PDFs) rather than top-hat distributions to represent sub-grid-scale variability. This formed the basis of the ``Cloud Layers Unified By Binormals'' (CLUBB) parameterization \protect\cite<>{LSW+12} which was first used at grey zone resolutions.}
+
 \citeA{TWV+18} proposed multi-fluid modelling of convection in order
-to treat non-equilibrium and net mass transport correctly and consistently
-with the same numerics and physics controlling thermals, the stable
-environment and downdraught dynamics. \citeA{Yano14} derived similar
-equations for multiple segments and showed how this is a generalisation
+to treat non-equilibrium and net mass transport \remove[HW]{correctly and} consistently.
+\change{with}{This involves using} the same numerics and physics to \change[HW]{control thermals}{prognose properties of separate parts of the fluid, for example updrafts}, the stable environment and downdrafts \remove[HW]{dynamics}. \citeA{Yano14} derived similar
+equations \remove[HW]{for multiple segments} and showed how this is a generalisation
 of the mass-flux formulation. The \citeA{TKP+18} ``extended eddy
 diffusivity mass flux'' or extended EDMF scheme also uses similar
 equations but \citeA{TKP+18}
 \change[HW]{didn't propose a suitable numerical method for solving the equations.}
 {only solve the equations in a single column without coupling to the continuity equation of a dynamical core.}
-Multi-fluids promises big improvements
+\change[HW]{Multi-fluids promises big improvements
 in the representation of sub-grid-scale convection and unification
 with the representation of turbulence, particularly at the grey zone.
-However, there is a long way to go, particularly as multi-fluids requires
+However, there is a long way to go, particularly as}
+{The multi-fluids approach has an advantage over ADHOC and CLUBB in solving prognostic equations for first-order moments (means of eg. updraft and environment) directly rather than solving prognostic equations for higher-order moments of the whole fluid in order to diagnose means of updrafts and the environment. Solving directly for sub-fluid means should be less sensitive to closure assumptions. However} multi-fluids require
 a dedicated model rather than being a stand alone parameterisation
 for a dynamical core. \citeA{TEB19} and \citeA{WM19} presented solutions
 of the multi-fluid equations assuming two fluids that share the same
-pressure (or that pressure differences are predominantly due to drag
-between the fluids). \citeA{TEB19} showed that these equations (without
-drag) are in fact unstable and can be stabilised by diffusion of vertical
+pressure. \remove[HW]{(or that pressure differences are predominantly due to drag
+between the fluids)}. \citeA{TEB19} showed that these equations \remove[HW]{(without
+drag)} are in fact unstable and can be stabilised by diffusion of vertical
 velocity whereas \citeA{WM19} stabilised the equations with diffusion
 and drag between fluids. Neither of these stabilisation techniques
-are acceptable and in this paper we show that there are significant
-and sustained pressure differences between the fluids (section \ref{sec:results}). 
+are acceptable;
+\add[HW]{sufficient diffusion to stabilise the multi-fluid equations may smooth out real features of the flow and the diffusion between fluids and drag used by \protect\citeA{WM19} meant that both fluids tended to move together rather than through each other.}
+In this paper we show that there are significant
+and sustained pressure differences between the fluids (section \ref{sec:results}) \add[HW]{and that the use of separate pressures stabilises the equations}. 
 
 This paper presents the multi-fluid Boussinesq equations for representing
 sub-grid-scale convection including a parameterisation of the pressure
@@ -143,14 +146,13 @@ a new model of entrainment and detrainment (section \ref{subsec:Sij}).
 The numerical method for solving the equations is described in section
 \ref{sec:numerics}. We compare results of resolved dry convection
 in a single-fluid two dimensional Boussinesq model with a two-fluid,
-\change[HW]{single}{one} column model in section \ref{sec:results} using two vertical
-slice test cases.
+\change[HW]{single}{one} column model in section \ref{sec:results} using two vertical slice test cases.
 
 \section{The Multi-fluid Boussinesq Equations}
 
 Many of the challenges of representing convection with the multi-fluid
 Navier-Stokes equations \cite<e.g. those described in>{WM19} carry
-over to the Boussinesq equations; convection is buoyancy dominated
+over to the Boussinesq equations \add[HW]{because} convection is buoyancy dominated
 and close to incompressible. The resolved test cases presented in
 section \ref{sec:results} give very similar results for Navier-Stokes
 and Buossinesq equations. Therefore for simplicity we focus on the
@@ -203,12 +205,12 @@ $\nu$ & Viscosity ($\text{m}^{2}\text{s}^{-1}$)\tabularnewline
 \caption{Definitions of variables for the single- and multi-fluid Boussinesq equations.\label{tab:defns}}
 \end{table}
 
-The single-fluid Boussinesq equations will be conditionally averaged following \citeA{TWV+18} to give the multi-fluid Boussinesq equations. Lagrangian labels for each fluid $i$ are defined as $I_i=1$ in fluid $i$ and zero elsewhere and satisfy:
+The single-fluid Boussinesq equations will be conditionally averaged following \citeA{TWV+18} to give the multi-fluid Boussinesq equations. Lagrangian labels for each fluid $i$ are defined as $I_i=1$ in fluid $i$ and zero elsewhere. In this paper, $I_0$ labels sinking and $w=0$ fluid and $I_1$ labels rising fluid. $I_i$ satisfies:
 \begin{equation}
 \frac{DI_i}{Dt}=0.
 \label{eq:LagrangianLabel}
 \end{equation}
-Applying the conditional average to $I_i$ we define the volume fraction of fluid $i$ and the velocity and buoyancy of fluid $i$:
+Applying conditional volume average to $I_i$ we define the volume fraction of fluid $i$ and the velocity and buoyancy of fluid $i$:
 \begin{eqnarray}
 \sigma_i &=& \overline{I_i} \\
 \sigma_i \mathbf{u}_i &=& \overline{I_i \mathbf{u}} \\
@@ -272,7 +274,7 @@ Combining these gives the conditionally averaged momentum and buoyancy equations
 \end{eqnarray}
 These equations include mass transfers between fluids with $\mathbf{u}_{ij}^T$ being the velocity of the fluid transferred from $i$ to $j$ and $b_{ij}^T$ being the buoyancy of the fluid transferred from $i$ to $j$. A drag term, $\mathbf{D}_{ij}$ is also included to parameterise some of the missing terms because it is commonly used when conditional averaging is applied in fields such as multi-phase modelling \cite<eg>{GBB+07}. Sensitivity to $\mathbf{D}_{ij}$ will be investigated in section \ref{sec:results}. 
 
-Eqns ({eq:momFlux}) and ({eq:bFlux}) are solved in advective form in which the mass transfer terms are more complicated:
+Eqns (\ref{eq:momFlux}) and (\ref{eq:bFlux}) are solved in advective form in which the mass transfer terms are more complicated due to the mass transfer terms in \ref{eq:sigma}:
 \begin{eqnarray}
 \frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i}
 & = &
@@ -292,13 +294,13 @@ Finally the multi-fluid version incompressibility is
 
 \subsection{Pressure of each fluid \label{subsec:fluidPressure}}
 
-\citeA{TEB19} and \citeA{WM19} assumed that each co-located fluid
-shared the same pressure, leading to unstable equations that \citeA{TEB19}
+\citeA{TEB19} and \citeA{WM19} assumed that each \remove[HW]{co-located} fluid
+shared the same pressure \change[HW]{leading}{field. This lead} to unstable equations that \citeA{TEB19}
 stabilised using diffusion of vertical velocity and \citeA{WM19}
 stabilised using mass exchanges or drag between the fluids. \citeA{TEB19}
-achieved realistic results in \change[HW]{single}{one} column experiments of convective
+achieved realistic results in \change[HW]{single}{one} column experiments of \add[HW]{the} convective
 boundary layer but the amount of diffusion needed would spoil simulations
-in the free troposphere. The stabilisation used by \citeA{WM19} meant
+in the free troposphere \add[HW]{by diffusing real features as well as spurious artifacts}. The stabilisation used by \citeA{WM19} meant
 that the two fluids tended to move as one which defeats the purpose
 of using multi-fluid modelling. 
 
@@ -309,7 +311,7 @@ that remove the convergence. Therefore if the volume (or mass) fraction
 of fluid is vanishingly low then convergence cannot lead to an anomaly
 in the total pressure.}{For single-fluid equations, divergence would lead to pressure anomalies which would act as a negative feedback on the divergence. However for multi-fluids if one of the volume fractions is too small then it cannot force pressure anomalies big enough to stabilise the divergence. Use of separate pressure for each fluid is proposed to ensure stability.}
 
-We will assume that pressure in each fluid is given by a parameterised
+We will assume that pressure in each fluid is given by a \remove[HW]{parameterised}
 perturbation, $p_{i}$, from the total pressure, $P$:
 \begin{equation}
 P_{i}=P+p_{i}.
@@ -405,7 +407,7 @@ may not have the mean properties of the fluid it is leaving \cite<as was assumed
 In fact, the most buoyant air should be transferred from fluid 0 to
 fluid 1 and vice versa, and the air with least downward momentum should
 be transferred from 0 to 1 and vice versa. The properties of the fluids
-transferred should depend on the modelling of sub-grid-scale variability
+transferred should depend on the modelling of \change[HW]{sub-grid-scale}{sub-filter-scale} variability \add[HW]{(i.e. the variability within each fluid)}
 which is beyond the scope of this paper. In section \ref{sec:results}
 we conditionally average high resolution solutions based on the sign
 of $w$ so that $w<0$ air is in fluid 0 and $w>0$ air in fluid 1.
@@ -478,7 +480,7 @@ remove all variability in $\tilde{w}$ so we need:
 \end{equation}
 
 
-\section{Numerical Solution \label{sec:numerics}}
+\section{Numerical \change[HW]{Solution}{Method} \label{sec:numerics}}
 
 The spatial discretisation follows exactly \citeA{WM19}, solving
 advective form equations using monotonic, finite volume advection
@@ -628,16 +630,16 @@ The volume fraction either side of the $w=0$ surface is approximated by the aver
 \end{equation}
 This gives smooth $\sigma$ fields that will be shown in section \ref{sec:results}.
 
-\section{Validation Test Cases\label{sec:results}}
+\section{\change[HW]{Validation}{Evaluation} Test Cases\label{sec:results}}
 
-Two test cases are developed to tune parameters and to validate the
+Two test cases are developed to tune parameters and to \change[HW]{validate}{evaluate} the
 use of multi-fluid equations to represent dry, two-dimensional, sub-grid-scale
 convection. The first is transient; the standard rising bubble of
 \citeA{BF02}. \remove{We aim to reproduce the vertical heat transport, the
 mean velocity of the rising air, the bouyancy of the rising air and
 pressure differences between two fluids in a single column two fluid
-model.} The second test case is steady state with heat transfer at
-the ground and uniform radiative cooling. For both test cases the
+model.} The second \remove[HW]{test case} is steady state with heat transfer at
+the ground and uniform radiative cooling \add[HW]{(radiative convective equilibrium)}. For both test cases, the
 reference solution is a single-fluid solution of the two-dimensional
 Boussinesq equations at high horizontal and vertical resolution. \add[HW]{This will be compared with the two-fluid model run using one column. We aim to reproduce the vertical heat transport, the mean velocity of the rising air, the bouyancy of the rising air and the pressure differences between fluids in one column two-fluid model.}
 
@@ -865,16 +867,16 @@ Three values of $\gamma$ are tested. $\gamma$ is set from equation
 radius and a buoyancy scale equal to the initial maximum buoyancy
 to give $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$. This $\gamma$
 (third row of figure \ref{fig:multiFluidSingleColumn-bad}) makes
-the velocity profile too smooth and the updraught too weak so the
+the velocity profile too smooth and the updraft too weak so the
 bubble does not rise enough. It is reasonable to consider smaller
 values of $\gamma$ because the buoyancy does not retain its initial
 maximum for very long. Using $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
 gives more accurate solutions whereas using $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
 leads to the leading edge of the bubble rising too quickly. Smaller
-values of $\gamma$ leave a discontinuity in the updraught velocity
+values of $\gamma$ leave a discontinuity in the updraft velocity
 at the leading edge of the bubble and larger values of $\gamma$ reduce
 the velocity further, meaning that the bubble does not rise enough
-(not shown). None of the values of $\gamma$ reproduce the peak updraught
+(not shown). None of the values of $\gamma$ reproduce the peak updraft
 velocities but $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ comes closest,
 meaning that the bubble rise and $\sigma_{1}$ are approximately correct
 and pressure increases above the centre of the bubble are realisitic.
@@ -888,11 +890,11 @@ calculate the velocity and so cannot also be used to model the pressure.
 The results in the top row of figure \ref{fig:multiFluidSingleColumn}
 use $\gamma=-10^{4}$ and $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ but
 this time with drag set by $C_{D}/r_{c}=1/2000\text{m}^{-1}$. The
-drag slows the updraughts without increasing the mixing between the
+drag slows the updrafts without increasing the mixing between the
 fluids which makes the solutions less like the resolved simulations.
 Although drag is known to be an important term in the momentum equations
 for buoyant thermals and plumes \cite<e.g.,>{RC15}, the drag is related
-to mixing with downdraught air which is accounted for in the entrainment
+to mixing with downdraft air which is accounted for in the entrainment
 term of the momentum equation. So adding a separate term from drag
 risks double counting and slows the plume too much. 
 
@@ -910,19 +912,19 @@ is therefore essential to have transfers between fluids.
 The other entrainment option is the commonly used fractional entrainment
 rate, $\varepsilon=0.2/r_{c}$. This is used combined with pressure
 differences between fluids in the middle row of figure \ref{fig:multiFluidSingleColumn-bad}.
-This combination produces smooth solutions but the updraught is too
+This combination produces smooth solutions but the updraft is too
 weak and too much is entrained into fluid 1. Using this entrainment,
-the updraught will entrain more and more air until $\sigma_{1}=1$.
+the updraft will entrain more and more air until $\sigma_{1}=1$.
 The $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ model gives much more accurate
 entrainment and detrainment for this test case using conditional averaging
 based on $w$.
 
 Two alternative models for estimating the buoyancy of the fluid transferred
-between updraught and downdraught have been tested. The results in
+between updraft and downdraft have been tested. The results in
 the fourth row if figure \ref{fig:multiFluidSingleColumn} assume
 that the fluid transferred has zero buoyancy in order to keep the
 positively buoyant air in fluid one and the negatively buoyant air
-in fluid 0. Thus when zero buoyancy air leaves fluid one (the updraught),
+in fluid 0. Thus when zero buoyancy air leaves fluid one (the updraft),
 the mean buoyancy of fluid one increases. This leads to very high
 buoyancy in fluid one which is not present in the resolved simulation.
 The results in the bottom row of figure \ref{fig:multiFluidSingleColumn}
@@ -939,9 +941,9 @@ fluid transferred takes the mean properties with it.
 
 This section has demonstrated the value of using \change[HW]{single}{one} column,
 multi-fluid model to simulate a buoyant rising bubble with a single
-updraught fluid and a single downdraught fluid. Transfers between
+updraft fluid and a single downdraft fluid. Transfers between
 the fluids have been successfully modelled using entrainment set by
-divergence giving realistic updraught fractions. Entrainment calculated
+divergence giving realistic updraft fractions. Entrainment calculated
 as the reciprocal of plume width was not successful. The pressure
 difference between the fluids has also been represented by divergence
 with a coefficient close to that expected from dimensional analysis.
@@ -978,13 +980,13 @@ and conditional averages are calculated over the final $10^{5}$s.
 
 \subsubsection{Single-Fluid Solutions}
 
-This test case is designed to have strong updraughts in narrow plumes
+This test case is designed to have strong updrafts in narrow plumes
 and weak descent elsewhere to mimic atmospheric convection but without
 the complication of moisture, phase changes and three spatial dimensions.
 A snapshot of the buoyancy, vertical velocity and pressure of the
 radiative-convective equilibrium test case at $2\times10^{5}\text{s}$
 are shown in figure \ref{fig:RCE_resolved} showing intense, narrow
-updraughts. The buoyant air at the ground rises in narrow plumes,
+updrafts. The buoyant air at the ground rises in narrow plumes,
 accelerating due to buoyancy and pressure gradients then decelerating
 due to pressure gradients before reaching the top. The plumes spread
 out and the sinking air is a mixture of warm and cold with similar
@@ -1048,7 +1050,7 @@ detrainment in the upper half ($S_{10}>0$), where the air decelerates
 towards the top. The \change[HW]{single}{one} column model reproduces the super-adiabatic
 layer near the ground and the near uniform buoyancy away from the
 ground but the buoyancy difference between the fluids is too large.
-The updraught and downdraught velocities are captured well. The pressure
+The updraft and downdraft velocities are captured well. The pressure
 differences between fluids are too large which is consistent with
 the over estimated buoyancy difference between fluids. 
 
@@ -1114,7 +1116,7 @@ after $10^{4}\ \text{s}$. \label{fig:RCE_singleColumn}}
 
 This paper presents solutions of the multi-fluid Boussinesq equations
 for convection, reproducing aspects of highly resolved dry convection
-at coarse horizontal resolution. Two test cases are used to validate
+at coarse horizontal resolution. Two test cases are used to \change[HW]{validate}{evaluate}
 the multi-fluid model. The first is a Boussinesq version of the well
 known two dimensional dry rising bubble of \citeA{BF02} and the second
 is a dry two dimensional version of radiative-convective equilibrium
@@ -1129,7 +1131,7 @@ The multi-fluid Boussinesq equations can have divergence in each fluid
 while the divergence averaged over all fluids is 
 \change[HW]{zero}
 {constrained to be zero following the single-fluid Boussinesq equations.}
-A model is proposed and validated for the pressure difference between the rising
+A model is proposed and \change[HW]{validated}{evaluated} for the pressure difference between the rising
 and falling fluids based on the divergence of each fluid. The use
 of a different pressure for each fluid is not only realistic but also
 leads to stable solutions of the multi-fluid equations. 

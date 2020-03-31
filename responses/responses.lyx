@@ -1086,7 +1086,13 @@ This paper offers a jarringly written, reader-unfriendly tour of what is
 \begin_layout Quote
 
 \color blue
-Response
+I will respond to this point in the first person as this comment is relevant
+ to me, the first author, not to my co-authors.
+ I thought and hoped that after so many years working on it, my scientific
+ writing had improved.
+ This comment is a blow.
+ However your comments are useful for helping to improve my writing.
+ I do value brevity but it seems perhaps too much.
 \end_layout
 
 \begin_layout Standard
@@ -1106,12 +1112,28 @@ hors to we-the -author-and-reader.
 \begin_layout Quote
 
 \color blue
-Response
+The annotated pdf was useful but unfortunately very difficult for the co-authors
+ to access.
+ This made a re-write by somebody else challenging as they could not access
+ your useful edits.
+ I have made JAMES aware of the problem but I do not think that they are
+ planning to make any changes.
+ Therefore we would welcome an different method of providing a review of
+ our re-write if possible.
+ 
 \end_layout
 
 \begin_layout Standard
 Much sooner the paper needs to state that it defines the "multi-fluid" as
- two categories of fluid defined by w>0 and w<0.
+ two categories of fluid defined by 
+\begin_inset Formula $w>0$
+\end_inset
+
+ and 
+\begin_inset Formula $w<0$
+\end_inset
+
+.
  Yes I know the equation set is in principle more general than that, but
  the juxtaposition of that generality with words like "plume" and "sub-grid-scal
 e" left me lost.
@@ -1120,10 +1142,50 @@ e" left me lost.
 ions not represented? Or implied? In one are all of the multi-fluids?
 \end_layout
 
-\begin_layout Quote
+\begin_layout Itemize
 
 \color blue
-Response
+The conditional averaging based on 
+\begin_inset Formula $w$
+\end_inset
+
+ is stated earlier.
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+Reference to 
+\begin_inset Quotes eld
+\end_inset
+
+plume
+\begin_inset Quotes erd
+\end_inset
+
+ as one of the fluids has been removed.
+\end_layout
+
+\begin_layout Itemize
+
+\color blue
+We now say 
+\begin_inset Quotes eld
+\end_inset
+
+sub-filter-scale
+\begin_inset Quotes erd
+\end_inset
+
+ rather than 
+\begin_inset Quotes eld
+\end_inset
+
+sub-grid-scale
+\begin_inset Quotes erd
+\end_inset
+
+ when referring to sub-grid-scale variability within a fluid.
 \end_layout
 
 \begin_layout Standard
@@ -1159,7 +1221,7 @@ Responses to Annotated pdf
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="57" columns="3">
+<lyxtabular version="3" rows="72" columns="3">
 <features islongtable="true" longtabularalignment="left">
 <column alignment="left" valignment="top" width="9text%">
 <column alignment="left" valignment="top" width="25text%">
@@ -1254,7 +1316,7 @@ mass transport by
 \begin_layout Plain Layout
 
 \color blue
-Response
+This sentence has been rewritten
 \end_layout
 
 \end_inset
@@ -1317,7 +1379,7 @@ nal or even inspiriational language of some hoped-for future generality
 \begin_layout Plain Layout
 
 \color blue
-Response
+This has been rewritten
 \end_layout
 
 \end_inset
@@ -1377,7 +1439,7 @@ hyphenate
 \begin_layout Plain Layout
 
 \color blue
-Response
+Done
 \end_layout
 
 \end_inset
@@ -1430,6 +1492,37 @@ convecting and non-convecting
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Clarified
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1453,6 +1546,41 @@ weakest
 
 \begin_layout Plain Layout
 most uncertain?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Actually I would say weakest rather than most uncertain.
+ The modelling community is fairly certain that there are systematic biases
+ due to convection parameterisation.
+ They are definitely doing the wrong thing.
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1488,6 +1616,37 @@ of grid lengths
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Response
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1511,6 +1670,52 @@ segments
 
 \begin_layout Plain Layout
 ?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yano14"
+
+\end_inset
+
+ referred to 
+\begin_inset Quotes eld
+\end_inset
+
+segments
+\begin_inset Quotes erd
+\end_inset
+
+ rather than fluids.
+ We now avoid using their terminology.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1546,6 +1751,45 @@ grammar? number?
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed to 
+\begin_inset Quotes eld
+\end_inset
+
+the multi-fluids approach
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1575,6 +1819,37 @@ in?
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1598,6 +1873,37 @@ multi-fluids requires
 
 \begin_layout Plain Layout
 grammar? number?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1654,16 +1960,18 @@ Neither of these stabilisation techniques are acceptable
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
+\color blue
+Yes, more is now added
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1703,6 +2011,37 @@ why is this a sentence with "and" in the middle?
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1726,6 +2065,37 @@ why is this a sentence with "and" in the middle?
 
 \begin_layout Plain Layout
 because
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Done
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1766,8 +2136,9 @@ co-located fluid
 \uwave off
 \noun off
 \color none
-What does co-located mean? Are these viewed as external terminology) on
- small scales,which are co-located on alarger (
+What does co-located mean? Are these viewed as external mixtures (using
+ the aerosol terminology) on small scales,which are co-located on a larger
+ (
 \begin_inset Quotes eld
 \end_inset
 
@@ -1776,6 +2147,53 @@ grid
 \end_inset
 
 ) scale?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+The word 
+\begin_inset Quotes eld
+\end_inset
+
+co-located
+\begin_inset Quotes erd
+\end_inset
+
+ is not used any more and instead we refer to the 
+\begin_inset Quotes eld
+\end_inset
+
+pressure field
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1805,6 +2223,44 @@ experiments of convective
 
 \begin_layout Plain Layout
 grammar (article or number)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+the convective boundary layer
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1847,6 +2303,45 @@ spoil
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+spoil simulations in the free troposphere by diffusing real features as
+ well as spurious artifacts
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1874,6 +2369,37 @@ divergence in a fluid with vanishing volume fraction.
 
 \begin_layout Plain Layout
 too terse for understanding
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Clarified
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -1909,6 +2435,37 @@ what does parameterised mean? what does that adjective add to the sentence?
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Removed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -1932,6 +2489,39 @@ phase
 
 \begin_layout Plain Layout
 is multi-phase the same as multi-fluid?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+It is now clarified that this sub-section is about a very different use
+ of similar equations.
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
