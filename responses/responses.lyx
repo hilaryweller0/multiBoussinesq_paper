@@ -1221,8 +1221,8 @@ Responses to Annotated pdf
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="72" columns="3">
-<features islongtable="true" longtabularalignment="left">
+<lyxtabular version="3" rows="100" columns="3">
+<features rotate="90" islongtable="true" longtabularalignment="left">
 <column alignment="left" valignment="top" width="9text%">
 <column alignment="left" valignment="top" width="25text%">
 <column alignment="left" valignment="top" width="65text%">
@@ -2592,6 +2592,41 @@ so use
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Oh dear, I have recently taught a group of students about the advantages
+ of starting a sentence with a citation rather than always putting citations
+ at the end.
+ I certainly care as a reader who is making an assumption.
+ I hope that this subsection is now clearer.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 below eqn 10
 \end_layout
 
@@ -2622,6 +2657,78 @@ awkward sounding phrase.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+This has now been re-phrased.
+ I am not keen on 
+\begin_inset Quotes eld
+\end_inset
+
+multi-fluid
+\begin_inset Quotes erd
+\end_inset
+
+ either but it is already established.
+ I preferred 
+\begin_inset Quotes eld
+\end_inset
+
+partitions
+\begin_inset Quotes erd
+\end_inset
+
+ that we used in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "WM19"
+
+\end_inset
+
+ but we are trying to maintain consistency with John Thuburn.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yano14"
+
+\end_inset
+
+ used 
+\begin_inset Quotes eld
+\end_inset
+
+segment
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 115
 \end_layout
 
@@ -2631,9 +2738,9 @@ awkward sounding phrase.
 \begin_inset Text
 
 \begin_layout Plain Layout
-In fact, themost buoyant air should be transferred from fluid 0 to fluid
- 1 and vice versa, and the air withleast downward momentum should be transferred
- from 0 to 1 and vice versa.
+In fact, the most buoyant air should be transferred from fluid 0 to fluid
+ 1 and vice versa, and the air with least downward momentum should be transferre
+d from 0 to 1 and vice versa.
 \end_layout
 
 \end_inset
@@ -2645,6 +2752,47 @@ In fact, themost buoyant air should be transferred from fluid 0 to fluid
 Huh? "In fact"? Is this an intuitive assumption based on a particular definition
  of 0 and 1 fluids? Most buoyant, or just above-average? Least momentum,
  or just less than average? Why buoyancy and momentum?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+This is replaced by 
+\begin_inset Quotes eld
+\end_inset
+
+In fact, since we are conditionally averaging based on the vertical velocity,
+ the sub-set of fluid 0 that is accelerating and about to be rising should
+ be transferred from 0 to 1 and vice versa.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2673,7 +2821,57 @@ should depend on the modelling of sub-grid-scale variability
 \begin_inset Text
 
 \begin_layout Plain Layout
-properties of nature **must not** "depend on modelling"!!
+properties of nature **must not** 
+\begin_inset Quotes eld
+\end_inset
+
+depend on modelling
+\begin_inset Quotes erd
+\end_inset
+
+!!
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+This has been changed to 
+\begin_inset Quotes eld
+\end_inset
+
+A realistic estimate of the properties of the fluid transferred can only
+ be made based on knowledge of sub-filter-scale variability (i.e.
+ the variability within each fluid).
+ Modelling of sub-filter-scale variability is beyond the scope of this paper
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2725,6 +2923,38 @@ THIS NEEDS TO HAVE BEEN MENTIONED SOONER
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Yes, thank-you.
+ Done
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 130
 \end_layout
 
@@ -2762,6 +2992,69 @@ This
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed to 
+\begin_inset Quotes eld
+\end_inset
+
+These assumptions can be used to simplify the multi-fluid w equation, (17)
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ changed to 
+\begin_inset Quotes eld
+\end_inset
+
+0 and 1
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 before eqn 18
 \end_layout
 
@@ -2782,6 +3075,45 @@ so we need
 \begin_layout Plain Layout
 is this meant to be obvious? is it unique? what is the status of this argument
  and its result?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+This has been clarified: 
+\begin_inset Quotes eld
+\end_inset
+
+Therefore the stabilisation term should be 
+\begin_inset Formula $O(1)$
+\end_inset
+
+ which implies that:
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2823,6 +3155,37 @@ This sentence belongs in the Abstract perhaps, or at least the Introduction
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+A sentence in the abstract has been adapted
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 226
 \end_layout
 
@@ -2842,6 +3205,37 @@ looses
 
 \begin_layout Plain Layout
 loses
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2932,6 +3326,47 @@ As in Fig.
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+I disagree.
+ When I read 
+\begin_inset Quotes eld
+\end_inset
+
+as in fig x but ...
+\begin_inset Quotes erd
+\end_inset
+
+ I am annoyed that I have to read another figure caption aswell.
+ However I have replaced the figure caption as suggested.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 266
 \end_layout
 
@@ -2961,6 +3396,37 @@ using c
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Yes, fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 268
 \end_layout
 
@@ -2980,6 +3446,36 @@ if
 
 \begin_layout Plain Layout
 of
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Thanks.
+ Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3034,6 +3530,38 @@ not present in the reference simulation
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Thanks.
+ Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 277
 \end_layout
 
@@ -3065,6 +3593,61 @@ Seems like a serious shortcoming, needing to know the solution in order
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+sub-grid-scale
+\begin_inset Quotes erd
+\end_inset
+
+ is replaced by 
+\begin_inset Quotes eld
+\end_inset
+
+sub-filter-scale
+\begin_inset Quotes erd
+\end_inset
+
+ and added 
+\begin_inset Quotes eld
+\end_inset
+
+Modelling of higher-order moments of variability within each fluid is an
+ area of active research.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 280
 \end_layout
 
@@ -3083,7 +3666,38 @@ demonstrated the value of using
 \begin_inset Text
 
 \begin_layout Plain Layout
-Not clear it is the "value of using" -- maybe the "plausible utility of"?
+Not clear it is the "value of using" – maybe the "plausible utility of"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Thanks, your suggestion is adopted.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3123,6 +3737,37 @@ Can this be expressed as a lesson rather than a declaration of "success"?
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Modifications in the penultimate paragraph of section 4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 283
 \end_layout
 
@@ -3142,6 +3787,40 @@ Entrainment calculated as the reciprocal of plume width was not successful.
 
 \begin_layout Plain Layout
 Is that a good thing, since one doesn't know plume widths a priori anyway?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+I don't think that we can get away from needing to know plume widths.
+ They are bound to influence plume dynamics, but we do not yet know how
+ they should feed into mutli-fluid modelling.
+ I haven't made any changes to the manuscript based on this conjecture.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3176,6 +3855,46 @@ Apparently this is a segue into the next section, but this paragraph was
  a rather flat summary that did not exactly point the reader forward.
  Could it me made more discussion-y rather than merely repeating the reporting
  of efforts and experiments?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Added 
+\begin_inset Quotes eld
+\end_inset
+
+Using the lessons learned from modelling the rising bubble, a statistically
+ stationary case with many plumes is simulated next.
+\begin_inset Quotes erd
+\end_inset
+
+ at the end of section 4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3237,6 +3956,37 @@ this test case is designed to have strong updraughts in narrow plumes and
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+I am not sure how to improve on this.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 350
 \end_layout
 
@@ -3256,6 +4006,47 @@ at coarse horizontal resolution
 
 \begin_layout Plain Layout
 is this phrase placed correctly within the sentence? I can't parse it.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+The sentence is replaced with 
+\begin_inset Quotes eld
+\end_inset
+
+This paper presents solutions of the two-fluid Boussinesq equations using
+ coarse horizontal resolution (one column) which reproduce aspects of highly
+ resolved single-fluid simulations of dry, two-dimensional convection.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3295,6 +4086,37 @@ evaluate
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 355
 \end_layout
 
@@ -3314,6 +4136,37 @@ to create rising and falling fluids
 
 \begin_layout Plain Layout
 to define
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3360,6 +4213,54 @@ must
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+This is a goal.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+must clearly be
+\begin_inset Quotes erd
+\end_inset
+
+ has been changed to 
+\begin_inset Quotes eld
+\end_inset
+
+need to be
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 368
 \end_layout
 
@@ -3379,6 +4280,37 @@ test
 
 \begin_layout Plain Layout
 Is first person and present tense appropriate here?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed to the dreaded passive voice
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3418,6 +4350,37 @@ grammar (number): a set is
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Sentences re-arranged to use active voice
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 372
 \end_layout
 
@@ -3437,6 +4400,46 @@ sub-grid-scale
 
 \begin_layout Plain Layout
 what is this "grid"?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed to 
+\begin_inset Quotes eld
+\end_inset
+
+sub-filter-scale
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Ie variability within each fluid
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -3478,6 +4481,37 @@ THE MOST as an extremal principle? Or just above- average? And who is the
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+hmm
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 378
 \end_layout
 
@@ -3497,6 +4531,40 @@ the fluid takes its mean buoyancy with it.
 
 \begin_layout Plain Layout
 the fluids take their mean buoyancy with them across the bounding surface
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+There isn't really a bounding surface and we certainly do not want to mention
+ a bounding surface for the first time in the conclusion.
+ Each parcel of fluid can be re-labelled so considering a bounding surface
+ is probably not helpful.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
