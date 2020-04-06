@@ -1221,8 +1221,8 @@ Responses to Annotated pdf
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="100" columns="3">
-<features rotate="90" islongtable="true" longtabularalignment="left">
+<lyxtabular version="3" rows="104" columns="3">
+<features islongtable="true" longtabularalignment="left">
 <column alignment="left" valignment="top" width="9text%">
 <column alignment="left" valignment="top" width="25text%">
 <column alignment="left" valignment="top" width="65text%">
@@ -1888,7 +1888,7 @@ grammar? number?
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1899,7 +1899,7 @@ Fixed
 
 \end_inset
 </cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1944,7 +1944,7 @@ Neither of these stabilisation techniques are acceptable
 \begin_inset Text
 
 \begin_layout Plain Layout
-? can more be said?
+can more be said?
 \end_layout
 
 \end_inset
@@ -2004,7 +2004,15 @@ and
 \begin_inset Text
 
 \begin_layout Plain Layout
-why is this a sentence with "and" in the middle?
+why is this a sentence with 
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+ in the middle?
 \end_layout
 
 \end_inset
@@ -4492,7 +4500,7 @@ THE MOST as an extremal principle? Or just above- average? And who is the
 \begin_layout Plain Layout
 
 \color blue
-hmm
+This has been edited in the penultimate paragraph of the conclusions.
 \end_layout
 
 \end_inset
@@ -4605,6 +4613,38 @@ assuming...
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Thanks.
+ Changed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 382
 \end_layout
 
@@ -4624,6 +4664,37 @@ we transfer
 
 \begin_layout Plain Layout
 way too first person
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Changed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4663,6 +4734,37 @@ grammar
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+Fixed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 390
 \end_layout
 
@@ -4683,6 +4785,37 @@ stable environment to the buoyant plume
 \begin_layout Plain Layout
 are plumes now defined as buoyant rather than as ascending? This seems to
  be zooming out to vague generalizations rapidly, abruptly even.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color blue
+The final paragraph has been edited.
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

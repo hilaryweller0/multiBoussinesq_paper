@@ -1120,7 +1120,7 @@ after $10^{4}\ \text{s}$. \label{fig:RCE_singleColumn}}
 
 \section{Summary, Conclusions and Further Work \label{sec:concs}}
 
-\change[HW}{This paper presents solutions of the multi-fluid Boussinesq equations for convection, reproducing aspects of highly resolved dry convection
+\change[HW]{This paper presents solutions of the multi-fluid Boussinesq equations for convection, reproducing aspects of highly resolved dry convection
 at coarse horizontal resolution.}
 {This paper presents solutions of the two-fluid Boussinesq equations using coarse horizontal resolution (one column) which reproduce aspects of highly resolved single-fluid simulations of dry, two-dimensional convection.}
 Two test cases are used to \change[HW]{validate}{evaluate}
@@ -1154,35 +1154,39 @@ solutions. \change[HW]{We also test a}{A} more conventional fractional entrainme
 
 \change{A set of unknowns in the multi-fluid equations are the}{The} properties of the fluid that are transferred from one fluid to another \add[HW]{are unknowns in the multi-fluid equations that require closure}. An obvious
 first guess would be that fluid takes its mean buoyancy and velocity
-with it when it is transferred. However sub-\change{grid}{filter}-scale variability
+with it when it is transferred.
+\change[HW]{However sub-grid-scale variability
 of each fluid means that we expect that the most buoyant fluid will
 be transferred to the rising fluid or the fluid with the largest vertical
-velocity will be transferred to the rising fluid and vice versa. An
-accurate estimate of these would depend on knowledge of the sub-grid-scale
+velocity will be transferred to the rising fluid and vice versa. An accurate estimate of these would depend on knowledge of the sub-grid-scale
 variability of each fluid which we do not have. Instead we assume
 that the fluid transferred in each direction has zero vertical velocity
-which is consistent with our conditional averaging. We have tested
-three models for the buoyancy of the fluid transferred. The most successful
+which is consistent with our conditional averaging.}
+{Improvements on this assumption will depend on knowledge of sub-filter-scale variablity. However since conditional averaging is on $w$, it is consistent to assume that the fluid transferred has $w=0$.}
+\remove[HW]{We have tested}
+Three models for the buoyancy of the fluid transferred 
+\add[HW]{are proposed}. The most successful
 is to assume that the fluid takes its mean buoyancy with it. Assuming
 that the buoyancy of the transferred fluid is an average of the buoyancy
 of both fluids can lead to unrealistically large or small, unbounded
-buoyancies. Similarly, if we assume that one fluid has negative buoyancy
-and the other positive buoyancy and we transfer fluid of zero buoyancy,
+buoyancies. 
+\change[HW]{Similarly, if we assume}{Assuming}
+that one fluid has negative buoyancy and the other positive buoyancy and 
+\remove[HW]{we transfer}
+fluid of zero buoyancy \add[HW]{is transferred},
 then unbounded buoyancy can occur. A better model of the buoyancy
-of the fluid transferred would rely on more information the sub-grid-scale
-variability.
+of the fluid transferred would rely on more information \add[HW]{of} the
+sub-\change[HW]{grid}{filter}-scale variability.
 
-\change[HW]{Single}{One} column multi-fluid modelling with moisture has already been
-demonstrated by \citeA{TEB19} 
+\change[HW]{Single}{One} column multi-fluid modelling with moisture has already been demonstrated by \citeA{TEB19} 
 \add[HW]{and two dimensional simulations of the multi-fluid Euler equations by \protect\citeA{WM19} }.
-Two important next steps are to simulate
-convection in the grey zone (where it is partially resolved) and to
-represent sub-grid-scale variability within each fluid by solving
-multi-fluid prognostic equations for turbulent kinetic energy and
-other moments of the sub-grid variability. These can be used to inform
-cloud base mass flux (since only the most buoyant fluid will transfer
+Two important next steps are to simulate convection in the grey zone (where it is partially resolved) and to represent sub-\change[HW]{grid}{filter}-scale variability within each fluid by solving multi-fluid prognostic equations for turbulent kinetic energy and other moments of the sub-\change[HW]{grid}{filter} variability. 
+\remove[HW]{These can be used to inform}
+Cloud base mass flux \add[HW]{could then be estimated based on higher-order moments of the vertical velocity and buoyancy within the environment fluid.}
+\remove{(since only the most buoyant fluid will transfer
 from the stable environment to the buoyant plume) and inform models
-of the properties of the fluid that is transferred. This will lead
+of the properties of the fluid that is transferred.}
+This will lead
 to a unified parameterisation of turbulence and convection and will
 take multi-fluid modelling of convection beyond existing paradigms. 
 
