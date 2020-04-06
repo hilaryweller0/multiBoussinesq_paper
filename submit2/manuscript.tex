@@ -686,13 +686,9 @@ or in a \change[HW]{single}{one} column model.
 
 \begin{figure}
 \noindent \begin{centering}
-\includegraphics[width=1\textwidth]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/bP}
+\includegraphics[width=\textwidth]{figures/bubble.pdf}
 \par\end{centering}
-\noindent \begin{centering}
-\includegraphics[width=0.75\textwidth]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b}
-\par\end{centering}
-\caption{The single-fluid, resolved \add[HW]{2D} rising bubble after 1000s. Buoyancy is
-coloured and pressure is contoured every $10\text{m}^{2}\text{s}^{-2}$,
+\caption{The single-fluid, resolved \add[HW]{2D} rising bubble after \add[HW]{0s, 500s and }1000s. Buoyancy is coloured and pressure is contoured every $10\text{m}^{2}\text{s}^{-2}$,
 negative contours dashed. The $w=0$ contour is dotted.
 \label{fig:bubble}}
 \end{figure}
@@ -717,26 +713,10 @@ can be no compensating subsidence. The lack of vertical transport
 at coarse resolution motivates convection parameterisation. 
 
 \begin{figure}
-\noindent %
-\begin{tabular}{ccccc}
-\begin{turn}{90}
-200 Columns
-\end{turn} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/sigma} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/b} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/w} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/hMean/1000/P}\tabularnewline
-\begin{turn}{90}
-9 Columns
-\end{turn} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/sigma} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/b} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/w} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/nineColumn/hMean/1000/P}\tabularnewline
-\begin{turn}{90}
-5 Columns
-\end{turn} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/sigma} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/b} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/w} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/fiveColumn/hMean/1000/P}\tabularnewline
-\begin{turn}{90}
-3 Columns
-\end{turn} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/sigma} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/b} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/w} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/threeColumn/hMean/1000/P}\tabularnewline
-\begin{turn}{90}
-1 Column
-\end{turn} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/sigma} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/b} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/w} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/singleColumn/hMean/1000/P}\tabularnewline
-\end{tabular}
-
-\caption{The rising bubble after 1000s simulated with coarse horizontal resolution
+\noindent \begin{centering}
+\includegraphics[width=\textwidth]{figures/bubble_singleUnderRes.pdf}
+\par\end{centering}
+\caption{The rising bubble after 1000s simulated with varying horizontal resolution
 and a single-fluid. Horizontal averages are conditioned based on $w$.
 \label{fig:bubble_singleUnderRes}}
 \end{figure}
@@ -753,95 +733,28 @@ and \ref{fig:multiFluidSingleColumn} for various assumptions about
 transfers between fluids and various parameter values.
 
 \begin{figure}
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{cccc}
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=0$, \hspace{6pt}
-$\gamma=0$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}} \tabularnewline 
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=0$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=2.3\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e3_divTransfer/1000/Pcompare}\tabularnewline
-$\sigma_{1}$ ($\text{m}^3/\text{m}^3$) & $b$ and $b_{i}$ ($\text{m}\text{s}^{-2}$) & $w_{0}$ and $w_{1}$ (m/s) & $P_{0}$ and $P_{1}$ ($\text{m}^2 \text{s}^{-2}$)\tabularnewline
-\end{tabular}
-
-\caption{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are
+\noindent
+\includegraphics[width=\linewidth]{figures/multiFluidBubble_500_1.pdf}
+\caption{Results of the rising bubble at $t=500\ \text{s}$. Solid lines are
 the multi-fluid, \change[HW]{single}{one} column solutions of the rising bubble. Dashed
-lines are the single-fluid, resolved solutions. \label{fig:multiFluidSingleColumn-bad}}
+lines are the single-fluid, resolved solutions.
+\label{fig:multiFluidBubble_500_1}}
 \end{figure}
 
 \begin{figure}
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{cccc}
-\multicolumn{4}{c}{\framebox[0.8\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=1/2000\text{m}^{-1}$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-} }\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=0$, \hspace{6pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.8\linewidth]{\centering
-$S_{01}=w_{1}0.2/r_{c}$, \hspace{4pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{4pt}
-$C_{D}/r_{c}=0/2000\text{m}^{-1}$, \hspace{4pt}
-$b_{ij}^{T}=b_{i}$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.7\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=0$.
-} }\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/1000/Pcompare}\tabularnewline
-\multicolumn{4}{c}{\framebox[0.8\linewidth]{\centering
-$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt}
-$\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$, \hspace{6pt}
-$C_{D}/r_{c}=0$, \hspace{6pt}
-$b_{ij}^{T}=\frac{1}{2}\left(b_{0}+b_{1}\right)$.
-}}\tabularnewline
-\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/1000/Pcompare}\tabularnewline
-$\sigma_{1}$ & $b$, $b_{0}$ and $b_{1}$ & $w_{1}$ & $P_{0}$ and $P_{1}$\tabularnewline
-\end{tabular}
+\noindent
+\includegraphics[width=\linewidth]{figures/multiFluidBubble_500_2.pdf}
+\caption{As figure \ref{fig:multiFluidBubble_500_1} but different parameterisation options.
+\label{fig:multiFluidBubble_500_2}}
+\end{figure}
 
-\caption{\change[HW]{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are the multi-fluid, single column solutions of the rising bubble. Dashed lines are the single-fluid, resolved solutions.}
-{As figure \protect\ref{fig:multiFluidSingleColumn-bad} but different parameterisation options.}
-\label{fig:multiFluidSingleColumn}}
+\begin{figure}
+\noindent
+\includegraphics[width=\linewidth]{figures/multiFluidBubble_1000.pdf}
+\caption{Results of the rising bubble at $t=1000\ \text{s}$. Solid lines are
+the multi-fluid, \change[HW]{single}{one} column solutions of the rising bubble. Dashed
+lines are the single-fluid, resolved solutions.
+\label{fig:multiFluidBubble_1000}}
 \end{figure}
 
 If there is no drag between fluids, no transfers, no diffusion and
@@ -1070,7 +983,9 @@ when transferred, $b_{ij}^{T}=b_{i}$.
 \begin{figure}
 \setlength\tabcolsep{0.5pt}%
 \begin{tabular}{ccccc}
-$\sigma$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (\text{m}\ \text{s}^{-1})$ & $P\ (\text{m}^{2}\text{s}^{-2})$\tabularnewline
+$\sigma$
+&
+$\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (\text{m}\ \text{s}^{-1})$ & $P\ (\text{m}^{2}\text{s}^{-2})$\tabularnewline
 \multicolumn{5}{c}{Horizontal averages of the resolved RCE test case}\tabularnewline
 \includegraphics[scale=0.7]
 {/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean}
@@ -1081,7 +996,9 @@ $\sigma$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (
 \includegraphics[scale=0.7]
 {/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean}
 &
-\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean}
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean}
+&
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean}
 \tabularnewline
 \multicolumn{5}{c}{\change[HW]{Single}{One} column with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
 $b_{ij}^{T}=b_{i}$, $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$

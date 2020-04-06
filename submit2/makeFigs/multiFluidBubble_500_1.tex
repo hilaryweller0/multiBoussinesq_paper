@@ -1,0 +1,82 @@
+%% LyX 2.2.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,british,times]{article}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[pdftex,a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\pagestyle{empty}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{calc}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage { fancybox}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{rotating}
+\newcommand{\nicefrac}[2]{\ensuremath ^{#1}\!\!/\!_{#2}}
+\usepackage { fancybox}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\begin{tabular}{cccc}
+\multicolumn{4}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=0$, \hspace{6pt} $\gamma=0$, \hspace{6pt} $C_{D}/r_{c}=0$,
+\hspace{6pt} $b_{ij}^{T}=b_{i}$
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/500/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/500/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/500/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_noTransfer/500/Pcompare}\tabularnewline
+\multicolumn{4}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $\gamma=0$, \hspace{6pt}
+$C_{D}/r_{c}=0$, \hspace{6pt} $b_{ij}^{T}=b_{i}$
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/500/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/500/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/500/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_divTransfer/500/Pcompare}\tabularnewline
+\multicolumn{4}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $\gamma=2.3\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$,
+\hspace{6pt} $C_{D}/r_{c}=0$, \hspace{6pt} $b_{ij}^{T}=b_{i}$
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/500/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/500/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/500/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_2p3e4_divTransfer/500/Pcompare}\tabularnewline
+\multicolumn{4}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $\gamma=4\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$,
+\hspace{6pt} $C_{D}/r_{c}=0$, \hspace{6pt} $b_{ij}^{T}=b_{i}$
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer/500/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer/500/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer/500/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer/500/Pcompare}\tabularnewline
+\multicolumn{4}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $\gamma=6\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$,
+\hspace{6pt} $C_{D}/r_{c}=0$, \hspace{6pt} $b_{ij}^{T}=b_{i}$
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_6e4_divTransfer/500/sigmaCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_6e4_divTransfer/500/bCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_6e4_divTransfer/500/wCompare} & \includegraphics[scale=0.6]{/home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_6e4_divTransfer/500/Pcompare}\tabularnewline
+$\sigma_{1}$ & $b$, $b_{0}$ and $b_{1}$ & $w_{0}$ and $w_{1}$ & $P_{0}$ and $P_{1}$\tabularnewline
+\end{tabular}
+\end{document}
