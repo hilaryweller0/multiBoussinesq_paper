@@ -1,0 +1,50 @@
+Comments on Weller et al.:
+Multi-fluids for representing sub-filter-scale convection
+
+
+Abstract (and elsewhere). `assumed that all fluids have the same pressure'
+I would rephrase this as `assumed that any pressure differences between fluids
+would be parameterized'. I think we agree on this; the question is how to
+parameterize the pressure differences.
+
+Line 65: `Neither of these stabilisation techniques are acceptable'.
+Could you briefly say why? (I think you say something later.)
+
+Equation (2): Can you derive this equation (noting that $\nabla (P_i) \ne (\nabla P)_i$,
+i.e.\ conditional filtering does not commute with $\nabla$)? I think you can;
+the $\mathbf{D}$ term picks up anything left over.
+
+I think we convinced ourselves that the parameterization of pressure differences
+you are using must dissipate energy.
+
+Equation (7): Can the interface velocity $V$ be made to appear through
+conditional filtering?
+
+Equation (9): Note that $\gamma$ is dimensional, so presumably its value must
+depend on other parameters in the problem? (Aah OK, see (18)).
+
+Lines 116-119: Note that there is an analogy between the calculation of $b^T$
+and the calculation of an interface mixing ratio in a flux-form advection scheme.
+$\theta_b = 1$ corresponds to first order upwind, but other values are justifiable.
+
+Lines 199-203: Note you might get a very different picture if you partitioned
+the flow based on buoyancy rather than $w$. Note also that in our single column
+model we have in mind a large ensemble of thermals rather than a single bubble.
+
+In Fig.~2 I think buoyancy is calculated relative to a reference profile rather than
+the horizontal mean. Does this affect the interpretation?
+
+Line 251: Romps and Charn looked particularly at drag due to a pressure dipole
+across thermals. Presumably entrainment also affects the momentum budget.
+
+
+
+
+
+
+
+
+
+
+
+ 

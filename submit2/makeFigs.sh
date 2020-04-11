@@ -1,7 +1,7 @@
 #!/bin/bash -e
 cd makeFigs
 
-for file in bubble bubble_singleUnderRes multiFluidBubble_500_1 multiFluidBubble_500_2 multiFluidBubble_1000; do
+for file in bubble bubble_singleUnderRes multiFluidBubble_500_1 multiFluidBubble_500_2 multiFluidBubble_1000 RCE_resolved RCE_singleColumn; do
     echo $file
     lyx --export pdflatex -f $file
     pdflatex $file
