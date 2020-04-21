@@ -102,7 +102,7 @@ tabcolsep{0.5pt}
 
 
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="5">
+<lyxtabular version="3" rows="5" columns="5">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -114,7 +114,7 @@ tabcolsep{0.5pt}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\sigma$
+\begin_inset Formula $\sigma_{1}$
 \end_inset
 
 
@@ -176,151 +176,54 @@ tabcolsep{0.5pt}
 \begin_inset Text
 
 \begin_layout Plain Layout
-Horizontal averages of the resolved RCE test case between 
-\begin_inset Formula $t=10^{5}\text{s}$
-\end_inset
-
- and 
-\begin_inset Formula $2\times10^{5}\text{s}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean.eps
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_w/0/massTransfer.eps
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean.eps
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean.eps
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean.eps
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Single column (solid) with 
+\noindent
+\align center
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
- and 
+, 
+\begin_inset space \hspace{}
+\length 6pt
+\end_inset
+
+ 
 \begin_inset Formula $b_{ij}^{T}=b_{i}$
 \end_inset
 
 , 
+\begin_inset space \hspace{}
+\length 6pt
+\end_inset
+
+  
 \begin_inset Formula $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
- versus resolved (dashed)
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -368,7 +271,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/sigma_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -398,7 +301,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/b_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/b.eps
 	scale 70
 
 \end_inset
@@ -413,7 +316,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/u_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/u.eps
 	scale 70
 
 \end_inset
@@ -428,7 +331,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P.eps
 	scale 70
 
 \end_inset
@@ -444,19 +347,54 @@ Single column (solid) with
 \begin_inset Text
 
 \begin_layout Plain Layout
-Single column (solid) with 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "70col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Formula $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$
 \end_inset
 
- and 
+, 
+\begin_inset space \hspace{}
+\length 6pt
+\end_inset
+
+ 
 \begin_inset Formula $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$
 \end_inset
 
 , 
+\begin_inset space \hspace{}
+\length 6pt
+\end_inset
+
+ 
 \begin_inset Formula $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
- versus resolved (dashed)
+ 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -504,7 +442,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -534,7 +472,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/b_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/b.eps
 	scale 70
 
 \end_inset
@@ -549,7 +487,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/u_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/u.eps
 	scale 70
 
 \end_inset
@@ -564,7 +502,7 @@ Single column (solid) with
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/P_1.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/P.eps
 	scale 70
 
 \end_inset

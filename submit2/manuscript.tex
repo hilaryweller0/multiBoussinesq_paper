@@ -33,6 +33,7 @@
 % complete documentation is here: http://trackchanges.sourceforge.net/
 %%%%%%%
 \addeditor{HW}
+\addeditor{WM}
 
 \draftfalse
 
@@ -117,7 +118,7 @@ to use bi-Gaussian probability distribution functions rather than top-hat distri
 
 \citeA{TWV+18} proposed multi-fluid modelling of convection in order
 to treat non-equilibrium and net mass transport \remove[HW]{correctly and} consistently.
-\add[HW]{The multi-fluids approach has an advantage over ADHOC and CLUBB in solving prognostic equations for first-order moments directly (means of eg. updraft and environment) rather than solving prognostic equations for higher-order moments of the whole fluid in order to diagnose means of updrafts and the environment. Solving directly for sub-fluid means should be less sensitive to closure assumptions.}
+\add[HW]{The multi-fluids approach has an advantage over ADHOC and CLUBB in solving prognostic equations for first-order moments directly (mean properties of eg. updraft and environment) rather than solving prognostic equations for higher-order moments of the whole fluid in order to diagnose means of updrafts and the environment. Solving directly for sub-fluid means should be less sensitive to closure assumptions.}
 \remove{with the same numerics and physics to prognose properties of separate parts of the fluid, for example updrafts, the stable environment and downdrafts dynamics}. \citeA{Yano14} derived similar
 equations \remove[HW]{for multiple segments} and showed how this is a generalisation
 of the mass-flux formulation. The \citeA{TKP+18} ``extended eddy
@@ -163,8 +164,8 @@ Navier-Stokes equations \cite<e.g. those described in>{WM19} carry
 over to the Boussinesq equations \add[HW]{because} convection is buoyancy dominated
 and close to incompressible. The resolved test cases presented in
 section \ref{sec:results} give very similar results for Navier-Stokes
-and Buossinesq equations. Therefore for simplicity we focus on the
-\remove[HW]{multi-fluid} Boussinesq equations without background stratification:
+and Buossinesq equations. Therefore\change[WM]{ for simplicity we focus on the}{, the}
+\remove[HW]{multi-fluid} Boussinesq equations without background stratification \add[WM]{are chosen for simplicity}:
 \note[HW]{This is additional material until the start of 2.1}
 \begin{eqnarray}
 \frac{\partial \mathbf{u}}{\partial t} + \nabla\cdot(\mathbf{u}\mathbf{u})
@@ -218,17 +219,19 @@ $r_{c}$ & Plume radius used for defining the drag between fluids (m)\tabularnewl
 $\alpha$ & Diffusivity of buoyancy ($\text{m}^{2}\text{s}^{-1}$)\tabularnewline
 $\nu$ & Viscosity ($\text{m}^{2}\text{s}^{-1}$)
 \tabularnewline
+\add[WM]{$\mathbf{k}$} & \add[WM]{Unit vector in the $z$-direction.}
+\tabularnewline
 \end{tabular}
 \caption{Definitions of variables for the single- and multi-fluid Boussinesq equations.\label{tab:defns}}
 \end{table}
 
 The single-fluid Boussinesq equations will be conditionally averaged following \citeA{TWV+18} to give the multi-fluid Boussinesq equations. Lagrangian labels for each fluid $i$ are defined as $I_i=1$ in fluid $i$ and zero elsewhere. 
-For the derivation of the conditionally averaged equations we will not consider relabelling of fluid \add[HW]{and so} $I_i$ satisfies:
+For the derivation of the conditionally averaged equations \change[WM]{we will not consider relabelling of fluid}{the relabelling of fluids will not be considered,} \add[HW]{and so} $I_i$ satisfies:
 \begin{equation}
 \frac{DI_i}{Dt}=0.
 \label{eq:LagrangianLabel}
 \end{equation}
-Applying conditional volume average to $I_i$ we define the volume fraction of fluid $i$ and the velocity and buoyancy of fluid $i$:
+\change[WM]{Applying conditional volume average to $I_i$ we define the volume fraction of fluid $i$ and the velocity and buoyancy of fluid $i$}{By applying a conditional volume average (denoted by the overbar), the fluid $i$ volume fractions, velocities and buoyancies are defined by}:
 \begin{eqnarray}
 \sigma_i &=& \overline{I_i} \\
 \sigma_i \mathbf{u}_i &=& \overline{I_i \mathbf{u}} \\
@@ -240,16 +243,16 @@ which implies
 \sum_{i}\sigma_{i}  =  1.
 \label{eq:sumOne}
 \end{equation}
-As we are considering the Boussinesq equations we assume that variations in density only affect the buoyancy terms so $\mathbf{u}_i$ and $b_i$ are defined without density weighting. 
+\change[WM]{As we are considering the Boussinesq equations we assume}{As the system is governed by the Boussinesq equations, it is assumed} that variations in density only affect the \change[WM]{buoyancy terms}{definition of the buoyancy terms (table \protect\ref{tab:defns})} so $\mathbf{u}_i$ and $b_i$ are defined without density weighting. 
 
-To derive a transport equation for $\sigma_i$ we combine (\ref{eq:LagrangianLabel}) with $I_i$ times (\ref{eq:singleDivFree}) and volume average. After permuting operators with the averaging \cite<as described by>{TWV+18} and using the definitions of $\sigma_i$ and $\mathbf{u}_i$ we get the evolution equation for $\sigma_i$:
+To derive a transport equation for $\sigma_i$\change[WM]{ we combine (\protect\ref{eq:LagrangianLabel})}{, (\protect\ref{eq:LagrangianLabel}) is combined} with $I_i$ times (\ref{eq:singleDivFree}) and volume average. After permuting operators with the averaging \cite<as described by>{TWV+18}\add[WM]{,} and using the definitions of $\sigma_i$ and $\mathbf{u}_i$\add[WM]{,} \remove[WM]{we get} the evolution equation for $\sigma_i$\add[WM]{ is obtained}:
 \begin{equation}
 \frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i}  =  \sum_{j\ne i}\left\{ \sigma_{j}S_{ji}-\sigma_{i}S_{ij}\right\}
 \label{eq:sigma}
 \end{equation}
 which also includes transfers between fluids with $\sigma_{i}S_{ij}$ being the transfer from fluid $i$ to $j$.
 
-Next we will consider conditionally averaging the terms of the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations. Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
+Next \change[WM]{we will consider conditionally averaging the terms of }{the conditional averaging of terms in} the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations\add[WM]{ is considered}. Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
 \begin{eqnarray}
 \overline{I_i \nabla \cdot (\mathbf{u} \mathbf{u})} &=& \nabla \cdot (\sigma_i \mathbf{u}_i  \mathbf{u}_i) + F_\text{SF}^{\mathbf{u}_i} \\
 \overline{I_i \nabla (\mathbf{u} b)} &=&  \nabla \cdot (\sigma_i \mathbf{u}_i b_i) + F_\text{SF}^{b_i}
@@ -258,18 +261,19 @@ Next we will consider conditionally averaging the terms of the momentum (\ref{eq
 The sub-filter-scale fluxes will be absorbed into the diffusion terms for momentum and buoyancy.
 %
 \note[HW]{Dan, can we do better than this?}
-Lots of terms appear when attempting to conditionally average the diffusion terms which we do not know how to parameterise. Therefore we will use simply:
+\change[WM]{Lots of}{Many} terms appear when attempting to conditionally average the diffusion terms which we do not know how to parameterise. \change[WM]{Therefore we will use simply}{The conditionally averaged diffusion terms are therefore assumed to behave like}:
 \begin{eqnarray}
 \overline{I_i \nu \nabla^2 \mathbf{u}} &=& \sigma_i \nu \nabla^2 \mathbf{u}_i \\
 \overline{I_i \alpha \nabla^2 b} &=& \sigma_i \alpha \nabla^2b_i .
 \end{eqnarray} 
 %
-Unlike \citeA{TWV+18} we define separate pressures for each fluid, $P_i$. The pressures are defined to satisfy:
+\remove[WM]{Unlike \protect\citeA{TWV+18}} \change[WM]{we define separate pressures for each fluid, $P_i$. The pressures are defined to satisfy:}{The pressures for each fluid, $P_i$, are defined to satisfy:}
 \begin{equation}
-\overline{I_i \nabla P} = \sigma_i \nabla P_i.
+\overline{I_i \nabla P} = \sigma_i \nabla P_i
 \end{equation}
+\add[WM]{which differs from \protect\citeA{TWV+18} who use a shared fluid pressure.}
 %
-Combining these gives the conditionally averaged momentum and buoyancy equations:
+Combining \change[WM]{these}{the above terms} gives the conditionally averaged momentum and buoyancy equations:
 \begin{eqnarray}
 \frac{\partial\sigma_i\mathbf{u}_{i}}{\partial t} + 
 \nabla\cdot(\sigma_i \mathbf{u}_{i} \mathbf{u}_{i})
@@ -329,9 +333,9 @@ in a fluid with vanishing volume fraction. \change[HW]{It is mass convergence
 rather than velocity convergence that leads to pressure anomalies
 that remove the convergence. Therefore if the volume (or mass) fraction
 of fluid is vanishingly low then convergence cannot lead to an anomaly
-in the total pressure.}{For single-fluid equations, divergence would lead to pressure anomalies which would act as a negative feedback on the divergence. However for multi-fluids if one of the volume fractions is too small then it cannot force pressure anomalies big enough to stabilise the divergence. Use of separate pressure for each fluid is proposed to ensure stability.}
+in the total pressure.}{For single-fluid equations, divergence would lead to pressure anomalies which would act as a negative feedback on the divergence. However for multi-fluids if one of the volume fractions is too small then it cannot force pressure anomalies big enough to stabilise the divergence. Use of a separate pressure for each fluid is therefore proposed to ensure stability.}
 
-We will assume that pressure in each fluid is given by a \remove[HW]{parameterised}
+\change[WM]{We will assume that}{It is assumed that the} pressure in each fluid is given by a \remove[HW]{parameterised}
 perturbation, $p_{i}$, from the total pressure, $P$:
 \begin{equation}
 P_{i}=P+p_{i}.
@@ -359,23 +363,23 @@ pressure of each fluid relaxes to the mean pressure and index $j$
 refers to the other fluid in a two fluid system. In our Boussinesq
 system, $\rho_{i}$ does not appear in the continuity equation. Different
 authors make different assumptions about the interface velocity but
-if we assume that $\mathbf{V}=\sum_{i}\sigma_{i}\mathbf{u}_{i}$ and
+if \change[WM]{we assume}{one assumes} that $\mathbf{V}=\sum_{i}\sigma_{i}\mathbf{u}_{i}$ and
 $\rho_{i}$ is constant then eqns (\ref{eq:divFree}), (\ref{eq:sumOne}), (\ref{eq:BNcompaction}) and (\ref{eq:rhoTransport})
 imply that $\mu p_{i}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$.
-If we assume that $\mathbf{V}=\mathbf{u}_{i}$ for each fluid then
-we get $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.
+\change[WM]{If we assume that $\mathbf{V}=\mathbf{u}_{i}$ for each fluid then
+we get $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.}{Instead assuming $\mathbf{V}=\mathbf{u}_{i}$ for each fluid results in $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.}
 
 \subsubsection{\add[HW]{Proposed Model for Pressure Differences between Fluids}}
 
 \citeA{TEB19} stabilised the multi-fluid equations by adding a diffusion
 term $\nu\partial w^{2}/\partial z^{2}$ to the RHS of the $w$ equation.
-If a fluid perturbation pressure is set to $-\nu\partial w/\partial z$
-this is equivalent to the diffusion term in one dimension. However
+If a fluid perturbation pressure is set to \change[WM]{$-\nu\partial w/\partial z$}{$p_i=-\nu\partial w/\partial z$}
+\add[WM]{then} this is equivalent to the diffusion term in one dimension. However
 adding a diffusion term will harm three dimensional simulations of
 resolved convection in the free troposphere whereas adding a fluid
 perturbation pressure will not. Inspired by both \citeA{BN86} and
-\citeA{TEB19} we assume that the pressure in each fluid is given
-by:
+\citeA{TEB19}\change[WM]{ we assume that the pressure in each fluid is given
+by}{, the pessure in each fluid is chosen to be}:
 \begin{equation}
 p_{i}=-\gamma\nabla\cdot(\sigma_i \mathbf{u}_{i})
 \label{eq:Pi_div}
@@ -406,7 +410,7 @@ S_{ij}=\begin{cases}
 \end{cases}
 \label{eq:Sdiv}
 \end{equation}
-\change[HW]{which is necessary to stop air in}{This formulation prevents} one fluid from accumulating when vertical motion ceases (at the top of a rising plume or at the bottom of descending air). \remove[HW]{We will also test a}{A} common form of lateral entrainment \cite<eg.>{DBF+13} \add[HW]{is also tested in section {\protect\ref{sec:results}}}:
+\change[HW]{which is necessary to stop air in}{This formulation prevents} one fluid from accumulating when \change[WM]{vertical motion ceases}{a fluid decelerates} (at the top of a rising plume or at the bottom of descending air). \remove[HW]{We will also test a}{A} common form of lateral entrainment \cite<eg.>{DBF+13} \add[HW]{is also tested in section {\protect\ref{sec:results}}}:
 \begin{equation}
 \varepsilon=\frac{0.2}{r_{c}}
 \label{eq:fracEnt}
@@ -427,29 +431,26 @@ Sensitivity to $C_{D}/r_{c}$is explored in section \ref{sec:results}.
 \subsection{The Buoyancy and the Momentum of the Mass that is Transferred \label{subsec:transferProperties}}
 
 \change[HW]{The different}{Each} fluid may not be well mixed so the fluid transferred
-may not have the mean properties of the fluid it is leaving \cite<as was assumed by>{WM19}. \change[HW]
-{In fact, the most buoyant air should be transferred from fluid 0 to
-fluid 1 and vice versa, and the air with least downward momentum}
-{Since conditional averaging is based on the vertical velocity, $w$, the sub-set of fluid 0 that is about to be rising}
+may not have the mean properties of the fluid it is leaving \cite<as was assumed by>{WM19}. \change[WM]{In fact, the most buoyant air should be transferred from fluid 0 to
+fluid 1 and vice versa, and the air with least downward momentum
 should be transferred from 0 to 1 and vice versa.
-\change[HW]{The properties of the fluids transferred should depend on the modelling of sub-grid-scale variability which}
-{A realistic estimate of the properties of the fluid transferred can only be made based on knowledge of sub-filter-scale variability (i.e. the variability within each fluid). Modelling of sub-filter-scale variability}
-is beyond the scope of this paper.
-%
-In section \ref{sec:results}
+The properties of the fluids transferred should depend on the modelling of sub-grid-scale variability which
+is beyond the scope of this paper.}{A realistic estimate of the properties of the fluid transferred can only be based on knowledge of the sub-filter-scale variability (i.e. the variability within each fluid). However, modelling of sub-filter-scale variability is beyond the scope of this paper.}
+
+\change[WM]{In section 4
 we conditionally average high resolution solutions based on the sign
 of $w$ so that $w\le 0$ air is in fluid 0 and $w>0$ air in fluid 1.
-Therefore the air that is transferred at the interface will have $w=0$.
-For two dimensional multi-fluid simulations we \add[HW]{could} assume that the horizontal
+Therefore the air that is transferred at the interface will have $w=0$.}{Since conditional averaging is based on the vertical velocity in this study, the sub-set of fluid 0 that is about to rise (i.e. within the next timestep) should be transferred from fluid 0 to fluid 1, and vice versa for the fluid about to fall in fluid 1. The fluid transferred will pass through the fluid interface and will therefore have a vertical velocity of $w=0$.}
+For \change[WM]{two}{three} dimensional multi-fluid simulations \change[WM]{we}{one} \add[HW]{could} assume that the horizontal
 velocity transferred is equal to the mean horizontal velocity of the
-fluid transferred from. Therefore
+fluid transferred from\change[WM]{. Therefore}{:}
 \begin{equation}
 \mathbf{u}_{ij}^{T}=\begin{pmatrix}u_{i}\\
 v_{i}\\
 0
 \end{pmatrix}.
 \end{equation}
-\add[HW]{However two dimensional multi-fluid simulations are not presented in this paper.}
+\add[WM]{However, only one dimensional multi-fluid simulations are presented in this paper.}
 
 \change[HW]{For}{The} buoyancy \add[HW]{transferred} follows \citeA{TEB19}: \remove[HW]{we use}
 \begin{equation}
@@ -478,12 +479,12 @@ fluid that is loosing mass (as demonstrated in section \ref{sec:results}).
 \item Fluid $i$ properties are anomalies from a neutrally stable resting
 mean state 
 \add[HW]{implying that the average over all fluids of $b_i$, $\mathbf{u}_i$ and $P_i$ are zero}.
-\item We consider only the vertical direction where $w_{ij}^{T}=0$.
+\item \change[WM]{We consider only the vertical direction}{Only the vertical direction is considered} where $w_{ij}^{T}=0$.
 \item $P_{i}=P-\gamma\nabla\cdot\sigma_i \mathbf{u}_{i}\approx-\gamma\nabla\cdot\sigma_i\mathbf{u}_{i}=-\gamma\frac{\partial \sigma_i w_{i}}{\partial z}$
 \item \add[HW]{$\frac{\partial \sigma_i}{\partial z} \approx 0$}
 \item There are two fluids, \change[HW]{$i$ and $j$}{0 and 1.}
-\item Without loss of generality we assume that $S_{ij}=-\frac{\partial w_{i}}{\partial z}>0$
-and $S_{ji}=0$.
+\item Without loss of generality\add[WM]{,} \change[WM]{we assume that}{the transfers} $S_{ij}=-\frac{\partial w_{i}}{\partial z}>0$
+and $S_{ji}=0$ \add[WM]{are used}.
 \end{enumerate}
 \change[HW]{This leads to the following balance in the momentum equation}{These assumptions can be used to simplify the multi-fluid $w$ equation, ({\protect\ref{eq:mom})}}:
 \begin{equation}
@@ -497,12 +498,12 @@ $B$ and a time scale $T$ to get the non-dimensional variables:
 \tilde{z} & = & z/L
 \end{eqnarray*}
 \add[HW]{where $\sigma$ is a typical value of $\sigma_i$ which must be $O(1)$ for one of the fluids.}
-Then the non-dimensional version of (\ref{eq:wi_balances}) is \add[HW]{then}:
+\change[WM]{Then the}{The} non-dimensional version of (\ref{eq:wi_balances}) is \add[HW]{then}:
 \begin{equation}
 \underbrace{{\frac{L}{T^{2}}\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma\sigma}{TL}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{B\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDomTmp}
 \end{equation}
 The flow is buoyancy dominated so the buoyancy term should be $O(1)$
-\change[HW]{so we choose}{which implies} the scaling $B=L/T^{2}\implies T=(L/B)^{\frac{1}{2}}$. \change[HW]{so}{Therefore} the non-dimensional momentum equation becomes:
+\change[HW]{so we choose}{which implies} the scaling $B=L/T^{2}\implies T=(L/B)^{\frac{1}{2}}$. \change[HW]{so}{Therefore,} the non-dimensional momentum equation becomes:
 \begin{equation}
 \underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma\sigma}{B^{\frac{1}{2}}L^{\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom-1}
 \end{equation}
@@ -519,11 +520,11 @@ The spatial discretisation follows exactly \citeA{WM19}, solving
 advective form equations using monotonic, finite volume advection
 and C-grid, Lorenz staggering. The time-stepping is Crank-Nicolson
 with no off-centering and with deferred correction of explicitly solved
-variables. \remove[HW]{It differs from} \citeA{WM19}
-\change[HW]{because here we solve the Boussinesq equations and we need stable solutions for equations with a separate pressure in each fluid.}
-{solved the Euler equations with a single pressure. The method of finding separate pressure for each fluid is new.}
-We use two outer iterations per
-time step to update explicitly solved variables. For the first outer
+variables. \change[WM]{It differs from}{The method for calculating a separate pressure for each fluid is new because} \citeA{WM19}
+\change[WM]{because here we solve the Boussinesq equations and we need stable solutions for equations with a separate pressure in each fluid.}
+{solved the Euler equations with a single pressure.}
+\change[WM]{We use two outer iterations per
+time step}{Two outer iterations per timestep are used} to update explicitly solved variables. For the first outer
 iteration, predicted values for time $n+1$ are set to those from
 time level $n$ and are given the superscript $\ell$. For the second
 iteration, values at $\ell$ are set to those from the end of the
@@ -538,7 +539,7 @@ each face (normal to the face). The pressures, $P$ and $p_{i}$ are
 diagnostic.
 
 \change[HW]{The first equation to be solved each outer iteration is eqn}
-{The first calculation each outer iteration is for the transfer terms, $S_{ij}$ using ({\protect\ref{eq:Sdiv}}) or ({\protect\ref{eq:fracEnt}}). Next}
+{The first calculation of each outer iteration is for the transfer terms, $S_{ij}$ using ({\protect\ref{eq:Sdiv}}) or ({\protect\ref{eq:fracEnt}}). Next}
 (\ref{eq:sigma}) \add[HW]{is solved}
 for each $\sigma_{i}$, operator split; first applying advection,
 then correcting $\sum_{i}\sigma_{i}=1$ and \change[HW]{then}{finally} applying mass transfers:
@@ -594,7 +595,7 @@ where operator $()_{f}$ means linear interpolation from cell centres
 onto cell faces and $\nabla_{f}P$ is a compact discretisation of
 $(\nabla P)_{f}\cdot\mathbf{S}$: ie the normal component of the pressure
 gradient calculated from just the values of pressure either side of
-the face. Once we have calculated $P^{n+1}$, the velocity flux (without
+the face. Once \change[WM]{we have calculated $P^{n+1}$}{$P^{n+1}$ is calculated}, the velocity flux (without
 momentum transfers) is updated from the back-substitution:
 \begin{equation}
 u_{i}^{\prime\prime}=u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}P^{n+1}.\label{eq:backSub}
@@ -678,7 +679,7 @@ pressure differences between two fluids in a single column two fluid
 model.} The second \remove[HW]{test case} is steady state with heat transfer at
 the ground and uniform radiative cooling \add[HW]{(radiative convective equilibrium)}. For both test cases, the
 reference solution is a single-fluid solution of the two-dimensional
-Boussinesq equations at high horizontal and vertical resolution. \add[HW]{These will be compared with the two-fluid model run using one column. We aim to reproduce the vertical heat transport, the mean velocity of the rising air, the bouyancy of the rising air and the pressure differences between fluids in one column of the two-fluid model.}
+Boussinesq equations at high horizontal and vertical resolution. \add[HW]{These will be compared with the two-fluid model run using one column.} \add[WM]{The aim is to reproduce} \add[HW]{the vertical heat transport, the mean velocity of the rising air, the bouyancy of the rising air and the pressure differences between fluids in one column of the two-fluid model.}
 
 \subsection{Rising Bubble}
 
@@ -688,7 +689,7 @@ The Boussinesq version has no background stratification in a domain
 of height 10\,km and width 20\,km initially at rest. The buoyant
 perturbation is given by:
 \begin{equation}
-b=\frac{1}{15}\cos^{2}\frac{\pi L}{2}\label{eq:thetaPerturb}
+b=\frac{1}{15}\cos^{2}\left(\frac{\pi L}{2}\right)\label{eq:thetaPerturb}
 \end{equation}
 for $L<1$ where $L=\sqrt{\left(\frac{x-x_{c}}{x_{r}}\right)^{2}+\left(\frac{z-z_{c}}{z_{r}}\right)^{2}}$,
 $x_{c}=10\ \text{km}$, $z_{c}=2\ \text{km}$ and $x_{r}=z_{r}=2\ \text{km}$.
@@ -723,7 +724,7 @@ negative contours dashed. The $w=0$ contour is dotted.}
 \remove[HW]{The pressure in figure {\protect\ref{fig:bubble}} shows that this is a bad assumption since the large pressure anomalies are in the rising fluid. Drag would always act to slow down the fluids whereas the negative pressure gradients in the rising fluid just below the bubble are acting to accelerate the rising motion.}
 
 \change[HW]{Horizontally and conditionally averaged fields, conditioned on $w$, are}
-{Large scale models of the atmosphere often have coarse horizontal resolution and relatively fine vertical resolution. The high resolution solution is horizontally averaged, conditioned based on the sign of $w$, to give the vertical profiles that we would like coarse resolution models or parameterisations to reproduce. Sinking air and air with $w=0$ is assigned to fluid zero and rising air to fluid one and an average is taken over the $x$ direction at time $t=1000\ \text{s}$ to give the profiles}
+{Large scale models of the atmosphere often have coarse horizontal resolution and relatively fine vertical resolution. The high resolution solution is horizontally averaged, conditioned based on the sign of $w$, to give the vertical profiles that coarse resolution models or parameterisations should reproduce. Sinking air and air with $w=0$ is assigned to fluid 0 and rising air to fluid 1 and an average is taken over the $x$ direction at time $t=1000\ \text{s}$ to give the profiles}
 shown in the top row of figure \ref{fig:bubble_singleUnderRes}.
 $\sigma_{1}$ is the volume fraction of rising fluid at every height and $b_{0}$ and $b_{1}$, $w_{0}$ and $w_{1}$ and $P_{0}$ and $P_{1}$
 are the average buoyancy vertical velocity and pressure of the rising and falling fluids. 
@@ -836,8 +837,8 @@ so adding a separate term for drag risks double counting and slows the plume too
 \label{fig:multiFluidBubble_500_2}}
 \end{figure}
 
-If we include pressure difference between fluids with $\gamma=4\times 10^{4}\text{m}^{2}\text{s}^{-1}$ but
-omit entrainment ($S_{ij}=0$) (second row of figure \ref{fig:multiFluidBubble_500_2})
+If \change[WM]{we include pressure difference between fluids}{pressure differences between fluids are included} with $\gamma=4\times 10^{4}\text{m}^{2}\text{s}^{-1}$ \change[WM]{but
+omit}{without} entrainment ($S_{ij}=0$) (second row of figure \ref{fig:multiFluidBubble_500_2})
 the fluids move past each other but there is an unrealistic discontinuity with \change[HW]{no}{very little} fluid 1 below the \change[HW]{buoyant fluid}{bubble.}
 \remove[HW]{and very little falling air at the lowest height of the rising fluid.}
 With \change[HW]{single}{one} column and
@@ -897,13 +898,13 @@ lines are the single-fluid, resolved solutions.
 \add[HW]{
 From the results at 500 seconds, we can conclude that:
 \protect\begin{itemize}
-\item divergence transfer (entrainment and detrainment) leads to realistic updraft area fractions,
-\item the pressure difference between fluids is usefully modelled by divergence with a coefficient close to theat expected from scale analysis,
-\item a drag term is not useful and
-\item entrainment calculated as the reciprocal of plume width is not useful.
+\item Divergence transfer (entrainment and detrainment) leads to realistic updraft area fractions.
+\item Pressure differences between fluids are usefully modelled by divergence, with a coefficient close to the derived value from scale analysis.
+\item Drag terms are not useful.
+\item Entrainment calculated as the reciprocal of plume width is not useful.
 \protect\end{itemize}
 In order to examine further the effects of different assumptions about the buoyancy of the fluid transferred, a selection of results at 1000 seconds are presented in figure {\protect\ref{fig:multiFluidBubble_1000}}. 
-None of the simulations reproduce the complex buoyancy pattern at the trailing edge of the bubble associated with a deep low pressure. The rising air fraction ($\sigma_1$) at and below the bubble is too low in all simulations. The top row which uses $b_{ij}^T=b_i$ (transferring the mean buoyancy) shows too much mixing between the fluids -- too much of the most buoyant air has been transferred out of fluid 1 but the leading edge of the bubble has risen about the right amount. In the other two simulations, the air that is transferred out of fluid 1 has lower buoyancy than the mean in fluid 1 ($b_{10}^T<b_1$) so the remaining rising fluid stays very buoyant and rises too far. The assumption that the buoyancy transferred is zero (middle row of figure {\protect\ref{fig:multiFluidBubble_1000}} means that the buoyant fluid increases its buoyancy above the initial conditions which would not be possible in the resolved single-fluid solution.}
+None of the simulations reproduce the complex buoyancy pattern at the trailing edge of the bubble associated with a deep low pressure. The rising air fraction ($\sigma_1$) at and below the bubble is too low in all simulations. The top row which uses $b_{ij}^T=b_i$ (transferring the mean buoyancy) shows too much mixing between the fluids -- too much of the most buoyant air has been transferred out of fluid 1 but the leading edge of the bubble has risen about the right amount. In the other two simulations, the air that is transferred out of fluid 1 has lower buoyancy than the mean in fluid 1 ($b_{10}^T<b_1$) so the remaining rising fluid stays very buoyant and rises too far. The assumption that the buoyancy transferred is zero (middle row of figure {\protect\ref{fig:multiFluidBubble_1000}}) means that the buoyant fluid increases its buoyancy above the initial conditions which would not be possible in the resolved single-fluid solution.}
 
 \add[HW]{It might be possible to improve aspects of this simulation by optimising $\gamma$ and $\theta_b$ (the coefficient from eqn ({\protect\ref{eq:bijT_thetab}}) for calculating $b_{ij}^T$) but it is probably not helpful to over fit the two-fluid model to this dry, two dimensional test case.
 There are clearly discrepancies between
@@ -962,7 +963,7 @@ and the z-direction is stretched a factor of 2 in the plots.}
 
 Horizontal averages conditioned on $w$ and time averaged every 1000s
 between $10^{5}\ \text{s}$ and $2\times10^{5}\ \text{s}$ are shown
-in the top row of figure \ref{fig:RCE_singleColumn}. The rising and
+\change[HW]{in the top row of}{as dashed lines in} figure \ref{fig:RCE_singleColumn}. The rising and
 falling volume fractions, $\sigma_{1}$ and $\sigma_{0}$, remain
 close to $\frac{1}{2}$ throughout the depth. The rising plumes look
 narrow in figure \ref{fig:RCE_resolved} but there are wide regions
@@ -992,7 +993,7 @@ layer as the length scale ($L=800\text{m}$) and the buoyancy scale
 $B=L\ \partial b/\partial z=8\times10^{-3}\text{m}\text{s}^{-2}$
 giving $\gamma=2000\text{m}^{2}\text{s}^{-1}$. A simulation using
 $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, no drag and $b_{ij}^{T}=b_{i}$
-is shown in the second row of figure \ref{fig:RCE_singleColumn}.
+is shown in the top row of figure \ref{fig:RCE_singleColumn}.
 The entrainment model $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ keeps $\sigma_{i}$
 at about 0.5 throughout the depth, as in the resolved simulation,
 with entrainment in the lower half of the domain ($S_{01}>0$) and
@@ -1008,22 +1009,22 @@ the over estimated buoyancy difference between fluids.
 \noindent
 \includegraphics[width=\linewidth]{figures/RCE_singleColumn.pdf}
 \caption{\label{fig:RCE_singleColumn}
-Results of the RCE simulations. The top row shows horizontal averages
-of the resolved case between $t=10^{5}\text{s}$ and $2\times10^{5}\text{s}$. The bottom two rows show results of the \change[HW]{single}{one} column multi-fluid model after $10^{4}\ \text{s}$. }
+Results of the RCE simulations. \protect\change[HW]{The top line shows}{Dashed lines show} horizontal averages
+of the resolved case between $t=10^{5}\text{s}$ and $2\times10^{5}\text{s}$. \protect\change[HW]{The bottom two rows show}{Solid lines show} results of the \change[HW]{single}{one} column multi-fluid model after $10^{4}\ \text{s}$. }
 \end{figure}
 
-Results of a simulations using $b_{ij}^{T}=\frac{1}{2}(b_{0}+b_{1})$
+Results of a simulation\remove[WM]{s} using $b_{ij}^{T}=\frac{1}{2}(b_{0}+b_{1})$
 is shown in the bottom row of figure \ref{fig:RCE_singleColumn}.
 This model of the buoyancy of the transferred fluid is \change[HW]{bad}{not helpful}; it leads
 to strong cooling in fluid zero near the ground due to the large transfers.
 It is more accurate to assume that fluids take their mean properties
 when transferred, $b_{ij}^{T}=b_{i}$. 
 
-\add[HW]{The two-fluid, one column model of RCE gave results closer to the reference solution than for the rising bubble. This is likely to be because for RCE the rising and falling fluids are averaged over a large area with plumes at different stages of development rather than trying to simulate the complex entrainment pattern behind a single bubble.}
+\add[HW]{The two-fluid, one column model of RCE gave results closer to the reference solution than for the rising bubble. This is likely to be because} \add[WM]{the rising and falling fluids in the RCE test case} \add[HW]{are averaged over a large area with plumes at different stages of development rather than trying to simulate the complex entrainment pattern behind a single bubble.}
 
 \section{Summary, Conclusions and Further Work \label{sec:concs}}
 
-\add[HW]{This paper demonstrate the plausible utility of using multi-fluid equations to represent sub-grid-scale convection.}
+\add[HW]{This paper demonstrates the plausible utility of using multi-fluid equations to represent sub-grid-scale convection.}
 \change[HW]{This paper presents solutions of the multi-fluid Boussinesq equations for convection, reproducing aspects of highly resolved dry convection
 at coarse horizontal resolution.}
 {Solutions of the two-fluid Boussinesq equations using coarse horizontal resolution (one column) reproduce aspects of highly resolved single-fluid simulations of dry, two-dimensional convection.}
@@ -1065,7 +1066,7 @@ velocity will be transferred to the rising fluid and vice versa. An accurate est
 variability of each fluid which we do not have. Instead we assume
 that the fluid transferred in each direction has zero vertical velocity
 which is consistent with our conditional averaging.}
-{Improvements on this assumption will depend on knowledge of sub-filter-scale variablity. However since conditional averaging is on $w$, it is consistent to assume that the fluid transferred has $w=0$ ($w_{ij}^T=0$).}
+{Improvements on this assumption will depend on knowledge of sub-filter-scale variablity. However since conditional averaging is based on the sign of $w$, it is consistent to assume that the fluid transferred has $w=0$ ($w_{ij}^T=0$).}
 \remove[HW]{We have tested}
 Three models for the buoyancy of the fluid transferred 
 \add[HW]{are tested}. The most successful
@@ -1075,9 +1076,9 @@ Assuming that the buoyancy of the transferred fluid is an average of the buoyanc
 \change[HW]{Similarly, if we assume}{Assuming}
 that one fluid has negative buoyancy and the other positive buoyancy and 
 \remove[HW]{we transfer}
-fluid of zero buoyancy \add[HW]{is transferred ($b_{ij}^T=0$) also leads to}, unbounded buoyancy. A better model of the buoyancy
-of the fluid transferred would rely on more information \add[HW]{of} the
-sub-\change[HW]{grid}{filter}-scale variability.
+fluid of zero buoyancy \add[HW]{is transferred ($b_{ij}^T=0$) also leads to}, unbounded buoyancy. \remove[WM]{A better model of the buoyancy
+of the fluid transferred would rely on more information of the
+sub-grid-scale variability.}
 
 \change[HW]{Single}{One} column multi-fluid modelling with moisture has already been demonstrated by \citeA{TEB19} 
 \add[HW]{and two dimensional simulations of the multi-fluid Euler equations by \protect\citeA{WM19}}.

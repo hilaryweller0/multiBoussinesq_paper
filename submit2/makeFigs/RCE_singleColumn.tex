@@ -11,6 +11,7 @@
 \setcounter{tocdepth}{5}
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
+\usepackage{calc}
 \usepackage{amstext}
 \usepackage{amssymb}
 \usepackage[pdftex]{graphicx}
@@ -37,17 +38,22 @@
 \begin{document}
 \setlength\tabcolsep{0.5pt}%
 \begin{tabular}{ccccc}
-$\sigma$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (\text{m}\ \text{s}^{-1})$ & $P\ (\text{m}^{2}\text{s}^{-2})$\tabularnewline
-\multicolumn{5}{c}{Horizontal averages of the resolved RCE test case between $t=10^{5}\text{s}$
-and $2\times10^{5}\text{s}$}\tabularnewline
-\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/sigmaMean} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/uniformTransfer_Pi4e3_w/0/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/bMean} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/wMean} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/hiRes_wide/timeMean_w/PMean}\tabularnewline
-\multicolumn{5}{c}{Single column (solid) with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
-$b_{ij}^{T}=b_{i}$, $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
-versus resolved (dashed)}\tabularnewline
-\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/sigma_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/b_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/u_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P_1}\tabularnewline
-\multicolumn{5}{c}{Single column (solid) with $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ and
-$b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$, $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$
-versus resolved (dashed)}\tabularnewline
-\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/b_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/u_1} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/P_1}\tabularnewline
+$\sigma_{1}$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (\text{m}\ \text{s}^{-1})$ & $P\ (\text{m}^{2}\text{s}^{-2})$\tabularnewline
+\multicolumn{5}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $b_{ij}^{T}=b_{i}$,
+\hspace{6pt}  $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$ 
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/sigma} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/b} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/u} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P}\tabularnewline
+\multicolumn{5}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$,
+\hspace{6pt} $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$ 
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/b} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/u} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/P}\tabularnewline
 \end{tabular}
 \end{document}
