@@ -18,7 +18,9 @@
 \usepackage{url} %this package should fix any errors with URLs in refs.
 \usepackage{lineno}
 \usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
-\usepackage{soul}
+%\usepackage{soul}
+\soulregister\ref7
+\soulregister\cite7
 \linenumbers
 %%%%%%%
 % As of 2018 we recommend use of the TrackChanges package to mark revisions.
@@ -118,7 +120,7 @@ to use bi-Gaussian probability distribution functions rather than top-hat distri
 
 \citeA{TWV+18} proposed multi-fluid modelling of convection in order
 to treat non-equilibrium and net mass transport \remove[HW]{correctly and} consistently.
-\add[HW]{The multi-fluids approach has an advantage over ADHOC and CLUBB in solving prognostic equations for first-order moments directly (mean properties of eg. updraft and environment) rather than solving prognostic equations for higher-order moments of the whole fluid in order to diagnose means of updrafts and the environment. Solving directly for sub-fluid means should be less sensitive to closure assumptions.}
+\add[HW]{The multi-fluids approach has an advantage over ADHOC and CLUBB in solving prognostic equations for first-order moments directly (mean properties of eg. updraft and environment) rather than solving prognostic equations for higher-order moments of the whole fluid in order to diagnose means of updrafts and the environment. Solving directly for sub-fluid means could be less sensitive to closure assumptions.}
 \remove{with the same numerics and physics to prognose properties of separate parts of the fluid, for example updrafts, the stable environment and downdrafts dynamics}. \citeA{Yano14} derived similar
 equations \remove[HW]{for multiple segments} and showed how this is a generalisation
 of the mass-flux formulation. The \citeA{TKP+18} ``extended eddy
@@ -166,7 +168,8 @@ and close to incompressible. The resolved test cases presented in
 section \ref{sec:results} give very similar results for Navier-Stokes
 and Buossinesq equations. Therefore\change[WM]{ for simplicity we focus on the}{, the}
 \remove[HW]{multi-fluid} Boussinesq equations without background stratification \add[WM]{are chosen for simplicity}:
-\note[HW]{This is additional material until the start of 2.1}
+
+\note[HW]{Additional material until the start of 2.1}
 \begin{eqnarray}
 \frac{\partial \mathbf{u}}{\partial t} + \nabla\cdot(\mathbf{u}\mathbf{u})
 +\nabla P & = & b \mathbf{k}+\nu\nabla^{2}\mathbf{u}
@@ -225,7 +228,7 @@ $\nu$ & Viscosity ($\text{m}^{2}\text{s}^{-1}$)
 \caption{Definitions of variables for the single- and multi-fluid Boussinesq equations.\label{tab:defns}}
 \end{table}
 
-The single-fluid Boussinesq equations will be conditionally averaged following \citeA{TWV+18} to give the multi-fluid Boussinesq equations. Lagrangian labels for each fluid $i$ are defined as $I_i=1$ in fluid $i$ and zero elsewhere. 
+The single-fluid Boussinesq equations will be conditionally averaged following \citeA{TWV+18} to give the multi-fluid Boussinesq equations. Lagrangian labels for each fluid $i$ are defined as $I_i=1$ in fluid $i$ and 0 elsewhere. 
 For the derivation of the conditionally averaged equations \change[WM]{we will not consider relabelling of fluid}{the relabelling of fluids will not be considered,} \add[HW]{and so} $I_i$ satisfies:
 \begin{equation}
 \frac{DI_i}{Dt}=0.
@@ -267,7 +270,7 @@ The sub-filter-scale fluxes will be absorbed into the diffusion terms for moment
 \overline{I_i \alpha \nabla^2 b} &=& \sigma_i \alpha \nabla^2b_i .
 \end{eqnarray} 
 %
-\remove[WM]{Unlike \protect\citeA{TWV+18}} \change[WM]{we define separate pressures for each fluid, $P_i$. The pressures are defined to satisfy:}{The pressures for each fluid, $P_i$, are defined to satisfy:}
+\change[WM]{Unlike Thuburn et al. (2018) we define separate pressures for each fluid, $P_i$. The pressures are defined to satisfy:}{The pressures for each fluid, $P_i$, are defined to satisfy:}
 \begin{equation}
 \overline{I_i \nabla P} = \sigma_i \nabla P_i
 \end{equation}
@@ -340,6 +343,16 @@ perturbation, $p_{i}$, from the total pressure, $P$:
 \begin{equation}
 P_{i}=P+p_{i}.
 \end{equation}
+\add[HW]{
+For stability and respect $\sum_i \nabla\cdot\sigma_i\mathbf{u}_i=0$, we propose four constraints on the pressure perturbations, $p_i$:}
+\begin{enumerate}
+\item $\sum_{i}\sigma_{i}p_{i}=0$.
+\item $\mathbf{u}_{i}=\mathbf{u} \implies p_i=0$ so that pressure perturbations do not force individual fluid anomalies away from the mean.
+\item $p_i \not\to 0$ when $\sigma_i\to 0$ so that pressure perturbations control divergence in vanishing fluids.
+\item $p_i\not\to\infty$ as $\sigma_j\to 0$ for any combination of $i,j$.
+\end{enumerate}
+
+
 \add[HW]{In order to derive a suitable form of parameterisation for $p_i$ we will first consider the} \citeA{BN86} \add{model of multi-phase flow.}
 
 \subsubsection{\add[HW]{The \protect\citeA{BN86} model}}
@@ -360,14 +373,11 @@ $\sigma_{i}\rho_{i}$  without transfers between fluids which in our notation are
 where $\mathbf{V}$ is the velocity of the interface between fluids,
 $\mu$ is the compaction viscosity which controls how quickly the
 pressure of each fluid relaxes to the mean pressure and index $j$
-refers to the other fluid in a two fluid system. In our Boussinesq
-system, $\rho_{i}$ does not appear in the continuity equation. Different
-authors make different assumptions about the interface velocity but
-if \change[WM]{we assume}{one assumes} that $\mathbf{V}=\sum_{i}\sigma_{i}\mathbf{u}_{i}$ and
-$\rho_{i}$ is constant then eqns (\ref{eq:divFree}), (\ref{eq:sumOne}), (\ref{eq:BNcompaction}) and (\ref{eq:rhoTransport})
-imply that $\mu p_{i}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$.
-\change[WM]{If we assume that $\mathbf{V}=\mathbf{u}_{i}$ for each fluid then
-we get $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.}{Instead assuming $\mathbf{V}=\mathbf{u}_{i}$ for each fluid results in $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.}
+refers to the other fluid in a two fluid system.
+\remove[HW]{In our Boussinesq system, $\rho_{i}$ does not appear in the continuity equation.}
+Different authors make different assumptions about the interface velocity.
+\change[HW]{but if we assume that $\mathbf{V}=\sum_{i}\sigma_{i}\mathbf{u}_{i}$ and $\rho_{i}$ is constant then eqns (\ref{eq:divFree}), (\ref{eq:sumOne}), (\ref{eq:BNcompaction}) and (\ref{eq:rhoTransport}) imply that $\mu p_{i}=-\sigma_{i}^{2}\nabla\cdot\mathbf{u}_{i}$. If we assume that $\mathbf{V}=\mathbf{u}_{i}$ for each fluid then we get $\mu p_{i}=-\sigma_{i}\nabla\cdot\mathbf{u}_{i}$.}
+{The combination of equations (\ref{eq:BNcompaction}) and (\ref{eq:rhoTransport}) shows that the pressure difference between fluids is related to divergence.}
 
 \subsubsection{\add[HW]{Proposed Model for Pressure Differences between Fluids}}
 
@@ -378,15 +388,14 @@ If a fluid perturbation pressure is set to \change[WM]{$-\nu\partial w/\partial 
 adding a diffusion term will harm three dimensional simulations of
 resolved convection in the free troposphere whereas adding a fluid
 perturbation pressure will not. Inspired by both \citeA{BN86} and
-\citeA{TEB19}\change[WM]{ we assume that the pressure in each fluid is given
-by}{, the pessure in each fluid is chosen to be}:
+\citeA{TEB19}
+\change[WM]{we assume that the pressure perturbation in each fluid is given
+by}{and obeying the constraints given above, the pressure in each fluid is chosen to be}:
 \begin{equation}
-p_{i}=-\gamma\nabla\cdot(\sigma_i \mathbf{u}_{i})
+p_{i}=\gamma\sum_j \sigma_j\nabla\cdot\mathbf{u}_j -\gamma\nabla\cdot\mathbf{u}_{i}
 \label{eq:Pi_div}
 \end{equation}
-where $\gamma$ is a \change[HW]{free coefficient}{compressibility with units $\text{m}^s \text{s}^{-1}$. 
-This parameterisation of $p_i$ has $\sigma_i$ inside the divergence in order to ensure that $\sum_i p_i =0$ and therefore that $\sum_i P_i = P$ which makes the equations more striaghtforward to solve.}
-\add[HW]{However it should be noted that this parameterisation destroys energy conservation.}
+where $\gamma$ is a \change[HW]{free coefficient}{compressibility with units $\text{m}^s \text{s}^{-1}$. It should be noted that this parameterisation destroys energy conservation.}
 
 \change[HW]{Dimensional}{Scale} analysis in section
 \ref{subsec:dimAnal} will inform the choice of $\gamma$ and sensitivity
@@ -399,7 +408,7 @@ to $\gamma$ will be evaluated in section \ref{sec:results}.
 S_{01} = w_1\varepsilon, \;\;\;\;\;\;\;
 S_{10} = w_0\delta.
 \end{equation}
-\add[HW]{Results using two formulations of entrainment are presented in section {\protect\ref{sec:results}}. The first is}
+\add[HW]{Results using two formulations of entrainment are presented in section {\protect\ref{sec:results}}. The first is similar to}
 \remove[HW]{We consider dry air without turbulence so use}
 the dynamic entrainment described by
 \citeA{HC51}, \citeA{AK67} and \citeA{DBF+13}:
@@ -480,7 +489,10 @@ fluid that is loosing mass (as demonstrated in section \ref{sec:results}).
 mean state 
 \add[HW]{implying that the average over all fluids of $b_i$, $\mathbf{u}_i$ and $P_i$ are zero}.
 \item \change[WM]{We consider only the vertical direction}{Only the vertical direction is considered} where $w_{ij}^{T}=0$.
-\item $P_{i}=P-\gamma\nabla\cdot\sigma_i \mathbf{u}_{i}\approx-\gamma\nabla\cdot\sigma_i\mathbf{u}_{i}=-\gamma\frac{\partial \sigma_i w_{i}}{\partial z}$
+\item $P_{i} = P + \gamma\sum_j \sigma_j\nabla\cdot\mathbf{u}_j 
+                              - \gamma\nabla\cdot\mathbf{u}_{i}
+             \approx-\gamma\nabla\cdot\mathbf{u}_{i}
+            =-\gamma\frac{\partial w_{i}}{\partial z}$
 \item \add[HW]{$\frac{\partial \sigma_i}{\partial z} \approx 0$}
 \item There are two fluids, \change[HW]{$i$ and $j$}{0 and 1.}
 \item Without loss of generality\add[WM]{,} \change[WM]{we assume that}{the transfers} $S_{ij}=-\frac{\partial w_{i}}{\partial z}>0$
@@ -488,7 +500,7 @@ and $S_{ji}=0$ \add[WM]{are used}.
 \end{enumerate}
 \change[HW]{This leads to the following balance in the momentum equation}{These assumptions can be used to simplify the multi-fluid $w$ equation, ({\protect\ref{eq:mom})}}:
 \begin{equation}
-\frac{\partial w_{i}^{2}}{\partial z}-\gamma\sigma_i\frac{\partial^{2}w_{i}}{\partial z^{2}}=b_{i}\label{eq:wi_balances}
+\frac{\partial w_{i}^{2}}{\partial z}-\gamma\frac{\partial^{2}w_{i}}{\partial z^{2}}=b_{i}\label{eq:wi_balances}
 \end{equation}
 \change[HW]{We}{This is} non-dimensionalised using a length scale $L$, a buoyancy scale
 $B$ and a time scale $T$ to get the non-dimensional variables:
@@ -497,21 +509,20 @@ $B$ and a time scale $T$ to get the non-dimensional variables:
 \tilde{b} & = & b_{i}/B\\
 \tilde{z} & = & z/L
 \end{eqnarray*}
-\add[HW]{where $\sigma$ is a typical value of $\sigma_i$ which must be $O(1)$ for one of the fluids.}
 \change[WM]{Then the}{The} non-dimensional version of (\ref{eq:wi_balances}) is \add[HW]{then}:
 \begin{equation}
-\underbrace{{\frac{L}{T^{2}}\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma\sigma}{TL}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{B\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDomTmp}
+\underbrace{{\frac{L}{T^{2}}\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{TL}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{B\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDomTmp}
 \end{equation}
 The flow is buoyancy dominated so the buoyancy term should be $O(1)$
 \change[HW]{so we choose}{which implies} the scaling $B=L/T^{2}\implies T=(L/B)^{\frac{1}{2}}$. \change[HW]{so}{Therefore,} the non-dimensional momentum equation becomes:
 \begin{equation}
-\underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma\sigma}{B^{\frac{1}{2}}L^{\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom-1}
+\underbrace{{\frac{\partial\tilde{w}^{2}}{\partial\tilde{z}}}}_{\text{advection}}-\underbrace{{\frac{\gamma}{B^{\frac{1}{2}}L^{\frac{3}{2}}}\frac{\partial^{2}\tilde{w}}{\partial\tilde{z}^{2}}}}_{\text{stabilisation}}=\underbrace{\tilde{b}}_{\text{buoyancy}}.\label{eq:wi_nonDom-1}
 \end{equation}
 The stabilisation term must be large enough to smooth out oscillations
 in $\tilde{w}$ due to advection and buoyancy but not too large to
 remove all variability in $\tilde{w}$. \change[HW]{so we need}{Therefore the stabilisation term should be $O(1)$ which implies that}:
 \begin{equation}
-\sigma\gamma\sim B^{\frac{1}{2}}L^{\frac{3}{2}}.\label{eq:gammaDimAnal}
+\gamma\sim B^{\frac{1}{2}}L^{\frac{3}{2}}.\label{eq:gammaDimAnal}
 \end{equation}
 \add[HW]{This will be used to guide the choice of $\gamma$ in section {\protect\ref{sec:results}}.}
 \section{\label{sec:numerics}Numerical \change[HW]{Solution}{Method}}
@@ -615,10 +626,13 @@ calculating $u_{i}^{n+1}$ from $u_{i}^{\prime\prime}$. These do
 not influence the total $P$ or total divergence because momentum
 is transferred conservatively. However they do influence $p_{i}$
 which is why they are calculated before $p_{i}$. The final stage
-of the time step iteration is to solve Helmholtz equations for each
-$p_{i}$:
+of the time step iteration is to solve Helmholtz equations implicitly for each
+$p_{i}^{n+1}$:
 \begin{equation}
-\sigma_{i}^{n+1}p_{i}^{n+1}=-\gamma\nabla\cdot\left(\sigma_{if}^{n+1}u_{i}^{n+1}-\frac{\Delta t}{2}\sigma_{if}^{n+1}\nabla_{f}\left(p_{i}^{n+1}-p_{i}^{\ell}\right)\right).\label{eq:pi_Helm}
+p_{i}^{n+1} = \gamma \sum_j \left(\sigma^{n+1}_j \nabla\cdot u_j^{n+1} \right)
+-\gamma\nabla\cdot
+\left(u_{i}^{n+1}-\frac{\Delta t}{2}\nabla_{f}\left(p_{i}^{n+1}-p_{i}^{\ell}\right)\right)
+\label{eq:pi_Helm}
 \end{equation}
 Both $p_{i}^{n+1}$ and $p_{i}^{\ell}$ appear in eqn (\ref{eq:pi_Helm})
 because $u_{i}^{n+1}$ already contains contributions from $p_{i}^{\ell}$
@@ -782,7 +796,7 @@ has risen little from the initial conditions. $\sigma_1$ oscillates
 between zero and one meaning that only one fluid is present at some
 locations so there is no possibility for the fluids to move past each
 other.
-\add[HW]{The two fluids have mixed due to the two way stabilising transfers which has reduced the buoyancy in the rising fluid and increased the buoyancy in the sinking fluid.}
+\add[HW]{The two fluids have mixed due to the two way stabilising transfers which have reduced the buoyancy in the rising fluid and increased the buoyancy in the sinking fluid.}
 
 Including entrainment and detrainment as $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ stabilises the solution and
 \add[HW]{leads to a realistic rising volume fraction} (second row of
@@ -793,26 +807,14 @@ and a discontinuity arises at the bubble leading edge; the buoyancy force is pro
 
 Using entrainment and detrainment set by divergence ($S_{ij}=-\nabla\cdot\mathbf{u}_{i}$)
 and pressure difference between the fluids controlled by divergence
-($P_{i}=P-\gamma\nabla\cdot\sigma_i\mathbf{u}_{i}$), \add[HW]{the} simulations are more realistic (bottom three rows of figure \ref{fig:multiFluidBubble_500_1}),
-\add[HW]{all with a realistic $\sigma_1$ profile}.
-Three values of $\gamma$ are tested, the first being set from equation
-(\ref{eq:gammaDimAnal}) using a length scale equal to the bubble
-radius, a buoyancy scale equal to the initial maximum \add[HW]{initial} buoyancy 
-\add[HW]{and $\sigma=1$}
-to give $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$. This $\gamma$
-(third row of figure \ref{fig:multiFluidBubble_500_1}) makes
-the velocity profile
-\change[HW]{too smooth and the updraft too weak so the
-bubble does not rise enough.}
-{smoother and leads to pressure differences between the fluids with some similarity to the resolved simulation although the large drop in pressure at the trailing edge of the bubble is missed. There is still too much mixing between the fluids and the $w_1$ profile is too sharp at the leading edge of the bubble.}
-\change[HW]{It is reasonable to consider smaller
-values of $\gamma$ because the buoyancy does not retain its initial
-maximum for very long. Using $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ gives more accurate solutions whereas using $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$
-leads to the leading edge of the bubble rising too quickly.}
-{Larger values of $\gamma$ are used in order to increase the pressure difference between fluids and smooth out the discontinuity in the velocity. $\gamma=4\times 10^4\text{m}^{2}\text{s}^{-1}$ gives a bubble rise and buoyancy similar to the resolved simulation and a smooth velocity profile whereas $\gamma=6\times 10^4\text{m}^{2}\text{s}^{-1}$ smooths out the velocity too much and the bubble rises too slowly.}
-Smaller values of $\gamma$ leave a discontinuity in the updraft velocity at the leading edge of the bubble and larger values of $\gamma$ reduce the velocity further \remove[HW]{meaning that the bubble does not rise enough} (not shown). None of the values of $\gamma$ reproduce the \change[HW]{peak updraft velocities but $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ comes closest, meaning that the bubble rise and $\sigma_{1}$ are approximately correct and}{pressure dip at the trailing edge of the bubble but the }
-pressure increases above the centre of the bubble are realisitic.
-\remove[HW]{The large low pressure at the bottom of the bubble is not reproduced. This is located at the lobes of the highest buoyancy in the resolved simulation (figure {\protect\ref{fig:bubble}}). It would be tempting to model this by assuming hydrostatic pressure or the Bernouilli equation, but these are both forms of the momentum equation which is used to calculate the velocity and so cannot also be used to model the pressure.}
+($P_{i}=P+\gamma\sum_j \sigma_j \nabla\cdot\mathbf{u}_j-\gamma\nabla\cdot\mathbf{u}_{i}$), \add[HW]{the} simulations are more realistic (bottom three rows of figure \ref{fig:multiFluidBubble_500_1}).
+The first value, $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$, is set from equation
+(\ref{eq:gammaDimAnal}) using length scale equal to the initial bubble
+radius and a buoyancy scale equal to the initial maximum buoyancy. This makes
+the velocity profile too smooth and the updraft too weak so the
+bubble does not rise enough. It is reasonable to consider smaller values of $\gamma$ because the buoyancy does not retain its initial maximum for very long. Using $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ gives more accurate solutions whereas using $\gamma=4\times10^{3}\text{m}^{2}\text{s}^{-1}$ leads to the leading edge of the bubble rising too quickly \add[HW]{and does not fully remove the discontinuity in the updraft velocity at the leading edge of the bubble}.
+\add[HW]{Pressure differences between the fluids have some similarity with the resolved simulation but none of the values of $\gamma$ reproduce the pressure dip at the trailing edge of the bubble. $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ gives the closest approximation to the resolved simulation.}
+\remove[HW]{peak updraft velocities but $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ comes closest, meaning that the bubble rise and $\sigma_{1}$ are approximately correct. The large low pressure at the bottom of the bubble is not reproduced. This is located at the lobes of the highest buoyancy in the resolved simulation (figure {\protect\ref{fig:bubble}}). It would be tempting to model this by assuming hydrostatic pressure or the Bernouilli equation, but these are both forms of the momentum equation which is used to calculate the velocity and so cannot also be used to model the pressure.}
 
 The results in the top row of figure \ref{fig:multiFluidBubble_500_2}
 use
@@ -837,9 +839,16 @@ so adding a separate term for drag risks double counting and slows the plume too
 \label{fig:multiFluidBubble_500_2}}
 \end{figure}
 
-If \change[WM]{we include pressure difference between fluids}{pressure differences between fluids are included} with $\gamma=4\times 10^{4}\text{m}^{2}\text{s}^{-1}$ \change[WM]{but
-omit}{without} entrainment ($S_{ij}=0$) (second row of figure \ref{fig:multiFluidBubble_500_2})
-the fluids move past each other but there is an unrealistic discontinuity with \change[HW]{no}{very little} fluid 1 below the \change[HW]{buoyant fluid}{bubble.}
+If
+\change[WM]{we include pressure difference between fluids}
+{pressure differences between fluids are included}
+with $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
+\change[WM]{but omit}{without}
+entrainment ($S_{ij}=0$) (second row of figure \ref{fig:multiFluidBubble_500_2})
+the fluids move past each other but there is 
+\change[HW]{an unrealistic discontinuity with no}
+{a build up of fluid 1 at the leading edge of the bubble and very little}
+fluid 1 below the \change[HW]{buoyant fluid}{bubble.}
 \remove[HW]{and very little falling air at the lowest height of the rising fluid.}
 With \change[HW]{single}{one} column and
 two fluids, all air must rise in one fluid and sink in the other.
@@ -849,28 +858,29 @@ with no transfers between fluids, no fluid can change direction. It
 is therefore essential to have transfers between fluids.
 
 The other entrainment option is the commonly used fractional entrainment
-rate, $\varepsilon=0.2/r_{c}$. This is used \change[HW]{combined}{in combination with} with pressure
-differences between fluids in the third row of figure \ref{fig:multiFluidBubble_500_2}.
-This combination produces smooth solutions but the \add[HW]{rising volume fraction is not right, the} updraft is too
-weak and too much is entrained into fluid 1. Using this entrainment,
-the updraft will entrain more and more air until $\sigma_{1}=1$.
-The $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ model gives
+rate, $\varepsilon=0.2/r_{c}$. This is used \change[HW]{combined}{in combination with} with pressure differences between fluids in the third row of figure \ref{fig:multiFluidBubble_500_2}.
+\change[HW]{This combination produces smooth solutions}
+{The solutions are smooth}
+but the \add[HW]{rising volume fraction is not right with a build up of fluid 1 at the bubble leading edge, the} updraft is too
+weak and too much is entrained into fluid 1 \add[HW]{above the bubble}.
+Using this entrainment, the updraft will entrain more and more air until $\sigma_{1}=1$. The $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ model gives
 \change[HW]{much more accurate entrainment and detrainment for this test case using conditional averaging based on $w$.}
-{results closer to the reference solution conditionally averaged based on $w$.}
+{results closer to the reference solution.}
 
 Two alternative models for estimating the buoyancy of the fluid transferred
 between updraft and downdraft have been tested. The results in
 the fourth row \change[HW]{if}{of} figure \ref{fig:multiFluidBubble_500_2} assume that the fluid transferred has zero buoyancy in order to keep the
 positively buoyant air in fluid one and the negatively buoyant air
 in fluid 0. Thus when zero buoyancy air leaves fluid one (the updraft),
-the mean buoyancy of fluid one increases. This leads to very high
-buoyancy in fluid one which is not present in the resolved simulation.
+the mean buoyancy of fluid one increases. This leads to
+\change[HW]{very high buoyancy in fluid one which is not present in the resolved simulation.}
+{higher buoyancy in fluid one than when using $b_{ij}^T=b_i$ and gives results close to the reference solution.}
 The results in the bottom row of figure \ref{fig:multiFluidBubble_500_2}
 use $b_{ij}^{T}=\frac{1}{2}\left(b_{0}+b_{1}\right)$ following \citeA{TEB19}
 so that the fluid transferred is influenced by the fluid it is moving
 towards as well as where it has come from. 
-\change[HW]{These solutions are similar to the resolved solutions but the bubble has moved a little too fast.}
-{This again leads to very large buoyancy in fluid one.}
+These solutions are \add[HW]{also} similar to the resolved solutions.
+\remove[HW]{but the bubble has moved a little too fast.}
 \remove[HW]{These simple models reinforce
 the idea that the buoyancy of the fluid transferred should depend
 on knowledge of sub-grid-scale variability of $b$ within each fluid.

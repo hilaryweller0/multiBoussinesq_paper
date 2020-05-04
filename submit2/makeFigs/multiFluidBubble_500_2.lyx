@@ -128,7 +128,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\gamma=4\times10^{4}\text{m}^{2}\text{s}^{-1}$
+\begin_inset Formula $\gamma=1\times10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
 , 
@@ -193,7 +193,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_drag/500/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/500/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -209,7 +209,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_drag/500/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/500/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -225,7 +225,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_drag/500/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/500/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -241,7 +241,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_drag/500/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_drag/500/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -288,7 +288,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\gamma=4\times10^{4}\text{m}^{2}\text{s}^{-1}$
+\begin_inset Formula $\gamma=1\times10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
 , 
@@ -353,7 +353,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4/500/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/500/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -369,7 +369,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4/500/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/500/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -385,7 +385,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4/500/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/500/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -401,7 +401,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4/500/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4/500/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -448,7 +448,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\gamma=4\times10^{4}\text{m}^{2}\text{s}^{-1}$
+\begin_inset Formula $\gamma=1\times10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
 , 
@@ -513,7 +513,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_ent/500/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/500/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -529,7 +529,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_ent/500/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/500/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -545,7 +545,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_ent/500/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/500/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -561,7 +561,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_ent/500/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_ent/500/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -608,7 +608,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\gamma=4\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$
+\begin_inset Formula $\gamma=1\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
 , 
@@ -673,7 +673,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT0/500/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/500/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -689,7 +689,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT0/500/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/500/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -705,7 +705,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT0/500/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/500/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -721,7 +721,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT0/500/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT0/500/Pcompare.eps
 	lyxscale 50
 	scale 60
 
@@ -768,7 +768,7 @@ status open
 \end_inset
 
  
-\begin_inset Formula $\gamma=4\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$
+\begin_inset Formula $\gamma=1\!\!\times\!\!10^{4}\text{m}^{2}\text{s}^{-1}$
 \end_inset
 
 , 
@@ -833,7 +833,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT05/500/sigmaCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/500/sigmaCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -849,7 +849,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT05/500/bCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/500/bCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -865,7 +865,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT05/500/wCompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/500/wCompare.eps
 	lyxscale 50
 	scale 60
 
@@ -881,7 +881,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_4e4_divTransfer_bT05/500/Pcompare.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/multiFluid/singleColumn_Pi_1e4_divTransfer_bT05/500/Pcompare.eps
 	lyxscale 50
 	scale 60
 

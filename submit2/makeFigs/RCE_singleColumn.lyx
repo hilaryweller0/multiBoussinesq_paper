@@ -271,7 +271,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -286,7 +286,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -301,7 +301,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/b.eps
 	scale 70
 
 \end_inset
@@ -316,7 +316,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/u.eps
 	scale 70
 
 \end_inset
@@ -331,7 +331,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_w/100000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/P.eps
 	scale 70
 
 \end_inset
@@ -442,7 +442,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/sigma.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/sigma.eps
 	scale 70
 
 \end_inset
@@ -457,7 +457,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/massTransfer.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/massTransfer.eps
 	scale 70
 
 \end_inset
@@ -472,7 +472,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/b.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/b.eps
 	scale 70
 
 \end_inset
@@ -487,7 +487,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/u.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/u.eps
 	scale 70
 
 \end_inset
@@ -502,7 +502,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi4e3_divSigmau_bT05_w/100000/P.eps
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/P.eps
 	scale 70
 
 \end_inset

@@ -228,7 +228,6 @@ only solve the equations in a single column without coupling to the continuity
 \end_inset
 
 .
- As far as I am aware 
 \end_layout
 
 \begin_layout Labeling
@@ -248,7 +247,7 @@ Eqn
 \end_inset
 
  A derivation of the multi-fluid Boussinesq equations is now included at
- the beginning of section 2 and density does not appear.
+ the beginning of section 2 and density does not appear in the final equations.
 \end_layout
 
 \begin_layout Labeling
@@ -326,6 +325,17 @@ i
 
  is used in this paper as it is the interface between rising and falling
  fluids.
+ Three models for 
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+ are tested in section 4.
+ The interface velocity is not equal to 
+\begin_inset Formula $\mathbf{u}_{ij}^{T}$
+\end_inset
+
+ when there are transfers between fluids.
+ Our equation set does not use an interface velocity.
 \end_layout
 
 \begin_layout Labeling
@@ -2686,7 +2696,6 @@ We
 I find the practice of putting a citation as the subject of a sentence useful
  as it clarifies immediately that the sentence content is somebody else's
  work and not necessarily endorsed.
- I encourage students to use this style.
  However I agree that the previous paragraph was not clear and this has
  been improved.
 \end_layout
@@ -2862,21 +2871,7 @@ In fact
 \begin_layout Plain Layout
 
 \color blue
-This is replaced by 
-\begin_inset Quotes eld
-\end_inset
-
-In fact, since conditional averaging is based on the vertical velocity,
- 
-\begin_inset Formula $w$
-\end_inset
-
-, the sub-set of fluid 0 that is about to be rising should be transferred
- from 0 to 1 and vice versa.
-\begin_inset Quotes erd
-\end_inset
-
-
+This is been clarified.
 \end_layout
 
 \end_inset
