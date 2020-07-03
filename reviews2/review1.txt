@@ -1,0 +1,49 @@
+Reviewer #1 Evaluations:
+Recommendation: Return to author for minor revisions
+Significant: Yes, the paper is a significant contribution and worthy of prompt publication.
+Supported: Yes
+Referencing: Yes
+Quality: Yes, it is well-written, logically organized, and the figures and tables are appropriate.
+Data: Please Select
+Accurate Key Points: Yes
+
+Reviewer #1 (Formal Review for Authors (shown to authors)):
+
+First Revision
+Multi-fluids for Representing Sub-filter-scale Convection
+Weller et al.
+
+ The authors carefully addressed the issues raised in the review I provided. There are still minor comments that are listed line by line below.
+
+Line 81 - I think you mean for the last citation in this sentence to be Yano et al (2014) ?
+
+Line 82 - I could suggest to further clarify this issue to the reader by writing something like: "in a single column where a hydrostatic reference profile replaces the the continuity equation of a dynamical core of a GCM, thus circumventing mass exchange with neighboring columns."  The reason I am suggesting this is that in a single column net divergence can either be prescribed or assume zero (mass conservation in the column).
+
+Line 91 - please very whether JAMES requires US (vs British) grammar regards to words such as "stabilised"
+
+List of parameters after 106: did you consider a table with a column for symbol, units and description? For instance in the buoyancy definition: "uniform reference, ρr (ms−2)" I believe the units refer to b not ρr.
+
+Line 115: you could term P(=p/ρr) as "pressure potential" for clarity.   Equations (1)-(3) and with respect to my previous comment that was perhaps not phrased well.  A naive reader that will look at this equation set will see 2 prognostic equations (for u, b) for 3 variables (u, b, P). It is not typically mentioned in papers and textbooks, but think should be pointed out that the P equation is obtained by deriving an equation for the tendency of (3) from the first equation. Thus the model has 3 prognostic equations for three variable. This is not an essential issue I would leave it for the authors whether they would like to address it. This also help justifying the need, and bolstering the complexity of, the pressure closure that is discussed in this work.
+ Line before eq (9): "It is necessary to assume that operators permute with the averaging (as described by Thuburn et al., 2018). Transfers between fluids are included at this stage".
+
+Yano 2014 (and Tan 2018) show that the exchange terms introduced in this stage are the effect of operators not permuting with averaging. You assume that operators permute with the averaging (which is not true!, i.e. Leibniz integral rule) and then introduce the exchange terms that represent the vary fact that operators do not permute.
+A more correct statement would be along these lines: transfers between fluids are included at this stage to account for the additional terms that arises when permuting the operators with averaging.
+
+Line 193: does this imply that your model does not conserve energy? Isn't that a "too high of a price to pay" if the goal is to implement this parameterization in a climate model for long term simulations?  In the simple two fluid case, the energy loss by fluid 1 (either via pressure, or via exchange terms) should result in an energy gain by its neighboring fluid 2. Is that not the case?
+
+Line 202 - fluid transfer:
+Equation (30) computes the transfer value for buoyancy and should be generalize to any scalar (u,v,w). Following this, a similar logic should be consistently applied to all scalar, thus θu=θv=θw=θb.
+You set the transferred w to zero (i.e. θw=0.5), and the transfer buoyancy to non zero (i.e. θb=/=0.5). Effectively you compute the exchange value of b and of w using different logical arguments - why? This should be stated explicitly.
+
+Line 257: "eqn" did you mean Eq. ?
+
+The line under equation (46): "by multiplying each eqn (46) by σi" Should it read: "each equation (46)"?
+
+Line 388: "also use drag set by" - does that read right ?
+
+Line 580: please consider rephrasing, it is a long sentence.
+
+Line 587: addition of second moments will Mak the multi-fluid model resample the time dependent EDMF version in (Tan et al 2018), but with variances in the updrafts as well as in the environment. It is worth noting where these works connect.
+ 
+Figure 1 - top panel: Do you have a w=0 contour (meaning inside that contour w>0) at t=0? Did you initialize with a velocity and not only buoyancy?
+

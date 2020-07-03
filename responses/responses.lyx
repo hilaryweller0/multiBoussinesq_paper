@@ -36,7 +36,7 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
+\font_roman "times" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"
@@ -113,7 +113,7 @@ Multi-fluids for Representing Sub-filter-scale Convection
 \end_layout
 
 \begin_layout Author
-Hilary Weller, William McIntyre, Dan Shipley and Peter Clark
+Hilary Weller, William McIntyre, Dan Shipley
 \end_layout
 
 \begin_layout Quote
@@ -161,7 +161,7 @@ The paper present results from a bubble experiment and RCE.
 
 \color blue
 Yes, trying to represent a single rising bubble with one column of a two-fluid
- model is too ambitious.
+ model is ambitious.
  This is now discussed in the results and conclusions sections.
  Also, results from the bubble experiment are presented at 500 as well as
  1000 seconds after initialisation.
@@ -299,15 +299,20 @@ i
 \begin_inset space \space{}
 \end_inset
 
- The transfers between fluids have properties 
+ Note that the interface velocity, 
+\begin_inset Formula $\mathbf{V}$
+\end_inset
+
+, is not the same as the fluid velocity, 
+\begin_inset Formula $\mathbf{u}_{i}$
+\end_inset
+
+ or the velocity of the fluid transferred, 
 \begin_inset Formula $\mathbf{u}_{ij}^{T}$
 \end_inset
 
- and 
-\begin_inset Formula $b_{ij}^{T}$
-\end_inset
-
 .
+ Our equation set does not use an interface velocity.
  This is hopefully clearer now as the multi-fluid equations are derived
  in flux form and all variables are properly introduced.
  There is lots more work to do in finding parameterisations for 
@@ -330,12 +335,7 @@ i
 \end_inset
 
  are tested in section 4.
- The interface velocity is not equal to 
-\begin_inset Formula $\mathbf{u}_{ij}^{T}$
-\end_inset
-
- when there are transfers between fluids.
- Our equation set does not use an interface velocity.
+ 
 \end_layout
 
 \begin_layout Labeling
@@ -379,21 +379,11 @@ key "TWV+18"
 \begin_inset space \space{}
 \end_inset
 
- This was not clearly explained.
- The assumption is now clearly stated and it is simply that 
-\begin_inset Formula $\overline{I_{i}\nabla P}=\sigma_{i}\nabla P_{i}$
-\end_inset
-
-.
- This defines 
+ The assumptions have now been properly stated and 
 \begin_inset Formula $P_{i}$
 \end_inset
 
- (although it is not the parameterisation for 
-\begin_inset Formula $P_{i}$
-\end_inset
-
-).
+ defined.
 \end_layout
 
 \begin_layout Labeling
@@ -419,17 +409,25 @@ Eqns
 \begin_inset space \space{}
 \end_inset
 
- Agreed, 
+ 
 \begin_inset Formula $P$
 \end_inset
 
  is zero if the area mean and fluid mean buoyancy and velocity are both
  zero.
- However they are not both zero.
  They are zero in the scale analysis that you mention in section 2.6 but
  otherwise not zero.
  Hopefully this is now clearer as the variables are defined better in section
  2.
+ 
+\begin_inset Formula $P$
+\end_inset
+
+ can also be in hydrostatic balance with a vertical gradient of 
+\begin_inset Formula $b$
+\end_inset
+
+.
  
 \end_layout
 
@@ -573,7 +571,7 @@ key "SA99"
 \end_inset
 
  who did not incorporate transfers.
- We are not using this model, we are inspired by it and discuss how it relates
+ We are not using this model, we are informed by it and discuss how it relates
  to our model.
  This is hopefully now clearer in the new section 2.1.1.
 \end_layout

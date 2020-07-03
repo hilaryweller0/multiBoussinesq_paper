@@ -1,0 +1,8 @@
+I'm about half way through - comments attached as annotations. However, I doubt I'm going to have many issues with the results section. I would like to be sure the conclusions does the paper justice. 
+There are numerous comments, but most are not biggies. However, major issues are:
+1) I'd like to have a go at re-wording the intro section. I don't think it motivates the multi fluid approach particularly well, and also says things about other schemes (e.g. Clubb, Lappen and Randall) which are wrong.
+2) The section on scale analysis really misses the point completely, and, as it stands, just tells us what the dimensions should be! For the bubble, you chose L (wrong) and for the RCE you chose B using L taken from the reference solution, which is cheating. Neither is necessary. 
+3) I don't see why Fig.2 and the intro to it is in the paper. We don't compare with multi-column 2 fluid. I realise your motivation is to show how bad 'grey-zone' simulations are cf single-column multi-fluid, but that's another paper, really.
+
+Can I send you some Latex to address 1) and 2) later this afternoon? 1) is up for discussion, of course, but better I have a go. 2) really does need to be better, and as I'd claim to have initiated putting it in, I feel it should do justice to the argument.
+

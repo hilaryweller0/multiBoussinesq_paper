@@ -1,0 +1,60 @@
+Reviewer #2 Evaluations:
+Recommendation: Return to author for minor revisions
+Significant: Yes, the paper is a significant contribution and worthy of prompt publication.
+Supported: Yes
+Referencing: Yes
+Quality: The organization of the manuscript and presentation of the data and results need some improvement.
+Data: Yes
+Accurate Key Points: No
+
+Reviewer #2 (Formal Review for Authors (shown to authors)):
+
+The authors' response to my typed-in suggestions seems adequate, but apparently they had some problem accessing the Hypothesis inline comments system. If so, that is unfortunate, since it is tedious to critique a poorly written text line by line by retyping a quotation, its line number, and my reaction. I just can't justify the effort of doing that in detail again.
+
+Nevertheless, I still find the Abstract quite poorly written, to the detriment of my patience for reading more. At this stage of revision, perhaps that is the main concern: if readers are well informed of the content by the Abstract, they can decide to read the rest of paper or not. If I recall, the core material was technically correct and worthy of publication. At any rate, the Abstract is all I have the patience to insist about.
+
+So, sentence by sentence: here are my strong suggestions for another revision of the Abstract.
+
+Text:
+Multi-fluid modelling is a promising new method of representing sub- and near-grid-scale convection allowing for consistent and accurate treatment of net mass transport by convection and of non-equilibrium dynamics.
+
+Responses:
+* "grid": what scale is envisioned? Can a phrase or two clarify the nature of the method, in which scale-separation is treated as category partitioning?
+* "...allowing for...": this tacked-on long phrase reads like an advertisement, with none of its sub-clauses being unambiguously true, or at least not using clearly defined terms, nor is it necessary as a backdrop for a reader to appreciate the scientific content of the rest of this Abstract and this paper. Please omit.
+
+Text:
+The air is partitioned into two or more fluids which may represent, for example, updrafts and the stable environment.
+
+Response:
+The second clause is simply false. Two fluids must comprise a complete and mutually exclusive set (the total fluid), mustn't they?
+
+Text:
+Each fluid has its own velocity, temperature and constituents with separate equations of motion. This paper presents two-fluid Boussinesq equations for representing under-resolved dry convection with sinking and w = 0 air in fluid 0 and rising air in fluid 1. A model for entrainment and detrainment based on divergence leads to excellent representation of the convective area fraction.
+
+The first two sentences are clear enough. The term "under-resolved" should link to the opening explanation of what a "grid" scale is in the one-sentence explanation of what multi-fluid methods are all about.
+
+In the third sentence, isn't the claimed "model" merely tautological, since the total divergence is zero in the combined Boussinesq system? If flow diverges in one fluid, it must necessarily be transferred to the other, right? Isn't that what "entrainment and detrainment" mean? So, is this claim not a definition rather than a "model"?
+
+In what sense does that "model" (or tautology) "lead to excellent representation"? Is the "model" the only assumption utilized, so that this attribution statement makes sense, if indeed the results are "excellent" relative to some (unspecified) metric or reference? By the way, that metric or reference should be specified before claims of excellence are asserted.
+
+Text:
+Previous multi-fluid modelling of convection has used the same pressure for both fluids. This is shown to be a bad approximation and a model for the pressure difference between the fluids based on divergence is presented.
+
+Again a "model" is presented. Here it means a postulate, an approximation, a "closure" according to the Plain English summary (which could also use an edit). Consider using one of these clearer terms.
+
+What is the reference for such a "showing" that equal pressure is "bad", and for "excellent" as in the sentence above?
+
+Text:
+Two vertical slice test cases are developed to tune parameters and to evaluate the two fluid equations for representing dry, sub-grid-scale convection: a buoyant rising bubble and 25 radiative convective equilibrium. These are first simulated at high resolution and conditionally averaged based on the sign of the vertical velocity. The test cases are next simulated with the two-fluid model which reproduces the mean properties of the rising and falling fluids in one column.
+
+Response: OHHHH! FINALLY! At last, the information needed for a reader to know what the work and methods actually are, and which all the previous claims refer to. This material belongs BEFORE, not after, the Abstract's claims and declarations of success.
+
+I suspect the same problem of inverted order of information-sharing with the reader may still pervade the text, but I don't volunteer to deconstruct the text at this level. If the Abstract can be made adequate, the text is acceptable to this reviewer, based on the authors' statements that they responded to my comments from the first draft. If they did so merely narrowly, I suppose that is their prerogative.
+
+
+
+
+If any reviewers made annotations to the pdf, there will be a link to the pdf.
+
+https://james-submit.agu.org/cgi-bin/main.plex?el=A2Ga1GJKi2B6BynD4By1A2BBveh9ftdTvW8P1EByRYxBwMGiPOIAZ
+

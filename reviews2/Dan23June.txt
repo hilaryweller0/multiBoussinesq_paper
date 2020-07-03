@@ -1,0 +1,9 @@
+I need to take some time to read through the reviews fully, but I wonder whether I might be able to shed some light on Reviewer 1's comment about operators permuting with the averaging.
+
+I think there are two things that they could be referring to, depending on whether they interpret averaging to mean just the spatial averaging, or the full conditional averaging. 
+
+If "averaging" means just the spatial averaging (which is, I think, the intention?): Thuburn et al. (2018) assume that spatial averaging commutes with space and time derivatives. This is true away from the boundaries; you do indeed end up with extra boundary terms from the Leibniz integral rule if you do it generally, but Thuburn et al. explicitly ignore these (as we have done).
+
+If "averaging" means the full conditional averaging: you can derive the exchange terms S_{ij} as exactly the terms which do not commute when you swap the order of the differential operator and the integral operator (using the Leibniz integral rule), which is what Yano (2014, pp. 7-8) does, (and also I think what Dopazo (1977) does, but they aren't explicit about it).  The non-commuting  term is an integral over the boundary of the fluid partition. This is very similar to what I did with in "indicator function evolution equation" doc I sent round a while, though I prefer to couch it in terms of sources and sinks of the indicator function directly, without any need to introduce the filtering operation. If you filter my equations, you get Yano's -- the delta function gives the surface integral term of the Leibniz integral rule.
+
+Perhaps in light of this it would be worth re-introducing the sources & sinks in the unfiltered inidicator function evolution equation? Or adding a clause to clarify exactly what we are assuming with the "permuting operators and averaging" statement?

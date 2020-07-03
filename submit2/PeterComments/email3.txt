@@ -1,0 +1,45 @@
+There’s no doubt that this paper has been affected by the unfortunate coincidence that your first draft was ready for submission during the first period of strike action in the autumn, and you got it back during the second. I’m afraid that, this time round, I rather vowed that strike would mean strike, but the impact was not your fault or mine.
+
+ 
+
+However, this is not the only problem. From the outset, you have behaved in a non-inclusive way. The key sentence in your email is:
+
+ 
+
+‘I was keen to do the first re-write myself as I felt that I could deal with most of the comments myself  and I thought that that was my responsibility and privilege  as first author’.
+
+ 
+
+I get that you want this to be identified with you, up to a point, as John Thuburn has rather made this area his own (and this is certainly the impression that Alison gives). This has been very irritating for us all. Alison is quite typical Met Office in her tendency to excessively compartmentalise, but, ironically, both you and John have done the same. John has been busy making discoveries about the convective boundary layer, and publishing them in papers the boundary-layer community would not peer-review and are unlikely to read.
+
+ 
+
+As a result, I think, you have been very keen to carve out ‘your contribution’. I get that, I really do, but, put simply, I (and Dan) approach these problems primarily as theoretical physicists, which is a training mathematicians haven’t had (and, of course, vice versa!).  At times this leads to some conflict in ideas, and your approach has been to suppress that conflict and follow your own path whatever. We agree on a lot, but we do have some fundamental disagreements we should acknowledge and not try to hide. Furthermore, much of the time my contribution has been to tell you about what’s already well-known in the literature. I don’t get any kudos for that at the best of times, but you usually ignore it with a ‘yes, but we’re doing it properly now’ sort of attitude.
+
+ 
+
+Furthermore, you have often tried to distinguish contributions on the basis of which test case people are working on. This cannot work, for obvious reasons, and, I think, is largely the cause of our current problems.
+
+ 
+
+So, I was very surprised when your ‘lead author’ paper appeared. I’ve no problem with you being lead author of a paper, but, at a time when we were struggling to get Dan to write, I’d have expected some discussion of what was going where, who was writing what, etc. and, to be honest, not being on the initial author list really pissed me off. It reflected your ‘nothing to contribute here’ attitude. Your justification seemed to be that I only have anything to say about RB convection or some very specific ideas you have about ‘turbulence’. I like your RCE test case, but
+
+    It is a standard non-entraining convective boundary-layer, much studied by the LES community. You extended it to 10 km rather than 1 as a nod to deep convection, but the physics is the same (hence my pointing out the standard free convective scaling back in the autumn in the slides I circulated after our meeting, which you ignored in your draft).
+    The physics is basically the same as RB convection; boundary layer people, in fact, usually solve the ‘specified surface flux’ version. The advantage/disadvantage of RB convection is its symmetry and existence of linearised solutions.
+    I was surprised that RB convection was not in the paper. The main reason seems to have been to make the paper ‘yours’, not ‘ours’. 
+
+Eventually, I did become a co-author, but only because you judged my scaling arguments useful. Even so, rather than invite me to actually write that section, you wrote your own version that, to be honest, primarily served to demonstrate that you didn’t understand the methodology. Yes, I should have said more then but I was a) pissed off and b) on strike! See, however, my comments in email of 29/10/2019 and 30/10/2019. Maybe not as complete as it could be, but ignored, as far as I can tell! At the same time, my contribution to Phase II ‘turbulent multifluids’ was being written out (see my email of 31/10/2019!).
+
+ 
+
+Then the paper came back. Since the main issue was English, it seemed to me a fresh take would be a good idea, and you’d expressed very clearly how stressed and snowed under you were. You seemed to take my offer to revise quite enthusiastically, but then, when I’d cleared a lot of days over a couple of weeks to do the work, you suddenly announced (24/03) that you were doing it instead after (22/03) I’d reminded you to give me access (even then, on 23/03 you said ‘I have given Dan and Will access. Peter, if you have a github account I can give you write access. Otherwise you only have read access.' – of course I needed write access, and was about to email you with my git id (though you could have looked me up) when I got your 24/03 override). A very clear message that you didn’t want my input because you were wanting to do the rewrite yourself! However, you cannot expect me, having once made time to contribute, to suddenly contribute when you’ve taken on the rewrite yourself. By that time I was failing to meet a deadline to respond to referees comments on 2 other papers! After that I got various ‘please don’t work on this (27/03)’ until 11/04, when you announced you were done. I gathered from a meeting that Will was then looking at it, and he posted some comments on 17/04. On 20/04 you asked him to implement his comments on the git repo (I still didn’t have access to), and his new version appeared. You sent out an email on 21/04 when Dan said he would be taking a look.
+
+ 
+
+So, yes, if I’d had nothing else to do, I could perhaps have started looking at the revised paper a couple of weeks ago. Unfortunately, that was a very busy couple of weeks due to the start of another project.
+
+ 
+
+We need to sort out how we work in future. Maybe a bit more honesty and consideration on both sides is needed. My biggest concern is Dan, who feels a bit piggy in the middle.
+
+ 

@@ -1,0 +1,41 @@
+Dear Dr. Weller:
+
+Thank you for submitting "Multi-fluids for Representing Sub-filter-scale Convection" [Paper #2019MS001966R] to Journal of Advances in Modeling Earth Systems. I have received 2 reviews of your manuscript, which are included below and/or attached.
+
+As you'll see reviewer 1 feels that most issues have been addressed, though the reviewer still notes two theoretical points (line 193, line 202) and a range of stylistic concerns.
+
+The interaction with reviewer 2 has, I'm afraid, degraded past the point of utility. The tone of the review is quite rough and I debated not forwarding the material but there is, I think, an important opportunity here. The reviewer's reaction, unchanged from the initial review, is that the material is more difficult to understand than it needs to be (and indeed there are elements of this concern in reviewer 1's comments). The frustration may be exacerbated by a perception that you were unwilling to engage with the reviewer's very detailed comments in the first round because you and your coauthors found the AGU system inconvenient. Without arguing about the AGU system it's easy to imagine that the reviewer feels as if careful feedback was ignored.
+
+In light of this I do not expect to send the manuscript out for further review. I do ask, however, that you undertake another round of major revisions aimed at making the manuscript more clear and more convincing. I strongly encourage you and your co-authors to carefully consider reviewer 2's comments on the initial submission; journal staff stand ready to help you work with the Hypothes.is system. Reviewer 1's remaining points should also be addressed. I encourage you, too, to solicit outside opinions as you hone your expression. Please submit a revised manuscript that addresses the reviews and any editorial comments, nominally by July 30, 2020. I anticipate accepting this next submission.
+
+**I realize that you are not in a normal work situation during the present ongoing Covid-19 pandemic and that it may be difficult to complete your revision on schedule. Safety and social distancing must come first and AGU Publications has relaxed previously established deadlines. We are happy to work with you and offer the time you need. Please email the journal inbox with a schedule that you are most comfortable with.
+
+In your revision, please follow our Checklist and use our Templates for the main file and any supplements. Please provide the following:
+
+1. A response to reviewer file that lists each major comment and describes how the manuscript has/has not been modified in response to those comments.
+
+2. A copy of the manuscript with the changes noted (e.g., highlighted, "track changes," italics or bold changes).
+
+3. The final revised manuscript with changes incorporated and separate final figure files (figure parts should be combined into a single file), which will be used for publication if the manuscript is accepted. If final figures are already uploaded, they can be easily copied over to the next revision version.
+
+4. If any, supporting information text, figures, captions, and small tables in single PDF file using AGU's template. Large data tables and multimedia should be uploaded separately.
+
+AGU requires that data needed to understand and build upon the published research be available in public repositories following best practices. This includes an explicit statement in the Acknowledgments section on where users can access or find the data for this paper. Citations to archived data should be included in your reference list. All references, including those cited in supporting information, should be included in the main reference list and cited in-text. All listed references must be available to the general reader by the time of acceptance. AGU requires the corresponding author, and encourages all authors, to register for an ORCID.
+
+Please check and verify authorship, and that all authors are included, have approved the revisions, and agreed to be listed in the order given. Authorship is final with publication. Responsibilities of the corresponding author are given here.
+
+When you are ready to submit your revision, please login to your account (https://james-submit.agu.org/cgi-bin/main.plex) and click "Revise 2019MS001966R."
+
+I look forward to receiving your revised manuscript. If you have any questions, or need additional time to complete your revisions, please contact us at james@agu.org.
+
+Yours sincerely,
+
+Robert Pincus, Editor-in-Chief
+Journal of Advances in Modeling Earth Systems
+
+------------IMPORTANT INFORMATION------------------------
+Additional information on text preparation, formatting, acceptable file formats, supporting information, graphics preparation, and AGU style, is here.
+
+Sharing your work is an important part of the research process, and AGU leverages and shares published research to promote the broader importance of Earth and space science. Learn how you can promote your paper, including how your paper can be considered for additional publicity or for the issue cover if it is accepted.
+----------------------------------------------------------------------
+

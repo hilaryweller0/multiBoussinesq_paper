@@ -1,0 +1,165 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,texdraw}
+\usepackage{parskip}
+\usepackage{natbib}
+
+\usepackage{amssymb,amsmath,amsfonts,titlesec,graphicx,placeins}
+\usepackage[export]{adjustbox}
+\usepackage[margin=1.2in]{geometry}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\begin{document}
+
+\section{Boussinesq equations}
+
+\subsection{Scaling}
+Returning to the single fluid equations, we introduce external length scale $L$ and buoyancy scale $B$ determined by the initial or boundary conditions. 
+We also introduce internal scales for time ($T$) and pressure ($P$) to be determined. 
+Velocities thus scale by $L/T$. 
+Note, we could equally have chose a velocity scale $U$, and the time scales by $L/U$.
+Denoting scaled variables by hats, we can write the scaled equations as: 
+\begin{equation}
+\frac{L}{T^2}\left[\frac{\partial {\hat{\mathbf{u}}} }{\partial \hat{t}} +\hat{\nabla} \cdot \left(\hat{\mathbf{u}}\hat{\mathbf{u}}\right)\right]+\frac{P}{L}\hat{\nabla}\hat{P} = B\hat{b} {\mathbf{k}} + \frac{\nu}{L T}\hat{\nabla}^2 {\hat{\mathbf{u}}}
+\end{equation}
+\begin{equation}
+\frac{B}{T}\left[\frac{\partial \hat{b} }{\partial \hat{t}} +\hat{\nabla} \cdot \left(\hat{\mathbf{u}}\hat{b}\right)\right] =\frac{\alpha B}{L^2} \hat{\nabla}^2 \hat{b}
+\end{equation}
+\begin{equation}
+\frac{1}{T}\hat{\nabla} \cdot  \hat{\mathbf{u}} =0
+\end{equation}
+Rearranging and simplifying leads to:
+\begin{equation}
+\frac{\partial {\hat{\mathbf{u}}} }{\partial \hat{t}} +\hat{\nabla} \cdot \left(\hat{\mathbf{u}}\hat{\mathbf{u}}\right)
++\frac{PT^2}{L^2}\hat{\nabla}\hat{P} = \frac{BT^2}{L}\hat{b} {\mathbf{k}} + \frac{\nu T}{L^2}\hat{\nabla}^2 {\hat{\mathbf{u}}}
+\label{eq:scaled_momentum}
+\end{equation}
+\begin{equation}
+\frac{\partial \hat{b} }{\partial \hat{t}} +\hat{\nabla} \cdot \left(\hat{\mathbf{u}}\hat{b}\right) = \frac{\alpha T}{L^2} \hat{\nabla}^2 \hat{b}
+\label{eq:scaled_buoyancy}
+\end{equation}
+\begin{equation}
+\hat{\nabla} \cdot  \hat{\mathbf{u}} =0
+\label{eq:scaled_continuity}
+\end{equation}
+
+The Boussinesq continuity equation, eq. \eqref{eq:scaled_continuity} says nothing about the choice of scales.
+The parameter in front of the viscous term in eq. \eqref{eq:scaled_momentum} can be identified as the inverse Reynolds number, $Re^{-1}=\nu T / L^2 = \nu /(U L)$.
+Problems with very high Reynolds number are of primary interest, so $Re^{-1}\rightarrow 0$. 
+Likewise, the thermal diffusion term on the right of eq. \eqref{eq:scaled_buoyancy} can be identified as $(\sigma Re)^{-1}$, where $\sigma = \nu/\alpha$ is the Prandtl number, generally $O(1)$. 
+Thus, eq. \eqref{eq:scaled_buoyancy} also says nothing about choice of scales when $Re^{-1} \rightarrow 0$.    
+It does, however, imply that in these circumstances, buoyancy is conserved on fluid parcels.
+
+To identify the appropriate choice of scales, eq. \eqref{eq:scaled_momentum} must be examined.
+The last term is small in high $Re$ flow. 
+The choice of timescale should be such that, together, the first two terms are $O(1)$; this must be balanced by either the pressure gradient term, the buoyancy term, or a combination of the two. 
+If the last, we can factor out a stationary solution (which would be in hydrostatic balance).
+Assuming this has been done so, it is further assumed that the flow is dominated by buoyancy (i.e. convection), which implies the first term on the right to be $O(1)$. 
+Thus:
+\begin{equation}
+\frac{BT^2}{L}=1 \Rightarrow T = \left(\frac{L}{B}\right)^{\frac{1}{2}}.
+\label{eq:T_scale}
+\end{equation} 
+The velocity scale is thus
+\begin{equation}
+U = \frac{L}{T} = \left(BL\right)^{\frac{1}{2}}.
+\end{equation}
+It makes sense to choose a pressure scale, $P$ such that the parameter in front of the pressure gradient term is also 1, i.e.
+\begin{equation}
+\frac{PT^2}{L^2}=1 \Rightarrow P = B L = U^2
+\end{equation}
+The final equality identifies this as Bernoulli scaling.
+Note, however, that $\hat{\nabla}\hat{P}$ is only expected to be $O(1)$ in regions where buoyancy is not the main driver.
+
+The Reynolds number can also be predicted from the external parameters:
+\begin{equation}
+Re=\frac{B^{\frac{1}{2}}L^{\frac{3}{2}}}{\nu}
+\end{equation}
+
+A central feature of the two-fluid model is the intermingling of fluids. 
+A well-developed turbulent flow, tends to be filamentary, with the width of filaments limited by the flow viscosity and thermal diffusivity.
+Assume such a filament has lateral scale $\delta$, and orient a local coordinate system with $x$ along the filament and $z$ across it. 
+Scale $x$ by $L$, as above, but $z$ by $\delta$.
+The continuity equation then implies that if the along-filament flow, $u$, is scaled by $U=L/T$, the across-filament flow should be scaled by $W=\delta U / L = \delta / T$.
+For clarity, introduce a different time scale $T_d$.
+Consider the buoyancy equation scaled in this way and re-arranged as above:
+\begin{equation}
+\left[\frac{\partial \hat{b} }{\partial \hat{t}} +
+\frac{\partial ~}{\partial \hat{x}}\left(\hat{u} \hat{b}\right) 
++ \frac{\partial ~}{\partial\hat{z}}\left(\hat{w} \hat{b}\right)
+\right] =
+\frac{\alpha T_d}{\delta^2}
+\left(\frac{\delta^2}{\L^2} \frac{\partial^2 \hat{b}}{\partial \hat{x}^2} + \frac{\partial^2 \hat{b}}{\partial \hat{z}^2} \right)
+\end{equation}
+The natural choice of time scale is the thermal diffusion time scale such that the coefficient of the right hand side is 1, so:
+\begin{equation}
+\frac{\alpha T_d}{\delta^2} \Rightarrow T_d = \frac{\delta^2}{\alpha}=\frac{\delta^2\sigma}{\nu}
+\end{equation}
+
+The momentum equation, oriented similarly, can also be scaled with this time scale but the along-filament velocity will be scaled by U above. 
+Thus, along the filament:
+\begin{equation}
+\frac{U}{T_d}\left[\frac{\partial {\hat{u}} }{\partial \hat{t}} +
+\frac{\partial ~}{\partial \hat{x}}\left(\hat{u} \hat{u}\right) 
++ \frac{\partial ~}{\partial\hat{z}}\left(\hat{w} \hat{u}\right)
+\right]+\frac{P}{L}\frac{\partial \hat{P}}{\partial \hat{x}} = B\hat{b} k_\parallel + 
+\frac{\nu U}{\delta^2}
+\left(\frac{\delta^2}{\L^2} \frac{\partial^2 \hat{u}}{\partial \hat{x}^2} + \frac{\partial^2 \hat{u}}{\partial \hat{z}^2} \right)
+\end{equation}
+where $k_\parallel$ is the component of $\mathbf{k}$ along the filament.
+Thus:
+\begin{equation}
+\left[\frac{\partial {\hat{u}} }{\partial \hat{t}} +
+\frac{\partial ~}{\partial \hat{x}}\left(\hat{u} \hat{u}\right) 
++ \frac{\partial ~}{\partial\hat{z}}\left(\hat{w} \hat{u}\right)
+\right]
++\frac{\delta^2\sigma}{\nu U}\frac{P}{L}\frac{\partial \hat{P}}{\partial \hat{x}} = \frac{\delta^2\sigma B}{\nu U}\hat{b} k_\parallel + 
+\sigma
+\left(\frac{\delta^2}{\L^2} \frac{\partial^2 \hat{u}}{\partial \hat{x}^2} + \frac{\partial^2 \hat{u}}{\partial \hat{z}^2} \right)
+\end{equation}
+If we use $P=U^2$ and $U^2=BL$, as above, the coefficient of the non-dimensional pressure gradient and the buoyancy both become $\sigma \frac{\delta^2}{L^2} Re$.
+Since the combination of these terms drives the flow, and it is reasonable to suppose that the momentum time scale is $ T_m=T_d/\sigma$, we must have:
+\begin{equation}
+\frac{\delta^2}{L^2} Re = 1 \Rightarrow \frac{\delta}{L} =  Re^{-\frac{1}{2}}
+\end{equation} 
+
+This is a classical Prandtl-Blasius scaling argument in the boundary layer that justifies ignoring the along-flow diffusion, but it applies equally well here (and, indeed, is consistent with the idea that the filaments start of as segments of boundary layer peeling away from the surface in surface-driven flows). Note that it is straightforward to show that this choice of $\delta$ leads to $T_m=T$, i.e. diffusion across filaments occurs in the same time scale as acceleration along, i.e. acceleration along collapses the filament at the same rate that diffusion broadens it.
+
+It makes sense to conclude that the pressure difference across the filament scales as $\frac{\delta}{L}P = B \delta$ and hence that velocity perturbations across the filament scale as $(B\delta)^{1/2}$. 
+If we call this $u_p$, and we parametrise these pressure perturbations as $p_i=-\gamma \nabla \cdot u_i$ then, nondimensionalising:
+\begin{equation}
+u_p^2 \hat{p}_i = -\gamma \frac{u_p}{\delta} \hat{\nabla} \hat{\mathbf{u}}_i\Rightarrow \gamma \propto u_p \delta = B^{1/2}\delta^{3/2}=B^\frac{1}{8} L^\frac{3}{8} \nu^\frac{3}{4} 
+\end{equation}  
+
+\subsection{Choice of viscosity and thermal diffusivity in the RCE case.}
+The chose values of $\alpha$ and $\nu$ are, of course, huge compared with the values for air.
+We are assuming that our reference simulation is essentially a form of 'large eddy simulation' (LES), and the constant values chosen are eddy diffusivity and viscosity.
+If we were to use a Smagorinsky (1963) formulation, $\nu = \lambda^2 \left|S\right|$; the maximum shear will be $\left|S\right|\sim U/\delta$, leading to $\lambda \sim 137$ m. 
+This is somewhat large given the usual LES formulation $\lambda \approx 0.2 \delta x$, since $\delta x=250$ m, but it is the appropriate order of magnitude, bearing in mind that we have used an estimate of shear and could easily adjust this by a factro of two either way. 
+A somewhat larger value has been chosen to attempt to encompass the idea that $\nu$ and $\alpha$ parametrize the majority of the incoherent turbulence that mixes the two fluids.   
+
+\subsection{Scales in the RCE problem}
+If we take the standard buoyancy scaling above, then $U=(BL)^{1/2}$. 
+In steady state, the surface buoyancy flux $h$ is carried through the fluid with a flux:
+\begin{equation}
+UB = h
+\end{equation}
+Thus 
+\begin{equation}
+\left(BL\right)^\frac{1}{2} B = h \Rightarrow B = h^\frac{2}{3} L^{-\frac{1}{3}}
+\end{equation}
+and hence
+\begin{equation}
+U=\left(hL \right)^\frac{1}{3}
+\end{equation}
+Taking the numerical values $L=10000$ m, $\nu = 70.7$~m$^2$~s$^{-1}$ and $h=10^{-3}$~m$^2$~s$^{-3}$ leads to $B=4.64\times 10^{-4}$ m~s$^{-2}$, $U = 2.154$~m~s$^{-1}$, $Re=304.7$, $\delta=572.8$ m and $\gamma=295.4$~m$^2$~s$^{-1}$. 
+
+\subsection{Scales in the rising bubble problem}
+We assume $B=1/30$ m~s$^{-2}$, the mean initial perturbation, $L=2000$ m, the initial perturbation size, then with the standard buoyancy scaling above $U = 8.16$~m~s$^{-1}$. To estimate other scales we need to know the viscosity. Taking the same value as the RCE problem, $\nu = 70.7$~m$^2$~s$^{-1}$, leads to  $Re=231$, $\delta=131.6$ m and $\gamma=275.6$~m$^2$~s$^{-1}$. 
+
+Note to Hilary: I guess you're going to say the bubble is inviscid - in which case the effective viscosity comes from numerical diffusion and hence the resolution. 
+The $\delta$ scale above is certainly not larger than the actual filament width in the reference solution, so I'd suggest that the actual effective viscosity is larger. 
+Quadrupling $\nu$ gives $\delta = 263$ m and $\gamma = 779.6$ ~m$^2$~s$^{-1}$ which tallies quite well with your results (and also $\lambda=95$ m).
+
+
+\end{document}
+

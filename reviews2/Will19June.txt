@@ -1,0 +1,9 @@
+Line 81: I don't know about Yano et al. 2014 but Tan et al. 2018 use diffusion and drag, although it'd not really relevant to the point being made. Plus Tan et al use eddy diffusivity whereas Weller & McIntyre use diffusion-based transfers so maybe that distinction needs to be made.
+
+I'm not sure what they mean by the permute/transfer term comment either.
+
+Line 202: Just to note for the reviewer response that using \theta_w=0.5 does not guarantee w_ij^T=0. In fact, Thuburn et al. 2019 used \theta_w=0.5 and got non-zero w_ij^T everywhere. For w_ij^T=0, \theta_w would have to be some complicated function. Also, we have not assumed any correlation between the sub-filter variability of b and w, therefore we do not have to have \theta_w=\theta_b.
+
+I assume line 580 should be line 480? Same for line 587.
+
+        I agree with reviewer 2 about swapping/re-arranging paragraphs 2 and 3 in the abstract so that first the test cases are described and after we state that div-transfer and pressure-perturbations are good.

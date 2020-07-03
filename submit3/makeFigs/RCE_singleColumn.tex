@@ -1,0 +1,59 @@
+%% LyX 2.2.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,british,times]{article}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[pdftex,a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\pagestyle{empty}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{calc}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[pdftex]{graphicx}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage { fancybox}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{rotating}
+\newcommand{\nicefrac}[2]{\ensuremath ^{#1}\!\!/\!_{#2}}
+\usepackage { fancybox}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\setlength\tabcolsep{0.5pt}%
+\begin{tabular}{ccccc}
+$\sigma_{1}$ & $\sigma S\ (\text{s}^{-1})$  & $b\ (\text{m}\ \text{s}^{-2})$ & $w\ (\text{m}\ \text{s}^{-1})$ & $P\ (\text{m}^{2}\text{s}^{-2})$\tabularnewline
+\multicolumn{5}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $b_{ij}^{T}=b_{i}$,
+\hspace{6pt}  $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$ 
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/sigma} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/b} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/u} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3/100000/P}\tabularnewline
+\multicolumn{5}{c}{%
+\fbox{\begin{minipage}[t]{0.7\columnwidth}%
+\begin{center}
+$S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, \hspace{6pt} $b_{ij}^{T}=\frac{1}{2}\left(b_{i}+b_{j}\right)$,
+\hspace{6pt} $\gamma=2\times10^{3}\text{m}^{2}\text{s}^{-1}$ 
+\par\end{center}%
+\end{minipage}}}\tabularnewline
+\includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/sigma} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/massTransfer} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/b} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/u} & \includegraphics[scale=0.7]{/home/hilary/OpenFOAM/hilary-7/run/hilary/RCE/Boussinesq/singleColumn/divTransfer_Pi_2e3_bT05/100000/P}\tabularnewline
+\end{tabular}
+\end{document}

@@ -1,0 +1,18 @@
+I had thought that you had picked up from Dan that the length-scale needed in the estimation of gamma is the boundary-layer depth or filament width. Apologies – I should have realised sooner. Dan (and I) picked up on this a couple of months ago (and I did circulate something). Dan needs a louder voice, maybe! (It so happened I was writing up the analysis at the same time.)
+
+ 
+
+As I said, the scale analysis is more than just a dimensional analysis – it gives us some quantitative predictions. I believe that the attached needs to be in the paper (though if anyone can make it a wee bit more concise, please do). In an ideal world, we’d publish non-dimensionalized results, but I don’t think that’s needed in JAMES. Dan in particular, please check it! I don’t think there’s new science here but we must show that we’re familiar with what’s known (Dan might wish to comment re appropriate references). 
+
+ 
+
+The key points are
+
+    The scale analysis tell us how to get B for the RCE case in terms of external parameters. This is standard free convective boundary layer scaling available in many textbooks. You cannot just go to a high resolution and measure it! (Note how it does compare!)
+    We get direct estimates of P and U – note how these compare with the numerical solutions in both cases.
+    Hence we get Reynolds number. This highlights low value and means some comment on viscosity is needed.
+    For the RCE case, we get an estimate of the scale of ‘intermingling’. We don’t for the rising bubble because, I think, all your diffusion is numerical, but see notes. There is an effective viscosity operating, and it may be better, in future, to have some control over it.
+    Hence our estimate of gamma – this suggests you’ve used a value a little high but the right order of magnitude, and it’s only a scale analysis so I don’t see a problem.
+    On the whole, these results support and, I think, strengthen the paper.
+
+ 

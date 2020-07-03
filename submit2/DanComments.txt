@@ -1,0 +1,25 @@
+
+    Kain & Fritsch (1990) reference: in the title, "parameteriztion" should be "parameterization"
+    Thuburn, Efstathiou & Beare (2019): reference can now be updated with journal volume & page numbers:
+
+    @article{doi:10.1002/qj.3510,
+    author = {Thuburn, John and Efstathiou, Georgios A. and Beare, Robert J.},
+    title = {A two-fluid single-column model of the dry, shear-free, convective boundary layer},
+    journal = {Quarterly Journal of the Royal Meteorological Society},
+    volume = {145},
+    number = {721},
+    pages = {1535-1550},
+    keywords = {EDMF, Kelvin–Helmholtz, multi-fluid, parametrization, updraught},
+    doi = {10.1002/qj.3510},
+    url = {https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.3510},
+    eprint = {https://rmets.onlinelibrary.wiley.com/doi/pdf/10.1002/qj.3510},
+    abstract = {A single-column model of the dry, shear-free, convective boundary layer is presented in which non-local transports by coherent structures such as thermals are represented by the partitioning of the fluid into two components, updraught and environment, each with a full set of prognostic dynamical equations. Local eddy diffusive transport and entrainment and detrainment are represented by parametrizations similar to those used in eddy diffusivity mass flux schemes. The inclusion of vertical diffusion of the vertical velocity is shown to be important for suppressing an instability inherent in the governing equations. A semi-implicit semi-Lagrangian numerical solution method is presented and shown to be stable for large acoustic and diffusive Courant numbers, though it becomes unstable for large advective Courant numbers. The solutions are able to capture key physical features of the dry convective boundary layer. Some of the numerical challenges posed by sharp features in the solution are discussed, and areas where the model could be improved are highlighted.},
+    year = {2019}
+    }
+
+    Sherwood et al. (2013) reference: the formatting of this seems weird, especially the "In (chap. Climate Processes: ...)" bit; it seems to appear as 
+    "Sherwood, S., Alexander, M., Brown, A., McFarlane, N., Gerber, E., Feingold, G., Scaife, A. and Grabowski, W. (2013). Climate processes: clouds, aerosols and dynamics., Climate Science for Serving Society"
+    elsewhere. Might just be down to the JAMES referencing style though?
+    Holloway et al. (2014): reference style for names seems inconsistent with other entries in the bibliography with long author lists.
+
+

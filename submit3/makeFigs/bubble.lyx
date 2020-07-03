@@ -1,0 +1,187 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage { fancybox}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{rotating}
+\newcommand{\nicefrac}[2]{\ensuremath ^{#1}\!\!/\!_{#2}}
+\usepackage { fancybox}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath}
+\end_preamble
+\options times
+\use_default_options true
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics pdftex
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 5
+\tocdepth 5
+\paragraph_separation skip
+\defskip smallskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/0/bP.pdf
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\backslash
+raisebox{3cm}[0cm][0cm]{$t=0$ s}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/500/bP.pdf
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\backslash
+raisebox{4cm}[0cm][0cm]{$t=500$ s}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/1000/bP.pdf
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{2cm}
+\backslash
+raisebox{5cm}[0cm][0cm]{$t=1000$ s}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b.eps
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

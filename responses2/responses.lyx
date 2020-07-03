@@ -1,0 +1,1230 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{xcolor}
+\renewenvironment{quote}
+               {\list{}{\rightmargin\leftmargin}%
+                \item\relax\color{blue}}
+               {\endlist}
+
+
+% Long lines with tabs
+\makeatletter
+
+\newlength\tdima
+\newcommand\tabfill[1]{%
+      \setlength\tdima{\linewidth}%
+      \addtolength\tdima{\@totalleftmargin}%
+      \addtolength\tdima{-\dimen\@curtab}%
+      \parbox[t]{\tdima}{#1\ifhmode\strut\fi}}
+
+\newcommand\mytabs{\hspace*{2.5cm}\=\hspace{\tdima}}
+\newenvironment{mysec}[1][\mytabs]
+  {\begin{tabbing}#1\kill\ignorespaces}
+  {\end{tabbing}}
+
+\makeatother
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style \use_bibtopic false
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Responses to Second round of Reviewer Comments on
+\begin_inset Newline newline
+\end_inset
+
+2019MS001966
+\begin_inset Newline newline
+\end_inset
+
+Multi-fluids for Representing Sub-filter-scale Convection
+\end_layout
+
+\begin_layout Author
+Hilary Weller, William McIntyre, Dan Shipley
+\end_layout
+
+\begin_layout Standard
+Responses are in blue.
+\end_layout
+
+\begin_layout Section*
+Responses to Reviewer 1
+\end_layout
+
+\begin_layout Subsection*
+Line by line Comments 
+\series medium
+\size normal
+(referring to the previously submitted pdf file with tracked changes): 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space \space{}
+\end_inset
+
+81: I think you mean for the last citation in this sentence to be Yano et
+ al (2014) ?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space ~
+\end_inset
+
+ 
+\color blue
+No.
+ This sentence should contain two references to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ and no reference to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yano14"
+
+\end_inset
+
+ or Yano et al (2014).
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+82 I could suggest to further clarify this issue to the reader by writing
+ something like:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+in a single column where a hydrostatic reference profile replaces the the
+ continuity equation of a dynamical core of a GCM, thus circumventing mass
+ exchange with neighboring columns.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The reason I am suggesting this is that in a single column net divergence
+ can either be prescribed or assume zero (mass conservation in the column).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ I am afraid that the suggested wording is not what we want to convey.
+ This sentence has been changed to:
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+The 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+extended eddy diffusivity mass flux
+\begin_inset Quotes erd
+\end_inset
+
+ or extended EDMF scheme uses similar equations but 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TKP+18"
+
+\end_inset
+
+ only solve the equations in a single column without mass transported by
+ convection feeding back onto the continuity equation.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ A hydrostatic or other reference profile is not relevant to this argument.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+91 please very whether JAMES requires US (vs British) grammar regards to
+ words such as 
+\begin_inset Quotes eld
+\end_inset
+
+stabilised
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Thanks.
+ Spelling changed to US throughout.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+List
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+parameters
+\begin_inset space ~
+\end_inset
+
+after
+\begin_inset space ~
+\end_inset
+
+106 Did you consider a table with a column for symbol, units and description?
+ For instance in the buoyancy definition: 
+\begin_inset Quotes eld
+\end_inset
+
+uniform reference
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{r}$
+\end_inset
+
+ (
+\begin_inset Formula $\text{m\ s}^{-2}$
+\end_inset
+
+)" I believe the units refer to 
+\begin_inset Formula $b$
+\end_inset
+
+ not 
+\begin_inset Formula $ρ_{r}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ This was actually already a table but without lines.
+ I have put lines and another column for units and clarified that the units
+ are for buoyancy rather than density.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+115: you could term 
+\begin_inset Formula $P\ (=p/ρ_{r})$
+\end_inset
+
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+pressure potential
+\begin_inset Quotes erd
+\end_inset
+
+ for clarity.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ I have used 
+\begin_inset Quotes eld
+\end_inset
+
+Boussinesq pressure potential
+\begin_inset Quotes erd
+\end_inset
+
+ and shortened this to 
+\begin_inset Quotes eld
+\end_inset
+
+pressure
+\begin_inset Quotes erd
+\end_inset
+
+ where it is unambiguous.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Eqns
+\begin_inset space \space{}
+\end_inset
+
+(1)-(3) and with respect to my previous comment that was perhaps not phrased
+ well.
+\begin_inset Newline newline
+\end_inset
+
+A naive reader that will look at this equation set will see 2 prognostic
+ equations (for 
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+) for 3 variables (
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\begin_inset Formula $P$
+\end_inset
+
+).
+ It is not typically mentioned in papers and textbooks, but think should
+ be pointed out that the 
+\begin_inset Formula $P$
+\end_inset
+
+ equation is obtained by deriving an equation for the tendency of (3) from
+ the first equation.
+ Thus the model has 3 prognostic equations for three variable.
+ This is not an essential issue I would leave it for the authors whether
+ they would like to address it.
+ This also help justifying the need, and bolstering the complexity of, the
+ pressure closure that is discussed in this work.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space ~
+\end_inset
+
+ Ah, ok, I see.
+ I don't want to talk about the numerical method to fine the pressure here,
+ just what it is determined by.
+ I have added 
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
+The pressure variations are determined up to a constant in order to ensure
+ the divergence free constraint.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+before
+\begin_inset space ~
+\end_inset
+
+eq
+\begin_inset space ~
+\end_inset
+
+(9): 
+\begin_inset Quotes eld
+\end_inset
+
+It is necessary to assume that operators permute with the averaging (as
+ described by Thuburn et al., 2018).
+ Transfers between fluids are included at this stage
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Yano14"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+before "and"
+key "TKP+18"
+
+\end_inset
+
+ show that the exchange terms introduced in this stage are the effect of
+ operators not permuting with averaging.
+ You assume that operators permute with the averaging (which is not true!,
+ i.e.
+ Leibniz integral rule) and then introduce the exchange terms that represent
+ the vary fact that operators do not permute.
+ A more correct statement would be along these lines: transfers between
+ fluids are included at this stage to account for the additional terms that
+ arises when permuting the operators with averaging.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ This has been replaced by
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+Terms that appear because the averaging does not commute with the operators
+ can be included in the transfers between fluids which take the form:
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ However the bulk of the transfers are due to other processes.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+193: Does this imply that your model does not conserve energy? Isn't that
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+too high of a price to pay
+\begin_inset Quotes erd
+\end_inset
+
+ if the goal is to implement this parameterization in a climate model for
+ long term simulations?
+\begin_inset Newline newline
+\end_inset
+
+In the simple two fluid case, the energy loss by fluid 1 (either via pressure,
+ or via exchange terms) should result in an energy gain by its neighboring
+ fluid 2.
+ Is that not the case? 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Unfortunately the energy is not transferred exactly between the fluids.
+ This loss of energy is expected to be small compared to other model errors
+ and unlikely to affect the top of atmosphere energy balance so unlikely
+ to be a problem for climate simulations.
+ We have added:
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+In future work solving the compressible equations we plan to re-insert the
+ energy lost due to this stabilization as heat.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+202
+\begin_inset space ~
+\end_inset
+
+-
+\begin_inset space ~
+\end_inset
+
+fluid
+\begin_inset space ~
+\end_inset
+
+transfer: Equation (30) computes the transfer value for buoyancy and should
+ be generalize to any scalar 
+\begin_inset Formula $(u,v,w)$
+\end_inset
+
+.
+ Following this, a similar logic should be consistently applied to all scalar,
+ thus 
+\begin_inset Formula $θ_{u}=θ_{v}=θ_{w}=θ_{b}$
+\end_inset
+
+.
+ You set the transferred 
+\begin_inset Formula $w$
+\end_inset
+
+ to zero (i.e.
+ 
+\begin_inset Formula $θ_{w}=0.5$
+\end_inset
+
+), and the transfer buoyancy to non zero (i.e.
+ 
+\begin_inset Formula $θ_{b}=/=0.5$
+\end_inset
+
+).
+ Effectively you compute the exchange value of 
+\begin_inset Formula $b$
+\end_inset
+
+ and of 
+\begin_inset Formula $w$
+\end_inset
+
+ using different logical arguments - why? This should be stated explicitly.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space ~
+\end_inset
+
+ 
+\color blue
+We disagree that all variables should be transferred using the same parameters
+ of the same model.
+ We use 
+\begin_inset Formula $w_{ij}^{T}=0$
+\end_inset
+
+ (ie transferring zero vertical velocity) because the conditional averaging
+ is based on 
+\begin_inset Formula $w=0$
+\end_inset
+
+ so this is the value that must be transferred.
+ This is not equivalent to 
+\begin_inset Formula $θ_{w}=0.5$
+\end_inset
+
+ or to any uniform value of 
+\begin_inset Formula $\theta_{w}$
+\end_inset
+
+.
+ However this does not imply anything about the value of 
+\begin_inset Formula $b$
+\end_inset
+
+ that should be transferred (
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+).
+ 
+\begin_inset Formula $b_{ij}^{T}$
+\end_inset
+
+ should ideally be set based on knowledge of the sub-filter-scale variability
+ but we do not yet have any a model of the sub-filter-scale variability.
+ This is the subject of future work.
+ In the absence of a better model we test 
+\begin_inset Formula $\theta_{b}=0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{b}=1$
+\end_inset
+
+ (equivalent to 
+\begin_inset Formula $b_{ij}^{T}=b_{i}$
+\end_inset
+
+).
+ Most of this is already described in section 2.5 but the following is added
+ to section 2.5 in order to clarify:
+\end_layout
+
+\begin_layout Quote
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+The assumption that $w_{ij}^T=0$ does not imply anything about $b_{ij}^T$.
+ In the absence of knowledge of the sub-filter-scale variability, the buoyancy
+ transferred follows 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "TEB19"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Section 2.5 also describes that the model 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$b_{ij}^T=0$
+\end_layout
+
+\end_inset
+
+ is also tested.
+ This is equivalent to the model used for 
+\begin_inset Formula $w$
+\end_inset
+
+ and again does not correspond to a fixed value of 
+\begin_inset Formula $\theta_{b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+257: 
+\begin_inset Quotes eld
+\end_inset
+
+eqn
+\begin_inset Quotes erd
+\end_inset
+
+ did you mean Eq.
+ ?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ We now use either 
+\begin_inset Quotes eld
+\end_inset
+
+equation (x)
+\begin_inset Quotes erd
+\end_inset
+
+ or just 
+\begin_inset Quotes eld
+\end_inset
+
+(x)
+\begin_inset Quotes erd
+\end_inset
+
+ when referring to equations.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+The
+\begin_inset space ~
+\end_inset
+
+line
+\begin_inset space ~
+\end_inset
+
+under
+\begin_inset space ~
+\end_inset
+
+equation
+\begin_inset space ~
+\end_inset
+
+(46): 
+\begin_inset Quotes eld
+\end_inset
+
+by multiplying each eqn (46) by 
+\begin_inset Formula $σ_{i}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ Should it read: 
+\begin_inset Quotes eld
+\end_inset
+
+each equation (46)
+\begin_inset Quotes erd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Fixed
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+388: 
+\begin_inset Quotes eld
+\end_inset
+
+also use drag set by
+\begin_inset Quotes erd
+\end_inset
+
+ - does that read right?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Changed to 
+\begin_inset Quotes eld
+\end_inset
+
+drag with a coefficient satisfying 
+\begin_inset Formula $C_{D}/r_{c}=1/2000\text{m}^{-1}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+580: please consider rephrasing, it is a long sentence.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ This has been split up.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Line
+\begin_inset space ~
+\end_inset
+
+587: addition of second moments will Mak the multi-fluid model resample
+ the time dependent EDMF version in (Tan et al 2018), but with variances
+ in the updrafts as well as in the environment.
+ It is worth noting where these works connect.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ We have added 
+\begin_inset Quotes eld
+\end_inset
+
+further extending the EDMF scheme 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite[]{TKP+18}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Figure
+\begin_inset space ~
+\end_inset
+
+1,
+\begin_inset space ~
+\end_inset
+
+top
+\begin_inset space ~
+\end_inset
+
+panel: Do you have a 
+\begin_inset Formula $w=0$
+\end_inset
+
+ contour (meaning inside that contour 
+\begin_inset Formula $w>0$
+\end_inset
+
+) at 
+\begin_inset Formula $t=0$
+\end_inset
+
+? Did you initialize with a velocity and not only buoyancy?
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset space ~
+\end_inset
+
+ 
+\color blue
+Yes, there is a 
+\begin_inset Formula $w=0$
+\end_inset
+
+ contour.
+ The following is added to the caption to clarify:
+\end_layout
+
+\begin_layout Quote
+
+\color blue
+\begin_inset Quotes eld
+\end_inset
+
+At 
+\begin_inset Formula $t=0$
+\end_inset
+
+, 
+\begin_inset Formula $w=0$
+\end_inset
+
+ everywhere so the dotted contour shows 
+\begin_inset Formula $\partial w/\partial t=0$
+\end_inset
+
+ for the top panel.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Responses to Reviewer 2
+\end_layout
+
+\begin_layout Standard
+The authors' response to my typed-in suggestions seems adequate, but apparently
+ they had some problem accessing the Hypothesis inline comments system.
+ If so, that is unfortunate, since it is tedious to critique a poorly written
+ text line by line by retyping a quotation, its line number, and my reaction.
+ I just can't justify the effort of doing that in detail again.
+\end_layout
+
+\begin_layout Standard
+Nevertheless, I still find the Abstract quite poorly written, to the detriment
+ of my patience for reading more.
+ At this stage of revision, perhaps that is the main concern: if readers
+ are well informed of the content by the Abstract, they can decide to read
+ the rest of paper or not.
+ If I recall, the core material was technically correct and worthy of publicatio
+n.
+ At any rate, the Abstract is all I have the patience to insist about.
+\end_layout
+
+\begin_layout Standard
+So, sentence by sentence: here are my strong suggestions for another revision
+ of the Abstract.
+\end_layout
+
+\begin_layout Standard
+Text:
+\end_layout
+
+\begin_layout Standard
+Multi-fluid modelling is a promising new method of representing sub- and
+ near-grid-scale convection allowing for consistent and accurate treatment
+ of net mass transport by convection and of non-equilibrium dynamics.
+\end_layout
+
+\begin_layout Standard
+Responses:
+\end_layout
+
+\begin_layout Standard
+* "grid": what scale is envisioned? Can a phrase or two clarify the nature
+ of the method, in which scale-separation is treated as category partitioning?
+\end_layout
+
+\begin_layout Standard
+* "...allowing for...": this tacked-on long phrase reads like an advertisement,
+ with none of its sub-clauses being unambiguously true, or at least not
+ using clearly defined terms, nor is it necessary as a backdrop for a reader
+ to appreciate the scientific content of the rest of this Abstract and this
+ paper.
+ Please omit.
+\end_layout
+
+\begin_layout Standard
+Text:
+\end_layout
+
+\begin_layout Standard
+The air is partitioned into two or more fluids which may represent, for
+ example, updrafts and the stable environment.
+\end_layout
+
+\begin_layout Standard
+Response:
+\end_layout
+
+\begin_layout Standard
+The second clause is simply false.
+ Two fluids must comprise a complete and mutually exclusive set (the total
+ fluid), mustn't they?
+\end_layout
+
+\begin_layout Standard
+Text:
+\end_layout
+
+\begin_layout Standard
+Each fluid has its own velocity, temperature and constituents with separate
+ equations of motion.
+ This paper presents two-fluid Boussinesq equations for representing under-resol
+ved dry convection with sinking and w = 0 air in fluid 0 and rising air
+ in fluid 1.
+ A model for entrainment and detrainment based on divergence leads to excellent
+ representation of the convective area fraction.
+\end_layout
+
+\begin_layout Standard
+The first two sentences are clear enough.
+ The term "under-resolved" should link to the opening explanation of what
+ a "grid" scale is in the one-sentence explanation of what multi-fluid methods
+ are all about.
+\end_layout
+
+\begin_layout Standard
+In the third sentence, isn't the claimed "model" merely tautological, since
+ the total divergence is zero in the combined Boussinesq system? If flow
+ diverges in one fluid, it must necessarily be transferred to the other,
+ right? Isn't that what "entrainment and detrainment" mean? So, is this
+ claim not a definition rather than a "model"?
+\end_layout
+
+\begin_layout Standard
+In what sense does that "model" (or tautology) "lead to excellent representation
+"? Is the "model" the only assumption utilized, so that this attribution
+ statement makes sense, if indeed the results are "excellent" relative to
+ some (unspecified) metric or reference? By the way, that metric or reference
+ should be specified before claims of excellence are asserted.
+\end_layout
+
+\begin_layout Standard
+Text:
+\end_layout
+
+\begin_layout Standard
+Previous multi-fluid modelling of convection has used the same pressure
+ for both fluids.
+ This is shown to be a bad approximation and a model for the pressure difference
+ between the fluids based on divergence is presented.
+\end_layout
+
+\begin_layout Standard
+Again a "model" is presented.
+ Here it means a postulate, an approximation, a "closure" according to the
+ Plain English summary (which could also use an edit).
+ Consider using one of these clearer terms.
+\end_layout
+
+\begin_layout Standard
+What is the reference for such a "showing" that equal pressure is "bad",
+ and for "excellent" as in the sentence above?
+\end_layout
+
+\begin_layout Standard
+Text:
+\end_layout
+
+\begin_layout Standard
+Two vertical slice test cases are developed to tune parameters and to evaluate
+ the two fluid equations for representing dry, sub-grid-scale convection:
+ a buoyant rising bubble and 25 radiative convective equilibrium.
+ These are first simulated at high resolution and conditionally averaged
+ based on the sign of the vertical velocity.
+ The test cases are next simulated with the two-fluid model which reproduces
+ the mean properties of the rising and falling fluids in one column.
+\end_layout
+
+\begin_layout Standard
+Response: OHHHH! FINALLY! At last, the information needed for a reader to
+ know what the work and methods actually are, and which all the previous
+ claims refer to.
+ This material belongs BEFORE, not after, the Abstract's claims and declarations
+ of success.
+\end_layout
+
+\begin_layout Standard
+I suspect the same problem of inverted order of information-sharing with
+ the reader may still pervade the text, but I don't volunteer to deconstruct
+ the text at this level.
+ If the Abstract can be made adequate, the text is acceptable to this reviewer,
+ based on the authors' statements that they responded to my comments from
+ the first draft.
+ If they did so merely narrowly, I suppose that is their prerogative.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "numerics"
+options "abbrvnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
