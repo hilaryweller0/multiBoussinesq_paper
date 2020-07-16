@@ -48,7 +48,7 @@
 
 \begin{document}
 
-\title{Multi-fluids for Representing Sub-filter-scale Convection}
+\title{Multi-fluids for Representing Sub-\change[HW]{filter}{grid}-scale Convection}
 
 \authors
 {
@@ -70,31 +70,22 @@
 \end{keypoints}
 
 \begin{abstract}
-Multi-fluid modeling is a promising new method of representing sub- and near-grid-scale convection allowing for consistent and accurate
-treatment of net mass transport by convection and of non-equilibrium dynamics . The air is partitioned into two or more
-fluids which may represent, for example, updrafts and the stable environment. Each fluid has its own velocity, temperature and constituents
-with separate equations of motion.  
+\add[HW]{Traditional parameterizations of convection are a large source of error in weather and climate prediction models and the assumptions behind them are worse as resolution increases.}
+Multi-fluid modeling is a promising new method of representing sub- and near-grid-scale convection allowing for \remove[HW]{consistent and accurate
+treatment of} net mass transport by convection and \remove[HW]{of} non-equilibrium dynamics. The air is partitioned into two or more
+fluids which may represent, for example, updrafts and the \change[HW]{stable}{non-updraft} environment. Each fluid has its own velocity, temperature and constituents with separate equations of motion.  
 
-This paper presents two-fluid Boussinesq equations for representing under-resolved dry convection
-with sinking and $w=0$ air in fluid 0 and rising air in fluid 1. A model for entrainment
-and detrainment based on divergence  leads to excellent representation of the convective area fraction.
-Previous multi-fluid modeling of convection has
-used the same pressure for both fluids.
-This is shown to be a bad approximation and  a model
-for the pressure difference between the fluids based on divergence is presented. 
-
-Two vertical slice test cases are developed to tune parameters and to evaluate the two-fluid equations for representing dry, sub-grid-scale convection: a buoyant rising bubble and radiative convective equilibrium. These
-are first simulated at high resolution and conditionally averaged based
-on the sign of the vertical velocity. The test cases are next simulated with the two-fluid model which  reproduces
-the mean properties of the rising and falling fluids in one column. 
+This paper presents two-fluid Boussinesq equations for representing \change[HW]{under-resolved}{sub-grid-scale} dry convection with sinking and $w=0$ air in fluid 0 and rising air in fluid 1. Two vertical slice test cases are developed to tune parameters and to evaluate the two-fluid equations: a buoyant rising bubble and radiative convective equilibrium. These
+are first simulated at high resolution \add[HW]{with a single-fluid model} and conditionally averaged based
+on the sign of the vertical velocity. The test cases are next simulated with the two-fluid model \remove[HW]{which reproduces
+the mean properties of the rising and falling fluids} in one column. 
+A model for entrainment and detrainment based on divergence  leads to excellent representation of the convective area fraction. Previous multi-fluid modeling of convection has used the same pressure for both fluids. This is shown to be a bad approximation and  a model for the pressure difference between the fluids based on divergence is presented. 
 \end{abstract}
 
 \section*{Plain Language Summary}
 Clouds and buoyant convection are often smaller than the grid size in weather and climate prediction models but they are of central importance. Therefore their effects are parameterized -- their interactions with the larger scales are estimated based on properties of the larger scales. Convection parameterizations are a large source of error in models of the atmosphere despite decades of effort to improve them. 
 Some unrealistic assumptions remain such as that convection does not transport mass upwards, convection is in equilibrium with the surroundings and that the variations in the horizontal direction are not relevant. These make
-it much simpler to incorporate convection parameterizations into existing models. 
-Multi-fluid modeling
-does not rely on these assumptions
+it much simpler to incorporate convection parameterizations into existing models.Multi-fluid modeling does not rely on these assumptions
 but the approach means a whole new atmospheric model rather than a stand alone routine that can be incorporated into an existing model. This paper provides some closures necessary for multi-fluid modeling and evaluation of the technique for two dimensional dry convection.
 
 \section{Introduction \label{sec:intro}}
@@ -171,7 +162,7 @@ and Boussinesq equations. Therefore, the Boussinesq equations without background
 \label{eq:singleDivFree}
 \end{eqnarray}
 where variables are defined in table \ref{tab:defns}. Note that the \add[HW]{Boussinesq} pressure \add[HW]{potential}, $P$, is actually pressure divided by a constant reference density\add[HW]{ and is referred to as just the pressure when considering the Boussinesq equations}.
-\add[HW]{The pressure variations are determined up to a constant in order to ensure the divergence free constraint.}
+\add[HW]{The pressure variations are determined up to a constant in order to ensure that the velocity is divergence free.}
 
 \begin{table}
 \begin{tabular}{l>{\raggedright}p{0.8\textwidth}}
@@ -240,14 +231,14 @@ which implies
 As the system is governed by the Boussinesq equations, it is assumed that variations in density only affect the definition of the buoyancy terms (table \protect\ref{tab:defns}) so $\mathbf{u}_i$ and $b_i$ are defined without density weighting. 
 
 To derive a transport equation for $\sigma_i$, (\ref{eq:LagrangianLabel}) is combined with $I_i$ times (\ref{eq:singleDivFree}) and volume averaged. 
-It is necessary to assume that operators permute with the averaging \cite<as described by>{TWV+18}. \add[HW]{Terms that appear because the averaging does not commute with the operators can be included in the transfers between fluids} \remove[HW]{Transfers between fluids are included at this stage} \add[HW]{which take the form}:
+It is necessary to assume that operators permute with the averaging \cite<as described by>{TWV+18}. \add[HW]{Terms that appear because the averaging does not commute with the operators can be included in the transfers between fluids.} \remove[HW]{Transfers between fluids are included at this stage} \add[HW]{The equation for $\sigma_i$ is then}:
 \begin{equation}
 \frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i}  =  \sum_{j\ne i}\left\{ \sigma_{j}S_{ji}-\sigma_{i}S_{ij}\right\}
 \label{eq:sigma}
 \end{equation}
 where $\sigma_{i}S_{ij}$ is the transfer rate from fluid $i$ to $j$.
 
-Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations is considered. Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
+Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations is considered. \add[HW]{The filter scale is assumed to be equal to the grid scale but the derivation does not rely on this.} Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
 \begin{eqnarray}
 \overline{I_i \nabla \cdot (\mathbf{u} \mathbf{u})} &=& \nabla \cdot (\sigma_i \mathbf{u}_i  \mathbf{u}_i) + F_\text{SF}^{\mathbf{u}_i} \\
 \overline{I_i \nabla (\mathbf{u} b)} &=&  \nabla \cdot (\sigma_i \mathbf{u}_i b_i) + F_\text{SF}^{b_i}
@@ -297,7 +288,6 @@ Combining all terms gives the conditionally averaged momentum and buoyancy equat
 \label{eq:bFlux}
 \end{eqnarray}
 These equations include mass transfers between fluids with $\mathbf{u}_{ij}^T$ being the velocity of the fluid transferred from $i$ to $j$ and $b_{ij}^T$ being the buoyancy of the fluid transferred from $i$ to $j$. 
-
 Equations (\ref{eq:momFlux}) and (\ref{eq:bFlux}) are solved in advective form in which the mass transfer terms are more complicated: 
 \begin{eqnarray}
 \frac{D_{i}\mathbf{u}_{i}}{Dt}+\nabla P_{i}
@@ -308,7 +298,7 @@ b_{i}\mathbf{k}+\nu\nabla^{2}\mathbf{u}_{i}+\sum_{j\ne i}\left\{ \frac{\sigma_{j
 & = &
 \alpha\nabla^{2}b_{i}+\sum_{j\ne i}\left\{ \frac{\sigma_{j}}{\sigma_{i}}S_{ji}\left(b_{ji}^{T}-b_{i}\right)-S_{ij}\left(b_{ij}^{T}-b_{i}\right)\right\} \label{eq:b}
 \end{eqnarray}
-where $D_{i}\big/Dt=\partial/\partial t+\mathbf{u}_{i}\cdot\nabla$ is the total derivative with respect to fluid $i$, 
+where $D_{i}\big/Dt=\partial/\partial t+\mathbf{u}_{i}\cdot\nabla$ is the total derivative with respect to fluid $i$.
 
 Finally the multi-fluid version of incompressibility is
 \begin{equation}
@@ -345,7 +335,7 @@ For stability and to respect $\sum_i \nabla\cdot\sigma_i\mathbf{u}_i=0$, we prop
 \end{enumerate}
 
 
-In order to derive a suitable form of parameterization for $p_i$ we will first consider the \citeA{BN86} model of multi-phase flow.
+In order to derive a suitable form of \change[HW]{parameterization}{model} for $p_i$ we will first consider the \citeA{BN86} model of multi-phase flow.
 
 \subsubsection{The \protect\citeA{BN86} model}
 
@@ -387,7 +377,7 @@ p_{i}=
 \underbrace{\gamma\sum_j \sigma_j\nabla\cdot\mathbf{u}_j}_{\text{correction}}
 \label{eq:Pi_div}
 \end{equation}
-where $\gamma$ is a compressibility with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations we plan to re-insert the energy lost due to this stabilization as heat.}
+where $\gamma$ is a compressibility with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations we plan to re-insert the energy lost due to this stabilization as turbulent kinetic energy and heat.}
 
 Scale analysis in section
 \ref{subsec:dimAnal} will inform the choice of $\gamma$ and sensitivity
@@ -400,10 +390,7 @@ It is useful to compare the transfer terms, $S_{ij}$, with models of entrainment
 S_{01} = w_1\varepsilon, \;\;\;\;\;\;\;
 S_{10} = w_0\delta.
 \end{equation}
-Results using two formulations of entrainment are presented in section {\protect\ref{sec:results}}. The first is similar to
-
-the dynamic entrainment described by
-\citeA{HC51}, \citeA{AK67} and \citeA{DBF+13}:
+Results using two formulations of entrainment are presented in section {\protect\ref{sec:results}}. The first is similar to the dynamic entrainment described by \citeA{HC51}, \citeA{AK67} and \citeA{DBF+13}:
 \begin{equation}
 S_{ij}=\begin{cases}
 -\nabla\cdot\mathbf{u}_{i} & \text{if }\nabla\cdot\mathbf{u}_{i}<0\\
@@ -941,7 +928,7 @@ cloud top detrainment and lateral entrainment. $\gamma$ is set from
 equation (\ref{eq:gammaDimAnal}) using the depth of the high resolution solution super adiabatic
 layer as the length scale ($L=800\text{m}$) and the buoyancy scale
 $B=L\ \partial b/\partial z=8\times10^{-3}\text{m}\text{s}^{-2}$
-giving $\gamma=2000\text{m}^{2}\text{s}^{-1}$. (Scale analysis or boundary layer parameterization could instead be used to estimate $L$ independently.)
+giving $\gamma=2000\text{m}^{2}\text{s}^{-1}$. \add[HW]{(If scale analysis is used to estimate $L$ and $B$, values within a factor of 10 are calculated, depending on the assumptions.)}
 A simulation using
 $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, no drag and $b_{ij}^{T}=b_{i}$
 is shown in the top row of figure \ref{fig:RCE_singleColumn}.

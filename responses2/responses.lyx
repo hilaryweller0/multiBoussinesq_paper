@@ -440,22 +440,37 @@ A naive reader that will look at this equation set will see 2 prognostic
 \begin_inset space ~
 \end_inset
 
- Ah, ok, I see.
- I don't want to talk about the numerical method to fine the pressure here,
+ 
+\color blue
+Ah, ok, I see.
+ I don't want to talk about the numerical method to find the pressure here,
  just what it is determined by.
  I have added 
 \end_layout
 
 \begin_layout Quote
+
+\color blue
 \begin_inset Quotes eld
 \end_inset
 
 The pressure variations are determined up to a constant in order to ensure
- the divergence free constraint.
+ that the velocity is divergence free.
 \begin_inset Quotes erd
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\color blue
+\begin_inset space ~
+\end_inset
+
+ Note that combining the existing equations cannot lead to a third prognostic
+ equation.
 \end_layout
 
 \begin_layout Labeling
@@ -597,7 +612,7 @@ In the simple two fluid case, the energy loss by fluid 1 (either via pressure,
 \end_inset
 
 In future work solving the compressible equations we plan to re-insert the
- energy lost due to this stabilization as heat.
+ energy lost due to this stabilization as turbulent kinetic energy and heat.
 \begin_inset Quotes erd
 \end_inset
 
@@ -703,7 +718,7 @@ We disagree that all variables should be transferred using the same parameters
 \end_inset
 
  should ideally be set based on knowledge of the sub-filter-scale variability
- but we do not yet have any a model of the sub-filter-scale variability.
+ but we do not yet have a model of the sub-filter-scale variability.
  This is the subject of future work.
  In the absence of a better model we test 
 \begin_inset Formula $\theta_{b}=0.5$
@@ -1061,6 +1076,16 @@ The authors' response to my typed-in suggestions seems adequate, but apparently
 \end_layout
 
 \begin_layout Standard
+
+\color blue
+We responded to all of the Hypothesis inline comments.
+ But we urge the journal office to find a different system that does not
+ require authors to be logged in order to see the comments on the manuscript.
+ There are many systems that allow authors to download an annotated pdf.
+ 
+\end_layout
+
+\begin_layout Standard
 Nevertheless, I still find the Abstract quite poorly written, to the detriment
  of my patience for reading more.
  At this stage of revision, perhaps that is the main concern: if readers
@@ -1072,125 +1097,501 @@ n.
 \end_layout
 
 \begin_layout Standard
+
+\color blue
+Thank you for the further suggestions to improve the abstract.
+\end_layout
+
+\begin_layout Standard
 So, sentence by sentence: here are my strong suggestions for another revision
  of the Abstract.
 \end_layout
 
-\begin_layout Standard
-Text:
-\end_layout
-
-\begin_layout Standard
-Multi-fluid modelling is a promising new method of representing sub- and
- near-grid-scale convection allowing for consistent and accurate treatment
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Text: Multi-fluid modelling is a promising new method of representing sub-
+ and near-grid-scale convection allowing for consistent and accurate treatment
  of net mass transport by convection and of non-equilibrium dynamics.
 \end_layout
 
-\begin_layout Standard
-Responses:
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Responses: 
+\begin_inset Quotes eld
+\end_inset
+
+grid
+\begin_inset Quotes erd
+\end_inset
+
+: what scale is envisioned? Can a phrase or two clarify the nature of the
+ method, in which scale-separation is treated as category partitioning?
 \end_layout
 
 \begin_layout Standard
-* "grid": what scale is envisioned? Can a phrase or two clarify the nature
- of the method, in which scale-separation is treated as category partitioning?
+
+\color blue
+It is not entirely clear what the reviewer is asking for here.
+ Perhaps they want us to specific particular grid resolutions? As we argued
+ in previous responses, this is not appropriate.
+ Perhaps it would help to say that the multi-fluid method is to do the job
+ of a convection parameterisation.
+ We do not want to tie the multi-fluid method to a specific scale but the
+ scales that we would like multi-fluid to work for are those currently used
+ for sub-grid-scale convection paramterisation and higher resolution with
+ a smooth transition to convection being fully resolved (where multi-fluid
+ modelling is not needed).
+ In order to clarify this, an additional sentence is added before the first
+ sentence:
 \end_layout
 
-\begin_layout Standard
-* "...allowing for...": this tacked-on long phrase reads like an advertisement,
- with none of its sub-clauses being unambiguously true, or at least not
- using clearly defined terms, nor is it necessary as a backdrop for a reader
- to appreciate the scientific content of the rest of this Abstract and this
- paper.
+\begin_layout Quote
+
+\color blue
+Traditional parameterizations of convection are a large source of error
+ in weather and climate prediction models and the assumptions behind them
+ are worse as resolution increases.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Quotes eld
+\end_inset
+
+...allowing
+\begin_inset space ~
+\end_inset
+
+for...
+\begin_inset Quotes erd
+\end_inset
+
+: this tacked-on long phrase reads like an advertisement, with none of its
+ sub-clauses being unambiguously true, or at least not using clearly defined
+ terms, nor is it necessary as a backdrop for a reader to appreciate the
+ scientific content of the rest of this Abstract and this paper.
  Please omit.
 \end_layout
 
 \begin_layout Standard
-Text:
+
+\color blue
+The motivations for multi-fluid modelling are, in order:
+\end_layout
+
+\begin_layout Enumerate
+
+\color blue
+to enable net mass transport by convection
+\end_layout
+
+\begin_layout Enumerate
+
+\color blue
+non-equilibrium dynamics 
+\end_layout
+
+\begin_layout Enumerate
+
+\color blue
+the same equations of motion to represent plumes and the environment (and
+ downdrafts if included).
+ 
 \end_layout
 
 \begin_layout Standard
-The air is partitioned into two or more fluids which may represent, for
- example, updrafts and the stable environment.
+
+\color blue
+So we cannot completely omit this 
+\begin_inset Quotes eld
+\end_inset
+
+advertisement
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We have removed 
+\begin_inset Quotes eld
+\end_inset
+
+consistent and accurate treatment of
+\begin_inset Quotes erd
+\end_inset
+
+ (although the consistent bit covers point 3 above).
+ 
 \end_layout
 
-\begin_layout Standard
-Response:
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Text: The air is partitioned into two or more fluids which may represent,
+ for example, updrafts and the stable environment.
 \end_layout
 
-\begin_layout Standard
-The second clause is simply false.
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Response: The second clause is simply false.
  Two fluids must comprise a complete and mutually exclusive set (the total
  fluid), mustn't they?
 \end_layout
 
 \begin_layout Standard
-Text:
+
+\color blue
+If 
+\begin_inset Quotes eld
+\end_inset
+
+the stable environment
+\begin_inset Quotes erd
+\end_inset
+
+ is defined to be 
+\begin_inset Quotes eld
+\end_inset
+
+not updrafts
+\begin_inset Quotes erd
+\end_inset
+
+ then these two fluids define a complete and mutually exclusive set and
+ the naming chosen helps to relate the multi-fluids method to existing parameter
+isations.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+stable environment
+\begin_inset Quotes erd
+\end_inset
+
+ has been changed to the 
+\begin_inset Quotes eld
+\end_inset
+
+non-updraft environment
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
 \end_layout
 
-\begin_layout Standard
-Each fluid has its own velocity, temperature and constituents with separate
- equations of motion.
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Text: Each fluid has its own velocity, temperature and constituents with
+ separate equations of motion.
  This paper presents two-fluid Boussinesq equations for representing under-resol
-ved dry convection with sinking and w = 0 air in fluid 0 and rising air
- in fluid 1.
+ved dry convection with sinking and 
+\begin_inset Formula $w=0$
+\end_inset
+
+ air in fluid 0 and rising air in fluid 1.
  A model for entrainment and detrainment based on divergence leads to excellent
  representation of the convective area fraction.
 \end_layout
 
 \begin_layout Standard
 The first two sentences are clear enough.
- The term "under-resolved" should link to the opening explanation of what
- a "grid" scale is in the one-sentence explanation of what multi-fluid methods
- are all about.
+ The term 
+\begin_inset Quotes eld
+\end_inset
+
+under-resolved
+\begin_inset Quotes erd
+\end_inset
+
+ should link to the opening explanation of what a 
+\begin_inset Quotes eld
+\end_inset
+
+grid
+\begin_inset Quotes erd
+\end_inset
+
+ scale is in the one-sentence explanation of what multi-fluid methods are
+ all about.
 \end_layout
 
 \begin_layout Standard
-In the third sentence, isn't the claimed "model" merely tautological, since
- the total divergence is zero in the combined Boussinesq system? If flow
- diverges in one fluid, it must necessarily be transferred to the other,
- right? Isn't that what "entrainment and detrainment" mean? So, is this
- claim not a definition rather than a "model"?
+
+\color blue
+The test cases that we present are in fact single column so the convection
+ that we are representing is completely unresolved rather than just under-resolv
+ed although the two-fluid Boussinesq equations should also be able to represent
+ under-resolved convection as well (subject of ongoing work).
+ We really do not want to be specific about what 
+\begin_inset Quotes eld
+\end_inset
+
+grid-scale
+\begin_inset Quotes erd
+\end_inset
+
+ is.
+ It is not relevant and we do not want to imply that multi-fluid modelling
+ is specific to a particular grid-scale.
+ We have replace 
+\begin_inset Quotes eld
+\end_inset
+
+under-resolved
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+sub-grid-scale
+\begin_inset Quotes erd
+\end_inset
+
+.
+ For additional clarity, 
+\begin_inset Quotes eld
+\end_inset
+
+sub-filter-scale
+\begin_inset Quotes erd
+\end_inset
+
+ has been changed to 
+\begin_inset Quotes eld
+\end_inset
+
+sub-grid-scale
+\begin_inset Quotes erd
+\end_inset
+
+ in the title and a new note in section 2.1 states that the 
+\begin_inset Quotes eld
+\end_inset
+
+filter scale is assumed to be equal to the grid scale but derivation does
+ not rely on this
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
-In what sense does that "model" (or tautology) "lead to excellent representation
-"? Is the "model" the only assumption utilized, so that this attribution
- statement makes sense, if indeed the results are "excellent" relative to
- some (unspecified) metric or reference? By the way, that metric or reference
- should be specified before claims of excellence are asserted.
+In the third sentence, isn't the claimed 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ merely tautological, since the total divergence is zero in the combined
+ Boussinesq system? If flow diverges in one fluid, it must necessarily be
+ transferred to the other, right? Isn't that what 
+\begin_inset Quotes eld
+\end_inset
+
+entrainment and detrainment
+\begin_inset Quotes erd
+\end_inset
+
+ mean? So, is this claim not a definition rather than a 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+?
 \end_layout
 
 \begin_layout Standard
-Text:
+
+\color blue
+No.
+ It could be important to allow convergence in one fluid if that fluid is
+ accumulating mass.
+ Or if a plume is accelerating should it be allowed to take up less volume
+ rather than pulling in air from the other fluid.
+ There isn't really space for this discussion in the abstract so the sentence
+ in question is left as it is.
+ 
 \end_layout
 
 \begin_layout Standard
-Previous multi-fluid modelling of convection has used the same pressure
+In what sense does that 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ (or tautology) 
+\begin_inset Quotes eld
+\end_inset
+
+lead to excellent representation
+\begin_inset Quotes erd
+\end_inset
+
+? Is the 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ the only assumption utilized, so that this attribution statement makes
+ sense, if indeed the results are 
+\begin_inset Quotes eld
+\end_inset
+
+excellent
+\begin_inset Quotes erd
+\end_inset
+
+ relative to some (unspecified) metric or reference? By the way, that metric
+ or reference should be specified before claims of excellence are asserted.
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+The second two paragraphs of the abstract are combined and re-arranged in
+ order to describe the test cases before describing the 
+\begin_inset Quotes eld
+\end_inset
+
+excellent representation
+\begin_inset Quotes erd
+\end_inset
+
+ so as to clarify what the reference is.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Text: Previous multi-fluid modelling of convection has used the same pressure
  for both fluids.
  This is shown to be a bad approximation and a model for the pressure difference
  between the fluids based on divergence is presented.
 \end_layout
 
 \begin_layout Standard
-Again a "model" is presented.
- Here it means a postulate, an approximation, a "closure" according to the
- Plain English summary (which could also use an edit).
+Again a 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ is presented.
+ Here it means a postulate, an approximation, a 
+\begin_inset Quotes eld
+\end_inset
+
+closure
+\begin_inset Quotes erd
+\end_inset
+
+ according to the Plain English summary (which could also use an edit).
  Consider using one of these clearer terms.
 \end_layout
 
 \begin_layout Standard
-What is the reference for such a "showing" that equal pressure is "bad",
- and for "excellent" as in the sentence above?
+
+\color blue
+The word 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ does have a few uses but then 
+\begin_inset Quotes eld
+\end_inset
+
+postulate
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+approximation
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+closure
+\begin_inset Quotes erd
+\end_inset
+
+ can also be used in different contexts.
+ We think that 
+\begin_inset Quotes eld
+\end_inset
+
+model
+\begin_inset Quotes erd
+\end_inset
+
+ is the best suited word in this context and it is not ambiguous.
+ 
 \end_layout
 
 \begin_layout Standard
-Text:
+What is the reference for such a 
+\begin_inset Quotes eld
+\end_inset
+
+showing
+\begin_inset Quotes erd
+\end_inset
+
+ that equal pressure is 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+, and for 
+\begin_inset Quotes eld
+\end_inset
+
+excellent
+\begin_inset Quotes erd
+\end_inset
+
+ as in the sentence above?
 \end_layout
 
 \begin_layout Standard
-Two vertical slice test cases are developed to tune parameters and to evaluate
- the two fluid equations for representing dry, sub-grid-scale convection:
- a buoyant rising bubble and 25 radiative convective equilibrium.
+
+\color blue
+The reorganization of paragraphs 2 and 3 into one paragraph now clarifies
+ this.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Text: Two vertical slice test cases are developed to tune parameters and
+ to evaluate the two fluid equations for representing dry, sub-grid-scale
+ convection: a buoyant rising bubble and radiative convective equilibrium.
  These are first simulated at high resolution and conditionally averaged
  based on the sign of the vertical velocity.
  The test cases are next simulated with the two-fluid model which reproduces
@@ -1203,6 +1604,12 @@ Response: OHHHH! FINALLY! At last, the information needed for a reader to
  claims refer to.
  This material belongs BEFORE, not after, the Abstract's claims and declarations
  of success.
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+Done
 \end_layout
 
 \begin_layout Standard
