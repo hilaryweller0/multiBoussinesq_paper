@@ -1150,7 +1150,7 @@ It is not entirely clear what the reviewer is asking for here.
 \color blue
 Traditional parameterizations of convection are a large source of error
  in weather and climate prediction models and the assumptions behind them
- are worse as resolution increases.
+ become worse as resolution increases.
 \end_layout
 
 \begin_layout Labeling

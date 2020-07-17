@@ -70,7 +70,7 @@
 \end{keypoints}
 
 \begin{abstract}
-\add[HW]{Traditional parameterizations of convection are a large source of error in weather and climate prediction models and the assumptions behind them are worse as resolution increases.}
+\add[HW]{Traditional parameterizations of convection are a large source of error in weather and climate prediction models and the assumptions behind them become worse as resolution increases.}
 Multi-fluid modeling is a promising new method of representing sub- and near-grid-scale convection allowing for \remove[HW]{consistent and accurate
 treatment of} net mass transport by convection and \remove[HW]{of} non-equilibrium dynamics. The air is partitioned into two or more
 fluids which may represent, for example, updrafts and the \change[HW]{stable}{non-updraft} environment. Each fluid has its own velocity, temperature and constituents with separate equations of motion.  
@@ -240,17 +240,17 @@ where $\sigma_{i}S_{ij}$ is the transfer rate from fluid $i$ to $j$.
 
 Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations is considered. \add[HW]{The filter scale is assumed to be equal to the grid scale but the derivation does not rely on this.} Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
 \begin{eqnarray}
-\overline{I_i \nabla \cdot (\mathbf{u} \mathbf{u})} &=& \nabla \cdot (\sigma_i \mathbf{u}_i  \mathbf{u}_i) + F_\text{SF}^{\mathbf{u}_i} \\
-\overline{I_i \nabla (\mathbf{u} b)} &=&  \nabla \cdot (\sigma_i \mathbf{u}_i b_i) + F_\text{SF}^{b_i}
+\nabla \cdot \overline{I_i \mathbf{u} \mathbf{u}} &=& \nabla \cdot (\sigma_i \mathbf{u}_i  \mathbf{u}_i) + F_\text{SF}^{\mathbf{u}_i} \\
+\nabla \cdot \overline{I_i \mathbf{u} b} &=&  \nabla \cdot (\sigma_i \mathbf{u}_i b_i) + F_\text{SF}^{b_i}
 \label{eq:filterAdvection}
 \end{eqnarray}
 The sub-filter-scale fluxes are represented by constant viscosity diffusion terms for each fluid. The diffusion terms are written so that, in the absence of transfers between fluids and if both fluids are initialized to be identical, the fluids remain identical and $\sigma_i$ acts as a passive tracer:
 \begin{eqnarray}
-\overline{I_i \nu \nabla^2 \mathbf{u}} &\approx& \sigma_i \nu \nabla^2 \mathbf{u}_i \\
-\overline{I_i \alpha \nabla^2 b} &\approx& \sigma_i \alpha \nabla^2b_i .
+\nu \nabla^2 \overline{I_i \mathbf{u}} &\approx& \sigma_i \nu \nabla^2 \mathbf{u}_i \\
+\alpha \nabla^2 \overline{I_i b} &\approx& \sigma_i \alpha \nabla^2b_i .
 \end{eqnarray} 
 %
-The \add[HW]{Boussinesq} pressure \add[HW]{potetials} within each fluid are defined as:
+The \add[HW]{Boussinesq} pressure \add[HW]{potentials} within each fluid are defined as:
 \begin{equation}
 \sigma_i P_i = \overline{I_i P}.
 \end{equation}
@@ -259,7 +259,7 @@ The pressure gradient can then be decomposed as:
 \overline{I_i \nabla P} = \sigma_i \nabla P_i + 
     \left[ P_i\nabla\sigma_i - \overline{P\nabla I_i} \right]
 \end{equation}
-The terms in square brackets are the difference between the pressure force pushing outward from the fluid calculated using resolved variables and the full resolved version of the same force, both of which are related to drag. They will be represented by a drag, $\mathbf{D}_{ij}$. However this drag is likely to be smaller than the drag that is used, for example, in multi-phase modeling \cite<e.g.>{GBB+07} as it is representing the difference between two representations of drag, rather than the whole drag. Sensitivity to $\mathbf{D}_{ij}$ will be investigated in section \ref{sec:results}. 
+The terms in square brackets are the difference between the pressure force pushing outward from the fluid calculated using \change[HW]{resolved variables and the full resolved version}{the filtered variables and the fully resolved version} of the same force, both of which are related to drag. They will be represented by a drag, $\mathbf{D}_{ij}$. However this drag is likely to be smaller than the drag that is used, for example, in multi-phase modeling \cite<e.g.>{GBB+07} as it is representing the difference between two representations of drag, rather than the whole drag. Sensitivity to $\mathbf{D}_{ij}$ will be investigated in section \ref{sec:results}. 
 
 Combining all terms gives the conditionally averaged momentum and buoyancy equations:
 \begin{eqnarray}
@@ -320,7 +320,7 @@ that the two fluids tended to move as one which defeats the purpose
 of using multi-fluid modeling. 
 
 The instabilities reported by \citeA{WM19} showed growing divergence
-in a fluid with vanishing volume fraction. For single-fluid equations, divergence would lead to pressure anomalies which would act as a negative feedback on the divergence. However for multi-fluids with just one pressure, if one of the volume fractions is too small then it cannot force pressure anomalies big enough to stabilize the divergence. Use of a separate pressure for each fluid is therefore proposed to ensure stability.
+in a fluid with vanishing volume fraction. For single-fluid equations, divergence would lead to pressure anomalies which would act as a negative feedback on the divergence. \change[HW]{However for multi-fluids with just one pressure, if one of the volume fractions is too small then it} {In the multi-fluid case with just one pressure, fluids with a sufficiently small volume fraction} cannot force pressure anomalies big enough to stabilize the divergence. Use of a separate pressure for each fluid is therefore proposed to ensure stability.
 
 It is assumed that the \add[HW]{Boussinesq} pressure \add[HW]{potential} in each fluid is given by a perturbation, $p_{i}$, from the total, $P$:
 \begin{equation}
@@ -335,7 +335,7 @@ For stability and to respect $\sum_i \nabla\cdot\sigma_i\mathbf{u}_i=0$, we prop
 \end{enumerate}
 
 
-In order to derive a suitable form of \change[HW]{parameterization}{model} for $p_i$ we will first consider the \citeA{BN86} model of multi-phase flow.
+In order to derive a suitable \change[HW]{form of parameterization}{model} for $p_i$ we will first consider the \citeA{BN86} model of multi-phase flow.
 
 \subsubsection{The \protect\citeA{BN86} model}
 
@@ -377,7 +377,7 @@ p_{i}=
 \underbrace{\gamma\sum_j \sigma_j\nabla\cdot\mathbf{u}_j}_{\text{correction}}
 \label{eq:Pi_div}
 \end{equation}
-where $\gamma$ is a compressibility with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations we plan to re-insert the energy lost due to this stabilization as turbulent kinetic energy and heat.}
+where $\gamma$ is a compressibility with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations, the energy lost due to this stabilization will be re-inserted as turbulent kinetic energy or heat.}
 
 Scale analysis in section
 \ref{subsec:dimAnal} will inform the choice of $\gamma$ and sensitivity
@@ -762,7 +762,7 @@ and a discontinuity arises at the bubble leading edge; the buoyancy force is pro
 
 Using entrainment and detrainment set by divergence ($S_{ij}=-\nabla\cdot\mathbf{u}_{i}$)
 and pressure difference between the fluids controlled by divergence
-($P_{i}=P+\gamma\sum_j \sigma_j \nabla\cdot\mathbf{u}_j-\gamma\nabla\cdot\mathbf{u}_{i}$), the simulations are more realistic (bottom three rows of figure \ref{fig:multiFluidBubble_500_1}).
+($P_{i}=P-\gamma\nabla\cdot\mathbf{u}_{i}+\gamma\sum_j \sigma_j \nabla\cdot\mathbf{u}_j$), the simulations are more realistic (bottom three rows of figure \ref{fig:multiFluidBubble_500_1}).
 The first value, $\gamma=2.3\times10^{4}\text{m}^{2}\text{s}^{-1}$, is set from equation
 (\ref{eq:gammaDimAnal}) using length scale equal to the initial bubble
 radius and a buoyancy scale equal to the initial maximum buoyancy. This makes
@@ -993,12 +993,12 @@ solutions. A more conventional fractional entrainment rate based on the reciproc
 The properties of the fluid that are transferred from one fluid to another are unknowns in the multi-fluid equations and these require closure. An obvious
 first guess is that fluid takes its mean buoyancy and velocity
 with it when it is transferred.
-Improvements on this assumption will depend on knowledge of sub-filter-scale variability. However since conditional averaging is based on the sign of $w$, it is consistent to assume that the fluid transferred has $w=0$ ($w_{ij}^T=0$).
+Improvements on this assumption will depend on knowledge of sub-filter-scale variability. However since conditional averaging is based on the sign of $w$, it is consistent to assume that the fluid transferred has zero vertical velocity ($w_{ij}^T=0$).
 Three models for the buoyancy of the fluid transferred 
 are tested. The most successful
 is to assume that the fluid takes its mean buoyancy with it
 ($b_{ij}^T=b_i$).
-Assuming that the buoyancy of the transferred fluid is an average of the buoyancy of both fluids ($b_{ij}^T=\frac{1}{2}(b_i+b_j)$) can lead to unrealistically large or small, unbounded buoyancies. 
+Assuming that the buoyancy of the transferred fluid is an average of the buoyancy of both fluids $\bigl(b_{ij}^T=\frac{1}{2}(b_i+b_j)\bigr)$ can lead to unrealistically large or small, unbounded buoyancies. 
 Assuming that one fluid has negative buoyancy and the other positive buoyancy and fluid of zero buoyancy is transferred ($b_{ij}^T=0$) also leads to unbounded buoyancy. 
 
 One column multi-fluid modeling with moisture has already been demonstrated by \citeA{TEB19} and two dimensional simulations of the multi-fluid Euler equations by \protect\citeA{WM19}.
