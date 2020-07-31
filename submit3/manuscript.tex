@@ -64,7 +64,7 @@
 \correspondingauthor{Hilary Weller}{h.weller@reading.ac.uk}
 
 \begin{keypoints}
-\item Multi-fluid modeling enables net mass transport by sub-grid-scale convection and non-equlibrium.
+\item Multi-fluid modeling enables net mass transport by sub-grid-scale convection and non-equlibrium\add[DS]{ dynamics}.
 \item Multi-fluid modeling means a new dynamical core rather than a parameterization for an existing core
 \item Closures for the pressure difference between fluids and entrainment and detrainment are provided
 \end{keypoints}
@@ -84,8 +84,8 @@ A model for entrainment and detrainment based on divergence  leads to excellent 
 
 \section*{Plain Language Summary}
 Clouds and buoyant convection are often smaller than the grid size in weather and climate prediction models but they are of central importance. Therefore their effects are parameterized -- their interactions with the larger scales are estimated based on properties of the larger scales. Convection parameterizations are a large source of error in models of the atmosphere despite decades of effort to improve them. 
-Some unrealistic assumptions remain such as that convection does not transport mass upwards, convection is in equilibrium with the surroundings and that the variations in the horizontal direction are not relevant. These make
-it much simpler to incorporate convection parameterizations into existing models.Multi-fluid modeling does not rely on these assumptions
+Some unrealistic assumptions remain such as that convection does not \change[DS]{transport mass upwards}{provide a net upward transport of mass}, convection is in equilibrium with the surroundings and that the variations in the horizontal direction are not relevant. These make
+it much simpler to incorporate convection parameterizations into existing models. Multi-fluid modeling does not rely on these assumptions
 but the approach means a whole new atmospheric model rather than a stand alone routine that can be incorporated into an existing model. This paper provides some closures necessary for multi-fluid modeling and evaluation of the technique for two dimensional dry convection.
 
 \section{Introduction \label{sec:intro}}
@@ -121,16 +121,14 @@ only solve the equations in a single column without
 The disadvantage of the multi-fluids approach is that it requires
 a dedicated model rather than being a stand alone parameterization
 for a dynamical core. \citeA{TEB19} and \citeA{WM19} presented solutions
-of two-fluid equations
-using the same pressure
-for both fluids.
-. \citeA{TEB19} showed that these equations  are in fact unstable and can be stabilized by diffusion of vertical
+of two-fluid equations using the same pressure for both fluids.
+\citeA{TEB19} showed that these equations  are in fact unstable and can be stabilized by diffusion of vertical
 velocity whereas \citeA{WM19} stabilized the equations with diffusion
 and drag between fluids. Neither of these stabilization techniques
 are acceptable;
 sufficient diffusion to stabilize the multi-fluid equations may smooth out real features of the flow and the diffusion between fluids and drag used by \protect\citeA{WM19} meant that both fluids tended to move together rather than through each other.
-In this paper,  significant
-and sustained pressure differences between the fluids are shown to exist (section \ref{sec:results}) and that the use of separate pressures stabilizes the equations. 
+In this paper, \add[DS]{it is shown that} significant
+and sustained pressure differences between the fluids \add[DS]{exist} \remove[DS]{are shown to exist} (section \ref{sec:results}) and that the use of separate pressures stabilizes the equations. 
 
 This paper presents the multi-fluid Boussinesq equations for representing
 sub-grid-scale convection including a parameterization of the pressure
@@ -231,12 +229,16 @@ which implies
 As the system is governed by the Boussinesq equations, it is assumed that variations in density only affect the definition of the buoyancy terms (table \protect\ref{tab:defns}) so $\mathbf{u}_i$ and $b_i$ are defined without density weighting. 
 
 To derive a transport equation for $\sigma_i$, (\ref{eq:LagrangianLabel}) is combined with $I_i$ times (\ref{eq:singleDivFree}) and volume averaged. 
-It is necessary to assume that operators permute with the averaging \cite<as described by>{TWV+18}. \add[HW]{Terms that appear because the averaging does not commute with the operators can be included in the transfers between fluids.} \remove[HW]{Transfers between fluids are included at this stage} \add[HW]{The equation for $\sigma_i$ is then}:
+It is necessary to assume that \change[DS]{operators permute}{partial derivatives commute} with the averaging \cite<as described by>{TWV+18}. \add[HW]{The equation for $\sigma_i$ is then}:
 \begin{equation}
 \frac{\partial\sigma_{i}}{\partial t}+\nabla\cdot\sigma_{i}\mathbf{u}_{i}  =  \sum_{j\ne i}\left\{ \sigma_{j}S_{ji}-\sigma_{i}S_{ij}\right\}
 \label{eq:sigma}
 \end{equation}
-where $\sigma_{i}S_{ij}$ is the transfer rate from fluid $i$ to $j$.
+where $\sigma_{i}S_{ij}$ is the transfer rate from fluid $i$ to $j$ which must satisfy:
+\begin{equation}
+\sum_i \sum_{j\ne i} \bigl( \sigma_j S_{ji} - \sigma_i S_{ij} \bigr) =0.
+\end{equation}
+\add[DS]{These transfer terms account for the fact that the labels $I_i$ are not truly Lagrangian conserved (\ie\ fluid can transform from fluid $i$ to fluid $j$).}
 
 Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations is considered. \add[HW]{The filter scale is assumed to be equal to the grid scale but the derivation does not rely on this.} Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
 \begin{eqnarray}

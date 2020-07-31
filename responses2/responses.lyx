@@ -547,8 +547,11 @@ key "TKP+18"
 \begin_inset Quotes eld
 \end_inset
 
-Terms that appear because the averaging does not commute with the operators
- can be included in the transfers between fluids which take the form:
+These transfer terms account for the fact that the labels 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ are not truly Lagrangian conserved.
 \begin_inset Quotes erd
 \end_inset
 
@@ -562,7 +565,17 @@ Terms that appear because the averaging does not commute with the operators
 \begin_inset space ~
 \end_inset
 
- However the bulk of the transfers are due to other processes.
+ If the 
+\begin_inset Formula $I_{i}$
+\end_inset
+
+ are Lagrangian conserved (ie no relabelling sources or sinks) then the
+ only terms arising from non-commutation are boundary terms.
+ These result from the non-commutation of the operations {take a partial
+ derivative} and {apply spatial filter}.
+ We are not assuming that there is an interface between the fluids so our
+ transfer terms could in fact be a lot bigger than those which arise from
+ the Reynolds transport theorem.
 \end_layout
 
 \begin_layout Labeling
