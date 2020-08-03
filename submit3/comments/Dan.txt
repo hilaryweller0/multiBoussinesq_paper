@@ -1,0 +1,12 @@
+My comments on the latest draft are attached (sorry, this took me longer than expected!). Overall I think it's really good; comments are pretty much just typos and minor suggestions for clarity. Most of my comments are in Section 2, but only suggest minor modifications this time! Broadly it flows well, and is much clearer.
+
+I still think a lot more can be said with scale analysis, but happy for that to be left for future papers. 
+
+I think you've handled the reviewers' responses really well. My only suggestion is for the reply to one of reviewer 1's comments, but that depends on whether you agree with my suggestion in the text anyway so I won't repeat it here.
+
+
+
+While checking over the latest version of the paper I spotted a discrepancy between the scale analysis Peter used and the one I've been using to set \gamma -- the only difference is in scaling the inner length scale, \delta. A classical Prandtl-Blasius argument yields \delta / L ~ Re^{-1/2}, whereas a Rayleigh-Benard style argument (e.g. Castaing et al. 1989, Shraiman & Siggia 1990, and others since) gives the weaker scaling \delta / L ~ Re^{-2/7}. Everything else remains the same between the two arguments. Since the RCE case is quite similar to Rayleigh-Benard convection, the RB scaling should be more applicable -- and indeed, when you plug in the numbers you get \gamma ~ 1900, which is startlingly close to the value 2000 you ended up using.
+
+Too late to change now, as this would warrant too much alteration to the text, but hopefully this helps reconcile Peter's argument with the actual results.
+

@@ -176,7 +176,37 @@ raisebox{5cm}[0cm][0cm]{$t=1000$ s}
 \begin_inset Graphics
 	filename /home/hilary/OpenFOAM/hilary-7/run/hilary/warmBubble/Boussinesq/singleFluid/resolved/legends/bP_b.eps
 	lyxscale 50
-	width 80text%
+	width 75text%
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-0.2cm}
+\backslash
+raisebox{0.5cm}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\text{m}\text{s}^{-2}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 

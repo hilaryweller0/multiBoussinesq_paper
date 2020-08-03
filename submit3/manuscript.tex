@@ -192,7 +192,7 @@ $D_{i}\big/Dt$ ($\text{s}^{-1}$)& Total derivative with respect to fluid $i$ $=\
 \tabularnewline\hline
 $\mathbf{D}_{ij}$ ($\text{m}\text{s}^{-2}$)& Drag on fluid $i$ from fluid $j$ 
 \tabularnewline\hline
-$\gamma$ ($\text{m}^{2}\text{s}^{-1}$)& Compressibility for calculating $p_i$ 
+$\gamma$ ($\text{m}^{2}\text{s}^{-1}$)& \change[DS]{Compressibility}{Volume viscosity} for calculating $p_i$ 
 \tabularnewline\hline
 $C_{D}$ (-)& Drag coefficient $=0$ or 1
 \tabularnewline\hline
@@ -238,7 +238,7 @@ where $\sigma_{i}S_{ij}$ is the transfer rate from fluid $i$ to $j$ which must s
 \begin{equation}
 \sum_i \sum_{j\ne i} \bigl( \sigma_j S_{ji} - \sigma_i S_{ij} \bigr) =0.
 \end{equation}
-\add[DS]{These transfer terms account for the fact that the labels $I_i$ are not truly Lagrangian conserved (\ie\ fluid can transform from fluid $i$ to fluid $j$).}
+\add[DS]{These transfer terms account for the fact that the labels $I_i$ are not truly Lagrangian conserved (i.e. fluid can transform from fluid $i$ to fluid $j$).}
 
 Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and buoyancy (\ref{eq:singleb}) equations is considered. \add[HW]{The filter scale is assumed to be equal to the grid scale but the derivation does not rely on this.} Conditionally averaging the advection terms leads to sub-filter-scale fluxes, $F_{SF}$, since the velocity and buoyancy are not uniform within each fluid at the filter scale:
 \begin{eqnarray}
@@ -246,10 +246,14 @@ Next the conditional averaging of terms in the momentum (\ref{eq:singleMom}) and
 \nabla \cdot \overline{I_i \mathbf{u} b} &=&  \nabla \cdot (\sigma_i \mathbf{u}_i b_i) + F_\text{SF}^{b_i}
 \label{eq:filterAdvection}
 \end{eqnarray}
-The sub-filter-scale fluxes are represented by constant viscosity diffusion terms for each fluid. The diffusion terms are written so that, in the absence of transfers between fluids and if both fluids are initialized to be identical, the fluids remain identical and $\sigma_i$ acts as a passive tracer:
+The sub-filter-scale fluxes are represented by constant viscosity diffusion terms for each fluid. \add[DS]{Molecular diffusion is assumed to be of much smaller magnitude than this constant-viscosity turbulent diffusive mixing, so molecular diffusion is neglected hereafter.} The diffusion terms are written so that, in the absence of transfers between fluids and if both fluids are initialized to be identical, the fluids remain identical and $\sigma_i$ acts as a passive tracer:
 \begin{eqnarray}
-\nu \nabla^2 \overline{I_i \mathbf{u}} &\approx& \sigma_i \nu \nabla^2 \mathbf{u}_i \\
-\alpha \nabla^2 \overline{I_i b} &\approx& \sigma_i \alpha \nabla^2b_i .
+F_\text{SF}^{\mathbf{u}_i}
+%\nu \nabla^2 \overline{I_i \mathbf{u}}
+&\approx& \sigma_i \nu \nabla^2 \mathbf{u}_i \\
+F_\text{SF}^{b_i}
+%\alpha \nabla^2 \overline{I_i b}
+&\approx& \sigma_i \alpha \nabla^2b_i .
 \end{eqnarray} 
 %
 The \add[HW]{Boussinesq} pressure \add[HW]{potentials} within each fluid are defined as:
@@ -341,11 +345,12 @@ In order to derive a suitable \change[HW]{form of parameterization}{model} for $
 
 \subsubsection{The \protect\citeA{BN86} model}
 
-\citeA{BN86} proposed a parameterization for pressure differences
-in a multi-phase explosion model that has been widely used in mathematics
-and engineering for simulating, for example, fluidized beds of granular material \cite<e.g.>{EHM92} and two compressible fluids \cite<e.g.>{SA99}. This model is not used here but is examined in order to derive a parameterization of pressure differences between fluids suitable for atmospheric convection.
-\citeA{SA99} wrote transport equations for both the volume fraction,
-$\sigma_{i}$, and for the mass fraction,
+\citeA{BN86} proposed a \remove[HW]{parameterization for pressure differences in a}
+multi-phase explosion model that has been widely used in mathematics
+and engineering for simulating, for example, fluidized beds of granular material \cite<e.g.>{EHM92} and two compressible fluids \cite<e.g.>{SA99}.
+\add[HW]{This model has a separate pressure for each phase, $P_i$, and provides a transport equation for the phase fraction (equivalent of $\sigma_i$) which closes the system enabling diagnosis of $P_i$.}
+This model is not used here but is examined in order to derive a parameterization of pressure differences between fluids suitable for atmospheric convection.
+\citeA{SA99} wrote \add[HW]{the \protect\citeA{BN86} model using} transport equations for both the volume fraction, $\sigma_{i}$, and for the mass fraction,
 $\sigma_{i}\rho_{i}$, without transfers between fluids which in our notation are:
 \begin{eqnarray}
 \frac{\partial\sigma_{i}}{\partial t}+\mathbf{V}\cdot\nabla\sigma_{i} & = & \mu\left(P_{i}-P_{j}\right)
@@ -379,7 +384,7 @@ p_{i}=
 \underbrace{\gamma\sum_j \sigma_j\nabla\cdot\mathbf{u}_j}_{\text{correction}}
 \label{eq:Pi_div}
 \end{equation}
-where $\gamma$ is a compressibility with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations, the energy lost due to this stabilization will be re-inserted as turbulent kinetic energy or heat.}
+where $\gamma$ is a \change[DS]{compressibility}{volume viscosity} with units $\text{m}^2 \text{s}^{-1}$. The ``stabilization'' term reduces to that of \protect{\citeA{TEB19}} in one dimension and the ``correction'' term ensures that $\sum_i \sigma_i p_i =0$. It should be noted that this parameterization destroys \add[HW]{exact} energy conservation. \add[HW]{In future work solving the compressible equations, the energy lost due to this stabilization will be re-inserted as turbulent kinetic energy or heat.}
 
 Scale analysis in section
 \ref{subsec:dimAnal} will inform the choice of $\gamma$ and sensitivity
@@ -415,7 +420,7 @@ is parameterized following \citeA{SW69}, \citeA{RC15} and \citeA{WM19} as:
 \begin{equation}
 \mathbf{D}_{ij}=\frac{\sigma_{j}C_{D}}{r_{c}}|\mathbf{u}_{i}-\mathbf{u}_{j}|\left(\mathbf{u}_{i}-\mathbf{u}_{j}\right)\label{eq:dragBubble}
 \end{equation}
-where $C_{D}$ is a drag coefficient, $r_{c}$ is a cloud radius.
+where $C_{D}$ is a drag coefficient and $r_{c}$ is a cloud radius.
 Sensitivity to $C_{D}/r_{c}$is explored in section \ref{sec:results}. 
 
 \subsection{The Buoyancy and the Momentum of the Mass that is Transferred \label{subsec:transferProperties}}
@@ -454,7 +459,7 @@ The model $b_{ij}^T=0$ is also tested. The rationale is that if fluid zero conta
 \subsection{\label{subsec:dimAnal}Scale
  Analysis}
 
-Scale analysis can guide our choice of $\gamma$ for the parameterization of the pressure difference between fluids using the following assumptions:
+Scale analysis can guide our choice of $\gamma$ for the parameterization of the pressure difference between. \change[HW]{fluids using the following assumptions:}{The scaling presented can be derived using fewer assumptions than those below but these assumptions simplify the analysis:} 
 \begin{enumerate}
 \item The flow is buoyancy dominated.
 \item The flow is close to inviscid.
@@ -546,7 +551,7 @@ variables of the C-grid. The $S_{ij}$ are limited to ensure $0<\sigma_{i}<1\ \fo
 
 Next \remove[HW]{eqn} (\ref{eq:b}) is solved for the buoyancy in each fluid, first
 transporting buoyancy and then applying the transfer terms.
-The advection term, $\mathbf{u}_i\nabla b_i$ is split into $\nabla\cdot(\mathbf{u}_i b_i) - b_i \nabla\cdot\mathbf{u}_i$ for better conservation as calculated by the finite volume method.
+The advection term, $\mathbf{u}_i\cdot\nabla b_i$ is split into $\nabla\cdot(\mathbf{u}_i b_i) - b_i \nabla\cdot\mathbf{u}_i$ for better conservation as calculated by the finite volume method.
 The transfer
 terms can be very large due to the presence of $\frac{\sigma_{j}}{\sigma_{i}}S_{ij}$
 in the transfer term for $b_{i}$ so they are treated operator split
@@ -585,7 +590,7 @@ momentum transfers) is updated from the back-substitution:
 \begin{equation}
 u_{i}^{\prime\prime}=u_{i}^{\prime}-\frac{\Delta t}{2}\nabla_{f}P^{n+1}.\label{eq:backSub}
 \end{equation}
-The Poisson equation for $P^{n+1}$ is found by multiplying each \remove[HW]{eqn}
+The Poisson equation for $P^{n+1}$ is found by multiplying \remove[DS]{each} \remove[HW]{eqn}
 (\ref{eq:backSub}) by $\sigma_{i}$, summing over all fluids and
 taking the divergence. Knowing that $\nabla\cdot\sum_{i}\sigma_{i}\mathbf{u}_{i}=0$,
 $\sum_{i}\sigma_{i}=1$ and $\sum_{i}\sigma_{i}p_{i}=0$ gives:
@@ -642,7 +647,7 @@ d_v = \left(
      \mathbf{x}_v - \mathbf{x}_c + \frac{w \nabla w}{|\nabla w|^2} 
 \right) \cdot \frac{\nabla w}{|\nabla w|}.
 \end{equation}
-The volume fraction either side of the $w=0$ surface is approximated by the average distance to vertices in one side of the surface divided by the average distance to vertices on both side:
+The volume fraction either side of the $w=0$ surface is approximated by the average distance to vertices in one side of the surface divided by the average distance to vertices on both sides:
 \begin{equation}
 \sigma_0 = 
 \frac{-\text{mean}\bigl(\text{all } d_v \text{ with } d_v \le 0\bigr)}
@@ -723,7 +728,7 @@ and a single-fluid. Horizontal averages are conditioned based on $w$.
 \end{figure}
 
 In order to see what happens in a single fluid atmospheric model at modest horizontal resolution without a parameterization of convection, the bubble is simulated at coarser horizontal resolutions, using nine, five, three and one columns instead of the 200 columns of the fine resolution to cover the 20km wide domain and a vertical space of $\Delta z=100\ \text{m}$.
-The conditional and horizontal averages of these simulations are shown in figure \ref{fig:bubble_singleUnderRes}
+The conditional and horizontal averages of these simulations are shown in figure \ref{fig:bubble_singleUnderRes}.
 
 These simulations are initialized by conservative
 horizontal averaging from the full resolution solution. As the horizontal
@@ -787,21 +792,9 @@ The mixing with downdraft air is already accounted for in the entrainment and th
 \label{fig:multiFluidBubble_500_2}}
 \end{figure}
 
-If
-pressure differences between fluids are included
-with $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$
-without
-entrainment ($S_{ij}\approx 0$) (second row of figure \ref{fig:multiFluidBubble_500_2})
-the fluids move past each other but there is 
-a build up of fluid 1 at the leading edge of the bubble and very little
-fluid 1 below the bubble.
-
-With one column and
-two fluids, all air must rise in one fluid and sink in the other.
-Continuity does not allow for any other solution. Pressure gradients
-can accelerate or decelerate this flow but as the model is set up,
-with no transfers between fluids, no fluid can change direction. It
-is therefore essential to have transfers between fluids.
+If pressure differences between fluids are included with $\gamma=10^{4}\text{m}^{2}\text{s}^{-1}$ without entrainment ($S_{ij}\approx 0$) (second row of figure \ref{fig:multiFluidBubble_500_2}) the fluids move past each other but there is 
+a build up of fluid 1 at the leading edge of the bubble and very little fluid 1 below the bubble. With one column and two fluids, all air must rise in one fluid and sink in the other. Continuity does not allow for any other solution. Pressure gradients
+can accelerate or decelerate this flow but as the model is set up, with no transfers between fluids, no fluid can change direction. It is therefore essential to have transfers between fluids.
 
 The other entrainment option is the commonly used fractional entrainment
 rate, $\varepsilon=0.2/r_{c}$. This is used in combination with with pressure differences between fluids in the third row of figure \ref{fig:multiFluidBubble_500_2}.
@@ -860,7 +853,7 @@ the horizontal and 40 in the vertical ($\Delta x=\Delta z=250$m).
 The top and bottom boundaries are zero velocity and the lateral boundaries
 are periodic. A heat flux of $h=10^{-3}\text{m}^{2}\text{s}^{-3}$
 is imposed at the bottom boundary leading to a boundary condition
-of $\partial b/\partial z=-h/\alpha\text{s}^{-2}$ where $\alpha=100\ \text{m}^{2}\text{s}^{-1}$
+of $\partial b/\partial z=-h/\alpha$ where $\alpha=100\ \text{m}^{2}\text{s}^{-1}$
 is the buoyancy diffusivity. The top boundary has $\partial b/\partial z=0$.
 Diffusion is applied to the momentum equation with a coefficient $\nu=70.7\ \text{m}^{2}\text{s}^{-1}$
 so as to give a Prandtl number of $0.707$, the value for dry air. Uniform cooling of $-1\times10^{-7}\text{m}\text{s}^{-3}$ is applied to the domain to maintain equilibrium.
@@ -870,7 +863,7 @@ and reproducibly initialize instability, $b=10^{-4}\text{m}^{2}\text{s}^{-1}$
 is imposed in a square of side length 2000m at the center in the $x$
 direction and at the ground. The simulation is run using a time step
 of $5\ \text{s}$. A quasi-steady, chaotic state is reached after
-about $3\times10^{4}\text{s}$ and the simulation is run for $2\times10^{5}\text{s}$
+about $3\times10^{4}\text{s}$; the simulation is run for $2\times10^{5}\text{s}$
 and conditional averages are calculated over the final $10^{5}$s.
 
 This test case is designed to have strong updrafts in narrow plumes
@@ -930,8 +923,7 @@ cloud top detrainment and lateral entrainment. $\gamma$ is set from
 equation (\ref{eq:gammaDimAnal}) using the depth of the high resolution solution super adiabatic
 layer as the length scale ($L=800\text{m}$) and the buoyancy scale
 $B=L\ \partial b/\partial z=8\times10^{-3}\text{m}\text{s}^{-2}$
-giving $\gamma=2000\text{m}^{2}\text{s}^{-1}$. \add[HW]{(If scale analysis is used to estimate $L$ and $B$, values within a factor of 10 are calculated, depending on the assumptions.)}
-A simulation using
+giving $\gamma=2000\text{m}^{2}\text{s}^{-1}$. A simulation using
 $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$, no drag and $b_{ij}^{T}=b_{i}$
 is shown in the top row of figure \ref{fig:RCE_singleColumn}.
 The entrainment model $S_{ij}=-\nabla\cdot\mathbf{u}_{i}$ keeps $\sigma_{i}$
